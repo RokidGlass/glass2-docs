@@ -1,6 +1,6 @@
 # Summary
 
-* [Glass](README.md)
+* [Glass](index.md)
 * [系统](1-system/index.md)
 * SDK
     - [人脸识别](2-sdk/1-face-sdk/FaceSDK.md)
