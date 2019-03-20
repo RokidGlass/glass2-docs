@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "gitbook install",
     "build": "gitbook build",
-    "publish": "node publish.js"
+    "publish": "gitbook build && node publish.js"
   },
   "dependencies": {
     "g": "^2.0.1",
