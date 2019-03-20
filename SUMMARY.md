@@ -3,7 +3,7 @@
 Rokid Glass文档
 ---------
 * [Rokid Glass](README.md)
-* [系统](1-system/index.md)
+* [系统](1-system/SystemConfig.md)
 * SDK
     - [人脸识别](2-sdk/1-face-sdk/FaceSDK.md)
     - [车牌识别](2-sdk/2-lpr-sdk/LprSDK.md)
