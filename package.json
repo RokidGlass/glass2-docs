@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "postinstall": "gitbook install",
-    "build": "gitbook build"
+    "build": "gitbook build",
+    "publish": "node publish.js"
   },
   "dependencies": {
     "g": "^2.0.1",

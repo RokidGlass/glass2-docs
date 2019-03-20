@@ -108,7 +108,7 @@ simpleVoiceDialogBuilder.show();
 |setConfirmListener|设置Confirm监听||
 |setCancelListener|设置Cancel监听||
 |dynamicTitle|动态改变标题||
-|dynamicConfirmText|动态改变确定按钮文字|
+|dynamicConfirmText|动态改变确定按钮文字||
 |dynamicCustomConfirmView|自定义Confirm界面布局||
 
 #### ImageDialogBuilder
@@ -226,8 +226,8 @@ new GlassDialog.SimpleContentDialogBuilder(this)
 |setContent|设置内容|null|
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
 
 #### ImageContentDialogBuilder
 标题+图片
@@ -265,8 +265,8 @@ new GlassDialog.ImageContentDialogBuilder(this)
 |setNotifyBitmap|设置图片显示,bitmap方式||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
 #### CustomerSimpleMsgDialogBuilder
 自定义标题内容
 
@@ -312,9 +312,9 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
 |setCustomerText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
-|setCustomerListener|自定义按钮监听||
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
+|setCustomerListener|自定义按钮监听| |
 
 #### CustomerImageDialogBuilder
 自定义图片样式1
@@ -360,11 +360,11 @@ mCustomerImageDialogBuilder.show();
 |setCustomerText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式||
-|setNotifyBitmap|设置图片显示,bitmap方式||
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
-|setCustomerListener|自定义按钮监听||
+|setNotifyResId|设置图片显示,res方式| |
+|setNotifyBitmap|设置图片显示,bitmap方式| |
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
+|setCustomerListener|自定义按钮监听| |
 
 #### CustomerImageContentDialogBuilder
 自定义图片样式2
@@ -409,11 +409,11 @@ new GlassDialog.CustomerImageContentDialogBuilder(this)
 |setCustomerText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式||
-|setNotifyBitmap|设置图片显示,bitmap方式||
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
-|setCustomerListener|自定义按钮监听||
+|setNotifyResId|设置图片显示,res方式| |
+|setNotifyBitmap|设置图片显示,bitmap方式| |
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
+|setCustomerListener|自定义按钮监听| |
 
 ### 工具类
 #### CountDownManager
@@ -440,10 +440,10 @@ countDownManager.start();
 |方法|含义|默认值
 |---|---|---|
 |setMillisInFuture|总时间||
-|setCountDownInterval|间隔时间||
-|setCountDownListener|监听回调||
-|start|开始|
-|cancel|取消|
+|setCountDownInterval|间隔时间| |
+|setCountDownListener|监听回调| |
+|start|开始| |
+|cancel|取消| |
 
 #### RokidSystem
 ##### getAlignmentRect
