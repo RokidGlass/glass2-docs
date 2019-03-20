@@ -1,0 +1,17 @@
+{
+    "plugins" : [
+      "anchor-navigation-ex",
+      "expandable-chapters-interactive",
+      "vistors-github",
+      "mermaid-gb3",
+      "github-issue-feedback"
+    ],
+    "pluginsConfig" : {
+      "vistors-github": {
+        "repo": "Rokid/glass-docs"
+      },
+      "github-issue-feedback": {
+          "repo": "Rokid/glass-docs"
+      }
+    }
+  }
