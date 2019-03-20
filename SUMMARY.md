@@ -1,6 +1,8 @@
 # Summary
-
-* [Glass](index.md)
+---------
+Rokid Glass文档
+---------
+* [Glass](README.md)
 * [系统](1-system/index.md)
 * SDK
     - [人脸识别](2-sdk/1-face-sdk/FaceSDK.md)
@@ -9,4 +11,3 @@
     - [视频通话](2-sdk/4-video-sdk/VideoSDK.md)
     - [Glass UI](2-sdk/5-ui-sdk/UiSDK.md)
 * [公版App](3-app/index.md)
-
