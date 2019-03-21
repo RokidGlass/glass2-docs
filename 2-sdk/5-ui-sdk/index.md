@@ -1,4 +1,5 @@
 # Glass UI SDK
+**Version: 1.0.0-SNAPSHOT**
 ## 概述
 目前的UI SDK仅适用于Glass版本
 
