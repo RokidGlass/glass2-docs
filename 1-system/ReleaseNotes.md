@@ -1,4 +1,4 @@
-# V0.3.1-20190318-150000
+# 0.3.1-20190318-150000
 
 *	更新system app
 	1.	RokidSetting：系统信息页面长按tp可以直接拉起投射。
@@ -6,7 +6,7 @@
 *	修复WFD时视频播放显示异常的问题
 *	关闭联网后自动时间校准
 
-# V0.3.0-20190315-150000
+# 0.3.0-20190315-150000
 
 *	更新system app
 	1.	RokidAiSdk：
@@ -33,7 +33,7 @@
 *	修改系统TP点击按键键值，从ENTER改为DPAD_CENTER。
 *	修改蓝牙可见时间，当应用打开蓝牙未设置可见时间时，蓝牙始终可见。
 
-# V0.2.2-20190308-150056
+# 0.2.2-20190308-150056
 
 *	更新system app
 	1.	RokidAiSdk：
@@ -51,7 +51,7 @@
 *	放开系统Audio source HOTWORD的权限，可供语音助手使用。
 *	修改OTA服务启动时间，开机后直接启动，不再等待90s。
 
-# V0.2.1-20190301-150055
+# 0.2.1-20190301-150055
 
 *	更新system app
 	1.	RokidCamera: 修改左右滑动可以自由切换录像和拍照模式
@@ -74,7 +74,7 @@
 *	修改系统SystemUi默认通知展示的样式：修改长宽及背景色。
 *	重构OTA流程，移除了自动更新，需要用户在setting中主动发起。
 
-# V0.1.9-20190222-150053
+# 0.1.9-20190222-150053
 
 *	更新system app
 	1.	RokidCamera: 拍照分辨率改成16：9
@@ -94,7 +94,7 @@
 *	增加后羿device目录，编译后羿专用镜像
 集成进RokidKeyboard，并设置成默认输入法，支持tp操作：前后滑动tp控制光标左右，音量键+-控制光标上下，点击tp确认输入。
 
-# V0.1.8-20190201-150052
+# 0.1.8-20190201-150052
 
 *	更新system app
 	1.	RokidCamera: 相机增加语音控制拍照和退出功能
@@ -110,7 +110,7 @@
 	3.	合入高通解决modem死机patch
 	4.	删除动态库中的冗余打印
 
-# V0.1.7-20190125-150044
+# 0.1.7-20190125-150044
 
 *	更新system app
 	1.	RokidActivation：修复文件管理的一些BUG
@@ -122,7 +122,7 @@
 *	整理按键逻辑，修复双击返回键遗留bug
 *  修复zoom app 没有声音的bug
 
-# V0.1.4-20190118-150041
+# 0.1.4-20190118-150041
 
 *  更新system app 
 	1.	RokidAiCloudApp 伟明 -迁出engine、TtsService，并优化剩余代码
@@ -146,7 +146,7 @@
 	6. remove iop
 	7. resolve AutioTimeZone issue
 
-# V0.1.3-20190111-150040
+# 0.1.3-20190111-150040
 
 * 更新system app 
 	1.	RokidAiCloudApp 伟明 -修改tts通知名称，用新正则过滤所有技能tts
@@ -162,7 +162,7 @@
 * 修复md5校验错误导致无法下载新的ota升级包的问题 
 * 修复ota弹窗显示不全的问题
 
-# V0.1.2-20180104-150033
+# 0.1.2-20180104-150033
 
 *	 更新system app（RokidAiCloudApp, RokidAiSdk, RokidCameraDeploy, RokidGallery, RokidLauncher，RokidTranslate），增加RokidActivation
 *	 增加rokid glass type id

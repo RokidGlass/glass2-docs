@@ -4,12 +4,12 @@
 ## 一.FaceSDK介绍
 ---
 ### 1.1概述
-RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：
-1.图片检测+图片识别 
-2.相机预览数据人脸检测，人脸跟踪，人脸识别。 
-3.人脸数据库增删改查的接口 
-4.能够获取人脸角度以及人脸人脸质量等信息 
-5.单帧图片人脸检测，支持bitmap、NV21格式数据人脸检测 
+RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：  
+1.图片检测+图片识别   
+2.相机预览数据人脸检测，人脸跟踪，人脸识别。   
+3.人脸数据库增删改查的接口   
+4.能够获取人脸角度以及人脸人脸质量等信息   
+5.单帧图片人脸检测，支持bitmap、NV21格式数据人脸检测   
 
 ## 二.集成说明
 ---
@@ -137,6 +137,7 @@ videoFace.sconfig(sFaceConf);
   * **返回：**
 
       `IVideoRokidFace` - 相机预览数据检测接口
+
 #### 3.3.2设置相机预览数据
 ```java
 videoFace.setData(new VideoInput(bytes));
@@ -158,7 +159,6 @@ videoFace.setData(new VideoInput(bytes));
 ```java
  videoFace.destroy();
 ```
----
 ### 3.4单张图片的人脸检测
 #### 3.4.1人脸检测创建
 ```java
@@ -167,6 +167,7 @@ videoFace.setData(new VideoInput(bytes));
  * **返回：**
 
       `IImageRokidFace ` - 单帧图片检测接口
+
 #### 3.4.2人脸检测初始化
 ```java
 // 如果图片检测需要人脸识别，则sconfig
@@ -187,6 +188,7 @@ imageFace.setImageFaceCallback(new BitmapInput(bitmap),
 * **返回：**
 
     `model` - `FaceModel` 包含`FaceDo`类型
+
 #### 3.4.4 人脸检测销毁
 ```java
  imageFace.destroy();
