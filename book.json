@@ -12,6 +12,12 @@
       },
       "github-issue-feedback": {
           "repo": "Rokid/glass-docs"
-      }
+      },
+      "anchor-navigation-ex": {
+        "showLevel": false,
+        "tocLevel1Icon": "fa fa-hand-o-right",
+        "tocLevel2Icon": "fa fa-hand-o-right",
+        "tocLevel3Icon": "fa fa-hand-o-right"
+     }
     }
   }

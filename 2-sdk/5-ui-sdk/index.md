@@ -1,19 +1,12 @@
 # Glass UI SDK
-**Version: 1.0.0-SNAPSHOT**
-## 目录
-* [概述](#概述)
-* [接入方式](#接入方式)
-    * [Gradle依赖](#Gradle依赖)
-    * [Sample](#Sample)
-* [功能列表](#功能列表)
-    * [GlassButton](#GlassButton)
-    * [GlassDialog](#GlassDialog)
-* [工具类](#工具类)
+**Version: 1.0.0-SNAPSHOT**  
 
-## 概述
+## UI SDK介绍
+---
+### 概述
 目前的UI SDK仅适用于Glass版本
-
-## 接入方式
+## 集成说明
+---
 在根目录`build.gradle`中增加私有maven库：
 ``` gradle
 maven {
@@ -33,6 +26,7 @@ implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
 [Glass UI Sample](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
 
 ## 功能列表
+---
 ### GlassButton
 Glass自定义的Button
 
@@ -60,6 +54,15 @@ Glass自定义的Button
 通知栏通知（出现固定时间后消失）
 
 ![](images/notification.png)
+
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置通知栏标题|null|
+|setMessage|设置通知栏内容|null|
+|setIconRes|设置通知icon||
+|setDuration|设置通知栏消息时间(ms)|3000|
+
+**示例代码**
 ``` java
 GlassDialog notificationDialog = new GlassDialog.NotificationDialogBuilder(this)
             .setTitle(getString(R.string.notification_title))
@@ -69,19 +72,25 @@ GlassDialog notificationDialog = new GlassDialog.NotificationDialogBuilder(this)
             .create();
 notificationDialog.show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置通知栏标题|null|
-|setMessage|设置通知栏内容|null|
-|setIconRes|设置通知icon||
-|setDuration|设置通知栏消息时间(ms)|3000|
+
 
 #### SimpleVoiceDialogBuilder
 纯语音通知
 
 ![](images/notify_simple_voice.png)
 
-具体代码参考Sample
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setConfirmListener|设置Confirm监听||
+|setCancelListener|设置Cancel监听||
+|dynamicTitle|动态改变标题||
+|dynamicConfirmText|动态改变确定按钮文字| |
+|dynamicCustomConfirmView|自定义Confirm界面布局| - |
+
+**示例代码**
 ``` java
 GlassDialog simpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)
             .setTitle(getString(R.string.voice_test))
@@ -113,23 +122,26 @@ GlassDialog simpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(
 
 simpleVoiceDialogBuilder.show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
-|dynamicTitle|动态改变标题||
-|dynamicConfirmText|动态改变确定按钮文字| |
-|dynamicCustomConfirmView|自定义Confirm界面布局| - |
+
 
 #### ImageDialogBuilder
 语音图片通知
 
 ![](images/notify_image.png)
 
-示例代码
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setNotifyResId|设置图片显示,res方式||
+|setNotifyBitmap|设置图片显示,bitmap方式||
+|setConfirmListener|设置Confirm监听||
+|setCancelListener|设置Cancel监听||
+|dynamicConfirmText|动态改变确定按钮文字||
+|dynamicCustomConfirmView|自定义Confirm界面布局|-|
+
+**示例代码**
 ``` java
 mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
             .setTitle(getString(R.string.image_title))
@@ -160,24 +172,22 @@ mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
 
 mImageDialogBuilder.show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式||
-|setNotifyBitmap|设置图片显示,bitmap方式||
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
-|dynamicConfirmText|动态改变确定按钮文字||
-|dynamicCustomConfirmView|自定义Confirm界面布局|-|
+
 
 #### SimpleMessageDialogBuilder
 仅有标题  
 
 ![](images/notify_simple_title.png)
 
-示例代码：
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setConfirmListener|设置Confirm监听||
+|setCancelListener|设置Cancel监听|-|
+
+**示例代码**
 ``` java
 new GlassDialog.SimpleMessageDialogBuilder(this)
             .setTitle(getString(R.string.simple_message_title))
@@ -199,18 +209,22 @@ new GlassDialog.SimpleMessageDialogBuilder(this)
                 }
             }).show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听|-|
+
 #### SimpleContentDialogBuilder
 标题+正文
 
 ![](images/nofity_simple_content.png)
 
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setContent|设置内容|null|
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听|-|
+
+**示例代码**
 ```java
 new GlassDialog.SimpleContentDialogBuilder(this)
             .setTitle(getString(R.string.simple_message_title))
@@ -233,20 +247,25 @@ new GlassDialog.SimpleContentDialogBuilder(this)
                 }
             }).show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听|-|
+
 
 #### ImageContentDialogBuilder
 标题+图片
 
 ![](images/notify_image_content.png)
 
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setContent|设置内容|null|
+|setNotifyResId|设置图片显示,res方式||
+|setNotifyBitmap|设置图片显示,bitmap方式||
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听|-|
+
+**示例代码**
 ```java
 new GlassDialog.ImageContentDialogBuilder(this)
             .setTitle(getString(R.string.image_content_title))
@@ -270,20 +289,24 @@ new GlassDialog.ImageContentDialogBuilder(this)
                 }
             }).show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setNotifyResId|设置图片显示,res方式||
-|setNotifyBitmap|设置图片显示,bitmap方式||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听|-|
+
 #### CustomerSimpleMsgDialogBuilder
 自定义标题内容
 
 ![](images/notifiy_customer_content.png)
+
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setContent|设置内容|null|
+|setCustomerText|自定义按钮文本||
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
+|setCustomerListener|自定义按钮监听|-|
+
+**示例代码**
 ```java
 mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
             .setTitle(getString(R.string.image_content_title))
@@ -318,21 +341,25 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
             })
             .show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setCustomerText|自定义按钮文本||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听| |
-|setCustomerListener|自定义按钮监听|-|
 
 #### CustomerImageDialogBuilder
 自定义图片样式1
 
 ![](images/notify_customer_image1.png)
+
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setCustomerText|自定义按钮文本||
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setNotifyResId|设置图片显示,res方式| |
+|setNotifyBitmap|设置图片显示,bitmap方式| |
+|setConfirmListener|设置Confirm监听| |
+|setCancelListener|设置Cancel监听| |
+|setCustomerListener|自定义按钮监听|-|
+
+**示例代码**
 ```java
 mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
             .setTitle(getString(R.string.image_title))
@@ -367,9 +394,16 @@ mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
 
 mCustomerImageDialogBuilder.show();
 ```
+
+#### CustomerImageContentDialogBuilder
+自定义图片样式2
+
+![](images/notify_customer_image2.png)
+
 |方法|含义|默认值
 |---|---|---|
 |setTitle|设置标题|null|
+|setContent|设置内容|null|
 |setCustomerText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
@@ -379,10 +413,7 @@ mCustomerImageDialogBuilder.show();
 |setCancelListener|设置Cancel监听| |
 |setCustomerListener|自定义按钮监听|-|
 
-#### CustomerImageContentDialogBuilder
-自定义图片样式2
-
-![](images/notify_customer_image2.png)
+**示例代码**
 ```java
 new GlassDialog.CustomerImageContentDialogBuilder(this)
             .setTitle(getString(R.string.image_content_title))
@@ -415,22 +446,19 @@ new GlassDialog.CustomerImageContentDialogBuilder(this)
             })
             .show();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setCustomerText|自定义按钮文本||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式| |
-|setNotifyBitmap|设置图片显示,bitmap方式| |
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听| |
-|setCustomerListener|自定义按钮监听|-|
-
 ### 工具类
 #### CountDownManager
 倒计时
+
+|方法|含义|默认值
+|---|---|---|
+|setMillisInFuture|总时间||
+|setCountDownInterval|间隔时间| |
+|setCountDownListener|监听回调| |
+|start|开始| |
+|cancel|取消|-|
+
+**示例代码**
 ```java
 CountDownManager countDownManager = new CountDownManager.Builder()
             .setMillisInFuture(10000)
@@ -450,13 +478,6 @@ CountDownManager countDownManager = new CountDownManager.Builder()
 countDownManager.start();
 //countDownManager.cancel();
 ```
-|方法|含义|默认值
-|---|---|---|
-|setMillisInFuture|总时间||
-|setCountDownInterval|间隔时间| |
-|setCountDownListener|监听回调| |
-|start|开始| |
-|cancel|取消|-|
 
 #### RokidSystem
 ##### getAlignmentRect
