@@ -3,7 +3,9 @@
 Rokid Glass文档
 ---------
 * [Rokid Glass](README.md)
-* [系统](1-system/index.md)
+* 系统
+    - [系统配置](1-system/index.md)
+    - [版本信息](1-system/ReleaseNotes.md)
 * SDK
     - 人脸识别
         - [版本信息](2-sdk/1-face-sdk/ReleaseNotes.md)
