@@ -1,19 +1,12 @@
 # Glass UI SDK
-**Version: 1.0.0-SNAPSHOT**
-## 目录
-* [概述](#概述)
-* [接入方式](#接入方式)
-    * [Gradle依赖](#Gradle依赖)
-    * [Sample](#Sample)
-* [功能列表](#功能列表)
-    * [GlassButton](#GlassButton)
-    * [GlassDialog](#GlassDialog)
-* [工具类](#工具类)
+**Version: 1.0.0-SNAPSHOT**  
 
-## 概述
+## UI SDK介绍
+---
+### 概述
 目前的UI SDK仅适用于Glass版本
-
 ## 集成说明
+---
 在根目录`build.gradle`中增加私有maven库：
 ``` gradle
 maven {
@@ -33,6 +26,7 @@ implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
 [Glass UI Sample](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
 
 ## 功能列表
+---
 ### GlassButton
 Glass自定义的Button
 
@@ -452,7 +446,6 @@ new GlassDialog.CustomerImageContentDialogBuilder(this)
             })
             .show();
 ```
-
 ### 工具类
 #### CountDownManager
 倒计时
