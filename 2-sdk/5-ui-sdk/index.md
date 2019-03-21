@@ -1,11 +1,11 @@
 # Glass UI SDK
 **Version: 1.0.0-SNAPSHOT**  
 
-## UI SDK介绍
+## 一、UI SDK介绍
 ---
-### 概述
+### 1.1 概述
 目前的UI SDK仅适用于Glass版本
-## 集成说明
+## 二、集成说明
 ---
 在根目录`build.gradle`中增加私有maven库：
 ``` gradle
@@ -17,17 +17,17 @@ maven {
     url 'http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/'
 }
 ```
-### Gradle依赖
+### 2.1 Gradle依赖
 ``` gradle
 implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
 ```
 
-### Sample
+### 2.2 Sample
 [Glass UI Sample](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
 
-## 功能列表
+## 三、功能列表
 ---
-### GlassButton
+### 3.1 GlassButton
 Glass自定义的Button
 
 `Focused`:  
@@ -38,7 +38,7 @@ Glass自定义的Button
 
 ![](images/glass_button_normal.png)
 
-#### 用法
+#### 3.1.1 用法
 ``` xml
 <com.rokid.glass.ui.button.GlassButton
     android:id="@+id/confirm_btn"
@@ -47,10 +47,10 @@ Glass自定义的Button
     android:layout_height="@dimen/glass_button_height"
     android:text="@string/confirm_text" />
 ```
-### GlassDialog
+### 3.2 GlassDialog
 提供了一系列常用的对话框,通过不同Builder 来构建不同类型的对话框。
 目前提供的Builder:
-#### NotificationDialogBuilder
+#### 3.2.1 NotificationDialogBuilder
 通知栏通知（出现固定时间后消失）
 
 ![](images/notification.png)
@@ -74,7 +74,7 @@ notificationDialog.show();
 ```
 
 
-#### SimpleVoiceDialogBuilder
+#### 3.2.2 SimpleVoiceDialogBuilder
 纯语音通知
 
 ![](images/notify_simple_voice.png)
@@ -124,7 +124,7 @@ simpleVoiceDialogBuilder.show();
 ```
 
 
-#### ImageDialogBuilder
+#### 3.2.3 ImageDialogBuilder
 语音图片通知
 
 ![](images/notify_image.png)
@@ -174,7 +174,7 @@ mImageDialogBuilder.show();
 ```
 
 
-#### SimpleMessageDialogBuilder
+#### 3.2.4 SimpleMessageDialogBuilder
 仅有标题  
 
 ![](images/notify_simple_title.png)
@@ -210,7 +210,7 @@ new GlassDialog.SimpleMessageDialogBuilder(this)
             }).show();
 ```
 
-#### SimpleContentDialogBuilder
+#### 3.2.5 SimpleContentDialogBuilder
 标题+正文
 
 ![](images/nofity_simple_content.png)
@@ -249,7 +249,7 @@ new GlassDialog.SimpleContentDialogBuilder(this)
 ```
 
 
-#### ImageContentDialogBuilder
+#### 3.2.6 ImageContentDialogBuilder
 标题+图片
 
 ![](images/notify_image_content.png)
@@ -290,7 +290,7 @@ new GlassDialog.ImageContentDialogBuilder(this)
             }).show();
 ```
 
-#### CustomerSimpleMsgDialogBuilder
+#### 3.2.7 CustomerSimpleMsgDialogBuilder
 自定义标题内容
 
 ![](images/notifiy_customer_content.png)
@@ -342,7 +342,7 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
             .show();
 ```
 
-#### CustomerImageDialogBuilder
+#### 3.2.8 CustomerImageDialogBuilder
 自定义图片样式1
 
 ![](images/notify_customer_image1.png)
@@ -395,7 +395,7 @@ mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
 mCustomerImageDialogBuilder.show();
 ```
 
-#### CustomerImageContentDialogBuilder
+#### 3.2.9 CustomerImageContentDialogBuilder
 自定义图片样式2
 
 ![](images/notify_customer_image2.png)
@@ -446,8 +446,8 @@ new GlassDialog.CustomerImageContentDialogBuilder(this)
             })
             .show();
 ```
-### 工具类
-#### CountDownManager
+### 3.3 工具类
+#### 3.3.1 CountDownManager
 倒计时
 
 |方法|含义|默认值
@@ -479,9 +479,9 @@ countDownManager.start();
 //countDownManager.cancel();
 ```
 
-#### RokidSystem
-##### getAlignmentRect
+#### 3.3.2 RokidSystem
+##### 3.3.2.1 getAlignmentRect
 获取不同 glass 下的 alignment 参数
 
-##### getHardwareVersion
+##### 3.3.2.2 getHardwareVersion
 获取glass硬件版本,dvt或者evt

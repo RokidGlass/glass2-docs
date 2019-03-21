@@ -4,7 +4,8 @@
       "expandable-chapters-interactive",
       "vistors-github",
       "mermaid-gb3",
-      "github-issue-feedback"
+      "github-issue-feedback",
+      "github"
     ],
     "pluginsConfig" : {
       "vistors-github": {
@@ -18,6 +19,9 @@
         "tocLevel1Icon": "fa fa-hand-o-right",
         "tocLevel2Icon": "fa fa-hand-o-right",
         "tocLevel3Icon": "fa fa-hand-o-right"
+     },
+     "github": {
+      "url": "https://github.com/rokid/glass-docs"
      }
     }
   }
