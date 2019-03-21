@@ -1,6 +1,5 @@
 {
     "plugins" : [
-      "anchor-navigation-ex",
       "expandable-chapters-interactive",
       "vistors-github",
       "mermaid-gb3",
