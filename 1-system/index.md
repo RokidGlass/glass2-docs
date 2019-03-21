@@ -1,4 +1,4 @@
-**Version：V3.0**
+**Version：V3.1**
 
 <h2 id="1">1.设备按键键值以及intent事件定义</h2>
 
@@ -6,16 +6,17 @@
 -------  | ----------- | ------------ | ---
 Back-长  | 发送Intent  | Action为  com.rokid.glass.homekey.longpress | 注：被语音助手占用，有语音助手时不可自定义
 Back-单  | 返回  | KEYCODE\_BACK = 4 | 
-Back-双击  | 1.不处理  2.回到launcher  3.发送Intent  | Action为  com.rokid.glass.homekey.doubleback | 可由用户配置，配置方法参考下条
-TP-右滑  | 连续收到多个KEYCODE\_DPAD\_RIGHT键值  | KEYCODE\_DPAD\_RIGHT = 22 | 应用可接收“连续键值”
-TP-左滑  | 连续收到多个KEYCODE\_DPAD\_LEFT键值  | KEYCODE\_DPAD\_LEFT = 21 | 应用可接收“连续键值”
-TP-快速右滑  | 快速右滑离开TP。同时收到多个KEYCODE\_DPAD\_RIGHT键值和单个KEYCODE\_DPAD\_DOWN键值  | KEYCODE\_DPAD\_DOWN = 20 | 应用可接收“单次键值”
-TP-快速左滑  | 快速左滑离开TP。同时收到多个KEYCODE\_DPAD\_LEFT键值和单个KEYCODE\_DPAD\_UP键值  | KEYCODE\_DPAD\_UP = 19 | 应用可接收“单次键值”
+Back-双击  | 1.不处理<br>2.回到launcher<br>3.发送Intent  | Action为  com.rokid.glass.homekey.doubleback | 可由用户配置，配置方法参考下条
+TP-右滑  | 连续收到多个<br>KEYCODE\_DPAD\_RIGHT键值  | KEYCODE\_DPAD\_RIGHT = 22 | 应用可接收“连续键值”
+TP-左滑  | 连续收到多个<br>KEYCODE\_DPAD\_LEFT键值  | KEYCODE\_DPAD\_LEFT = 21 | 应用可接收“连续键值”
+TP-快速右滑  | 快速右滑离开TP。同时收到多个<br>KEYCODE\_DPAD\_RIGHT键值和单个<br>KEYCODE\_DPAD\_DOWN键值  | KEYCODE\_DPAD\_DOWN = 20 | 应用可接收“单次键值”
+TP-快速左滑  | 快速左滑离开TP。同时收到多个<br>KEYCODE\_DPAD\_LEFT键值和单个<br>KEYCODE\_DPAD\_UP键值  | KEYCODE\_DPAD\_UP = 19 | 应用可接收“单次键值”
 TP-单击 | 确认 | KEYCODE\_DPAD\_CENTER = 23
-TP-长按 |  | KEYCODE\_TV = 170 |
+TP-长按 |  | KEYCODE\_TV = 170 | 用户可自定义
+TP-双击 |  | KEYCODE\_ENTER = 66 | 用户可自定义
 Power | 电源键 | KEYCODE\_POWER = 26 |
-Volume +  | 音量加 | KEYCODE\_VOLUME\_UP = 24 |
-Volume - | 音量减 | KEYCODE\_VOLUME\_DOWN = 25 |
+Volume+  | 音量加 | KEYCODE\_VOLUME\_UP = 24 |
+Volume- | 音量减 | KEYCODE\_VOLUME\_DOWN = 25 |
 
 <h2 id="2">2. 双击back配置方法</h2>
 
