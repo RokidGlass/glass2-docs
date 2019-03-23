@@ -22,8 +22,8 @@ maven {
 implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
 ```
 
-### 2.2 Sample
-[Glass UI Sample](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
+### 2.2 Demo
+[Glass UI Demo](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
 
 ## 三、功能列表
 ---

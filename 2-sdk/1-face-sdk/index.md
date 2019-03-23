@@ -302,7 +302,7 @@ videoFace.setData(new VideoInput(bytes));
 ``` java
 byte[] getBytes()
 ```
-*返回:**  
+**返回:**  
 相机传入的数据
 
 示例代码：
@@ -342,7 +342,7 @@ IImageRokidFace imageFace = ImageRokidFace.create(context);
 ------|---------
 context | context上下文
 
-*返回:**  
+**返回:**  
 `IImageRokidFace` 图片识别的接口
 
 示例代码：
@@ -359,7 +359,7 @@ IImageRokidFace sconfig(SFaceConf sFaceConf)
 ------|---------
 sFaceConf | 静态配置
 
-*返回:**  
+**返回:**  
 `IImageRokidFace` 图片识别的接口
 
 示例代码：
