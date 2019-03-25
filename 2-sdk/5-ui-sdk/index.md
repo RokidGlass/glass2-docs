@@ -4,7 +4,16 @@
 ## 一、UI SDK介绍
 ---
 ### 1.1 概述
-目前的UI SDK仅适用于Glass版本
+提供一套在Glass项目上开发的基础UI,目前已经提供以下支持：  
+**1. 工具类**
+* 倒计时工具类
+* RokidSystem工具，提供获取Alignment和系统硬件版本
+
+**2. GlassButton**   
+Glass自定义的Button    
+**3. GlassDialog**   
+提供了一系列常用的对话框
+
 ## 二、集成说明
 ---
 在根目录`build.gradle`中增加私有maven库：
@@ -27,7 +36,51 @@ implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
 
 ## 三、功能列表
 ---
-### 3.1 GlassButton
+### 3.1 工具类
+#### 3.1.1 CountDownManager
+倒计时
+
+|方法|含义|默认值
+|---|---|---|
+|setMillisInFuture|总时间||
+|setCountDownInterval|间隔时间| |
+|setCountDownListener|监听回调| |
+|start|开始| |
+|cancel|取消|-|
+
+**示例代码**
+```java
+CountDownManager countDownManager = new CountDownManager.Builder()
+            .setMillisInFuture(10000)
+            .setCountDownInterval(1000)
+            .setCountDownListener(new CountDownManager.CountDownListener() {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    
+                }
+
+                @Override
+                public void onFinish() {
+                    
+                }
+            })
+            .build();
+countDownManager.start();
+//countDownManager.cancel();
+```
+
+#### 3.1.2 RokidSystem
+##### 3.1.2.1 getAlignmentRect
+获取不同 glass 下的 alignment 参数。   
+Alignment概念：
+Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
+![](images/alignment.png)
+蓝色代表`CameraPreview`的画面，黄色代表人脸通过显示器看到的场景，`getAlignmentRect`方法返回的Rect就是该黄色区域坐标。
+
+##### 3.1.2.2 getHardwareVersion
+获取glass硬件版本,dvt或者evt
+
+### 3.2 GlassButton
 Glass自定义的Button
 
 `Focused`:  
@@ -38,7 +91,7 @@ Glass自定义的Button
 
 ![](images/glass_button_normal.png)
 
-#### 3.1.1 用法
+#### 3.2.1 用法
 ``` xml
 <com.rokid.glass.ui.button.GlassButton
     android:id="@+id/confirm_btn"
@@ -47,10 +100,10 @@ Glass自定义的Button
     android:layout_height="@dimen/glass_button_height"
     android:text="@string/confirm_text" />
 ```
-### 3.2 GlassDialog
+### 3.3 GlassDialog
 提供了一系列常用的对话框,通过不同Builder 来构建不同类型的对话框。
 目前提供的Builder:
-#### 3.2.1 NotificationDialogBuilder
+#### 3.3.1 NotificationDialogBuilder
 通知栏通知（出现固定时间后消失）
 
 ![](images/notification.png)
@@ -74,7 +127,7 @@ notificationDialog.show();
 ```
 
 
-#### 3.2.2 SimpleVoiceDialogBuilder
+#### 3.3.2 SimpleVoiceDialogBuilder
 纯语音通知
 
 ![](images/notify_simple_voice.png)
@@ -124,7 +177,7 @@ simpleVoiceDialogBuilder.show();
 ```
 
 
-#### 3.2.3 ImageDialogBuilder
+#### 3.3.3 ImageDialogBuilder
 语音图片通知
 
 ![](images/notify_image.png)
@@ -174,7 +227,7 @@ mImageDialogBuilder.show();
 ```
 
 
-#### 3.2.4 SimpleMessageDialogBuilder
+#### 3.3.4 SimpleMessageDialogBuilder
 仅有标题  
 
 ![](images/notify_simple_title.png)
@@ -210,7 +263,7 @@ new GlassDialog.SimpleMessageDialogBuilder(this)
             }).show();
 ```
 
-#### 3.2.5 SimpleContentDialogBuilder
+#### 3.3.5 SimpleContentDialogBuilder
 标题+正文
 
 ![](images/nofity_simple_content.png)
@@ -249,7 +302,7 @@ new GlassDialog.SimpleContentDialogBuilder(this)
 ```
 
 
-#### 3.2.6 ImageContentDialogBuilder
+#### 3.3.6 ImageContentDialogBuilder
 标题+图片
 
 ![](images/notify_image_content.png)
@@ -290,7 +343,7 @@ new GlassDialog.ImageContentDialogBuilder(this)
             }).show();
 ```
 
-#### 3.2.7 CustomerSimpleMsgDialogBuilder
+#### 3.3.7 CustomerSimpleMsgDialogBuilder
 自定义标题内容
 
 ![](images/notifiy_customer_content.png)
@@ -342,7 +395,7 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
             .show();
 ```
 
-#### 3.2.8 CustomerImageDialogBuilder
+#### 3.3.8 CustomerImageDialogBuilder
 自定义图片样式1
 
 ![](images/notify_customer_image1.png)
@@ -395,7 +448,7 @@ mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
 mCustomerImageDialogBuilder.show();
 ```
 
-#### 3.2.9 CustomerImageContentDialogBuilder
+#### 3.3.9 CustomerImageContentDialogBuilder
 自定义图片样式2
 
 ![](images/notify_customer_image2.png)
@@ -446,42 +499,3 @@ new GlassDialog.CustomerImageContentDialogBuilder(this)
             })
             .show();
 ```
-### 3.3 工具类
-#### 3.3.1 CountDownManager
-倒计时
-
-|方法|含义|默认值
-|---|---|---|
-|setMillisInFuture|总时间||
-|setCountDownInterval|间隔时间| |
-|setCountDownListener|监听回调| |
-|start|开始| |
-|cancel|取消|-|
-
-**示例代码**
-```java
-CountDownManager countDownManager = new CountDownManager.Builder()
-            .setMillisInFuture(10000)
-            .setCountDownInterval(1000)
-            .setCountDownListener(new CountDownManager.CountDownListener() {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    
-                }
-
-                @Override
-                public void onFinish() {
-                    
-                }
-            })
-            .build();
-countDownManager.start();
-//countDownManager.cancel();
-```
-
-#### 3.3.2 RokidSystem
-##### 3.3.2.1 getAlignmentRect
-获取不同 glass 下的 alignment 参数
-
-##### 3.3.2.2 getHardwareVersion
-获取glass硬件版本,dvt或者evt
