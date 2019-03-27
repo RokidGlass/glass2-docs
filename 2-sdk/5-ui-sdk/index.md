@@ -38,40 +38,7 @@ implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
 
 ## 三、功能列表
 ---
-### 3.1 工具类
-#### 3.1.1 CountDownManager
-倒计时
-
-|方法|含义|默认值
-|---|---|---|
-|setMillisInFuture|总时间||
-|setCountDownInterval|间隔时间| |
-|setCountDownListener|监听回调| |
-|start|开始| |
-|cancel|取消|-|
-
-**示例代码**
-```java
-CountDownManager countDownManager = new CountDownManager.Builder()
-            .setMillisInFuture(10000)
-            .setCountDownInterval(1000)
-            .setCountDownListener(new CountDownManager.CountDownListener() {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    
-                }
-
-                @Override
-                public void onFinish() {
-                    
-                }
-            })
-            .build();
-countDownManager.start();
-//countDownManager.cancel();
-```
-
-### 3.1 GlassAlignment
+### 3.1 RokidSystem
 #### 3.1.1 getAlignmentRect
 获取 glass 下调校过的 alignment 参数。   
 Alignment概念：
