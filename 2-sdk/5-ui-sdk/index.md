@@ -4,13 +4,15 @@
 ## 一、UI SDK介绍
 ---
 ### 1.1 概述
-提供一套在Glass项目上开发的基础UI,目前已经提供以下支持：  
-**1. 工具类**
-* 倒计时工具类
-* RokidSystem工具，提供获取Alignment和系统硬件版本
+提供一套在Rokid Glass上开发应用的基础UI库,目前已经提供以下支持：  
+
+**1. GlassAlignment**   
+由于AR 眼镜特有的屏幕显示特性，在开发眼镜上的识别类应用时，     
+需要对marked UI做一次align，以保证人眼看到的marked UI和真实世界对齐。
 
 **2. GlassButton**   
 Glass自定义的Button    
+
 **3. GlassDialog**   
 提供了一系列常用的对话框
 
@@ -69,16 +71,30 @@ countDownManager.start();
 //countDownManager.cancel();
 ```
 
-#### 3.1.2 RokidSystem
-##### 3.1.2.1 getAlignmentRect
-获取不同 glass 下的 alignment 参数。   
+### 3.1 GlassAlignment
+#### 3.1.1 getAlignmentRect
+获取 glass 下调校过的 alignment 参数。   
 Alignment概念：
 Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
-![](images/alignment.png)
-蓝色代表`CameraPreview`的画面，黄色代表人脸通过显示器看到的场景，`getAlignmentRect`方法返回的Rect就是该黄色区域坐标。
 
-##### 3.1.2.2 getHardwareVersion
-获取glass硬件版本,dvt或者evt
+![](images/alignment.png)
+
+蓝色代表`CameraPreview`的画面（1280，720）   
+绿色代表`CameraPreview`中物体的坐标（500，400）   
+黄色代表人眼透过屏幕看到的场景，`getAlignmentRect`方法返回的Rect（463，330，863，556）就是该黄色区域坐标。   
+
+//获取不同glass 下的alignment参数   
+Public Rect getAlignmentRect();
+
+物体映射到屏幕的显示坐标为：   
+x =（500-463）/（863-463）* LCD_width   
+y =（400-330）/（556-330）* LCD_height  
+
+示例代码：   
+```
+
+```
+
 
 ### 3.2 GlassButton
 Glass自定义的Button
