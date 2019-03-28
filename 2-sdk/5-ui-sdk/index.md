@@ -59,7 +59,37 @@ y =（400-330）/（556-330）* LCD_height
 
 示例代码：   
 ```
+    /**
+     * 获取系统的Alignment百分比；
+     * @return
+     */
+    public RectF getSystemAlignmentRect(){
 
+        int alignmentWindowsW=1280;
+        int alignmentWindowsH=720;
+
+        Rect rect=getAlignmentRect();
+        RectF rectF=new RectF(rect.left/alignmentWindowsW,rect.top/alignmentWindowsH,
+                rect.right/alignmentWindowsW,rect.bottom/alignmentWindowsH);
+
+        return rectF;
+    }
+
+
+    /**
+     * 获取真实preview预览下的Alignment
+     * @param previewWidth  正在使用的预览画面宽
+     * @param previewHeight 正在使用的预览画面高
+     * @return
+     */
+    public Rect getPreviewRect(int previewWidth,int previewHeight){
+
+        RectF rect = getSystemAlignmentRect();
+        return new Rect((int)(rect.left*previewWidth),
+                (int)(rect.top*previewHeight),
+                (int)(rect.right*previewWidth),
+                (int)(rect.bottom*previewHeight));
+    }
 ```
 
 
