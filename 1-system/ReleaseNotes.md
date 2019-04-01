@@ -1,3 +1,52 @@
+# 0.3.4-20190329-150000
+
+*	合并创达patch：修复多路camera拍照后无法预览问题，支持API2的FULL level；
+*	修复音量加键偶现无反应的问题；
+*	增加sdk加密校验算法；
+*	修改OTA ui效果
+*	更新系统app
+	1.	RokidAiSdk
+		-	完成按键语音识别流程改为根据录音状态来判断是否显示浮层。
+		-	添加中英文错误Toast提示
+	2.	RokidCameradeploy
+		-	解决RokidCameraDeploy出现闪退问题
+		-	修改UI显示
+	3.	RokidSettings
+		-	增加恢复出厂设置选项
+		-	修改UI显示
+
+
+# 0.3.2-20190322-150001
+
+* 合并创达patch
+	1. 回退最大音量修改patch，重新修改
+	2. 更新camera tunning库
+	3. 修复待机电流bug
+* 修复开机超过5分钟后进行蓝牙配对，不弹窗的问题
+* 根据RokidSetting的需求，修改双击tp的键值为ENTER
+* 更新系统app
+	1. RokidAiSdk
+		- System.Exit时 添加清空技能栈逻辑。
+		- 修复无法重新启动rokid语音功能的bug。
+		- 修复眼镜浮层偶现需要10秒才能关闭的bug。
+		- 优化语音相关的配置文件。
+	2. RokidAiSkillEngine
+		- 关闭在线状态的本地指令功能，其他app语音控制改为本地技能模式。
+		- 修复SkillEngine中技能栈上报链路出错的bug。
+		- 修复清空技能栈的同时没有清空clear 技能cache的bug。
+	3. RokidCameradeploy
+		- 增加语音控制。
+		- 修改使用CameraLabraity版本1.0.7.8功能。
+		- 修改UI显示，优化新朋友显示逻辑。
+	4. RokidLauncher : 修复电量显示bug，修改ui布局设计
+	5. RokidSettings
+		- 接入语音操作功能
+		- 在关于界面长按直接进入投屏
+		- 取消重启语音服务的toast
+	6. RokidTranslate：接入语音操作功能
+	7. RokidCamera：接入语音操作功能
+	8. RokidGallery: 接入语音操作功能
+
 # 0.3.1-20190318-150000
 
 *	更新system app
