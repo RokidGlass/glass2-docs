@@ -3,9 +3,6 @@
 ***
 
 # 车牌识别
-
-* [https://github.com/Rokid/RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
-
 ## 1.  概述
 
 RokidLprSDK提供车牌检测和车牌识别接口。

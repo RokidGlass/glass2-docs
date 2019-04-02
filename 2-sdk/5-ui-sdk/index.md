@@ -39,60 +39,49 @@ implementation 'com.rokid.glass:ui:1.0.0'
 ---
 ### 3.1 RokidSystem
 #### 3.1.1 getAlignmentRect
-获取 glass 下调校过的 alignment 参数。   
+说明：根据preview的rect，获取到映射后的真实区域
+```java
+public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect)
+```  
+|参数|含义|默认值
+|---|---|---|
+|previewWidth|Camera preview宽||
+|previewHeight|Camera preview高||
+|previewRect|Camera preview的Rect(需要被映射的区域)||
+
 Alignment概念：
 Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
-
 ![](images/alignment.png)
 
 蓝色代表`CameraPreview`的画面（1280，720）   
 绿色代表`CameraPreview`中物体的坐标（500，400）   
-黄色代表人眼透过屏幕看到的场景，`getAlignmentRect`方法返回的Rect（463，330，863，556）就是该黄色区域坐标。   
+黄色代表人眼透过屏幕看到的场景，Rect（463，330，863，556）就是该黄色区域坐标。   
 
-//获取不同glass 下的alignment参数   
-public Rect getAlignmentRect();
-
-物体映射到屏幕的显示坐标为：   
+物体(圆脸)映射到屏幕的显示坐标为：   
 x =（500-463）/（863-463）* LCD_width   
 y =（400-330）/（556-330）* LCD_height  
 
-示例代码：   
+示例代码：人脸识别后，在屏幕上画出人脸Rect   
 ``` java
-private final static int BASE_WIDTH = 1280;
-private final static int BASE_HEIGHT = 720;
+public static final int PREVIEW_WIDTH = 1280;
+public static final int PREVIEW_HEIGHT = 720;
 
-/**
- * 根据preview的rect，获取到映射后的真实区域
- *
- * @param previewWidth
- * @param previewHeight
- * @param previewRect
- * @return
- */
-public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect) {
-    RectF rectF = getAlignmentPercent();
+//camera preview的人脸区域
+Rect previewRect = faceDoCache.faceDo.toRect(getWidth(), getHeight());
+Rect finalRect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
 
-    int w = (int) ((rectF.right - rectF.left) * previewWidth);
-    int h = (int) ((rectF.bottom - rectF.top) * previewHeight);
+...
+//根据
+canvas.save();
+canvas.translate((rect.left + rect.right) / 2f, (rect.top + rect.bottom) / 2f);
 
-    int left = (int) ((previewRect.left - rectF.left * previewWidth) / w * BASE_WIDTH);
-    int top = (int) ((previewRect.top - rectF.top * previewHeight) / h * BASE_HEIGHT);
-    int right = (int) ((previewRect.right - rectF.left * previewWidth) / w * BASE_WIDTH);
-    int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) / h * BASE_HEIGHT);
+drawRect(canvas, 0, rect.width(), rect.height(), paint, rectConfig);
+drawRect2(canvas, 0, rect.width(), rect.height(), paint, rectConfig);
+drawRect(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
+drawRect2(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
 
-    return new Rect(left, top, right, bottom);
-}
-
-/**
- * 获取系统的Alignment百分比
- *
- * @return
- */
-public static RectF getAlignmentPercent() {
-    Rect rect = getAlignmentBaseRect();
-    return new RectF(rect.left / BASE_WIDTH, rect.top / BASE_HEIGHT,
-            rect.right / BASE_WIDTH, rect.bottom / BASE_HEIGHT);
-}
+canvas.restore();
+...
 ```
 
 
