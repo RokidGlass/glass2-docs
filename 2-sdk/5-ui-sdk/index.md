@@ -68,6 +68,8 @@ public static final int PREVIEW_HEIGHT = 720;
 
 //camera preview的人脸区域
 Rect previewRect = faceDoCache.faceDo.toRect(getWidth(), getHeight());
+
+//根据preview的人脸Rect，映射后，获取最终在屏幕上绘制的Rect
 Rect finalRect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
 
 ...
