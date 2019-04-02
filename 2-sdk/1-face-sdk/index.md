@@ -1,4 +1,4 @@
-**Version：facelib 2.1.0.1**
+**Version：facelib 2.2.0.1**
 
 ***
 ## 一. FaceSDK介绍
@@ -13,14 +13,12 @@ RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效
 ## 二. 集成说明
 ---
 ### 2.1 添加三方依赖库
-在project的build.gradle中添加
+在project的build.gradle中添加jcenter依赖
 ```java
 allprojects {
     repositories {
         google()
         jcenter()
-        maven {url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/snapshots/"}
-        maven {url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/"}
     }
 }
 ```
@@ -28,7 +26,7 @@ allprojects {
 在app的build.gradle中添加依赖
 ```java
 dependencies {
-    implementation 'com.rokid:facelib:2.1.0.1-SNAPSHOT'
+    implementation 'com.rokid.glass:facelib:2.2.0.3'
 }
 ```
 
@@ -204,6 +202,7 @@ height | 输入数据的高
 DFaceConf| 动态配置类
 
 **2. 设置算法识别区域**
+
 ``` java
 DFaceConf setRoi(Rect rect)
 ```
@@ -232,13 +231,14 @@ dataType | 输入数据的格式:<br/>DataFormat.DATA_BGR  bgr图片数据；<br
 DFaceConf| 动态配置类
 
 **4. 设置识别相关配置**
+
 ``` java
 SFaceConf setRecog（boolean recog,String dbName）
 ```
 参数|含义
 ------|---------
 recog | 是否打开人脸识别开关
-dbName| 人脸数据库路径
+dbName| 人脸数据库文件夹路径
 
 **返回:**  
 
@@ -246,6 +246,65 @@ dbName| 人脸数据库路径
 ------|---------
 SFaceConf| 静态配置类
 
+**5. 设置自动识别**
+
+``` java
+SFaceConf setAutoRecog（boolean autoRecog）
+```
+参数|含义
+------|---------
+autoRecog | 是否打开自动识别开关
+
+**返回:**  
+
+类型|含义
+------|---------
+SFaceConf| 静态配置类
+
+**6. 设置识别阈值**
+
+``` java
+SFaceConf setTargetScore(float targetScore);
+```
+参数|含义
+------|---------
+targetScore | 阈值(取值0-100)，小于阈值的识别结果将被过滤
+
+**返回:**  
+
+类型|含义
+------|---------
+SFaceConf| 静态配置类
+
+**7. 设置识别超时**
+
+``` java
+SFaceConf setOutTime(long ms);
+```
+参数|含义
+------|---------
+ms | 超时时间，超过该时间还没有超过阈值的识别结果，则返回超时
+
+**返回:**  
+
+类型|含义
+------|---------
+SFaceConf| 静态配置类
+
+**8. 设置识别间隔**
+
+``` java
+SFaceConf setRecogInterval(long ms);
+```
+参数|含义
+------|---------
+ms | 识别间隔，同一张人脸两次识别的时间间隔
+
+**返回:**  
+
+类型|含义
+------|---------
+SFaceConf| 静态配置类
 示例代码：
 ```java
 DFaceConf conf = new DFaceConf();
@@ -253,8 +312,11 @@ conf.setSize(width, height); // 设置数据宽高
 conf.setRoi(rect); // 设置检测roi区域
 conf.setDataType(type) // 设置数据格式 DataFormat 
 SFaceConf conf = new SFaceConf();
-conf.setRecog(true, dbPath); 
-
+conf.setRecog(true, dbPath); //设置路径
+conf.setAutoRecog(true);//设置自动识别
+conf.setTargetScore(80);//设置识别阈值
+conf.setsetOutTime(2000);//设置超时时间
+conf.setRecogInterval(5000);//设置识别间隔
 ```
 
 ### 3.3 相机/video人脸检测
@@ -412,12 +474,14 @@ FaceModel {
 
 FaceDO {
     public RectF faceRectF; // 人脸rect
-    public long trackId;  // trackId 人脸trackId，tracking中id不变
-    public byte[] UUID;   // 人脸UUID
-    public float quality; //人脸质量
+    public int trackId;  // trackId 人脸trackId，tracking中id不变
+    public boolean goodQuality;//人脸质量是否合格
+    public boolean goodPose;//人脸角度是否合格
+    public boolean goodSharpness;//人脸清晰度是否合格
     public UserInfo userInfo; //人脸信息
     public float[] pose; //人脸角度
     public float userInfoScore; //人脸识别的分数
     public float sharpness; //人脸清晰度
+    public boolean recogOutTime;//人脸是否超时
 }
 ```
