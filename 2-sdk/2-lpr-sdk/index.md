@@ -13,15 +13,13 @@ RokidLprSDK提供车牌检测和车牌识别接口。
 ## 2. 集成说明
 
 ### 2.1 添加第三方依赖库
-在project的build.gradle中添加
+在project的build.gradle中添加jcenter依赖
 
 ```java
 allprojects {
     repositories {
         google()
         jcenter()
-        maven {url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/snapshots/"}
-        maven {url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/"}
     }
 }
 ```
@@ -30,9 +28,9 @@ allprojects {
 
 ```java
 dependencies {
-    implementation 'com.rokid:facelib:2.1.0.1-SNAPSHOT'
+    implementation 'com.rokid.glass:lpr:2.0.0'
 }
-```	
+```
 
 ### 2.2 需要如下权限
 
