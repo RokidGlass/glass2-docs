@@ -1,5 +1,5 @@
 # Glass UI SDK
-**Version: 1.0.0-SNAPSHOT**  
+**Version: 1.0.0**  
 
 ## 一、UI SDK介绍
 ---
@@ -18,19 +18,18 @@ Glass自定义的Button
 
 ## 二、集成说明
 ---
-在根目录`build.gradle`中增加私有maven库：
+在project的build.gradle中添加jcenter依赖：
 ``` gradle
-maven {
-    url 'http://mvnrepo.rokid-inc.com/nexus/content/repositories/snapshots/'
-}
-
-maven {
-    url 'http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/'
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
 }
 ```
 ### 2.1 Gradle依赖
 ``` gradle
-implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
+implementation 'com.rokid.glass:ui:1.0.0'
 ```
 
 ### 2.2 Demo
@@ -51,45 +50,49 @@ Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图
 黄色代表人眼透过屏幕看到的场景，`getAlignmentRect`方法返回的Rect（463，330，863，556）就是该黄色区域坐标。   
 
 //获取不同glass 下的alignment参数   
-Public Rect getAlignmentRect();
+public Rect getAlignmentRect();
 
 物体映射到屏幕的显示坐标为：   
 x =（500-463）/（863-463）* LCD_width   
 y =（400-330）/（556-330）* LCD_height  
 
 示例代码：   
-```
-    /**
-     * 获取系统的Alignment百分比；
-     * @return
-     */
-    public RectF getSystemAlignmentRect(){
+``` java
+private final static int BASE_WIDTH = 1280;
+private final static int BASE_HEIGHT = 720;
 
-        int alignmentWindowsW=1280;
-        int alignmentWindowsH=720;
+/**
+ * 根据preview的rect，获取到映射后的真实区域
+ *
+ * @param previewWidth
+ * @param previewHeight
+ * @param previewRect
+ * @return
+ */
+public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect) {
+    RectF rectF = getAlignmentPercent();
 
-        Rect rect=getAlignmentRect();
-        RectF rectF=new RectF(rect.left/alignmentWindowsW,rect.top/alignmentWindowsH,
-                rect.right/alignmentWindowsW,rect.bottom/alignmentWindowsH);
+    int w = (int) ((rectF.right - rectF.left) * previewWidth);
+    int h = (int) ((rectF.bottom - rectF.top) * previewHeight);
 
-        return rectF;
-    }
+    int left = (int) ((previewRect.left - rectF.left * previewWidth) / w * BASE_WIDTH);
+    int top = (int) ((previewRect.top - rectF.top * previewHeight) / h * BASE_HEIGHT);
+    int right = (int) ((previewRect.right - rectF.left * previewWidth) / w * BASE_WIDTH);
+    int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) / h * BASE_HEIGHT);
 
+    return new Rect(left, top, right, bottom);
+}
 
-    /**
-     * 获取真实preview预览下的Alignment
-     * @param previewWidth  正在使用的预览画面宽
-     * @param previewHeight 正在使用的预览画面高
-     * @return
-     */
-    public Rect getPreviewRect(int previewWidth,int previewHeight){
-
-        RectF rect = getSystemAlignmentRect();
-        return new Rect((int)(rect.left*previewWidth),
-                (int)(rect.top*previewHeight),
-                (int)(rect.right*previewWidth),
-                (int)(rect.bottom*previewHeight));
-    }
+/**
+ * 获取系统的Alignment百分比
+ *
+ * @return
+ */
+public static RectF getAlignmentPercent() {
+    Rect rect = getAlignmentBaseRect();
+    return new RectF(rect.left / BASE_WIDTH, rect.top / BASE_HEIGHT,
+            rect.right / BASE_WIDTH, rect.bottom / BASE_HEIGHT);
+}
 ```
 
 
