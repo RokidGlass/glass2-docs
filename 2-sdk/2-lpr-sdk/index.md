@@ -4,6 +4,7 @@
 
 # 车牌识别
 
+* [https://github.com/Rokid/RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
 
 ## 1.  概述
 
@@ -11,7 +12,7 @@ RokidLprSDK提供车牌检测和车牌识别接口。
 
 ## 2. 集成说明
 
-### 2.1 添加三方依赖库
+### 2.1 添加第三方依赖库
 在project的build.gradle中添加
 
 ```java
@@ -134,6 +135,7 @@ context | 上下文context
 `模型文件的位置`
 
 ## 4. sample说明
+
 ### 4.1 android_sample
 
 	可运行在普通安卓手机上，对预览界面内车牌进行自动识别。
