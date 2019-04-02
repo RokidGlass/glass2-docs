@@ -216,7 +216,7 @@ rect | 输入算法检测区域
 ------|---------
 DFaceConf| 动态配置类
 
-**3. 设置算法识别区域**
+**3. 设置输入数据的格式**
 ``` java
 DFaceConf setDataType(int dataType)
 ```
