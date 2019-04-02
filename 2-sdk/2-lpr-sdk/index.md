@@ -2,7 +2,7 @@
 
 ***
 
-# lpr_sdk
+# 车牌识别
 
 
 ## 1.  概述
@@ -14,7 +14,7 @@ RokidLprSDK提供车牌检测和车牌识别接口。
 ### 2.1 添加三方依赖库
 在project的build.gradle中添加
 
-```
+```java
 allprojects {
     repositories {
         google()
@@ -27,7 +27,7 @@ allprojects {
 
 在app的build.gradle中添加依赖
 
-```
+```java
 dependencies {
     implementation 'com.rokid:facelib:2.1.0.1-SNAPSHOT'
 }
@@ -37,7 +37,7 @@ dependencies {
 
 相机权限：
 
-```
+```xml
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-feature android:name="android.hardware.camera" />
 <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -45,35 +45,94 @@ dependencies {
 
 ## 3. 接口说明
 
-* 初始化
+### 3.1 初始化
 
-```
+```java
 public long init(Context context)
 ```
 
-* 相机预览识别
+参数|含义
+------|---------
+context | 上下文context
 
-```
+**返回:**  
+
+`Pipeline句柄`
+
+### 3.2 相机预览识别
+
+#### 3.2.1 车牌检测
+
+```java
 public int[] detect(byte[] data, int w, int h, int method, long  object)
-返回值为车牌位置[x, y, width, height]，当有多个车牌时可能有多组数据
+```
 
+参数|含义
+------|---------
+data | 相机预览数据
+w | 预览图片的宽
+h | 预览图片的高
+method | 检测方法
+object | 初始化时拿到的Pipeline句柄
+
+**返回：**
+
+`图片中车牌的位置[x, y, width, height]，当有多个车牌时可能有多组数据`
+
+#### 3.2.2 车牌识别
+
+```java
 public String recogAll(byte[] data, int w, int h, int method, int[] rects, long  object)
-返回值为车牌号
 ```
 
-* BGR数据输入识别
+参数|含义
+------|---------
+data | 相机预览数据
+w | 预览图片的宽
+h | 预览图片的高
+method | 检测方法
+rects | 车牌位置
+object | 初始化时拿到的Pipeline句柄
 
-```
+**返回：**
+
+`车牌号`
+
+### 3.3 图片输入识别
+
+```java
 public String recognizationBGR(byte[] data, int w, int h, int method, long  object)
 ```
 
-* 模型更新
+参数|含义
+------|---------
+data | RGB格式图片数据
+w | 图片的宽
+h | 图片的高
+method | 检测方法
+object | 初始化时拿到的Pipeline句柄
 
-```
+**返回：**
+
+`车牌号`
+
+### 3.4 模型更新
+
+会将assets下的Citrus文件夹中的文件拷贝到应用程序的内部存储路径/data/data/<application package>/files/Citrus下。
+
+```java
 public String updateModel(Context context)
-
-会将assets下的Citrus文件夹中的文件拷贝到应用程序的内部存储路径/data/data/<application package>/files/Citrus下
 ```
+
+参数|含义
+------|---------
+context | 上下文context
+
+
+**返回：**
+
+`模型文件的位置`
+
 ## 4. sample说明
 ### 4.1 android_sample
 
