@@ -38,8 +38,17 @@ implementation 'com.rokid.glass:ui:1.0.0'
 ## 三、功能列表
 ---
 ### 3.1 RokidSystem
+Alignment概念：
+Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
+![](images/alignment.png)
+
+1. 蓝色代表`相机预览`的画面  
+2. 绿色代表`相机预览`中物体的坐标   
+3. 橙色代表`LCD屏幕`在`相机预览`的映射区域,百分比表示真实世界在虚拟世界的比例
+4. 白色代表物体映射到`LCD屏幕`的显示区域
+
 #### 3.1.1 getAlignmentRect
-说明：根据preview的rect，获取到映射后的真实区域
+说明：根据preview的rect，获取到映射到LCD屏幕的区域
 ```java
 public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect)
 ```  
@@ -47,19 +56,7 @@ public static Rect getAlignmentRect(final int previewWidth, final int previewHei
 |---|---|---|
 |previewWidth|Camera preview宽||
 |previewHeight|Camera preview高||
-|previewRect|Camera preview的Rect(需要被映射的区域)||
-
-Alignment概念：
-Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
-![](images/alignment.png)
-
-蓝色代表`CameraPreview`的画面（1280，720）   
-绿色代表`CameraPreview`中物体的坐标（500，400）   
-黄色代表人眼透过屏幕看到的场景，Rect（463，330，863，556）就是该黄色区域坐标。   
-
-物体(圆脸)映射到屏幕的显示坐标为：   
-x =（500-463）/（863-463）* LCD_width   
-y =（400-330）/（556-330）* LCD_height  
+|previewRect|Camera preview的Rect||
 
 示例代码：人脸识别后，在屏幕上画出人脸Rect   
 ``` java
@@ -70,7 +67,7 @@ public static final int PREVIEW_HEIGHT = 720;
 Rect previewRect = faceDoCache.faceDo.toRect(getWidth(), getHeight());
 
 //根据preview的人脸Rect，映射后，获取最终在屏幕上绘制的Rect
-Rect finalRect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
+Rect rect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
 
 ...
 //根据
