@@ -1,4 +1,4 @@
-**Version：facelib 2.2.0.1**
+**Version：facelib 2.2.0.4**
 
 ***
 ## 一. FaceSDK介绍
@@ -26,7 +26,7 @@ allprojects {
 在app的build.gradle中添加依赖
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:2.2.0.3'
+    implementation 'com.rokid.glass:facelib:2.2.0.4'
 }
 ```
 
