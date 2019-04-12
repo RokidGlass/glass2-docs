@@ -14,7 +14,6 @@ Rokid Glass文档
         - [使用说明](2-sdk/2-lpr-sdk/index.md)
         - [版本信息](2-sdk/2-lpr-sdk/ReleaseNotes.md)
     - [语音识别](https://rokid.github.io/docs/5-enableVoice/rokid-vsvy-sdk-docs/LocalSkillSdk/LocalSkillSdk.html)
-    - [视频通话](2-sdk/4-video-sdk/index.md)
     - Glass UI
         - [使用说明](2-sdk/5-ui-sdk/index.md)
         - [版本信息](2-sdk/5-ui-sdk/ReleaseNotes.md)
