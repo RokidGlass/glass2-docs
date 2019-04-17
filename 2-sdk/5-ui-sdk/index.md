@@ -33,7 +33,7 @@ implementation 'com.rokid.glass:ui:1.0.0'
 ```
 
 ### 2.2 Demo
-[Glass UI Demo](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
+[Glass UI Demo](https://github.com/rokid/glass-ui)
 
 ## 三、功能列表
 ---
