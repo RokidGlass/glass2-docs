@@ -39,8 +39,13 @@ implementation 'com.rokid.glass:ui:1.0.0'
 ---
 ### 3.1 RokidSystem
 Alignment概念：
-Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
-![](images/alignment.png)
+Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
+
+在手机上开发如下图：
+![](images/alignment_phone.png)
+
+在眼镜上开发如下图：
+![](images/alignment_glass.png)
 
 1. 蓝色代表`相机预览`的画面  
 2. 绿色代表`相机预览`中物体的坐标   
