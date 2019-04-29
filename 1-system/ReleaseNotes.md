@@ -1,3 +1,78 @@
+# 0.3.8-20190426-150000
+
+* 更新system app
+
+	1. RokidCameraDeploy:
+		- 修复退出人脸识别，没有关闭camera的问题；
+		- 更新人脸识别sdk2.2.1.2；
+	2. RokidSettings：增加恢复出厂设置前的电量检查，低于25%将不允许恢复出厂设置 ；
+	3. RokidAiSdk：
+		- 修改眼镜语音默认 Activity 启动部分逻辑；
+		- 添加asr、nlp前置拦截器；
+		- 添加识别状态返回接口，可以区分SDK当前是使用在线还是离线识别状态；
+		- 添加通过配置自动设置自定义激活词功能；
+* 更新多路camera服务，优化功耗；
+
+* 优化OTA流程，提高稳定性；
+
+* 修改调节音量时的显示逻辑，不再显示震动 闹钟等文案；
+
+* 修复若干user版本的问题。
+
+# 0.3.7-20190417-150000
+
+* 更新system app
+
+	1. RokidCameraDeploy:
+		- 解决卡在识别中界面的BUG；
+		- 解决出现”识别中“和”请对正脸“连续切换的问题；
+		- 解决偶现SDK中出现crash问题；
+	2. RokidActivation：
+		- 修改加密算法，解决部分机器无法绑定的问题；
+		- 增加和公版APP交互功能(特征库管理)；
+	3. RokidCamera：增加每次拍照后发送媒体库变化的广播；
+	4. RokidTranslate：状态动画修改，线程优化；
+* 调整关机充电百分比文字的位置；
+
+# 0.3.6-20190413-150001
+
+* 更新system app
+	1. RokidSetting：增加日期设置；
+	2. RokidLauncher：替换远程协助icon；
+	3. RokidProvision：修复bug；
+	4. RokidAiSdk：
+		- 修复client socket crash 后，再次连接，无法将数据传送到turen的bug；
+		- 修复turen error之后，再次使用主动拾音，只能吐出asr，不返回nlp的bug；
+	5. RokidCameraDeploy:
+		- 人脸识别库动态更新；
+		- 单人识别中针对区域识别；
+		- sdk版本2.2.0.6版本；
+	6. RokidActivation：
+		- 增加HTTP服务器，用来接收特征库数据库；
+		- 增加接收媒体库变化的广播；
+	7. RokidCamera：增加每次拍照后发送媒体库变化的广播
+* 更新创达改动：
+	- 修复多路cam录像花屏问题，偶现crash问题；
+	- 更新了正式release的modem和xbl分区；
+* 增大关机充电百分比文字的字体；
+* 关闭了自动时间和时区校准；
+* 增大了投屏显示的ui大小.
+
+# 0.3.5-20190404-150003
+
+* 更新system app
+	1. RokidSetting：移除后羿相关逻辑代码；
+	2. RokidLauncher：去除了单击back键启动相机的功能；
+	3. RokidProvision：增加了日期设置；
+	4. RokidAiSdk：
+		- 向外暴露每次激活时本次激活的激活词信息；
+		- 修复不激活无法使用离线asr的问题；
+		- 接入lothal 最近版本，修改录音方式到多路麦克录音。
+* power+vol减截屏时，打开camera拍摄一张图片叠加在ui上；
+
+* 增大了刷机后第一次启动时的默认音量；
+
+* 增加了多路mac的功能。
 # 0.3.4-20190329-150000
 
 *	合并创达patch：修复多路camera拍照后无法预览问题，支持API2的FULL level；
