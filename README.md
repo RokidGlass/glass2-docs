@@ -1,5 +1,7 @@
 # Glass 软件开发文档
 
+[![Build Status](https://travis-ci.org/Rokid/glass-docs.svg?branch=master)](https://travis-ci.org/Rokid/glass-docs)
+
 ## 介绍
 -   下列文档包含了系统配置方法，SDK使用文档，公版App的介绍。  
 
