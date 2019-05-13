@@ -7,11 +7,11 @@
 
 公版APP主要由5个模块构成，分别是：
 
-- [账号模块](account.md)
-- [远程协助模块](remotecooperation.md)
-- [人脸特征库管理模块](facemanager.md)
-- [文件管理模块](filemanager.md)
-- [设备管理模块](devicemanager.md)
+- [账号管理](account.md)
+- [远程协助](remotecooperation.md)
+- [人脸管理](facemanager.md)
+- [文件管理](filemanager.md)
+- [设备管理](devicemanager.md)
 
 
 
