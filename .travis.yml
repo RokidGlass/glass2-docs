@@ -15,6 +15,7 @@ before_install:
 
 # 安装环境
 install:
+  - npm install
   - npm install -g gitbook-cli
   - gitbook install
 
