@@ -1,0 +1,30 @@
+# 指定环境语言
+language: node_js
+# 指定sudo权限
+sudo: required
+# 指定node版本
+node_js: stable
+# 指定缓存模块，缓存可以加速编译
+cache:
+  directories:
+    - node_modules
+
+# 调整时区
+before_install:
+  - export TZ='Asia/Shanghai'
+
+# 安装环境
+install:
+  - npm install -g gitbook-cli
+  - gitbook install
+
+script:
+  - npm run publish
+
+# 环境变量
+env:
+ global:
+   # Github Pages
+   - GH_REF: github.com/Rokid/glass-docs
+   # Coding Pages
+   - CO_REF: git@github.com:Rokid/glass-docs.git
