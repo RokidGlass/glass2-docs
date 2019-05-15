@@ -1,4 +1,4 @@
-**Version：facelib 2.2.1.3**
+**Version：facelib 2.2.1.8**
 
 ***
 ## 一. FaceSDK介绍
@@ -26,7 +26,7 @@ allprojects {
 在app的build.gradle中添加依赖
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:2.2.1.3'
+    implementation 'com.rokid.glass:facelib:2.2.1.8'
 }
 ```
 
@@ -241,7 +241,63 @@ dataType | 输入数据的格式:<br/>DataFormat.DATA_BGR  bgr图片数据；<br
 ------|---------
 DFaceConf| 动态配置类
 
-**4. 设置识别相关配置**
+**4. 设置同时识别最大人脸数**
+``` java
+DFaceConf setPoolNum(int poolNum)
+```
+参数|含义
+------|---------
+poolNum | 同时识别最大人脸数
+
+**返回:**
+
+类型|含义
+------|---------
+DFaceConf| 动态配置类
+
+**5. 设置识别的最大的人脸**
+``` java
+DFaceConf setMaxSize(float faceMaxSize)
+```
+参数|含义
+------|---------
+faceMaxSize | 识别的最大的人脸size 取值(0f-1f)。例：如果相机分辨率为1280*720，那能够识别的最大人脸的像素为width：1280*faceMaxSize height:720*faceMaxSize
+
+**返回:**
+
+类型|含义
+------|---------
+DFaceConf| 动态配置类
+
+**6.设置识别的最小的人脸**
+``` java
+DFaceConf setMinSize(float faceMinSize)
+```
+参数|含义
+------|---------
+faceMinSize | 识别的最小的人脸size 取值(0f-1f)。例：如果相机分辨率为1280*720，那能够识别的最小人脸的像素为width：1280*faceMaxSize height:720*faceMaxSize
+
+**返回:**
+
+类型|含义
+------|---------
+DFaceConf| 动态配置类
+
+**7. 设置单次detect的最大人脸数**
+``` java
+DFaceConf setDetectMaxFace(int detectMaxFace)
+```
+参数|含义
+------|---------
+detectMaxFace | 单次detect能检测到的最大人脸数
+
+**返回:**
+
+类型|含义
+------|---------
+DFaceConf| 动态配置类
+
+**8. 设置识别相关配置**
 
 ``` java
 SFaceConf setRecog（boolean recog,String dbName）
