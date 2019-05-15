@@ -9,6 +9,7 @@
   "dependencies": {
     "g": "^2.0.1",
     "gh-pages": "^2.0.1",
+    "gitbook-cli": "^2.3.2",
     "gitbook-plugin-anchor-navigation-ex": "^1.0.14",
     "gitbook-plugin-expandable-chapters-interactive": "^0.1.0",
     "gitbook-plugin-github-issue-feedback": "^1.3.2",
