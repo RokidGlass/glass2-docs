@@ -27,3 +27,5 @@ Rokid Glass文档
             - [设备管理](3-app/1-android/devicemanager.md)
         - [修订记录](3-app/1-android/version.md)
         - [下载地址](3-app/1-android/download.md)
+    - 内嵌HTTP服务器
+        - [使用说明](4-server/index.md)
