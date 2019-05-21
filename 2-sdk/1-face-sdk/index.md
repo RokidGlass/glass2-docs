@@ -1,4 +1,4 @@
-**Version：facelib 2.2.1.8**
+**Version：facelib 2.2.1.11**
 
 ***
 ## 一. FaceSDK介绍
@@ -26,7 +26,7 @@ allprojects {
 在app的build.gradle中添加依赖
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:2.2.1.8'
+    implementation 'com.rokid.glass:facelib:2.2.1.11'
 }
 ```
 
@@ -49,17 +49,6 @@ dependencies {
 ```
 
 ## 三. 接口说明及示例
----
-### 3.0 人脸识别引擎初始化
-在应用的Application的onCreate方法中初始化引擎：
-**1. 人脸识别引擎初始化**
-
-```java
-CitrusFaceEngine.Init(Context context);
-```
-参数|含义
-------|---------
-context | 上下文context
 
 ### 3.1 人脸数据库操作
 #### 3.1.1 人脸数据库初始化
@@ -87,20 +76,20 @@ void setModel(int model)
 ------|---------
 model | FaceDbHelper的模式 <br/>FaceDbHelper.MODEL_DB: 数据库模式 <br/>FaceDbHelper.MODEL_RECOGL: 搜索模式 <br/>默认为数据库模式
 
-**3.设置数据库名称 (非必须)**
+**3.设置数据库路径 (非必须)**
 ``` java
-void configDb(String dbName)
+void configDb(String dbPath)
 ```
 
 参数|含义
 ------|---------
-dbName | 设置数据库名称 <br/> 默认数据库名称`user.db`
+dbName | 设置数据库路径 <br/> 默认数据库名称`/sdcard/facesdk`
 
 示例代码
 ```java
 FaceDbHelper dbCreator = new FaceDbHelper(getApplicationContext());
 dbCreator.setModel(FaceDbHelper.MODEL_DB);
-dbCreator.configDb("user.db");
+dbCreator.configDb("/sdcard/facesdk");
 ```
 
 #### 3.1.2 人脸数据库的添加
