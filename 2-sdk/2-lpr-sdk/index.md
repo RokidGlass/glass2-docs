@@ -3,6 +3,7 @@
 ***
 
 # 车牌识别
+* [https://github.com/Rokid/RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
 ## 1.  概述
 
 RokidLprSDK提供车牌检测和车牌识别接口。
@@ -115,22 +116,6 @@ object | 初始化时拿到的Pipeline句柄
 
 `车牌号`
 
-### 3.4 模型更新
-
-会将assets下的Citrus文件夹中的文件拷贝到应用程序的内部存储路径/data/data/<application package>/files/Citrus下。
-
-```java
-public String updateModel(Context context)
-```
-
-参数|含义
-------|---------
-context | 上下文context
-
-
-**返回：**
-
-`模型文件的位置`
 
 ## 4. sample说明
 
