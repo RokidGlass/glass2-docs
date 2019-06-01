@@ -1,6 +1,9 @@
 **Version：facelib 2.2.1.11**
 
 ***
+# FaceSDK
+
+* [https://github.com/Rokid/RokidFaceSDK](https://github.com/Rokid/RokidFaceSDK)
 ## 一. FaceSDK介绍
 ---
 ### 1.1 概述
