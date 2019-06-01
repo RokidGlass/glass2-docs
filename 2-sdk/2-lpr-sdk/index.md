@@ -39,6 +39,9 @@ dependencies {
 <uses-feature android:name="android.hardware.camera.autofocus" />
 ```
 
+### 2.3 Demo
+[RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
+
 ## 3. 接口说明
 
 ### 3.1 初始化
