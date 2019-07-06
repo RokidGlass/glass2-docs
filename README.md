@@ -14,6 +14,6 @@
     -   Glass风格的UI：参考UI设计规范和UI SDK。
     -   如果需要使用系统AR投屏功能, 建议使用Android Camera2.0开发应用。
 
-## 下载眼镜管家手机App
-最新版本手机App下载地址： [眼镜管家手机App](https://rokid-ota.oss-cn-hangzhou.aliyuncs.com/toB/Rokid_Glass/RokidGlassMobileApp.apk)   
+## 下载若琪慧眼·手机公版App
+最新版本手机App下载地址： [若琪慧眼·手机公版App](https://rokid-ota.oss-cn-hangzhou.aliyuncs.com/toB/Rokid_Glass/RokidGlassMobileApp.apk)   
 如果要体验眼镜最新功能，请更新眼镜到最新版本.
