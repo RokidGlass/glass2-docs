@@ -3,6 +3,7 @@
 Rokid Glass文档
 ---------
 * [Rokid Glass](README.md)
+* [FAQ](0-faq/index.md) 
 * 系统
     - [系统配置](1-system/index.md)
     - [版本信息](1-system/ReleaseNotes.md)

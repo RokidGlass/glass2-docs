@@ -17,3 +17,5 @@
 ## 下载若琪慧眼·手机公版App
 最新版本手机App下载地址： [若琪慧眼·手机公版App](https://rokid-ota.oss-cn-hangzhou.aliyuncs.com/toB/Rokid_Glass/RokidGlassMobileApp.apk)   
 如果要体验眼镜最新功能，请更新眼镜到最新版本.
+
+## [FAQ](0-faq/index.md)
