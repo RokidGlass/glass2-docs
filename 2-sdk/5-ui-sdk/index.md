@@ -29,7 +29,7 @@ allprojects {
 ```
 ### 2.1 Gradle依赖
 ``` gradle
-implementation 'com.rokid.glass:ui:1.0.0'
+implementation 'com.rokid.glass:ui:1.2.0'
 ```
 
 ### 2.2 Demo
