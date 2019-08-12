@@ -1,5 +1,5 @@
 # Glass UI SDK
-**Version: 1.0.0**  
+**Version: 1.2.0**  
 
 ## 一、UI SDK介绍
 ---
@@ -87,7 +87,30 @@ drawRect2(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
 canvas.restore();
 ...
 ```
+#### 3.1.2 getWindowRect
+说明：根据LCD屏幕的rect，获取到preview的区域rect
+``` java
+public static Rect getWindowRect(final int previewWidth, final int previewHeight, final Rect windowRect) {
+```
+|参数|含义|默认值
+|---|---|---|
+|previewWidth|Camera preview宽||
+|previewHeight|Camera preview高||
+|windowRect|屏幕上的Rect||
 
+示例代码: 根据屏幕上的roi区域，得到preview 上的roi区域
+```java
+Rect window = new Rect(0,0,1280,720);
+roiRect = RokidSystem.getWindowRect2K(CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, window);
+roiRect = FaceRectUtils.scaleRect(roiRect, CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, FaceParams.roiScale);
+...
+
+VideoDFaceConf config = new VideoDFaceConf();
+config.setDataType(DataFormat.DATA_YUV420);
+config.setSize(CameraParams.PREVIEW_WIDTH, CameraParams.PREVIEW_HEIGHT);
+config.setRoi(roiRect);
+
+```
 
 ### 3.2 GlassButton
 Glass自定义的Button
