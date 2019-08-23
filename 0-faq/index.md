@@ -1,5 +1,17 @@
 
-## 眼镜系统版本升级步骤:
+## 眼镜系统版本升级方法:
+
+## 一、手动刷机
+### 镜像下载链接
+https://rokid-ota.oss-cn-hangzhou.aliyuncs.com/toB/Rokid_Glass/standard/full_image.zip
+
+### 刷机步骤
+1、解压zip包
+2、PC端USB连接glass
+3、cd到msm8998下目录
+4、./update.sh运行后自动完成刷机
+
+## 二、OTA升级 
 
 ### Step 1:信息查询
 设置-->本机信息-->版本号、SN号，若版本号较低，则需要手动OTA升级	 
