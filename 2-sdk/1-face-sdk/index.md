@@ -1,18 +1,16 @@
-**Version：facelib 2.2.1.11**
+**Version：facelib 2.2.2.1**
 
 ***
-# FaceSDK
-
-* [https://github.com/Rokid/RokidFaceSDK](https://github.com/Rokid/RokidFaceSDK)
 ## 一. FaceSDK介绍
 ---
 ### 1.1 概述
 RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：
-1.图片检测+图片识别
-2.相机预览数据人脸检测，人脸跟踪，人脸识别。
-3.人脸数据库增删改查的接口
-4.能够获取人脸角度以及人脸质量等信息
-5.单帧图片人脸检测，支持bitmap、NV21格式数据人脸检测
+1.图片人脸检测+图片人脸识别<br>
+2.相机预览数据人脸检测，人脸跟踪，人脸识别。<br>
+3.人脸数据库增删改查的接口<br>
+4.能够获取人脸角度以及人脸质量等信息<br>
+5.单帧图片人脸检测，支持bitmap、NV21格式数据人脸检测<br>
+
 ## 二. 集成说明
 ---
 ### 2.1 添加三方依赖库
@@ -29,7 +27,7 @@ allprojects {
 在app的build.gradle中添加依赖
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:2.2.1.11'
+    implementation 'com.rokid.glass:facelib:2.2.2.1'
 }
 ```
 
@@ -52,11 +50,22 @@ dependencies {
 ```
 
 ## 三. 接口说明及示例
+---
+### 3.0 人脸识别引擎初始化
+在应用的Application的onCreate方法中初始化引擎：
+**1. 人脸识别引擎初始化**
+
+```java
+RokidFace.Init(Context context);
+```
+参数|含义
+------|---------
+context | 上下文context
 
 ### 3.1 人脸数据库操作
 #### 3.1.1 人脸数据库初始化
 人脸数据库初始化需要下面几步操作:
-**1. 创建人脸数据库Helper**
+**1. 创建人脸数据库Helper对象**
 说明：数据库操作的实体类
 
 ```java
@@ -70,121 +79,52 @@ context | 上下文context
 **返回:**
 `FaceDbHelper`
 
-**2. 设置人脸数据库的模式(非必须)**
+**2. 创建人脸数据库**
 
 ``` java
-void setModel(int model)
+void createDb()
 ```
-参数|含义
-------|---------
-model | FaceDbHelper的模式 <br/>FaceDbHelper.MODEL_DB: 数据库模式 <br/>FaceDbHelper.MODEL_RECOGL: 搜索模式 <br/>默认为数据库模式
-
-**3.设置数据库路径 (非必须)**
-``` java
-void configDb(String dbPath)
-```
-
-参数|含义
-------|---------
-dbName | 设置数据库路径 <br/> 默认数据库名称`/sdcard/facesdk`
 
 示例代码
 ```java
-FaceDbHelper dbCreator = new FaceDbHelper(getApplicationContext());
-dbCreator.setModel(FaceDbHelper.MODEL_DB);
-dbCreator.configDb("/sdcard/facesdk");
+FaceDbHelper faceDbHelper = new FaceDbHelper(getApplicationContext());
+faceDbHelper.createDb();
 ```
 
-#### 3.1.2 人脸数据库的添加
-说明: 添加人脸数据以及对应的图片到数据库
+#### 3.1.2 人脸特征的添加
+说明: 添加人脸特征到内存中
 ``` java
-UserInfo add(Bitmap bm, UserInfo info)
+String add(Bitmap bm)
 ```
 
 参数|含义
 ------|---------
 bm | 传入的图片
-info | 人脸信息 [UserInfo](#351-userinfo)
 
 **返回:**
-用户信息  [UserInfo](#351-userinfo)
+图片人脸特征ID，表示对该图片人脸特征的唯一识别号，在人脸识别时会返回该特征ID；开发者可以以该ID为主键创建人脸信息数据库，当人脸识别返回该ID时，去查询人脸信息。
 
 示例代码：
 ``` java
-UserInfo info = new UserInfo("name", "card no");
-Bitmap bm = BitmapFactory.decodeFile("sdcard/test.jpg");
-dbCreator.add(bm, info);
+String featId = faceDbHelper.add(bm);
 ```
 
-#### 3.1.3 人脸数据库的删除
-说明: 删除用户信息
-``` java
-boolean remove(String uuid)
-```
-
-参数|含义
-------|---------
-uuid | 用户信息中的uuid
-
-示例代码：
-```java
-dbCreator.remove(uuid);
-```
-#### 3.1.4 人脸数据库的更新
-说明: 更新人脸数据信息
-``` java
-boolean update(Bitmap bm,UserInfo info)
-```
-
-参数|含义
-------|---------
-bm | 传入的图片
-info | 人脸信息 [UserInfo](#351-userinfo)
-
-示例代码：
-```java
-Bitmap bm = BitmapFactory.decodeFile("sdcard/test.jpg");
-dbCreator.update(bm, newInfo);
-```
-
-#### 3.1.5 人脸数据库的查询
-说明: 分页查询用户信息
-``` java
-List<UserInfo> queryBySize(int index,int count)
-```
-参数|含义
-------|---------
-index | 开始查询的位置
-count | 查询的数据size
-
-**返回:**
-
-类型|含义
-------|---------
-`List<UserInfo>`| 用户信息列表
-
-示例代码：
-```java
-dbCreator.queryBySize(0,10);
-```
-#### 3.1.6 人脸数据库的保存到本地
+#### 3.1.3 人脸特征搜索引擎保存到本地
 说明:
-* 数据库文件会储存在/sdcard/facesdk/ 目录下；
-* 人脸数据库和算法数据库分别对应文件"user.db"和"SearchEngine.bin"；
-* 使用人脸识别功能时需将这两个文件拷贝至需要的设备中;
-
+* 人脸特征搜索引擎文件会储存在/sdcard/facesdk/ 目录下；
+* 人脸特征搜索引擎文件为"SearchEngine.bin"；
+* 使用人脸识别时需将这该文件拷贝至需要的设备中;
 ``` java
 void save()
 ```
 
 示例代码：
 ```java
-dbCreator.save();
+faceDbHelper.save();
 ```
-#### 3.1.7 人脸数据库的清除
-说明: 清除数据库
+#### 3.1.4 清除人脸特征库搜索引擎
 ``` java
-dbCreator.clearDb();
+faceDbHelper.clearDb();
 ```
 
 ### 3.2 人脸检测参数配置
@@ -219,21 +159,8 @@ rect | 输入算法检测区域
 ------|---------
 DFaceConf| 动态配置类
 
-**3. 设置输入数据的格式**
-``` java
-DFaceConf setDataType(int dataType)
-```
-参数|含义
-------|---------
-dataType | 输入数据的格式:<br/>DataFormat.DATA_BGR  bgr图片数据；<br/>DataFormat.DATA_BITMAP bitmap数据；<br/>DataFormat.DATA_YUV420 camera nv21数据
 
-**返回:**
-
-类型|含义
-------|---------
-DFaceConf| 动态配置类
-
-**4. 设置同时识别最大人脸数**
+**3. 设置同时识别最大人脸数**
 ``` java
 DFaceConf setPoolNum(int poolNum)
 ```
@@ -247,7 +174,7 @@ poolNum | 同时识别最大人脸数
 ------|---------
 DFaceConf| 动态配置类
 
-**5. 设置识别的最大的人脸**
+**4. 设置识别的最大的人脸**
 ``` java
 DFaceConf setMaxSize(float faceMaxSize)
 ```
@@ -261,7 +188,7 @@ faceMaxSize | 识别的最大的人脸size 取值(0f-1f)。例：如果相机分
 ------|---------
 DFaceConf| 动态配置类
 
-**6.设置识别的最小的人脸**
+**5.设置识别的最小的人脸**
 ``` java
 DFaceConf setMinSize(float faceMinSize)
 ```
@@ -275,7 +202,7 @@ faceMinSize | 识别的最小的人脸size 取值(0f-1f)。例：如果相机分
 ------|---------
 DFaceConf| 动态配置类
 
-**7. 设置单次detect的最大人脸数**
+**6. 设置单次detect的最大人脸数**
 ``` java
 DFaceConf setDetectMaxFace(int detectMaxFace)
 ```
@@ -289,7 +216,7 @@ detectMaxFace | 单次detect能检测到的最大人脸数
 ------|---------
 DFaceConf| 动态配置类
 
-**8. 设置识别相关配置**
+**7. 设置识别相关配置**
 
 ``` java
 SFaceConf setRecog（boolean recog,String dbName）
@@ -305,22 +232,7 @@ dbName| 人脸数据库文件夹路径
 ------|---------
 SFaceConf| 静态配置类
 
-**5. 设置自动识别**
-
-``` java
-SFaceConf setAutoRecog（boolean autoRecog）
-```
-参数|含义
-------|---------
-autoRecog | 是否打开自动识别开关
-
-**返回:**
-
-类型|含义
-------|---------
-SFaceConf| 静态配置类
-
-**6. 设置识别阈值**
+**8. 设置识别阈值**
 
 ``` java
 SFaceConf setTargetScore(float targetScore);
@@ -335,7 +247,7 @@ targetScore | 阈值(取值0-100)，小于阈值的识别结果将被过滤
 ------|---------
 SFaceConf| 静态配置类
 
-**7. 设置识别超时**
+**9. 设置识别超时**
 
 ``` java
 SFaceConf setOutTime(long ms);
@@ -350,7 +262,7 @@ ms | 超时时间，超过该时间还没有超过阈值的识别结果，则返
 ------|---------
 SFaceConf| 静态配置类
 
-**8. 设置识别间隔**
+**10. 设置识别间隔**
 
 ``` java
 SFaceConf setRecogInterval(long ms);
@@ -369,10 +281,8 @@ SFaceConf| 静态配置类
 DFaceConf conf = new DFaceConf();
 conf.setSize(width, height); // 设置数据宽高
 conf.setRoi(rect); // 设置检测roi区域
-conf.setDataType(type) // 设置数据格式 DataFormat
 SFaceConf conf = new SFaceConf();
-conf.setRecog(true, dbPath); //设置路径
-conf.setAutoRecog(true);//设置自动识别
+conf.setRecog(true, dbPath); //设置人脸识别搜索引擎的路径
 conf.setTargetScore(80);//设置识别阈值
 conf.setsetOutTime(2000);//设置超时时间
 conf.setRecogInterval(5000);//设置识别间隔
@@ -501,11 +411,11 @@ callback | 图片人脸检测+人脸识别的统一回调接口
 示例代码：
 ```java
 imageFace.setImageFaceCallback(new BitmapInput(bitmap),
-	new ImageRokidFace.ImageFaceCallBack() {
-	    @Override
-	    public void onFaceModel(FaceModel model) {
+    new ImageRokidFace.ImageFaceCallBack() {
+        @Override
+        public void onFaceModel(FaceModel model) {
 
-	    }});
+        }});
 ```
 #### 3.4.4 人脸检测销毁
 说明： 图片人脸识别接口的回收
@@ -514,16 +424,8 @@ imageFace.destroy()
 ```
 
 ### 3.5 人脸实体类
-#### 3.5.1 UserInfo
-属性|含义
-----|-----
-uuid | 特征库UUID
-name | 姓名
-cardno | 身份证号
-nativeplace | 籍贯
-checkcode | checkcode
 
-#### 3.5.2 人脸数据类
+#### 3.5.1 人脸数据类
 ```java
 FaceModel {
    int width;
@@ -537,10 +439,12 @@ FaceDO {
     public boolean goodQuality;//人脸质量是否合格
     public boolean goodPose;//人脸角度是否合格
     public boolean goodSharpness;//人脸清晰度是否合格
-    public UserInfo userInfo; //人脸信息
     public float[] pose; //人脸角度
-    public float userInfoScore; //人脸识别的分数
+    public float userInfoScore; //搜索引擎中搜索出的人脸相似度(取值0-100)，取值越高表示该人脸与搜索结果的相似度越高
     public float sharpness; //人脸清晰度
     public boolean recogOutTime;//人脸是否超时
+    public float faceScore;//该帧rect与人脸的相似度(取值0-100)，取值越高表示该帧rect是人脸的概率越高，一般该值大于75，可以认为是人脸。(请与userInfoScore区分)
+    public int faceAlignTime;//该人脸做faceAlign算法的次数
+    public String featid;//搜索引擎中查询出来的唯一识别号
 }
 ```
