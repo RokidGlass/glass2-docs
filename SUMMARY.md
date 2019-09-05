@@ -21,11 +21,12 @@ Rokid Glass文档
 * 公版App
     - Android
         - [使用说明](3-app/1-android/index.md)
+            - [远程协作](3-app/1-android/remotecooperation.md)
             - [账号管理](3-app/1-android/account.md)
-            - [远程协助](3-app/1-android/remotecooperation.md)
             - [人脸管理](3-app/1-android/facemanager.md)
             - [文件管理](3-app/1-android/filemanager.md)
-            - [设备管理](3-app/1-android/devicemanager.md)
+            - [个人设置](3-app/1-android/person.md)
+            - [设备信息](3-app/1-android/devicemanager.md)
         - [修订记录](3-app/1-android/version.md)
         - [下载地址](3-app/1-android/download.md)
     - 内嵌HTTP服务器
