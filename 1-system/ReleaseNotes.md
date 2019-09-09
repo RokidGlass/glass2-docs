@@ -1,3 +1,132 @@
+# 1.0.0-20190829-150000
+#### 系统更新
+* 更新系统APP：
+	* RokidLauncher：
+		1. 解决replace package 图标显示问题；
+		2. 解决中英文切换问题；
+		3. 去除进入和退出应用系统声音；
+	* RokidGallery：解决相册在非第一张图片时进入全屏浏览，无法左右滑动；
+	* RokidActivation：
+		1. 修改连接方式为udp+websocket,用长连接维护设备状态；
+		2. 将uniqueId和masterId绑定解绑区分开，uniqueId对应设备绑定，masterId对应账号登录；
+		3. 解绑uniqueId的同时，需要解绑master，远程协作不可再用； 
+		2. 登录若琪账号后，每次都发送广播,用于远程协作更新masterId状态；
+		3. UDP组播携带绑定时的时间戳，用于判定设备绑定先后顺序；
+	* RokidSettings：从master主分支合并代码；
+		1. 扫码解析时间戳；
+		2. 修复WIFI扫描连接新的网络时，实际已连接成功，但页面提示连接失败；
+		3. 修改获取序列号为直接读取属性值；
+		4. 修改设置中时区的英文翻译；
+		5. fix media play position problem；
+		6. 保持二维码分辨率1280*720；
+		7. 升级cameralib版本到2.1.6 ；
+		8. 修改About界面宽度；
+		9. fix bug: the large year limit set；
+		10. 解决扫描错误的wifi二维码显示连接成功，实际未连接；
+		11. 解决无法连接无密码的wifi网络。
+
+#### 手机APP更新
+
+**RokidGlassMobileApp：v4.1.1**
+
+1. wifi二维码携带时间戳，用于判定设备绑定先后；
+2. 远程协作拨号列表，选择最后一个；
+3. 登出时，会解绑同一deviceTypeId的所有设备，保证每次只有一个绑定；
+4. 退出登录，先调用若琪SDK登出，再调用http接口解绑masterId。
+
+# 0.5.3-20190730-150000
+#### 系统更新
+* 更新system app
+	* RokidLauncher：版本重构；
+	* RokidCamera：修改App icon；
+	* RokidGallery：修改App icon；
+	* RokidCameraDeploy：修改App icon；
+	* RokidTranslate：修改App icon；
+	3. RokidAiSdk：
+		- 若琪语音浮层弹出时会重置系统灭屏时间；
+		- 抽出条件控制中心架构，统一管理PSensor、Pause Order、Usb Mic 三种条件，并根据不同版本可。
+		- 解决audioai 进程crash后，turenso进程无法完全重启的bug；
+	1. RokidGlassIME: 新增若琪眼镜输入法。
+	2. RokidRemoteCooperation：修改App icon；修复oom内存异常问题，使用系统输入法。
+	3. 
+	
+* OTA增加下载升级进度提示信息。
+* 默认使能USB MTP，眼镜连接PC时可以像U盘一样拷贝文件。（Windows10直接可用，Mac需要安装https://www.android.com/filetransfer/）。
+* 移除一些无用自带app，节省rom空间。
+* 修复自动曝光不可用问题
+* 合并创达更新：
+	* 使能usb-otg U盘功能；
+	* 更新WLAN固件，改善WFD功能稳定性；
+	* 修复电池电量跳变问题；
+	* 新增单天线配置；
+	* 修复蓝牙压力测试时打开失败的问题；
+	* 一套image同时兼容单双天线配置；
+* 更新PVT机器的alignment参数，提升人脸识别框精度；
+
+# 0.4.7-20190625-150001
+#### 系统更新
+
+* 更新system app
+
+	1. RokidSettings: 修改日期设置，最大年份到2037年；
+	2. RokidProvision：修改日期设置，最大年份到2037年；
+	3. RokidCameraDeploy：更新sdk，使用新的sdk校验方式，解决因日期设置错误导致人脸识别不能使用的问题；解决音量过小的问题
+
+* 增加系统property属性，用于人脸识别sdk校验
+#### 若琪眼镜APP
+
+**RokidGlassMobileApp：v4.0.6**
+
+ 1. 更新菊风sdk，解决眼镜端音量过小的问题
+
+# 0.4.6-20190614-150000
+#### 系统更新
+
+* 更新system app
+
+	1. RokidGallery：修复以下bug
+		1. 在相册外语音控制删除图片或视频，删除后界面显示的文件统计数显示错误
+		2. 在2000+张图片和视频情况下，进入相册点击文件无法进行全屏显示，显示桌面且长时间卡顿
+		3. 播放视频中摘下再戴上眼镜，视频显示的时间为暂停播放的时间，但是再次播放却是从头开始播放
+		4. 播放视频时关闭/打开电源，播放界面会跳动闪烁一次
+		5. 多种场景下进入相册浏览界面，均会闪烁一次
+	2. RokidRemoteCooperation：修复以下bug
+		1. 通话时间运行长时间之后，时间显示有问题
+		2. glass向重新绑定手机号拨打远程协作，app显示的主叫号码错误
+		3. 循环执行多次glass呼叫手机app，偶现双方接通后无任何视频媒体
+	3. RokidAiSdk
+		1. 全面升级标准版本第三方配置方案。
+		2. 支持turen配置文件本地附加配置功能.
+		3. 修改离线指令运行配置，部分后羿功能释放成标准方案，通过配置控制。
+
+
+* 修改屏幕默认亮度为80%（OTA的不会更改用户设置的亮度，刷机版本默认亮度为80%）
+* 优化拉起原生投屏ui的方式
+
+#### 若琪眼镜APP
+**RokidGlassMobileApp：v4.0.4**
+
+1. 修复若琪眼镜app切换到后台时，手机熄屏状态下glass拨打，手机端无任何反应，打开app也不会弹出接听界面
+
+
+# 0.4.5-20190610-150001
+#### 系统更新
+
+* 更新system app
+
+	1. RokidCameraDeploy：
+		* 单人脸识别，选择满足条件的最大人脸；
+		* 优化bitmap内存回收
+	2. RokidSettings：
+		* 增加投屏UI；
+		* 优化打开usb调试的点击次数
+	3. RokidGallery：
+		* 版本重构
+		* **需回归测试相册所有功能**
+
+* 更新关机音乐时长。
+* 更新开机动画。
+
 # 0.4.4-20190531-150000
 #### 系统更新
 
