@@ -6,90 +6,89 @@
 
 ## 接口规范
 
-- 在线识别接口规范
+### 在线识别接口规范
 
-  1. 请求地址: `http(s)://${ip}:${port}/${prefix}/faceRecognize`
+1. 请求地址: `http(s)://${ip}:${port}/${prefix}/faceRecognize`
 
-    - ip, port, prefix不做限制，根据实际项目确定
+  - ip, port, prefix不做限制，根据实际项目确定
 
-  2. 请求方式： `POST`
+2. 请求方式： `POST`
 
-  3. 请求示例：
+3. 请求示例：
 
-    ```json
-    {
-      "imageInfo" : {
-        "size" : 3686400,
-        "width" : 1280,
-        "height" : 720,
-        "type" : "JPG",
-        "imageFileStr" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMVt+KZ3DEdqysreMn/9k=\n"
+  ```json
+  {
+    "imageInfo" : {
+      "size" : 3686400,
+      "width" : 1280,
+      "height" : 720,
+      "type" : "JPG",
+      "imageFileStr" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMVt+KZ3DEdqysreMn/9k=\n"
       },
     "deviceInfo" : "0611061920000161"
+  }
+  ```
+
+4. 请求参数说明:
+  
+参数名 | 参数类型 | 必须 | 说明
+--- | --- | --- | --- 
+imageInfo | Object | 否 | 上传的人脸图像信息
+deviceInfo | String | 否 | 设备SN
+
+  - imageInfo 结构说明:
+
+参数名|参数类型|必须|说明
+---|---|---|--- 
+size | int | 否 | 人脸抠图大小
+width | int | 否 | 人脸抠图宽度 
+height | int | 否 | 人脸抠图高度 
+type | String | 否 | 固定使用JPG 
+imageFileStr | String | 是 | 人脸抠图文件二进制数据，Base64(DEFAULT)编码生成的字符串
+
+5. 响应JSON示例:
+
+  - 正确时返回：
+
+  ```json
+  {
+    "code" : 0,
+    "message" : "调用服务成功",
+    "faceInfo" : {
+      "imageFileStr" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMVt+KZ3DEdqysreMn/9k=\n",
+      "name" : "张三",
+      "tag" : "缉捕"
     }
-    ```
+  }
+  ```
 
-  4. 请求参数说明：
+  - 错误时返回：
 
-    参数名|参数类型|必须|说明
-    ---|---|---|--- 
-    imageInfo | Object | 否 | 上传的人脸图像信息
-    deviceInfo | String | 否 | 设备SN
-
-
-    - imageInfo 结构说明:
-
-    参数名|参数类型|必须|说明
-    ---|---|---|--- 
-    size | int | 否 | 人脸抠图大小
-    width | int | 否 | 人脸抠图宽度 
-    height | int | 否 | 人脸抠图高度 
-    type | String | 否 | 固定使用JPG 
-    imageFileStr | String | 是 | 人脸抠图文件二进制数据，Base64(DEFAULT)编码生成的字符串
-
-  5. 响应JSON示例:
-
-    - 正确时返回：
-
-    ```json
-    {
-      "code" : 0,
-      "message" : "调用服务成功",
-      "faceInfo" : {
-        "imageFileStr" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMVt+KZ3DEdqysreMn/9k=\n",
-        "name" : "张三",
-        "tag" : "缉捕"
-      }
+  ```json
+  {
+    "code" : 1,
+    "message" : "未检测到人脸",
+    "faceInfo" : {
     }
-    ```
+  }
+  ```
 
-    - 错误时返回：
+6. 返回参数说明：
 
-    ```json
-    {
-      "code" : 1,
-      "message" : "未检测到人脸",
-      "faceInfo" : {
-      }
-    }
-    ```
-
-  6. 返回参数说明：
-
-    参数名|参数类型|是否必须|说明
-    ----|----|----|---- 
-    code | int | 是 | 返回码（0：正确，其他见错误码列表）
-    message | String | 是 | 返回状态描述
-    faceInfo | Object | 是 | 人脸信息，元素结构如下
+参数名|参数类型|是否必须|说明
+----|----|----|---- 
+code | int | 是 | 返回码（0：正确，其他见错误码列表）
+message | String | 是 | 返回状态描述
+faceInfo | Object | 是 | 人脸信息，元素结构如下
 
 
-    - faceInfo 结构说明
+- faceInfo 结构说明
 
-    参数名|参数类型|是否必须|说明
-    ----|----|----|---- 
-     imageFileStr | String | 是 | 识别结果人脸图（**要求JPG或PNG类型**）文件二进制数据,Base64(DEFAULT)编码生成的字符串 
-     name | String | 是 | 人脸对应名字 
-     tag | String | 否 | 自定义标签
+参数名|参数类型|是否必须|说明
+----|----|----|---- 
+imageFileStr | String | 是 | 识别结果人脸图（**要求JPG或PNG类型**）文件二进制数据,Base64(DEFAULT)编码生成的字符串 
+name | String | 是 | 人脸对应名字 
+tag | String | 否 | 自定义标签
 
 ​
 
@@ -104,14 +103,14 @@
     ```json
     {
       "recognizeOn" : true,
-      "serverUrl" : "http://${ip}:${port}/${prefix}/faceRecoginze"
+      "serverUrl" : "http://${ip}:${port}/${prefix}/faceRecognize"
     }
     ```
 
   - 2.3 配置说明
 
     字段|说明 
-    ----|---- 
+    ---|---
     recognizeOn | true表示在线识别打开，false表示关闭 
     serverUrl | 根据接口规范开发的在线识别服务地址 
 
