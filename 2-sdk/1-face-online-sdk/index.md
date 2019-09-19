@@ -69,7 +69,7 @@ serverUrl   | 根据接口规范开发的在线识别服务地址
  
 参数名      | 参数类型 | 必须 | 说明
 ---------- | ------ | ---- | --- 
-imageInfo  | Object | 否   | 上传的人脸图像信息
+imageInfo  | Object | 是   | 上传的人脸图像信息
 deviceInfo | String | 否   | 设备SN
 
     - imageInfo 结构说明:
