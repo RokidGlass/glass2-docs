@@ -1,8 +1,8 @@
 # Glass UI SDK
 **Version: 1.2.0**  
 
-## 一、UI SDK介绍
 ---
+## 一、UI SDK介绍
 ### 1.1 概述
 提供一套在Rokid Glass上开发应用的基础UI库,目前已经提供以下支持：  
 
@@ -16,8 +16,8 @@ Glass自定义的Button
 **3. GlassDialog**   
 提供了一系列常用的对话框
 
-## 二、集成说明
 ---
+## 二、集成说明
 在project的build.gradle中添加jcenter依赖：
 ``` gradle
 allprojects {
@@ -35,8 +35,8 @@ implementation 'com.rokid.glass:ui:1.2.0'
 ### 2.2 Demo
 [Glass UI Demo](https://github.com/rokid/glass-ui)
 
-## 三、功能列表
 ---
+## 三、功能列表
 ### 3.1 RokidSystem
 Alignment概念：
 Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
