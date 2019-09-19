@@ -1,14 +1,14 @@
-**Version: lpr_sdk 2.0.0**
+# 车牌识别SDK
+**Version: lpr_sdk 2.0.0**  
 
-***
+---
+## 一、介绍
 
-# 车牌识别
-* [https://github.com/Rokid/RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
-## 1.  概述
-
+### 1.1 概述
 RokidLprSDK提供车牌检测和车牌识别接口。
 
-## 2. 集成说明
+---
+## 二、集成说明
 
 ### 2.1 添加第三方依赖库
 在project的build.gradle中添加jcenter依赖
@@ -43,7 +43,8 @@ dependencies {
 ### 2.3 Demo
 [RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
 
-## 3. 接口说明
+---
+## 三、接口说明
 
 ### 3.1 初始化
 
@@ -116,8 +117,8 @@ object | 初始化时拿到的Pipeline句柄
 
 `车牌号`
 
-
-## 4. sample说明
+---
+## 四、sample说明
 
 ### 4.1 android_sample
 
