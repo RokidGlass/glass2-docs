@@ -1,9 +1,13 @@
 # 人脸识别离线SDK
-**Version: facelib 2.2.2.1**  
-
+**Version: facelib 2.2.2.1**  <br>
 ---
 
+## 接口使用示例demo
+https://github.com/Rokid/RokidFaceSDK/tree/master/sample
+
 ## 一. FaceSDK介绍
+### 版本号说明：
+前两位2.2表示算法版本号，后两位2.1表示sdk版本号
 ### 1.1 概述
 RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：
 1.图片人脸检测+图片人脸识别<br>
