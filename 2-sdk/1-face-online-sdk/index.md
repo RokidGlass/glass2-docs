@@ -1,5 +1,5 @@
 # 人脸识别在线SDK
-**Version: 3.0.0**  
+**Version: 3.0.1**  
 
 ---
 ## 一、介绍
@@ -63,7 +63,8 @@ serverUrl   | 根据接口规范开发的在线识别服务地址
         "type" : "JPG",
         "imageFileStr" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMVt+KZ3DEdqysreMn/9k=\n"
         },
-      "deviceInfo" : "0611061920000161"
+      "deviceInfo" : "0611061920000161",
+      "trackId" : 34,
     }
     ```
 
@@ -73,6 +74,7 @@ serverUrl   | 根据接口规范开发的在线识别服务地址
 ---------- | ------ | ---- | --- 
 imageInfo  | Object | 是   | 上传的人脸图像信息
 deviceInfo | String | 否   | 设备SN
+trackId    | int    | 是   | 人脸跟踪id
 
     - imageInfo 结构说明:
 
@@ -96,7 +98,8 @@ imageFileStr | String | 是    | 人脸抠图文件二进制数据，<br/>Base64
        "faceInfo" : {
          "imageFileStr" : "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMVt+KZ3DEdqysreMn/9k=\n",
          "name" : "张三",
-         "tag" : "缉捕"
+         "tag" : "通过",
+         "trackId" : 34
        }
      }
      ```
@@ -127,6 +130,7 @@ faceInfo | Object  | 是    | 人脸信息，元素结构如下
 imageFileStr | String  | 是   | 识别结果人脸图（**要求JPG或PNG类型**）文件二进制数据,<br/> Base64(DEFAULT)编码生成的字符串 
 name         | String  | 是   | 人脸对应名字 
 tag          | String  | 否   | 自定义标签
+trackId      | int     | 是   | 请求携带的人脸跟踪id
 
 ---
 ## 四、备注
