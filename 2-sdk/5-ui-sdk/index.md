@@ -112,6 +112,19 @@ config.setRoi(roiRect);
 
 ```
 
+#### 3.1.3 getProjectionMatrix_OpticalSeeThrough
+说明：获取OpticalSeeThrough场景下，OpenGLES 3D 应用的投影矩阵（横屏状态），以便人眼看到的marked UI和真实世界对齐
+``` java
+public static float[] getProjectionMatrix_OpticalSeeThrough()
+```
+
+示例代码: 对于横屏应用，获取OpenGLES MVP矩阵的投影矩阵
+```java
+float projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
+...
+
+```
+
 ### 3.2 GlassButton
 Glass自定义的Button
 
