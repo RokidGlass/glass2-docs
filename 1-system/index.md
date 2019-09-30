@@ -6,7 +6,7 @@
 -------  | ----------- | ------------ | ---
 Back-长  | 发送Intent  | Action为  com.rokid.glass.homekey.longpress | 注：被语音助手占用，有语音助手时不可自定义
 Back-单  | 返回  | KEYCODE\_BACK = 4 | 
-Back-双击  | 1.不处理<br>2.回到launcher<br>3.发送Intent  | Action为  com.rokid.glass.homekey.doubleback | 可由用户配置，配置方法参考下条
+Back-双击  | 0.不处理<br>1.回到launcher<br>2.发送Intent  | Action为  com.rokid.glass.homekey.doubleback | 可由用户配置，配置方法参考下条
 TP-右滑  | 连续收到多个<br>KEYCODE\_DPAD\_RIGHT键值  | KEYCODE\_DPAD\_RIGHT = 22 | 应用可接收“连续键值”
 TP-左滑  | 连续收到多个<br>KEYCODE\_DPAD\_LEFT键值  | KEYCODE\_DPAD\_LEFT = 21 | 应用可接收“连续键值”
 TP-快速右滑  | 快速右滑离开TP。同时收到多个<br>KEYCODE\_DPAD\_RIGHT键值和单个<br>KEYCODE\_DPAD\_DOWN键值  | KEYCODE\_DPAD\_DOWN = 20 | 应用可接收“单次键值”
@@ -22,7 +22,7 @@ Volume- | 音量减 | KEYCODE\_VOLUME\_DOWN = 25 |
 
 ```
  adb pull /system/etc/SystemConfig.prop
- 修改SystemConfig.prop中的config_backPanicBehavior项 // 1.不处理  2.回到launcher  3.发送Intent
+ 修改SystemConfig.prop中的config_backPanicBehavior项 // 0.不处理  1.回到launcher  2.发送Intent
  adb root
  adb remount
  adb push SystemConfig.prop /system/etc/SystemConfig.prop
