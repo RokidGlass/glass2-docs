@@ -3,10 +3,11 @@
 [![Build Status](https://travis-ci.org/Rokid/glass-docs.svg?branch=master)](https://travis-ci.org/Rokid/glass-docs)
 
 ## 介绍
--   下列文档包含了系统配置方法，SDK使用文档，公版App的介绍。  
+-   本文档面向Rokid Glass的开发者，介绍了开发者如何在Rokid Glass上开发应用。
+-   本文档包含了系统配置方法，Rokid Glass SDK使用文档，眼镜管家公版App的介绍。  
 
 ## 如何在Glass上开发App？
--   开发者可以基于Rokid提供的SDK开发眼镜端App，或者用已有的App做眼镜适配。
+-   开发者可以基于Rokid提供的SDK开发眼镜端App，或者用已有的Android App做眼镜适配。
 -   眼镜适配方法（与Android手机上App的开发区别）：
     -   Touch screen -> Touch pad：部分类型的控件需要自定义焦点控制。
     -   有preview -> 无preview：真实世界不需要preview（具体可参考UI SDK）。
