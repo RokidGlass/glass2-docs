@@ -84,7 +84,7 @@ size         | int    | 否    | 人脸抠图大小
 width        | int    | 否    | 人脸抠图宽度 
 height       | int    | 否    | 人脸抠图高度 
 type         | String | 否    | 固定使用JPG 
-imageFileStr | String | 是    | 人脸抠图文件二进制数据，<br/>Base64(DEFAULT)编码生成的字符串
+imageFileStr | String | 是    | 人脸抠图文件二进制数据，<br/>Base64(NO_WRAP)编码生成的字符串
 
 ### 云端响应
 1. 响应JSON示例:
@@ -127,7 +127,7 @@ faceInfo | Object  | 是    | 人脸信息，元素结构如下
 
 参数名        | 参数类型 | 必须 | 说明
 -------------|---------|-----|------------------------------------------------ 
-imageFileStr | String  | 是   | 识别结果人脸图（**要求JPG或PNG类型**）文件二进制数据,<br/> Base64(DEFAULT)编码生成的字符串 
+imageFileStr | String  | 是   | 识别结果人脸图（**要求JPG或PNG类型**）文件二进制数据,<br/> Base64(NO_WRAP)编码生成的字符串 
 name         | String  | 是   | 人脸对应名字 
 tag          | String  | 否   | 自定义标签
 trackId      | int     | 是   | 请求携带的人脸跟踪id
