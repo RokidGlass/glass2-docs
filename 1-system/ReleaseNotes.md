@@ -1,3 +1,53 @@
+# 1.1.1-20191018-150000
+#### 系统更新
+
+* 标准版恢复双击back回home的配置，切换方案时随方案切换；
+* 增加pvt2设备的alignment参数配置（19年33周生产）；
+* 更新系统APP：
+	* RokidGallery：修复bug
+		1. 手动删除图片后，语音打开相册，列表中仍存在之前删除的图片；
+		2. 图库查看图片界面，语音激活：删除图片,大图查看照片数仍为N；
+		3. 相册界面调用camera进行录像，录像结束后语音打开相册，相册内容显示为空 等；
+	* RokidSettings：
+		1. 修改二维码为原始camera API2接口;
+		2. 去掉头部控制入口;
+		3. 修改切换方案不读取配置json文件；
+	* RokidLauncher:
+		1. 修改launcher.json的加载规则，先删除 db 中launcher.json对应的应用;
+		2. 修复 bug: 进入launcher后wifi图标非未连接而是正常连接的图标；
+	* RokidCamera：
+		1. 修复摄像界面发送语音：“若琪我要拍照”，界面不会跳转到拍照界面 ;
+	* RokidAiCloudApp
+		1. 修正FadeInTextView跑马灯动画在跳帧情况下会丢字的bug；
+
+#### 若琪眼镜APP
+* 未更新
+
+# 1.1.0-20191012-150000
+#### 系统更新
+
+* 移除双击back回home配置，改为应用自行处理；
+* 修复投屏时点击tp无效问题；
+* 新增根据prop值切换解决方案的功能；
+* 更新系统APP：
+	* RokidActivation：
+		1. 解决连接WFD后，无法连接手机的BUG；
+	* RokidSettings：
+		1. 增加切换方案功能;
+		2. 增加设置人脸识别阈值功能;
+	* RokidLauncher:
+		1. 增加第三方安装应用，存入 db。重启加载时，和 launch.json 配置白名单应用进行合并;
+		2. launch.json 修改 reset 配置，修改重置应用逻辑；
+	* RokidCameraDeploy
+		1. 图片Base64编解码改成NO_WRAP;
+		2. 从设置中读取识别分数阈值，缺省值为80;
+		3. 支持通过配置文件切换在线和离线识别;
+	* RokidAiSdk
+		1. 增加切换方案功能；
+
+#### 若琪眼镜APP
+* 未更新
+
 # 1.0.1-20190912-150000
 #### 系统更新
 
