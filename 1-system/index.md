@@ -21,11 +21,7 @@ Volume- | 音量减 | KEYCODE\_VOLUME\_DOWN = 25 |
 <h2 id="2">2. 双击back配置方法</h2>
 
 ```
- adb pull /system/etc/SystemConfig.prop
- 修改SystemConfig.prop中的config_backPanicBehavior项 // 0.不处理  1.回到launcher  2.发送Intent
- adb root
- adb remount
- adb push SystemConfig.prop /system/etc/SystemConfig.prop
+ adb shell setprop persist.rokid.backPanicBehavior 0 // 0.不处理  1.回到launcher  2.发送Intent
  adb reboot
 ```
 
