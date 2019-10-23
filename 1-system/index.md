@@ -18,7 +18,12 @@ Power | 电源键 | KEYCODE\_POWER = 26 |
 Volume+  | 音量加 | KEYCODE\_VOLUME\_UP = 24 |
 Volume- | 音量减 | KEYCODE\_VOLUME\_DOWN = 25 |
 
-<h2 id="2">2. 双击back配置方法</h2>
+<h2 id="2">2. 双击back键配置方法</h2>
+
+* 系统支持以下三种双击back键模式，允许应用开发者自定义双击back键。**模式切换需要重启**
+  * 返回桌面模式：系统属性默认为1：双击back键回到launcher
+  * 原生安卓模式：若应用设置系统属性为0：系统不做处理
+  * 系统广播模式：若应用设置系统属性为2：系统接收到双击back键事件后，会发送广播（参考上面按键键值定义）
 
 ```
  adb shell setprop persist.rokid.backPanicBehavior 0 // 0.不处理  1.回到launcher  2.发送Intent
