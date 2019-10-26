@@ -17,7 +17,10 @@ Rokid Glass文档
     - 车牌识别
         - [使用说明](2-sdk/2-lpr-sdk/index.md)
         - [版本信息](2-sdk/2-lpr-sdk/ReleaseNotes.md)
-    - [语音识别](2-sdk/3-voice-sdk/index.md)
+    - 语音识别
+        - [语音助手说明](2-sdk/3-voice-sdk/index.md)
+        - [本地技能SDK](2-sdk/3-voice-sdk/LocalSkillSdk/LocalSkillSdk.md)
+        - [离线指令SDK](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)
     - Glass UI
         - [使用说明](2-sdk/5-ui-sdk/index.md)
         - [版本信息](2-sdk/5-ui-sdk/ReleaseNotes.md)
