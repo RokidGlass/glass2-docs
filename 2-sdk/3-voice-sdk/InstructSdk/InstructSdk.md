@@ -1,51 +1,39 @@
-## 离线语音指令SDK使用文档
 
-### 目录
-* [一、概述](#一、概述)
-* [二、各步骤详细说明](#三、各步骤详细说明)
-  * [SDK aar引入](#SDK aar引入)
-  * [AndroidManifest.xml及Application配置](#AndroidManifest.xml及Application配置)
-  * [App Activity中调用](#App Activity中调用)
-* [三、API参考](#三、API参考)
-  * [Activity中需要Override方法说明](#Activity中需要Override方法说明)
-  * [InstructConfig.java 指令配置实体](#InstructConfig.java 指令配置实体)
-  * [InstructEntity.java 指令实体](#InstructEntity.java 指令实体)
-  * [IInstructReceiver.java 指令触发回调方法实体](#IInstructReceiver.java 指令触发回调方法实体)
-  * [样例及说明](#样例及说明)
+# 语音离线指令SDK
 
+## **Version：instructsdk 1.0.6**
 
-### 一、概述
+## 接口使用示例demo
+
+https://github.com/Rokid/Rokid_APG_VoiceInstructDemo
+
+## 一. SDK概述
 
 Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
 
 附：语音助手RokidAiSdk需要v1.9.5版本以上。
 
   ```shell
-  // 查看方式
+  // 语音助手RokidAiSdk版本查看方式
   adb shell dumpsys package com.rokid.ai.glassaudio
   ```
 
 
-### 二、各步骤详细说明
 
-##### SDK aar引入
+### 二. 集成说明
+
+##### 添加三方依赖库
 
 - 总工程build.gradle配置：
 
   ```groovy
   allprojects {
       repositories {
-          // rokid内部maven仓库，内部使用，外部开发者可以删掉这两个maven仓库，instructsdk已经在jcenter上发布
-          maven {url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/snapshots/"}
-          maven {url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/"}
-  
           google()
           jcenter()
       }
   }
   ```
-  
-  
   
 - app应用 module中build.gradle配置：
 
@@ -53,11 +41,21 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.0.5'
+      implementation 'com.rokid.ai.glass:instructsdk:1.0.6'
   }
   ```
+- Jcenter Maven信息
 
-  
+  ```xml
+  <dependency>
+    <groupId>com.rokid.ai.glass</groupId>
+    <artifactId>instructsdk</artifactId>
+    <version>1.0.6</version>
+    <type>pom</type>
+  </dependency>
+  ```
+
+
 
 ##### AndroidManifest.xml及Application配置
 
@@ -119,6 +117,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   ```java
   public class HomeTestAct extends InstructionActivity {}
   ```
+  **注：**如果不能直接继承InstructionActivity.java，则需要将InstructionActivity的内部方法调用实现在自己的BaseActivity中。
   
 - 添加普通指令：
   
@@ -420,13 +419,3 @@ config.addInstructEntity(
 )
   ```
 
-
-
-#### 样例及说明
-
-- SDK Group：com.rokid.ai.glass
-- SDK ARTIFACTID：instructsdk
-- SDK 版本：1.0.5
-- SDK 地址：http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/com/rokid/ai/glass/instructsdk/1.0.5/
-- 使用接口方法可参考sample demo
-- Demo地址: https://gitlab.rokid-inc.com/glass/Rokid_APG_VoiceInstructDemo

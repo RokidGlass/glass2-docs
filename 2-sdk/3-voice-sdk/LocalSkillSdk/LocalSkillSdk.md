@@ -1,21 +1,13 @@
-## 本地技能SDK使用文档
 
-### 目录
-* [一、概述](#一、概述)
-  * [主要功能](#主要功能)
-  * [主要开发步骤](#主要开发步骤)
-* [二、各步骤详细说明](#三、各步骤详细说明)
-  * [本地技能注册](#本地技能注册)
-  * [意图或词表补全](#意图或词表补全)
-  * [本地技能App配置](#本地技能App配置)
-  * [本地技能SDK调用](#本地技能SDK调用)
-* [三、API参考](#三、API参考)
-  * [LocalSdkManager功能说明](#LocalSdkManager功能说明)
-  * [样例及说明](#样例及说明)
+# 语音本地技能SDK
 
+## **Version：localsdk 1.0.7**
 
+## 接口使用示例demo
 
-### 一、概述
+https://github.com/Rokid/RokidAiLocalSkillDemo
+
+## 一. SDK概述
 
 Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SDK一起使用的本地技能。
 
@@ -45,7 +37,7 @@ Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SD
 
 
 
-### 二、各步骤详细说明
+### 二. 集成说明
 
 ##### 本地技能注册
 
@@ -128,37 +120,41 @@ Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SD
 	* 必须让 android:enabled="true"，android:exported="true"
 	* 需要本地技能承接者能够让语音SDK所在的app，通过Android启动机制访问到。
 
-##### 本地技能SDK调用
+##### 本地技能SDK使用
 
-- SDk aar 引入；
-    * 引入localsdk aar
-    * 引入 gson （localsdk中部分功能依赖gson）
-  ```gradle
-      // 外部用户：先将 localsdk-1.0.3.aar 放入libs目录中
-      android {
-          ...
+- 添加三方依赖库；
+	- 总工程build.gradle配置：
 
-          repositories{
-              flatDir{
-                  dirs 'libs'
-              }
-          }
-          ...
+  ```groovy
+  allprojects {
+      repositories {
+          google()
+          jcenter()
       }
-
-      dependencies {
-          implementation fileTree(dir: 'libs', include: ['*.jar'])
-          implementation (name:'localsdk-1.0.3', ext:'aar')
-          implementation 'com.google.code.gson:gson:2.8.5'
-          ...
-      }
-
+  }
+  ```
+  
+	- app应用 module中build.gradle配置：
+  
+  ```groovy
       // jcenter直接依赖
       dependencies {
           ...
-          implementation 'com.rokid.ai.skill:localsdk:1.0.3'
+          implementation 'com.rokid.ai.skill:localsdk:1.0.7'
+          implementation 'com.google.code.gson:gson:2.8.5'
           ...
       }
+  ```
+  
+  - Jcenter Maven信息
+
+  ```xml
+  <dependency>
+    <groupId>com.rokid.ai.skill</groupId>
+    <artifactId>localsdk</artifactId>
+    <version>1.0.7</version>
+    <type>pom</type>
+  </dependency>
   ```
 
 - LocalSdkManager使用实例；
@@ -438,7 +434,9 @@ Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SD
     }
   ```
 
-### 三、API参考
+
+
+### 三、接口说明及示例
 
 ##### LocalSdkManager功能说明
 
@@ -495,27 +493,22 @@ public NLPControlMsgBean analysisAction(String action)
 ```
 
 - 播放文字，文字转换为语音
-```
-public static void speakTTS(final String ttsContent, final ITtsCallback callback)
-```
+  
+  ```
+  public static void speakTTS(final String ttsContent, final ITtsCallback callback)
+  ```
 
-| 参数 |含义|
+| 参数 | 含义 |
 |----|---|
 |ttsContent| 需要播放地音频文字|
 |ITtsCallback | 播放状态的回调接口|
 
 - ITtsCallback 接口
-| 参数 |含义|
+
+| 参数 | 含义 |
 |----|---|
 | onStart| 开始播放音频 |
 | onComplete| 完成音频播放 |
 | onCancel | 取消播放 |
 | onError | 播放错误 |
 | onFilterOut | 过滤掉相同key值的tts |
-
-##### 样例及说明
-
-- SDK 版本：1.0.3
-- SDK 地址：https://github.com/Rokid/RokidAiLocalSkillDemo/tree/master/aar
-- 使用接口方法可参考sample demo
-- 地址: https://github.com/Rokid/RokidAiLocalSkillDemo
