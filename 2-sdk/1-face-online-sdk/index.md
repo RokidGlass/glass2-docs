@@ -18,12 +18,12 @@
 2.&nbsp;编辑配置文件
 
   - 2.1 配置文件文件名固定为`config.json`
-  - 2.2 配置文件内容示例
+  - 2.2 配置文件内容示例，默认为：
 
     ```json
     {
-      "recognizeOn" : true,
-      "serverUrl" : "http://${ip}:${port}/${prefix}/faceRecognize"
+      "recognizeOn" : false,
+      "serverUrl" : "http://10.88.1.127:8848/faceRecognize"
     }
     ```
 
@@ -32,11 +32,11 @@
 字段         | 说明 
 ------------|--------------------------------
 recognizeOn | true表示在线识别打开，false表示关闭 
-serverUrl   | 根据接口规范开发的在线识别服务地址 
+serverUrl   | 可以根据下面的接口规范，修改实际的在线识别服务地址 
 
-3.&nbsp;导入配置文件
+3.&nbsp;导入修改后的配置文件
 
-  将配置文件 `config.json` 存放到眼镜端 `/sdcard/rokid/faceRecognize/` 目录下。如果首次运行人脸识别应用前，未导入自定义配置文件，对应目录会生成一个默认配置文件，默认配置在线识别关闭。
+  将修改后的配置文件 `config.json` 存放到眼镜端 `/sdcard/rokid/faceRecognize/` 目录下。如果首次运行人脸识别应用前，未导入自定义配置文件，对应目录会生成一个默认配置文件，默认配置在线识别关闭。
 
 4.&nbsp;运行人脸识别应用
 
@@ -46,9 +46,9 @@ serverUrl   | 根据接口规范开发的在线识别服务地址
 ## 三、接口规范
 
 ### 设备端请求
-1. 请求地址: `http(s)://${ip}:${port}/${prefix}/faceRecognize`
+1. 请求地址: `http(s)://${ip}:${port}/${suffix}`
 
-    - ip, port, prefix不做限制，根据实际项目确定
+    - ip, port, suffix 不做限制，眼镜端会读取`config.json`配置文件向云端发送请求
 
 2. 请求方式： `POST`
 
