@@ -1,11 +1,11 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.0.6**
+## **Version：instructsdk 1.0.7**
 
 ## 接口使用示例demo
 
-https://github.com/Rokid/Rokid_APG_VoiceInstructDemo
+https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 ## 一. SDK概述
 
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.0.6'
+      implementation 'com.rokid.ai.glass:instructsdk:1.0.7'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <type>pom</type>
   </dependency>
   ```

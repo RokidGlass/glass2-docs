@@ -1,11 +1,11 @@
 
 # 语音本地技能SDK
 
-## **Version：localsdk 1.0.7**
+## **Version：localsdk 1.0.8**
 
 ## 接口使用示例demo
 
-https://github.com/Rokid/RokidAiLocalSkillDemo
+https://github.com/RokidGlass/RokidAiLocalSkillDemo
 
 ## 一. SDK概述
 
@@ -140,8 +140,7 @@ Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SD
       // jcenter直接依赖
       dependencies {
           ...
-          implementation 'com.rokid.ai.skill:localsdk:1.0.7'
-          implementation 'com.google.code.gson:gson:2.8.5'
+          implementation 'com.rokid.ai.skill:localsdk:1.0.8'
           ...
       }
   ```
@@ -152,7 +151,7 @@ Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SD
   <dependency>
     <groupId>com.rokid.ai.skill</groupId>
     <artifactId>localsdk</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <type>pom</type>
   </dependency>
   ```
