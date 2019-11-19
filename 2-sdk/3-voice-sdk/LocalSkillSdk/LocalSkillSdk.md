@@ -141,6 +141,7 @@ Rokid 语音SDK 本地技能快速开发工具，方便开发配合Rokid语音SD
       dependencies {
           ...
           implementation 'com.rokid.ai.skill:localsdk:1.0.8'
+          api 'com.google.code.gson:gson:2.8.5'
           ...
       }
   ```

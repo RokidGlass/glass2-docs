@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.0.7**
+## **Version：instructsdk 1.0.8**
 
 ## 接口使用示例demo
 
@@ -41,7 +41,9 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.0.7'
+      implementation 'com.rokid.ai.glass:instructsdk:1.0.8'
+      api 'com.google.code.gson:gson:2.8.5'
+      implementation 'com.github.promeg:tinypinyin:2.0.3'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +52,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <type>pom</type>
   </dependency>
   ```
