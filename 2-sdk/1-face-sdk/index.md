@@ -3,7 +3,7 @@
 ---
 
 ## 接口使用示例demo
-https://github.com/Rokid/RokidFaceSDK/tree/master/sample
+[Demo](https://github.com/RokidGlass/RokidFaceSDK/tree/master/sample)
 
 ## 一. FaceSDK介绍
 

@@ -41,7 +41,7 @@ dependencies {
 ```
 
 ### 2.3 Demo
-[RokidLprSDK](https://github.com/Rokid/RokidLprSDK)
+[RokidLprSDK](https://github.com/RokidGlass/RokidLprSDK)
 
 ---
 ## 三、接口说明
