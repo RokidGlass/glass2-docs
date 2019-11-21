@@ -41,7 +41,36 @@ setprop persist.boot.defaultactivity your_launcher_activityname
 adb reboot
 ```
 
-<h2 id="4">4.	语音指令配置方法：</h2>
+<h2 id="4">4. 系统应用黑名单配置</h2>
+黑名单配置，不显示系统的某些应用   
+通过配置文件launcher.json 配置不显示的应用列表，文件配置路径/sdcard/rokid/，配置完成后，重启生效  
+示例：
+``` 
+{
+  "reset": false,
+  "favorites": [
+    {
+      "packageName": "com.rokid.translate"
+    },
+    {
+      "packageName": "com.rokid.glass.Assault"
+    }
+  ]
+}
+```
+### 4.1 系统应用列表
+名称      |  packageName 
+-------  | ----------- 
+相机      | com.rokid.glass.camera
+相册      | com.rokid.glass.gallery
+人脸识别   | com.rokid.camera.cameradeploy
+突袭     |com.rokid.glass.Assault
+翻译     |com.rokid.translate
+远程协作  |com.rokid.remotecooperation
+设置     |com.rokid.glass.settings
+
+
+<h2 id="5">5.	语音指令配置方法：</h2>
 系统支持使用语音指令控制app的行为以及系统的行为（如回到桌面）配置方法如下：
 修改`/system/etc/local_order_config.json`，其中典型的一条配置如下
 
@@ -78,7 +107,7 @@ adb reboot
 	* type/content：type支持“activity”“service”等，content为具体的activity或者service，将由语音助手拉起；
 	* param/event: 由语音助手发送的消息，由用户自定义，用于控制不同的行为。
 
-<h2 id="5">5. 特别注意事项：</h2>
+<h2 id="5">6. 特别注意事项：</h2>
 为节省功耗，保护屏幕，延长设备使用时间，app设计开发和眼镜使用时需注意以下几点：
 
 * 如无必要，不要在app中加屏幕常亮锁，系统默认30s超时灭屏；
