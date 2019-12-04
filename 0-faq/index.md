@@ -6,10 +6,10 @@
 https://rokid-ota.oss-cn-hangzhou.aliyuncs.com/toB/Rokid_Glass/standard/full_image.zip
 
 ### 刷机步骤
-1、解压zip包
-2、PC端USB连接glass
-3、cd到msm8998下目录
-4、./update.sh运行后自动完成刷机
+1、解压zip包 
+2、PC端USB连接glass 
+3、cd到msm8998下目录 
+4、./update.sh运行后自动完成刷机 
 
 ## 二、OTA升级 
 
