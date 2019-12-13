@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.0.8**
+## **Version：instructsdk 1.1.4**
 
 ## 接口使用示例demo
 
@@ -41,9 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.0.8'
-      api 'com.google.code.gson:gson:2.8.5'
-      implementation 'com.github.promeg:tinypinyin:2.0.3'
+      implementation 'com.rokid.ai.glass:instructsdk:1.1.4'
   }
   ```
 - Jcenter Maven信息
@@ -52,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.0.8</version>
+    <version>1.1.4</version>
     <type>pom</type>
   </dependency>
   ```
@@ -332,7 +330,7 @@ public InstructConfig addInstructList(List<InstructEntity> instructList);
   ```java
 // eg:
 InstructConfig config = new InstructConfig();
-config.addInstructList(NumberTypeControler.doTypeControl("第", 3, 20, "页", new NumberTypeControler.NumberTypeCallBack() {
+config.addInstructList(NumberTypeControler.doTypeControl("第", 3, 20, "页", "第3/4/5...19/20页", new NumberTypeControler.NumberTypeCallBack() {
             @Override
             public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
                 Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
@@ -374,6 +372,8 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
 | global | boolean | 是否是全局指令，全局指令需要设定 |
 | showTips | boolean | 是否展示在指令提示浮条中，展示的需要设定 |
 | ignoreHelp | boolean | 是否不再帮助浮层中显示指令默认信息，不展示需要设置 |
+| ignoreSoundEffect | boolean | 是否忽略命中后发出的音效 |
+| helpContent | String | 提示文字，默认为指令name，如果设置，以此为高优先级 |
 | other | Object | 指令其他数据，需要指令附带一些数据可以利用这个属性 |
 | callback | IInstructReceiver | 指令回调闭包，void onInstructReceive(Activity act, String key, InstructEntity instruct); |
 
