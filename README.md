@@ -1,4 +1,4 @@
-# Glass 软件开发文档
+# Glass（二代）软件开发文档
 
 [![Build Status](https://travis-ci.org/Rokid/glass-docs.svg?branch=master)](https://travis-ci.org/Rokid/glass-docs)
 
