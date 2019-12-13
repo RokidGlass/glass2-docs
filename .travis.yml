@@ -36,6 +36,6 @@ branches:
 env:
  global:
    # Github Pages
-   - GH_REF: github.com/Rokid/glass-docs
+   - GH_REF: github.com/RokidGlass/glass2-docs
    # Coding Pages
-   - CO_REF: git@github.com:Rokid/glass-docs.git
+   - CO_REF: git@github.com:RokidGlass/glass2-docs.git
