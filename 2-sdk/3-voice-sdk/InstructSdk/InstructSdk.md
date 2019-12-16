@@ -20,9 +20,9 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
 
 
-### 二. 集成说明
+## 二. 集成说明
 
-##### 添加三方依赖库
+### 2.1、 添加三方依赖库
 
 - 总工程build.gradle配置：
 
@@ -57,7 +57,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
 
 
-##### AndroidManifest.xml及Application配置
+### 2.2、 AndroidManifest.xml及Application配置
 
 - 自定义application
 
@@ -110,16 +110,16 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 	
 	
 
-##### App Activity中调用
+### 2.3、 App Activity中调用
 
-- 基础Activity继承InstructionActivity.java：
+#### 2.3.1、基础Activity继承InstructionActivity.java：
   
   ```java
   public class HomeTestAct extends InstructionActivity {}
   ```
   **注：**如果不能直接继承InstructionActivity.java，则需要将InstructionActivity的内部方法调用实现在自己的BaseActivity中。
   
-- 添加普通指令：
+#### 2.3.2、添加普通指令：
   
   ```java
   // 添加指令    
@@ -170,7 +170,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   
   ```
   
-- 指令拦截：
+#### 2.3.3、指令拦截：
   
   ```java
   // HomeTestAct.java 中
@@ -192,13 +192,13 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   
   ```
   
-- 默认帮助相关指令：
+#### 2.3.4、默认帮助相关指令：
   * 显示帮助
   * 关闭帮助
 
   无需用户添加，SDK会自动添加到指令集中
 
-- 指令拼音设置：
+#### 2.3.5、指令拼音设置：
   * sdk中会对指令名做默认的拼音转化，但是针对部分多音字，更确切的读音需要用户自己设置
   * eg：重心、重复
   
@@ -239,11 +239,11 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   ```
 
 
-### 三、API参考
+## 三、API参考
 
-#### VoiceInstruction中公共方法说明
+### 3.1、VoiceInstruction中公共方法说明
 
-##### VoiceInstruction中初始化 (必须在客户端的Application中调用)
+#### 3.1.1、VoiceInstruction中初始化 (必须在客户端的Application中调用)
 
   ```java
       /**
@@ -256,7 +256,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       }
   ```
 
-##### VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用)
+#### 3.1.2、VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用)
 
   ```java
       /**
@@ -271,7 +271,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       }
   ```
 
-##### 添加全局指令
+#### 3.1.3、添加全局指令
 
   ```java
       /**
@@ -284,7 +284,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       }
   ```
 
-##### 去除全局指令
+#### 3.1.4、去除全局指令
 
   ```java
       /**
@@ -298,9 +298,9 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   ```
 
 
-#### Activity中需要Override方法说明
+### 3.2、Activity中需要Override方法说明
 
-##### Activity中关闭语音指令方法 (非必须Override)
+#### 3.2.1、Activity中关闭语音指令方法 (非必须Override)
 
   ```java
       /**
@@ -314,7 +314,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       }
   ```
 
-##### Activity中 指令拦截方法 (必须Override)
+#### 3.2.2、Activity中 指令拦截方法 (必须Override)
 
   ```java
   /**
@@ -327,13 +327,13 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   ```
 
 
-##### Activity中 配置指令方法, 返回 InstructConfig指令配置实体 (必须Override)
+#### 3.2.3、Activity中 配置指令方法, 返回 InstructConfig指令配置实体 (必须Override)
 
   ```java
   public InstructConfig configInstruct()
   ```
 
-##### 指令相关浮条UI生成完毕，想要进行修改 (非必须Override)
+#### 3.2.4、指令相关浮条UI生成完毕，想要进行修改 (非必须Override)
 
   ```java
   // HomeTestAct.java 中
@@ -346,7 +346,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   }
   ```
 
-##### 指令帮助浮层UI生成完毕，想要进行修改 (非必须Override)
+#### 3.2.5、指令帮助浮层UI生成完毕，想要进行修改 (非必须Override)
 
   ```java
   // HomeTestAct.java 中
@@ -361,10 +361,10 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
 
 
-#### InstructConfig.java 指令配置实体
+### 3.3、InstructConfig.java 指令配置实体
 
 
-##### setActionKey
+#### 3.3.1、setActionKey
 
   ```java
 public InstructConfig setActionKey(String actionKey);
@@ -373,7 +373,7 @@ public InstructConfig setActionKey(String actionKey);
 
 参数：
 
-  - actionKey ：String，指令命中广播的Action
+  actionKey ：String，指令命中广播的Action
 
   ```java
 // eg:
@@ -381,7 +381,7 @@ InstructConfig config = new InstructConfig();
 config.setActionKey(HomeTestAct.class.getName() + InstructConfig.ACTION_SUFFIX)
   ```
 
-##### addInstructEntity
+#### 3.3.2、addInstructEntity
 
   ```java
 public InstructConfig addInstructEntity(InstructEntity entity);
@@ -389,7 +389,8 @@ public InstructConfig addInstructEntity(InstructEntity entity);
   向配置中添加离线语音指令。
 
 参数：
-  - entity ：InstructEntity，语音指令实体
+
+  entity ：InstructEntity，语音指令实体
 
   ```java
 // eg:
@@ -413,7 +414,7 @@ config.addInstructEntity(
 )
   ```
 
-##### addInstructList
+#### 3.3.3、addInstructList
 
   ```java
 public InstructConfig addInstructList(List<InstructEntity> instructList);
@@ -421,7 +422,8 @@ public InstructConfig addInstructList(List<InstructEntity> instructList);
   向配置中添加离线语音指令组。
 
 参数：
-  - instructList ：List<InstructEntity>，语音指令组
+
+  instructList ：List<InstructEntity>，语音指令组
 
   ```java
 // eg:
@@ -434,7 +436,7 @@ config.addInstructList(NumberTypeControler.doTypeControl("第", 3, 20, "页", "�
         }));
   ```
 
-##### setIgnoreGlobal
+#### 3.3.4、setIgnoreGlobal
 
   ```java
 public void setIgnoreGlobal(boolean ignoreGlobal);
@@ -442,7 +444,8 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
   控制当前页面是否忽略所有全局指令。
 
 参数：
-  - ignoreGlobal ：boolean，ture - 忽略所有全局指令、false - 不忽略所有全局指令
+
+  ignoreGlobal ：boolean，ture - 忽略所有全局指令、false - 不忽略所有全局指令
 
   ```java
   // eg:
@@ -450,15 +453,15 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
   config.setIgnoreGlobal(true);
   ```
 
-##### 其他
+#### 3.3.5、其他
 
   具体看InstructConfig中方法实现。
 
 
 
-#### InstructEntity.java 指令实体
+### 3.4、InstructEntity.java 指令实体
 
-##### 属性定义
+#### 3.4.1、属性定义
 | 属性| 类型 |含义|
 |----|---|---|
 | name | String | 指令名称，不能为空 |
@@ -473,14 +476,14 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
 | other | Object | 指令其他数据，需要指令附带一些数据可以利用这个属性 |
 | callback | IInstructReceiver | 指令回调闭包，void onInstructReceive(Activity act, String key, InstructEntity instruct); |
 
-##### 方法定义
+#### 3.4.2、方法定义
 以上属性均支持getter、setter方式调用
 
 
 
-#### IInstructReceiver.java 指令触发回调方法实体
+### 3.5、IInstructReceiver.java 指令触发回调方法实体
 
-##### onInstructReceive
+#### 3.5.1、onInstructReceive
 
   ```java
 void onInstructReceive(Activity act, String key, InstructEntity instruct);
@@ -491,10 +494,13 @@ InstructEntity callback指令回调闭包，指令触发时，若无在
 方法运行在BroadcastReceiver主线程中
 
 参数：
-  - act ：Activity，回调的Activity实体
-  - key ：String，指令key 即InstructEntity 的 name 属性
-  - instruct ：InstructEntity，指令实体
 
+  act ：Activity，回调的Activity实体
+
+  key ：String，指令key 即InstructEntity 的 name 属性
+
+  instruct ：InstructEntity，指令实体
+  
   ```java
 // eg：
 InstructConfig config = new InstructConfig();
