@@ -70,44 +70,7 @@ adb reboot
 设置     |com.rokid.glass.settings
 
 
-<h2 id="5">5.	语音指令配置方法：</h2>
-系统支持使用语音指令控制app的行为以及系统的行为（如回到桌面）配置方法如下：
-修改`/system/etc/local_order_config.json`，其中典型的一条配置如下
-
-```
-{
-"name": "相册APP",
-"packageName": "com.rokid.glass.gallery",
-"order": [
-   {
-        "prefixWord": "打开",
-        "entryWord": "相册",
-        "useVague": false,
-        "useRegular": false,
-        "entryRegular": "",
-        "target": {
-            "type": "activity",
-                "content":"com.rokid.glass.gallery.MainActivity",
-            "param": "",
-            "event": ""
-         }
-    }
-]
-},
-
-```
-
-* name：app的名字，仅标识用；
-* packageName：需要语音指令控制的app的packagename；
-* order：
-	* prefixWord/entryWord/useVague:这三个配置项为一组，prefixWord和entryWord为具体的语音指令。useVague为是否开启模糊查询，ture表示开启，则语音中包含prefixWord和entryWord关键字即可命中；false表示关闭，则需要语音与prefixWord和entryWord完全一致才可以命中；
-	* useRegular和entryRegular为一组，表示是否使用正则表达式。当useRegular配置为true时，则使用正则表达式，prefixWord和entryWord的配置将失效，使用entryRegular中的正则表达式来匹配语音指令。
-* target：
-	* basicOrder：由语音助手直接执行的全局指令，目前支持“go_launcher”，表示返回桌面；
-	* type/content：type支持“activity”“service”等，content为具体的activity或者service，将由语音助手拉起；
-	* param/event: 由语音助手发送的消息，由用户自定义，用于控制不同的行为。
-
-<h2 id="5">6. 特别注意事项：</h2>
+<h2 id="5">5. 特别注意事项：</h2>
 为节省功耗，保护屏幕，延长设备使用时间，app设计开发和眼镜使用时需注意以下几点：
 
 * 如无必要，不要在app中加屏幕常亮锁，系统默认30s超时灭屏；

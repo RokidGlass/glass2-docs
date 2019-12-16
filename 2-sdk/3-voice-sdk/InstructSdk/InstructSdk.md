@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.1.4**
+## **Version：instructsdk 1.1.5**
 
 ## 接口使用示例demo
 
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.1.4'
+      implementation 'com.rokid.ai.glass:instructsdk:1.1.5'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
     <type>pom</type>
   </dependency>
   ```
@@ -198,9 +198,105 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
   无需用户添加，SDK会自动添加到指令集中
 
+- 指令拼音设置：
+  * sdk中会对指令名做默认的拼音转化，但是针对部分多音字，更确切的读音需要用户自己设置
+  * eg：重心、重复
+  
+  ```java
+  // 添加指令    
+  @Override
+  public InstructConfig configInstruct() {
+      InstructConfig config = new InstructConfig();
+      config.setActionKey(HomeTestAct.class.getName() + InstructConfig.ACTION_SUFFIX)
+              .addInstructEntity(
+                      new InstructEntity()
+                              .setName("重心")
+                              .setPinYin("zhong xin")
+                              .setShowTips(true)
+                              .setCallback(new IInstructReceiver() {
+                                  @Override
+                                  public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
+                                      // 指令处理回调
+                                  }
+                              })
+              )
+              .addInstructEntity(
+                      new InstructEntity()
+                              .setName("重复")
+                              .setPinYin("chong fu")
+                              .setShowTips(true)
+                              .setCallback(new IInstructReceiver() {
+                                  @Override
+                                  public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
+                                      // 指令处理回调
+                                  }
+                              })
+              );
+  
+      return config;
+  }
+  
+  ```
 
 
 ### 三、API参考
+
+#### VoiceInstruction中公共方法说明
+
+##### VoiceInstruction中初始化 (必须在客户端的Application中调用)
+
+  ```java
+      /**
+       * 是否关闭语音指令开关， 默认开启，继承可以选择关闭
+       *
+       * @param appContext Application级别Context
+       */
+      @Override
+      public static void init(Context appContext) {
+      }
+  ```
+
+##### VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用)
+
+  ```java
+      /**
+       * 根据解决方案重启语音助手服务
+       *
+       * @param context Activity级别的Context
+       * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
+       * @param configAllUseSolution true：所有配置全部使用解决方案的 false：所有配置使用系统默认和解决方案混合（默认推荐false）
+       * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
+       */
+      public static void restartVoiceServer(Context context, boolean mustRestart, boolean configAllUseSolution, final InstructionManager instructionManager) {
+      }
+  ```
+
+##### 添加全局指令
+
+  ```java
+      /**
+       * 添加全局指令配置
+       *
+       * @param entity InstructEntity实体
+       * @return
+       */
+      public VoiceInstruction addGlobalInstruct(InstructEntity entity){
+      }
+  ```
+
+##### 去除全局指令
+
+  ```java
+      /**
+       * 清除某个全局指令配置
+       *
+       * @param entity InstructEntity实体
+       * @return
+       */
+      public VoiceInstruction removeGlobalInstruct(InstructEntity entity){
+      }
+  ```
+
 
 #### Activity中需要Override方法说明
 
