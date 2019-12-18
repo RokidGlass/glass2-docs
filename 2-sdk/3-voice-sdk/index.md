@@ -26,7 +26,7 @@ Glass 语音助手作为独立的系统App内置到Glass系统中，暂不支持
 
 某些三方应用如果需要较高指令命中精度，那么需要从Rokid方面获取专业训练过模型。语音助手同时支持第三方应用解决方案配置自己的专用模型。
 
-注：需要语音助手 2.0.5版本及以上
+注：需要语音助手 2.0.6版本及以上
 
 #### 2.2.1、 获取专用模型配置文件包，包内格式基本如果下
 ```shell
@@ -76,9 +76,9 @@ eg：某app 包名为 com.aaa.bbb.ccc, 则其配置主目录应该为 /sdcard/co
 针对第二种方式，或者其他用法导致需要重启语音助手服务以重新读取解决方案私有配置的，语音助手提供重启语音服务功能。
 
 重启语音服务功能使用方式：
-1. 集成语音离线指令SDK instructsdk 1.1.5 版本及以上 
+1. 集成语音离线指令SDK instructsdk 1.1.6 版本及以上 
    
-   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.5'
+   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.6'
 2. 使用VoiceInstruction中根据解决方案重启语音助手服务功能：
    ```java
    /**
@@ -93,3 +93,20 @@ eg：某app 包名为 com.aaa.bbb.ccc, 则其配置主目录应该为 /sdcard/co
    }
    ```
    注：重启服务前，请务必先将自己的专用模型配置添加到解决方案配置主目录，否则可能导致语音助手服务重启失败，干扰其他应用使用语音离线指令功能！
+
+#### 2.2.5、 恢复语音助手标准模型
+如果第三方解决方案app使用重启语音助手语音服务方式替换了语音助手的模型配置，需要确保离开其私有模型使用环境时，语音助手能够切换回标准模型，否则会影响其他应用使用语音指令。
+恢复语音助手标准模型功能使用方式：
+1. 集成语音离线指令SDK instructsdk 1.1.6 版本及以上 
+   
+   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.6'
+2. 使用VoiceInstruction中根据解决方案重启语音助手服务功能：
+   ```java
+   /**
+   * 重启语音助手服务以恢复标准模型配置
+   *
+   * @param context
+   */
+   public static void recoveryVoiceServer(Context context) {
+   }
+   ```

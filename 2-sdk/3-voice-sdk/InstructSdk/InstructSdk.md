@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.1.5**
+## **Version：instructsdk 1.1.6**
 
 ## 接口使用示例demo
 
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.1.5'
+      implementation 'com.rokid.ai.glass:instructsdk:1.1.6'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
     <type>pom</type>
   </dependency>
   ```
@@ -237,6 +237,12 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   }
   
   ```
+#### 2.3.6、动态设置指令说明：
+默认的指令会在Activity onCreate() 时全部配置好，UI相关会在onStart()时生成，onResume()时会将指令设置到语音助手，onPause()时会将指令从语音助手中移除。
+
+如果指令需要异步数据才能生成，生成后可以使用 InstructionManager对象的sendWtWords()进行指令设置。
+
+tips UI可以使用 InstructionManager对象的setTipsContent(String content)方法来设置显示内容
 
 
 ## 三、API参考
@@ -259,19 +265,32 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 #### 3.1.2、VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用)
 
   ```java
-      /**
-       * 根据解决方案重启语音助手服务
-       *
-       * @param context Activity级别的Context
-       * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
-       * @param configAllUseSolution true：所有配置全部使用解决方案的 false：所有配置使用系统默认和解决方案混合（默认推荐false）
-       * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
-       */
-      public static void restartVoiceServer(Context context, boolean mustRestart, boolean configAllUseSolution, final InstructionManager instructionManager) {
-      }
+    /**
+    * 根据解决方案重启语音助手服务
+    *
+    * @param context Activity级别的Context
+    * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
+    * @param configAllUseSolution true：所有配置全部使用解决方案的 false：素有配置使用系统默认和解决方案混合（默认推荐false）
+    * @param notifyRealRestart    true：真正重启才触发后续的指令词设置 false：只要有广播返回就触发后续的指令词设置（默认推荐false）
+    * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
+    */
+    public static void restartVoiceServer(Context context, boolean mustRestart, boolean configAllUseSolution, final boolean notifyRealRestart, final InstructionManager instructionManager) {
+    }
   ```
 
-#### 3.1.3、添加全局指令
+#### 3.1.3、恢复标准模型配置
+
+  ```java
+    /**
+    * 重启语音助手服务以恢复标准模型配置
+    *
+    * @param context
+    */
+    public static void recoveryVoiceServer(Context context) {
+    }
+  ```
+
+#### 3.1.4、添加全局指令
 
   ```java
       /**
@@ -284,7 +303,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       }
   ```
 
-#### 3.1.4、去除全局指令
+#### 3.1.5、去除全局指令
 
   ```java
       /**
@@ -358,7 +377,6 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       super.onInstrucHelpReady();
   }
   ```
-
 
 
 ### 3.3、InstructConfig.java 指令配置实体
