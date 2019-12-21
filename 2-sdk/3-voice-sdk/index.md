@@ -76,20 +76,22 @@ eg：某app 包名为 com.aaa.bbb.ccc, 则其配置主目录应该为 /sdcard/co
 针对第二种方式，或者其他用法导致需要重启语音助手服务以重新读取解决方案私有配置的，语音助手提供重启语音服务功能。
 
 重启语音服务功能使用方式：
-1. 集成语音离线指令SDK instructsdk 1.1.6 版本及以上 
+1. 集成语音离线指令SDK instructsdk 1.1.8 版本及以上 
    
-   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.6'
+   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.8'
 2. 使用VoiceInstruction中根据解决方案重启语音助手服务功能：
    ```java
    /**
-    * 根据解决方案重启语音助手服务
-    *
-    * @param context Activity级别的Context
-    * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
-    * @param configAllUseSolution true：所有配置全部使用解决方案的 false：所有配置使用系统默认和解决方案混合（默认推荐false）
-    * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
-    */
-   public static void restartVoiceServer(Context context, boolean mustRestart, boolean configAllUseSolution, final InstructionManager instructionManager) {
+   * 根据解决方案重启语音助手服务
+   *
+   * @param context Activity级别的Context
+   * @param packageName  String 解决方案名称，默认为app的packageName， 如果为空时，则表示标准模型配置
+   * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
+   * @param configAllUseSolution true：所有配置全部使用解决方案的 false：素有配置使用系统默认和解决方案混合（默认推荐false）
+   * @param notifyRealRestart    true：真正重启才触发后续的指令词设置 false：只要有广播返回就触发后续的指令词设置（默认推荐false）
+   * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
+   */
+   public static void restartVoiceServer(Context context, String packageName, boolean mustRestart, boolean configAllUseSolution, final boolean notifyRealRestart, final InstructionManager instructionManager) {
    }
    ```
    注：重启服务前，请务必先将自己的专用模型配置添加到解决方案配置主目录，否则可能导致语音助手服务重启失败，干扰其他应用使用语音离线指令功能！
@@ -97,9 +99,9 @@ eg：某app 包名为 com.aaa.bbb.ccc, 则其配置主目录应该为 /sdcard/co
 #### 2.2.5、 恢复语音助手标准模型
 如果第三方解决方案app使用重启语音助手语音服务方式替换了语音助手的模型配置，需要确保离开其私有模型使用环境时，语音助手能够切换回标准模型，否则会影响其他应用使用语音指令。
 恢复语音助手标准模型功能使用方式：
-1. 集成语音离线指令SDK instructsdk 1.1.6 版本及以上 
+1. 集成语音离线指令SDK instructsdk 1.1.8 版本及以上 
    
-   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.6'
+   eg：implementation 'com.rokid.ai.glass:instructsdk:1.1.8'
 2. 使用VoiceInstruction中根据解决方案重启语音助手服务功能：
    ```java
    /**

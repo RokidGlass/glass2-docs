@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.1.6**
+## **Version：instructsdk 1.1.8**
 
 ## 接口使用示例demo
 
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.1.6'
+      implementation 'com.rokid.ai.glass:instructsdk:1.1.8'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.8</version>
     <type>pom</type>
   </dependency>
   ```
@@ -541,3 +541,298 @@ config.addInstructEntity(
 )
   ```
 
+### 3.6、InstructionManager.java 语音指令管理实体
+
+#### 3.6.1、InstructionManager实例获取
+InstructionManager 实例会在客户端Activity继承的InstructionActivity中生成：
+可以直接通过mInstructionManager来调用
+  ```java
+  public abstract class InstructionActivity extends Activity implements IInstruction{
+
+      protected InstructionManager mInstructionManager;
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          mInstructionManager = new InstructionManager(this, closeInstruction(), configInstruct(), mInstructionListener);
+      }
+  }
+  ```
+
+#### 3.6.2、setTipsContent 设置tips显示文案
+
+  ```java
+  public void setTipsContent(String content);
+  ```
+  设置tips条显示的指令提示内容。
+
+参数：
+
+  content ：String，tips显示文案
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.setTipsContent("开始播放/停止播放/回到首页");
+  }
+  ```
+
+#### 3.6.3、showHelpLayer 显示帮助浮层
+
+  ```java
+  public void showHelpLayer();
+  ```
+  设置显示帮助浮层。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.showHelpLayer();
+  }
+  ```
+
+#### 3.6.4、hideHelpLayer 关闭帮助浮层
+
+  ```java
+  public void hideHelpLayer();
+  ```
+  设置关闭帮助浮层。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.hideHelpLayer();
+  }
+  ```
+
+#### 3.6.5、showTipsLayer 显示tips浮层
+
+  ```java
+  public void showTipsLayer();
+  ```
+  设置显示tips浮层。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.showTipsLayer();
+  }
+  ```
+
+#### 3.6.6、hideTipsLayer 关闭tips浮层
+
+  ```java
+  public void hideTipsLayer();
+  ```
+  设置关闭tips浮层。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.hideTipsLayer();
+  }
+  ```
+
+#### 3.6.7、setMenuShowing 设置是否显示tip条中的"显示菜单"字样
+
+  ```java
+  public void setMenuShowing(boolean showing);
+  ```
+  设置是否显示tip条中的"显示菜单"字样。建议在InstructionActivity的onInstrucUiReady()方法中调用
+
+参数：
+
+  showing ：boolean，true 显示，false 不显示
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.setMenuShowing(false);
+  }
+  ```
+
+#### 3.6.8、isHelpLayerShowing 帮助浮层是否正在展示
+
+  ```java
+  public boolean isHelpLayerShowing();
+  ```
+  帮助浮层是否正在展示， true 展示，false 未展示。
+
+
+#### 3.6.9、sendWtWords 将指令词设置到语音助手
+
+  ```java
+  public void sendWtWords();
+  ```
+  将指令词设置到语音助手，在InstructionActivity的onResume()方法中会默认调用，客户端也可以修改InstructConfig后，单独调用此方法再次设置语音指令。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.removeInstruct("开始播放");
+      mInstructionManager.sendWtWords();
+  }
+  ```
+
+#### 3.6.10、clearWtWords 清除语音助手当前所有语音指令
+
+  ```java
+  public void clearWtWords();
+  ```
+  清除语音助手当前所有语音指令。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.clearWtWords();
+  }
+  ```
+
+#### 3.6.11、getInstructConfig 获取当前页面指令配置
+
+  ```java
+  public InstructConfig getInstructConfig();
+  ```
+  获取当前页面指令配置。
+
+
+#### 3.6.12、setInstructConfig 设置当前页面的指令配置
+
+  ```java
+  public void setInstructConfig(InstructConfig instructConfig);
+  ```
+  设置当前页面的指令配置，需要动态设置指令时使用。
+
+参数：
+
+  instructConfig ：InstructConfig，指令配置实体类
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.setInstructConfig(instructConfig);
+  }
+  ```
+
+#### 3.6.13、addInstructList 成组添加语音指令
+
+  ```java
+  public void addInstructList(List<InstructEntity> instructList);
+  ```
+  成组添加语音指令
+
+参数：
+
+  showinstructListing ：List<InstructEntity>，list指令组
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.addInstructList(instructList);
+  }
+  ```
+
+#### 3.6.14、addInstructEntity 单个添加语音指令
+
+  ```java
+  public void addInstructEntity(InstructEntity entity);
+  ```
+  单个添加语音指令
+
+参数：
+
+  entity ：InstructEntity，单个语音指令实例
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.addInstructEntity(entity);
+  }
+  ```
+
+#### 3.6.15、clearUserInstruct 清除用户级指令
+
+  ```java
+  public void clearUserInstruct();
+  ```
+  清除用户级指令，单独清除sdk端的指令配置，会在下次onResume()时生效，如需立即生效，需要调用InstructionManager的sendWtWords()方法。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.clearUserInstruct();
+
+      mInstructionManager.sendWtWords();
+  }
+  ```
+
+#### 3.6.16、clearGlobalInstruct 清除用户级指令
+
+  ```java
+  public void clearGlobalInstruct();
+  ```
+  清除全局级指令，单独清除sdk端的指令配置，会在下次onResume()时生效，如需立即生效，需要调用InstructionManager的sendWtWords()方法。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.clearGlobalInstruct();
+
+      mInstructionManager.sendWtWords();
+  }
+  ```
+
+#### 3.6.17、clearAllInstruct 清除用户级指令
+
+  ```java
+  public void clearAllInstruct();
+  ```
+  清除全部语音指令，单独清除sdk端的指令配置，会在下次onResume()时生效，如需立即生效，需要调用InstructionManager的sendWtWords()方法。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.clearAllInstruct();
+
+      mInstructionManager.sendWtWords();
+  }
+  ```
+
+
+#### 3.6.18、getInstructByName 通过指令名称来获取指令实体
+
+  ```java
+  public InstructEntity getInstructByName(String name);
+  ```
+  通过指令名称来获取指令实体
+
+参数：
+
+  name ：String，指令名称
+  return InstructEntity 指令实体
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.getInstructByName("开始播放");
+  }
+  ```
+
+#### 3.6.19、removeInstruct 清除单个指令
+
+  ```java
+  public boolean removeInstruct(String name);
+  ```
+  通过指令名称清除单个指令，单独清除sdk端的指令配置，会在下次onResume()时生效，如需立即生效，需要调用InstructionManager的sendWtWords()方法。
+
+参数：
+
+  name ：String，指令名称
+  return true，成功，false 清除失败或指令组中没有当前名称指令
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.removeInstruct("开始播放");
+  }
+  ```
