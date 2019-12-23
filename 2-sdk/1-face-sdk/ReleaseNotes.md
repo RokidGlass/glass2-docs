@@ -1,4 +1,13 @@
 # 版本更新信息
+## version 3.1.2
+### version 3.1.2.2
+* 1.faceDO 添加属性 faceRecogTime 该人脸做faceRecog算法的次数
+* 2.修复获取识别图片时遇到的偶现crash
+* 3.集成算法npu release版本
+* 4.优化每帧align次数
+* 5.添加大人脸优先策略
+* 6.算法模型更新，优化人脸检测
+* 7.数据库支持10000以上
 
 ## version 3.0.1
 ### 3.0.1.0
