@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.1.8**
+## **Version：instructsdk 1.2.8**
 
 ## 接口使用示例demo
 
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.1.8'
+      implementation 'com.rokid.ai.glass:instructsdk:1.2.8'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.1.8</version>
+    <version>1.2.8</version>
     <type>pom</type>
   </dependency>
   ```
@@ -237,6 +237,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   }
   
   ```
+
 #### 2.3.6、动态设置指令说明：
 默认的指令会在Activity onCreate() 时全部配置好，UI相关会在onStart()时生成，onResume()时会将指令设置到语音助手，onPause()时会将指令从语音助手中移除。
 
@@ -244,6 +245,19 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
 tips UI可以使用 InstructionManager对象的setTipsContent(String content)方法来设置显示内容
 
+#### 2.3.7、默认全局指令说明：
+Rokid Glass 二代系统中，默认设置了一些全局指令，在每个启动了语音指令的页面都可以使用。
+* 回到首页
+  * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
+  * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
+* 回到上一级
+  * 功能：返回上一个Activity页面，并关闭(finish)当前当前Activity；
+* 显示帮助
+  * 功能：弹出语音指令词帮助浮窗；
+  * 注意：默认指令，全局类型
+* 关闭帮助
+  * 功能：关闭语音指令词帮助浮窗；
+  * 注意：默认指令，全局类型
 
 ## 三、API参考
 
