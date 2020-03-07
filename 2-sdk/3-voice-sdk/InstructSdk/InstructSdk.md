@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.2.8**
+## **Version：instructsdk 1.3.1**
 
 ## 接口使用示例demo
 
@@ -11,7 +11,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
 
-附：语音助手RokidAiSdk需要v1.9.5版本以上。
+附：语音助手RokidAiSdk需要v2.1.0版本及以上。
 
   ```shell
   // 语音助手RokidAiSdk版本查看方式
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.2.8'
+      implementation 'com.rokid.ai.glass:instructsdk:1.3.1'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.2.8</version>
+    <version>1.3.1</version>
     <type>pom</type>
   </dependency>
   ```
@@ -90,8 +90,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 	    VoiceInstruction.getInstance().addGlobalInstruct(
 	            new InstructEntity()
 	                    .setGlobal(true)
-	                    .setName("返回")
-	                    .setPinYin("fan hui")
+                      .addEntityKey(new EntityKey("返回", "fan hui"))
+                      .addEntityKey(new EntityKey(EntityKey.Language.en, "back last page"))
 	                    .setCallback(new IInstructReceiver() {
 	                        @Override
 	                        public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
@@ -129,7 +129,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       config.setActionKey(HomeTestAct.class.getName() + InstructConfig.ACTION_SUFFIX)
               .addInstructEntity(
                       new InstructEntity()
-                              .setName("上一个")
+                              .addEntityKey(new EntityKey("上一个", null))
+                              .addEntityKey(new EntityKey(EntityKey.Language.en, "last one"))
                               .setShowTips(true)
                               .setCallback(new IInstructReceiver() {
                                   @Override
@@ -141,7 +142,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
               )
               .addInstructEntity(
                       new InstructEntity()
-                              .setName("下一个")
+                              .addEntityKey(new EntityKey("下一个", null))
+                              .addEntityKey(new EntityKey(EntityKey.Language.en, "next one"))
                               .setShowTips(true)
                               .setCallback(new IInstructReceiver() {
                                   @Override
@@ -153,7 +155,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
               )
               .addInstructEntity(
                       new InstructEntity()
-                              .setName("进入视频")
+                              .addEntityKey(new EntityKey("进入视频", null))
+                              .addEntityKey(new EntityKey(EntityKey.Language.en, "open video"))
                               .setShowTips(true)
                               .setIgnoreHelp(true)
                               .setCallback(new IInstructReceiver() {
@@ -193,13 +196,13 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   ```
   
 #### 2.3.4、默认帮助相关指令：
-  * 显示帮助
-  * 关闭帮助
+  * zh: 显示帮助  en: show help
+  * zh: 关闭帮助  en: close help
 
   无需用户添加，SDK会自动添加到指令集中
 
 #### 2.3.5、指令拼音设置：
-  * sdk中会对指令名做默认的拼音转化，但是针对部分多音字，更确切的读音需要用户自己设置
+  * sdk中会对中文指令名做默认的拼音转化，但是针对部分多音字，更确切的读音需要用户自己设置
   * eg：重心、重复
   
   ```java
@@ -210,8 +213,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
       config.setActionKey(HomeTestAct.class.getName() + InstructConfig.ACTION_SUFFIX)
               .addInstructEntity(
                       new InstructEntity()
-                              .setName("重心")
-                              .setPinYin("zhong xin")
+                              .addEntityKey(new EntityKey("重心", "zhong xin"))
+                              .addEntityKey(new EntityKey(EntityKey.Language.en, "Gravity Center"))
                               .setShowTips(true)
                               .setCallback(new IInstructReceiver() {
                                   @Override
@@ -222,8 +225,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
               )
               .addInstructEntity(
                       new InstructEntity()
-                              .setName("重复")
-                              .setPinYin("chong fu")
+                              .addEntityKey(new EntityKey("重复", "chong fu"))
+                              .addEntityKey(new EntityKey(EntityKey.Language.en, "repeat"))
                               .setShowTips(true)
                               .setCallback(new IInstructReceiver() {
                                   @Override
@@ -247,15 +250,15 @@ tips UI可以使用 InstructionManager对象的setTipsContent(String content)方
 
 #### 2.3.7、默认全局指令说明：
 Rokid Glass 二代系统中，默认设置了一些全局指令，在每个启动了语音指令的页面都可以使用。
-* 回到首页
+* zh：回到首页 en：back to home
   * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
-* 回到上一级
+* zh：回到上一级 en：back to upper page
   * 功能：返回上一个Activity页面，并关闭(finish)当前当前Activity；
-* 显示帮助
+* zh：显示帮助 en: show help
   * 功能：弹出语音指令词帮助浮窗；
   * 注意：默认指令，全局类型
-* 关闭帮助
+* zh：关闭帮助 en: close help
   * 功能：关闭语音指令词帮助浮窗；
   * 注意：默认指令，全局类型
 
@@ -276,7 +279,7 @@ Rokid Glass 二代系统中，默认设置了一些全局指令，在每个启�
       }
   ```
 
-#### 3.1.2、VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用)
+#### 3.1.2、VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用，中文环境使用)
 
   ```java
     /**
@@ -429,7 +432,8 @@ public InstructConfig addInstructEntity(InstructEntity entity);
 InstructConfig config = new InstructConfig();
 config.addInstructEntity(
         new InstructEntity()
-                .setName("确认")
+                .addEntityKey(new EntityKey("确认", "que ren"))
+                .addEntityKey(new EntityKey(EntityKey.Language.en, "make sure"))
                 .setShowTips(true)
                 .setIgnoreHelp(true)
                 .setCallback(new IInstructReceiver() {
@@ -460,12 +464,17 @@ public InstructConfig addInstructList(List<InstructEntity> instructList);
   ```java
 // eg:
 InstructConfig config = new InstructConfig();
-config.addInstructList(NumberTypeControler.doTypeControl("第", 3, 20, "页", "第3/4/5...19/20页", new NumberTypeControler.NumberTypeCallBack() {
-            @Override
-            public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
-                Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
-            }
-        }));
+config.addInstructList(NumberTypeControler.doTypeControl(3, 20,
+              new NumberTypeControler.NumberTypeCallBack() {
+                  @Override
+                  public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
+                      Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
+                  }
+              },
+              new NumberKey(EntityKey.Language.zh, "第", "页", "可以说第3/4.../20页"),
+              new NumberKey(EntityKey.Language.en, "the", "page", "the 3/4.../20 page")
+              )
+      );
   ```
 
 #### 3.3.4、setIgnoreGlobal
@@ -496,20 +505,82 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
 #### 3.4.1、属性定义
 | 属性| 类型 |含义|
 |----|---|---|
-| name | String | 指令名称，不能为空 |
-| type | String | 指令类型，默认为空 |
-| pinYin | String | 指令拼音，小写，单词之间为一个空格，会根据name自动生成，也可以自己指定。eg：指令”看书“ ，拼音为”kan shu“。 |
-| margins | float | 指令语音幅值，无需设置 |
+| keyMap | Map (EntityKey.Language, EntityKey) | 指令的识别key map，会根据系统语言来确定当前使用的EntityKey， 当前语音找不到对应的Key值时，使用中文zh 的 EntityKey |
 | global | boolean | 是否是全局指令，全局指令需要设定 |
 | showTips | boolean | 是否展示在指令提示浮条中，展示的需要设定 |
 | ignoreHelp | boolean | 是否不再帮助浮层中显示指令默认信息，不展示需要设置 |
 | ignoreSoundEffect | boolean | 是否忽略命中后发出的音效 |
-| helpContent | String | 提示文字，默认为指令name，如果设置，以此为高优先级 |
-| other | Object | 指令其他数据，需要指令附带一些数据可以利用这个属性 |
+| ignoreToast | boolean | 是否忽略命中后显示的Toast内容提示 |
 | callback | IInstructReceiver | 指令回调闭包，void onInstructReceive(Activity act, String key, InstructEntity instruct); |
 
 #### 3.4.2、方法定义
-以上属性均支持getter、setter方式调用
+以上属性均支持getter、setter方式调用 
+
+keyMap 支持 添加、查找、删除 EntityKey 操作
+
+```java
+
+    /**
+     * 根据语言来查询对应的指令key
+     * 
+     * @param language EntityKey.Language 查询语言
+     * @return EntityKey 指令key
+     */
+    public EntityKey getEntityKey(EntityKey.Language language);
+
+        /**
+     * 添加EntityKey到keyMap
+     * 
+     * @param key EntityKey
+     * @return InstructEntity
+     */
+    public InstructEntity addEntityKey(EntityKey key);
+
+    /**
+     * 根据语言来删除对应的指令key
+     *
+     * @param language EntityKey.Language 查询语言
+     * @return InstructEntity 指令key
+     */
+    public InstructEntity removeEntityKey(EntityKey.Language language);
+
+```
+
+#### 3.4.3、EntityKey.java 指令key定义
+| 属性| 类型 |含义|
+|----|---|---|
+| language | EntityKey.Language | EntityKey 语言类型，不能为空，zh为中文、en为英文 |
+| name | String | EntityKey名称，不能为空 |
+| pinYin | String | EntityKey拼音，小写，单词之间为一个空格，会根据name自动生成，也可以自己指定。eg：指令”看书“ ，拼音为”kan shu“。 |
+| margins | float | EntityKey语音幅值，无需设置 |
+| other | Object | EntityKey其他数据，需要指令附带一些数据可以利用这个属性 |
+| helpContent | String | EntityKey提示文字，默认为EntityKey name，如果设置，以此为高优先级 |
+
+#### 3.4.4、EntityKey.java 方法定义
+EntityKey 以上属性均支持getter、setter方式调用
+
+EntityKey 构造函数：
+  
+```java
+
+    /**
+     * 创建制定语言的EntityKey
+     * 
+     * @param language EntityKey.Language 语言类型
+     * @param name EntityKey名称，不能为空
+     */
+    public EntityKey(Language language, String name);
+
+    /**
+     * 创建中文的EntityKey
+     *
+     * @param name EntityKey名称
+     * @param pinYin EntityKey拼音，小写，单词之间为一个空格，会根据name自动生成，也可以自己指定。
+     */
+    public EntityKey(String name, String pinYin);
+
+
+```
 
 
 
@@ -538,7 +609,8 @@ InstructEntity callback指令回调闭包，指令触发时，若无在
 InstructConfig config = new InstructConfig();
 config.addInstructEntity(
         new InstructEntity()
-                .setName("确认")
+                .addEntityKey(new EntityKey("确认", "que ren"))
+                .addEntityKey(new EntityKey(EntityKey.Language.en, "make sure"))
                 .setShowTips(true)
                 .setIgnoreHelp(true)
                 .setCallback(new IInstructReceiver() {
@@ -683,7 +755,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   ```java
 // eg:
   if (mInstructionManager != null) {
-      mInstructionManager.removeInstruct("开始播放");
+      mInstructionManager.removeInstruct(EntityKey.Language.zh, "开始播放");
       mInstructionManager.sendWtWords();
   }
   ```
@@ -816,37 +888,39 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
 #### 3.6.18、getInstructByName 通过指令名称来获取指令实体
 
   ```java
-  public InstructEntity getInstructByName(String name);
+  public InstructEntity getInstructByName(EntityKey.Language language, String name);
   ```
   通过指令名称来获取指令实体
 
 参数：
 
+  language : EntityKey.Language 语言类型
   name ：String，指令名称
   return InstructEntity 指令实体
 
   ```java
 // eg:
   if (mInstructionManager != null) {
-      mInstructionManager.getInstructByName("开始播放");
+      mInstructionManager.getInstructByName(EntityKey.Language.zh, "开始播放");
   }
   ```
 
 #### 3.6.19、removeInstruct 清除单个指令
 
   ```java
-  public boolean removeInstruct(String name);
+  public boolean removeInstruct(EntityKey.Language language, String name);
   ```
   通过指令名称清除单个指令，单独清除sdk端的指令配置，会在下次onResume()时生效，如需立即生效，需要调用InstructionManager的sendWtWords()方法。
 
 参数：
 
+  language : EntityKey.Language 语言类型
   name ：String，指令名称
   return true，成功，false 清除失败或指令组中没有当前名称指令
 
   ```java
 // eg:
   if (mInstructionManager != null) {
-      mInstructionManager.removeInstruct("开始播放");
+      mInstructionManager.removeInstruct(EntityKey.Language.zh, "开始播放");
   }
   ```
