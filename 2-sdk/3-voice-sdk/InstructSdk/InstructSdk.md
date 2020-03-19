@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.3.1**
+## **Version：instructsdk 1.3.2**
 
 ## 接口使用示例demo
 
@@ -11,7 +11,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
 
-附：语音助手RokidAiSdk需要v2.1.0版本及以上。
+附：语音助手RokidAiSdk需要v2.2.1版本及以上。
 
   ```shell
   // 语音助手RokidAiSdk版本查看方式
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.3.1'
+      implementation 'com.rokid.ai.glass:instructsdk:1.3.2'
   }
   ```
 - Jcenter Maven信息
@@ -50,11 +50,13 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.3.1</version>
+    <version>1.3.2</version>
     <type>pom</type>
   </dependency>
   ```
 
+- 修改时间
+  2020年03月19日18:00
 
 
 ### 2.2、 AndroidManifest.xml及Application配置
@@ -199,7 +201,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   * zh: 显示帮助  en: show help
   * zh: 关闭帮助  en: close help
 
-  无需用户添加，SDK会自动添加到指令集中
+  无需用户添加，语言助手会自动添加到系统指令集中
 
 #### 2.3.5、指令拼音设置：
   * sdk中会对中文指令名做默认的拼音转化，但是针对部分多音字，更确切的读音需要用户自己设置
@@ -248,19 +250,31 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
 tips UI可以使用 InstructionManager对象的setTipsContent(String content)方法来设置显示内容
 
-#### 2.3.7、默认全局指令说明：
-Rokid Glass 二代系统中，默认设置了一些全局指令，在每个启动了语音指令的页面都可以使用。
+#### 2.3.7、系统指令说明：
+Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页面都可以使用。
 * zh：回到首页 en：back to home
   * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
-* zh：回到上一级 en：back to upper page
+* zh：回到上一级 en：back upper level
   * 功能：返回上一个Activity页面，并关闭(finish)当前当前Activity；
 * zh：显示帮助 en: show help
   * 功能：弹出语音指令词帮助浮窗；
-  * 注意：默认指令，全局类型
+  * 注意：系统指令，全局类型
 * zh：关闭帮助 en: close help
   * 功能：关闭语音指令词帮助浮窗；
-  * 注意：默认指令，全局类型
+  * 注意：系统指令，全局类型
+* zh：音量大一点 en: Turn up the volume
+  * 功能：音量调高一档；
+  * 注意：系统指令，全局类型
+* zh：音量小一点 en: Turn down the volume
+  * 功能：音量调低一档；
+  * 注意：系统指令，全局类型
+* zh：亮度大一点 en: Turn up the brightness
+  * 功能：亮度调高一档；
+  * 注意：系统指令，全局类型
+* zh：亮度小一点 en: Turn down the brightness
+  * 功能：亮度调低一档；
+  * 注意：系统指令，全局类型
 
 ## 三、API参考
 
@@ -494,7 +508,25 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
   config.setIgnoreGlobal(true);
   ```
 
-#### 3.3.5、其他
+#### 3.3.5、setIgnoreSystem
+
+  ```java
+public void setIgnoreSystem(boolean ignoreSystem);
+  ```
+  控制当前页面是否忽略所有系统指令。
+
+参数：
+
+  ignoreGlobal ：boolean，ture - 忽略所有系统指令、false - 不忽略所有系统指令
+
+  ```java
+  // eg:
+  InstructConfig config = new InstructConfig();
+  config.setIgnoreSystem(true);
+  ```
+
+
+#### 3.3.6、其他
 
   具体看InstructConfig中方法实现。
 
