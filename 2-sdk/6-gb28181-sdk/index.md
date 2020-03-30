@@ -85,21 +85,21 @@ Rokid GB28181SDK 提供SIP连接GB28181服务器加推送本地视频（YUV420P-
     ```
     **参数说明：**
 
-    | SIP参数 |  说明|
-    | --- | --- |
-    | localPort|本地SIP端口|
-    | protocol|传输协议 |
-    | serverID|sip 服务器ID |
-    | domain|sip 服务器域 |
-    | server|sip 服务器地址 |
-    | serverPort|sip 服务器端口 |
-    | userName|sip 用户名 |
-    | fromUser|sip用户认证ID |
-    | password|密码|
-    | heartbeat|心跳周期 |
-    | validOfRegistation|注册有效期 |
-    | MaxHeartBeatTimeout|最大心跳超时次数 |
-    | wlan|是否使用无线|
+| SIP参数 |  说明|
+| --- | --- |
+| localPort|本地SIP端口|
+| protocol|传输协议 |
+| serverID|sip 服务器ID |
+| domain|sip 服务器域 |
+| server|sip 服务器地址 |
+| serverPort|sip 服务器端口 |
+| userName|sip 用户名 |
+| fromUser|sip用户认证ID |
+| password|密码|
+| heartbeat|心跳周期 |
+| validOfRegistation|注册有效期 |
+| MaxHeartBeatTimeout|最大心跳超时次数 |
+| wlan|是否使用无线|
 
 
 
@@ -122,18 +122,18 @@ Rokid GB28181SDK 提供SIP连接GB28181服务器加推送本地视频（YUV420P-
     ```
     **说明：**
 
-    | 音视频参数 | 说明 |
-    | --- | --- |
-    |  audioBitRate|音频比特率 |
-    |  audioChannel|音频声道数|
-    |  audioChannelMode|音频模式|
-    |  audioFormat|音频位宽|
-    |  audioSampleRate|音频采样率 |
-    |  videoWidth|视频长度 |
-    |  videoHeight|视频宽度|
-    |  videoBitRate|视频比特率|
-    |  videoFrameRate|视频帧率|
-    |  videoGOP|视频I帧间隔|
+| 音视频参数 | 说明 |
+| --- | --- |
+|  audioBitRate|音频比特率 |
+|  audioChannel|音频声道数|
+|  audioChannelMode|音频模式|
+|  audioFormat|音频位宽|
+|  audioSampleRate|音频采样率 |
+|  videoWidth|视频长度 |
+|  videoHeight|视频宽度|
+|  videoBitRate|视频比特率|
+|  videoFrameRate|视频帧率|
+|  videoGOP|视频I帧间隔|
 
 ### 3.2 GB28181引擎操作
 
