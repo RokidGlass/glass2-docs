@@ -23,6 +23,9 @@ Rokid Glass文档
     - Glass UI
         - [使用说明](2-sdk/5-ui-sdk/index.md)
         - [版本信息](2-sdk/5-ui-sdk/ReleaseNotes.md)
+    - GB28181
+        - [使用说明](2-sdk/6-gb28181-sdk/index.md)
+        - [版本信息](2-sdk/6-gb28181-sdk/ReleaseNotes.md)
 * 公版App
     - Android
         - [使用说明](3-app/1-android/index.md)
