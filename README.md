@@ -1,6 +1,6 @@
 # Glass（二代）软件开发文档
 
-[![Build Status](https://travis-ci.org/Rokid/glass-docs.svg?branch=master)](https://travis-ci.org/Rokid/glass-docs)
+[![Build Status](https://travis-ci.org/RokidGlass/glass2-docs.svg?branch=master)](https://travis-ci.org/github/RokidGlass/glass2-docs)
 
 ## 介绍
 -   本文档面向Rokid Glass的开发者，介绍了开发者如何在Rokid Glass上开发应用。
