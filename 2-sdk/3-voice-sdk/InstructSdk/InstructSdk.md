@@ -1,7 +1,7 @@
 
 # 语音离线指令SDK
 
-## **Version：instructsdk 1.3.2**
+## **Version：instructsdk 1.3.4**
 
 ## 接口使用示例demo
 
@@ -41,7 +41,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.3.2'
+      implementation 'com.rokid.ai.glass:instructsdk:1.3.4'
   }
   ```
 - Jcenter Maven信息
@@ -50,13 +50,13 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.3.2</version>
+    <version>1.3.4</version>
     <type>pom</type>
   </dependency>
   ```
 
 - 修改时间
-  2020年03月19日18:00
+  2020年04月2日18:00
 
 
 ### 2.2、 AndroidManifest.xml及Application配置
@@ -252,10 +252,10 @@ tips UI可以使用 InstructionManager对象的setTipsContent(String content)方
 
 #### 2.3.7、系统指令说明：
 Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页面都可以使用。
-* zh：回到首页 en：back to home
+* zh：回到桌面 en：Navigate Home
   * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
-* zh：回到上一级 en：back upper level
+* zh：回到上一级 en：Navigate Back
   * 功能：返回上一个Activity页面，并关闭(finish)当前当前Activity；
 * zh：显示帮助 en: show help
   * 功能：弹出语音指令词帮助浮窗；
@@ -263,16 +263,16 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
 * zh：关闭帮助 en: close help
   * 功能：关闭语音指令词帮助浮窗；
   * 注意：系统指令，全局类型
-* zh：音量大一点 en: Turn up the volume
+* zh：大点声 en: Volume Up
   * 功能：音量调高一档；
   * 注意：系统指令，全局类型
-* zh：音量小一点 en: Turn down the volume
+* zh：小点声 en: Volume Down
   * 功能：音量调低一档；
   * 注意：系统指令，全局类型
-* zh：亮度大一点 en: Turn up the brightness
+* zh：增强亮度 en: Brightness Up
   * 功能：亮度调高一档；
   * 注意：系统指令，全局类型
-* zh：亮度小一点 en: Turn down the brightness
+* zh：降低亮度 en: Brightness Down
   * 功能：亮度调低一档；
   * 注意：系统指令，全局类型
 
@@ -956,3 +956,57 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
       mInstructionManager.removeInstruct(EntityKey.Language.zh, "开始播放");
   }
   ```
+
+### 3.6、连续数字相关指令
+
+#### 3.6.1、NumberTypeControler 连续数字指令使用
+
+  ```java
+public static List<InstructEntity> doTypeControl(int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
+  ```
+
+通过给定的数字指令配置，返回成组的数字指令实体InstructEntity，并衔接好指令触发后的CallBack处理。
+
+参数：
+
+  startNumber ：int，初始的数字
+
+  endNumber ：int，结束的数字
+
+  cb ：NumberTypeCallBack，指令触发后的处理实体
+
+  keyList ：NumberKey，中文、英文及其他文字的指令实体EntityKey
+  
+  ```java
+// eg：
+InstructConfig config = new InstructConfig();
+config.addInstructList(NumberTypeControler.doTypeControl(3, 20,
+              new NumberTypeControler.NumberTypeCallBack() {
+                  @Override
+                  public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
+                      Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
+                  }
+              },
+              new NumberKey(EntityKey.Language.zh, "第", "页", "可以说第3/4.../20页"),
+              new NumberKey(EntityKey.Language.en, "the", "page", "the 3/4.../20 page")
+              )
+      );
+  ```
+
+#### 3.6.2、NumberKey 数字指令实体EntityKey
+
+  ```java
+public NumberKey(EntityKey.Language language, String prefix, String subfix, String helpContent)
+  ```
+
+数字指令实体EntityKey。
+
+参数：
+
+  language ：EntityKey.Language，语言类型
+
+  prefix ：String，数字指令前缀，eg“第二页”的“第”
+
+  subfix ：String，数字指令后缀，eg“第二页”的“页”
+
+  helpContent ：String，帮助提示，eg“可以说第...页”
