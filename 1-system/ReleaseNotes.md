@@ -1,755 +1,561 @@
-# 1.1.1-20191018-150000
+# 0.7.1-20200409-100002
 #### 系统更新
 
-* 标准版恢复双击back回home的配置，切换方案时随方案切换；
-* 增加pvt2设备的alignment参数配置（19年33周生产）；
-* 更新系统APP：
-	* RokidGallery：修复bug
-		1. 手动删除图片后，语音打开相册，列表中仍存在之前删除的图片；
-		2. 图库查看图片界面，语音激活：删除图片,大图查看照片数仍为N；
-		3. 相册界面调用camera进行录像，录像结束后语音打开相册，相册内容显示为空 等；
+修复开机引导时投屏导致系统重启的问题；
+* 修复总是弹出Camera固件更新窗口的问题；
+* 系统App更新：
+	* RokidGallery：
+		1. 整体样式修改，添加图片放大查看功能；
 	* RokidSettings：
-		1. 修改二维码为原始camera API2接口;
-		2. 去掉头部控制入口;
-		3. 修改切换方案不读取配置json文件；
-	* RokidLauncher:
-		1. 修改launcher.json的加载规则，先删除 db 中launcher.json对应的应用;
-		2. 修复 bug: 进入launcher后wifi图标非未连接而是正常连接的图标；
-	* RokidCamera：
-		1. 修复摄像界面发送语音：“若琪我要拍照”，界面不会跳转到拍照界面 ;
-	* RokidAiCloudApp
-		1. 修正FadeInTextView跑马灯动画在跳帧情况下会丢字的bug；
-
-#### 若琪眼镜APP
-* 未更新
-
-# 1.1.0-20191012-150000
-#### 系统更新
-
-* 移除双击back回home配置，改为应用自行处理；
-* 修复投屏时点击tp无效问题；
-* 新增根据prop值切换解决方案的功能；
-* 更新系统APP：
-	* RokidActivation：
-		1. 解决连接WFD后，无法连接手机的BUG；
-	* RokidSettings：
-		1. 增加切换方案功能;
-		2. 增加设置人脸识别阈值功能;
-	* RokidLauncher:
-		1. 增加第三方安装应用，存入 db。重启加载时，和 launch.json 配置白名单应用进行合并;
-		2. launch.json 修改 reset 配置，修改重置应用逻辑；
-	* RokidCameraDeploy
-		1. 图片Base64编解码改成NO_WRAP;
-		2. 从设置中读取识别分数阈值，缺省值为80;
-		3. 支持通过配置文件切换在线和离线识别;
+		1. 扫码联网添加扫描通用wifi二维码；
+		2. Wifi和列表页按ui修改；
 	* RokidAiSdk
-		1. 增加切换方案功能；
+		1. 优化初始化配置逻辑，去除部分默认测试配置，防止干扰正确逻辑；
+		2. 中文环境添加部分启动流程日志，方便查找问题点；
 
 #### 若琪眼镜APP
 * 未更新
 
-# 1.0.1-20190912-150000
+# 0.7.0-20200402-100002
 #### 系统更新
 
-* 修复WFD海备斯投屏器一直连不上的问题；
-* OTA页面增加升级手机app的提示；
-* 更新系统APP：
-	* RokidActivation：
-		1. websocket动态设置端口;
-		2. 升级faceSDK到14;
-		3. 在数据库中增加一个字段来表明正在执行人脸特征库批量添加操作;
-		4. 其他功能模块crash导致websocket端口占用问题，暂时挂起，未做处理;
-		5. 修复杀进程导致websocket端口被占用导致server启动失败配对失败；
+* 新增p-sensor控制亮灭屏功能；
+* 新增低电提醒弹窗，15%和5%弹窗；
+* 修改BT配对弹窗样式和AlertDialog默认弹窗样式；
+* OTA功能重构，优化UI，增加强制更新，定时更新功能，优化英文UI；
+* 系统App更新：
+	* RokidDocument：
+		1. 语音指令词支持100以上的指令；
+		2. 解决pdf查看存在左侧直接跳到右侧问题；
 	* RokidSettings：
-		1. 扫码联网，同时获取uniqueId,转存至Activation;
-		2. 兼容绑定若琪账号id;
-		3. fix media play position problem;
-		4. 修改设置中时区的英文翻译;
-		5. 修改获取序列号为直接读取属性值;
-		6. WIFI扫描连接新的网络时，实际已连接成功，但页面提示连接失败;
-		7. 扫码解析时间戳;
-	* RokidRemoteCooperation:[FIX] 眼镜连接TPLink-5Gwifi，无法连接外网时使用远程协作一直crash;
-	* RokidCameraDeploy
-		1. 正在进行批量添加人脸，使用标记控制人脸识别是否开启;
-		2. 人脸SDK升级到14，修复正在升级状态值错误判断;
-		3. 通过拦截触摸事件，应用层播放音效，修复单人识别和多人识别界面同一方向触摸两次不触发音效问题;
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v4.1.3**
-
-1. 在生成二维码页面增加手机状态获取权限检查，对无权限情况crash做保护；
-2. 在登陆、切换设备、登出时做若琪账号设备解绑，修复一个账号绑定多设备时，主叫拨打已显示的绑定设备，无法拨通；
-3. 升级人脸SDK到14；
-4. 在扫码配网中添加是否配网标识，用来区分不传uniqueId时是重新配网还是扫老版本手机app；
-5. [fix] 在没有若琪设备绑定时，登出不需要解绑；
-6. 修复若琪账号登出后，解绑设备异常；
-7. 修改心跳间隔为1分钟。
-
-
-# 1.0.0-20190829-150000
-#### 系统更新
-* 更新系统APP：
+		1. 添加时区设置；
 	* RokidLauncher：
-		1. 解决replace package 图标显示问题；
-		2. 解决中英文切换问题；
-		3. 去除进入和退出应用系统声音；
-	* RokidGallery：解决相册在非第一张图片时进入全屏浏览，无法左右滑动；
+		1. 修复直接运行应用，在桌面上 icon 不见的问题
+	* RokidRPlus
+		1. fix[23766] 眼镜端成员列表中成员的昵称只能显示前5个字，且无省略号
+		2. fix[23767] 眼镜端开启摄像头共享的确认界面双击back键，界面处理错误
+		3. fix[23762] 超过6人参加的会议，眼镜端点击tp查看人员，只能看到6个，没有提示用户可滑动查看其他人
+		4. fix[23792] 手机端发起白板涂鸦后又发起共享屏幕，眼镜端不会显示，PC端显示正常
+		5. fix[23817]眼镜端屏幕分享或者摄像头共享，都会自动弹出会议成员列表，影响体验
+		6. fix[23811]PC端和手机端长时间处于白板涂鸦，眼镜端扫码进入会议，长按触摸板，提示多人协作无响应，一会儿又提示多人协作已停止运行
+		7. fix[23808]眼镜端共享摄像头过程中返回到桌面，进入设置切换语言，返回多人协作会提示会议异常退出会议
+		8. fix[23809]眼镜端系统语言为英文，多人协作界面仍为中文
+		9. fix[23820]眼镜端停止屏幕共享/停止摄像头共享的确认界面，需要对当前会议状态做判断
+		10. fix[23595]共享屏幕的截屏提示显示不美观
+		11. fix(23848):眼镜端打开功能菜单界面，此时网络中断自动退出会议后界面仍停留在菜单界面
+	* RokidCamera
+		1. 新增拍照分辨率选择；
+	* RokidAiSdk
+		1. 更新中文底层lothal系列so到1.3.0.4版本，优化大规模指令设置性能；
+		2. 优化语音指令帮助浮层UI，优化系统指令判定逻辑；
+
+#### 若琪眼镜APP
+* 未更新
+
+# 0.6.5-20200327-100003
+#### 系统更新
+
+* 移除预装的远程协作应用；
+* 修复远程协作浮窗显示花屏问题；
+* 系统裁剪，裁剪掉增加4G支持时引入的一些不必要的包，节省系统空间约120M；
+* 系统App更新：
+	* RokidDocument：
+		1. 添加pdf详情上下翻十页功能；
+		2. 图片和pdf查看一级不显示缩略图，主页按钮状态等细节优化；
+	* RokidSettings：
+		1. 升级语音sdk，适配英文文案；
+		2. 添加开机引导，中英文切换界面样式修改；
+	* RokidGallery：
+		1. 修改上传的文件在相册不显示，添加显示DCIM/Picture文件夹下的文件；
+		2. 字体大小改为不随系统改变；
+	* RokidRPlus
+		1. [FIX][23707]关闭眼镜WIFI扫码加入会议提示加入失败后，打开眼镜WIFI会自动加入会议
+		2. [FIX][23727]共享屏幕界面处理错误，再次共享提示网络错误自动退出会议
+		3. fix[23754] 手机端共享摄像头时扫码加入会议，眼镜端显示为手机端正在屏幕共享
+		4. fix[23762] 超过6人参加的会议，眼镜端点击tp查看人员，只能看到6个，没有提示用户可滑动查看其他人员的标示
+		5. fix[23766] 眼镜端成员列表中成员的昵称只能显示前5个字，且无省略号
+		6. fix[23770]手机和眼镜端同时在会议中，手机端发起屏幕共享，眼镜端挂断重新加入会议后，眼镜端显示摄像共享
+		7. fix[23767]眼镜端开启摄像头共享的确认界面双击back键，界面处理错误
+		8. 二代眼镜增加语音，屏蔽全局的指令
+	* RokidCameraDeploy
+		1. [feat]: 支持英文指令，翻译部分未翻译文案；
+		2. [fix][23751]: 按照标准适配方案修改二代人脸识别应用UI；
+	* RokidLauncher
+		1. 增加中英文语音；
+
+#### 若琪眼镜APP
+* 无
+
+
+# 0.6.4-20200319-100002
+#### 系统更新
+* 取消usb设备授权提示窗，直接通过；
+* 取消dock上的power键短按亮灭屏功能；
+* 完善投屏工具，支持投系统声音，提供GUI图形化操作界面，详见注意事项；
+* 系统App更新：
+	* RokidDocument：
+		1. 语音sdk升级，多语言英文适配支持；
+		* 文件删除，tp按键等功能增加；
+		* 添加与手机app文件传输功能；
+		* 禅道问题修复；
+	* RokidSettings：
+		1. 多语言英文适配；
+		2. 语音sdk升级支持英文；
+		3. 长按返回键唤起音量调节添加自动关闭功能；
+	* RokidAiSdk
+		1. 语音助手添加帮助系统浮层UI及相关逻辑，添加音效、Toast样式;
+		* 添加各种系统权限到Manifest文件,完成声音修改、亮度修改、返回键处理等各种指令具体操作功能;
+		* 添加底层SDK初始化成功后自动设置系统指令逻辑;
+		* 优化在非Activity场景下的UI自动适配逻辑;
+	* RokidGallery：
+		1. 多语言英文适配；
+		2. 语音sdk升级支持英文；
+	* RokidRPlus
+		1. 会议时间不准确问题修复，增加超过上限提示，但是时间显示先不做处理(已与设计确认)
+		2. [FIX][23684]在会议中途眼镜端加入会议，显示的会议持续时长与其他端不一致
+		3. [FIX][23715]眼镜端上方icon一行没对齐，不够美观
+		4. [FIX][23716]眼镜端在电子白板过程中加入会议，白板退出后再次打开，所有与会者均无法正常画出笔画
+		5. [FIX][23707]关闭眼镜WIFI扫码加入会议提示加入失败后，打开眼镜WIFI会自动加入会议
+		6. [FIX][23727]共享屏幕界面处理错误，再次共享提示网络错误自动退出会议
+	* RokidProvision：
+		1. 替换中文介绍视频；
+		2. 增加 UI 适配 ；
+
+#### 若琪眼镜APP
+
+* 无
+
+# 0.6.3-20200312-100002
+#### 系统更新
+* 修复相机白平衡模式控制逻辑问题；
+* 增加Mic录音音量的增益；
+* 更新Camera 固件，支持3200x2400 2688x1512分辨率输出；
+* 长按back键弹出系统调节音量界面；
+* 增加接收udp广播的服务，便于投屏软件自动连接；
+* 系统App更新：
+	* RokidDocument：
+		1. 卡顿优化；
+		* 修改显示样式成每页显示12格；
+		* 添加文件名滚动等功能
+	* RokidLauncher：
+		1. 添加移动网络各状态图标；
+	* RokidSettings：
+		1. 判断没有dongle不显示移动网络item；
+	* RokidAiSdk
+		1. 更新最新版本shank前端信号处理模块，优化jni编译逻辑;
+		* 优化多语言网络状态变化处理分发逻辑;
+		* 二代系统底层提升录音声音幅度，语音助手修改前端信号处理增幅配置，从8改为1;
+	* RokidRPlus
+		1. [FIX][23631]眼镜端共享摄像头后近距离取景，手机端查看会出现失帧屏幕闪烁的情况；
+		2. [FIX][23623]多人协作过程中双击back键，界面处理错误；
+		3. [FIX][23616]未开启wifi，扫描会议二维码，处于loading状态下，退出再次进入，扫描二维码后会进入不存在的会议；
+		4. [FIX][23607]眼镜端接入会议后再关闭wifi，回到多人协作进行共享视频等操作会导致crash；
+		5. [FIX][23601]多方会议，手机端和pc端断开会议后，眼镜端点击TP出现空指针crash；
+		6. [FIX][23598]左上角有“远程协作中”，建议修改为“多人协作中”；
+		7. [FIX][23587]远程协作执行摄像头共享，出现crash；
+		8. 增加屏幕共享的时候，开启wallpaper(二代支持)；
+		9. 修改会议人员列表UI；
+		10. 增加共享摄像头、屏幕共享、白板涂鸦互顶逻辑；
+
+# 0.6.2-20200305-100002
+#### 系统更新
+
+* 调整系统权限控制，允许第三方app录制系统扬声器声音；
+* 替换网络检查的网址为国内可访问网址，保证系统WIFI状态正常；
+* 去除录屏时弹出的提醒窗口，默认允许；
+* 修改系统density值为320；
+* OTA检查系统更新超时时，增加网络错误提醒的页面；
+* 系统App更新：
+	* RokidCameraDeploy：
+		* [fix] 修复在线识别在无人脸特征时无法识别bug；
+	* RokidDocument：
+		* 修改主页显示样式；
+		* 主页分页改为每屏12页；
+	* RokidLauncher：
+		* 增加状态栏WIFI连上但不能连接外网的图标提醒；
+	* RokidAiSdk
+		* 接入Rokid 语音前端模块相关so，开发相关jni及java工具类代码;
+		* 调整整体编译环境，提升各依赖版本;
+		* 更新Shanks前端算法架构最新so及头文件，优化1、2代眼镜配置逻辑；
+#### 若琪眼镜APP
+
+* 无
+
+# 0.6.1-20200229-100002
+#### 系统更新
+
+* 新增usb 4G dongle支持；
+* system分区增大到2G；
+* 合并amlogic patch，解决AR导览App花屏问题；
+* 合并amlogic patch, 优化camera进程CPU负载；
+* 解决因应用崩溃导致多路camera不可用的问题；
+* 移除看见app，新增我的文件app；
+* 移除Luban，新增RokidRPlus；
+* 系统App更新：
+	* RokidSettings：
+		* 添加4G网络开关；
+		* Wifi连接成功添加显示连接wifi名称；
+		* 添加中英文切换功能；
+		* 关于本机添加显示眼镜sn；
+	* RokidDocument，实现如下功能：
+		* 主页九宫格展示sdcard/Documents下的音视频和pdf文件列表；
+		* 文件列表通过语音打开文件和翻页跳转；
+		* 文件列表锚点选中文件；
+		* 视频文件打开和播放暂停；
+		* 图片文件打开和缩放查看，缩略图展示当前位置，锁定画面；
+		* pdf文件打开和缩放查看，锁定画面，缩略图展示当前位置；
+		* pdf文件查看页，翻页和跳转页面，展示当前页码；
+		* 多语言支持，切换英文后支持show help中的英文指令；
+	* RokidLauncher：
+		* 连接4G网络时状态栏添加4G网络状态显示；
+		* 更新launcher白名单；
+	* RokidRPlus：
+		* 扫码进入会议；
+		* 会议人员列表，会议计时，长按隐藏或显示人员列表,会议人员状态更新；
+		* Back菜单(回到桌面，挂断)；
+		* 显示涂鸦(刚加入会议，还无法显示以前的涂鸦(待做))；
+	* RokidAiSdk
+		* 修改语音助手整体架构，支持多语言指令功能;
+		* 英文离线指令方面引入灵云英文离线asr SDK，完成账号校验、数据传递、结果控制等各流程;
+
+#### 若琪眼镜APP
+* 无
+
+# 0.6.0-20200113-100003
+#### 系统更新
+
+* 移除HDMI cec，修复插拔可能导致system ANR的问题；
+* 修复投屏过程中息屏，眼镜上会闪现camera画面的问题；
+* 拔掉眼镜后，只回到launcher，不杀掉正在用camera的app，防止多路崩溃；
+* Ota UI修改，并添加升级进度提示；
+* 根据Gold Sample重新调整alignment参数；
+* 合并amlogic patch，修复插拔眼镜语音不可用问题；
+* 系统App更新：
+	* RokidCamera:
+		* 语音指令SDK 提升为1.2.8版本；
+		* 去除app端全局指令设置，改由语音指令sdk统一处理；
+		* 全局指令库中去除“开始录像”指令；
+		* 优化PerformCamera逻辑，解决连续拍照会状态卡死的bug；
+	* RokidSettings：
+		* 回到首页功能统一改为结束后台应用；
+		* 重启后网络列表无数据添加loading加载；
+		* 图标替换界面调整；
+	* RokidGallery：
+		* Imu内存和cpu性能优化；
+		* 偶现崩溃问题修复；
+		* 末尾删除图片后，位置错误问题修复；
+	* RokidLook：
+		* 内存性能优化；
+	* RokidLauncher：
+		* 修改状态栏样式，状态栏在右边显示；
+	* RokidLuban：
+		* 屏幕共享默认请求small size，具体size由pc端控制；
+	* RokidCameraDeploy：
+		* 优化多人识别速度；
+		* ROI扩大到720p；
+		* 修改切换在线/离线识别语音指令；
+		* 在线识别增加兜底方案，如果在线识别失败，走离线；
+		* 修改配置文件，增加版本号管理，在线识别地址从配置文件读取；
+	* RokidAcitvation：
+		* 增加LRU cache，提高人脸查询效率；
+
+# 0.5.5-20200109-100002
+#### 系统更新
+
+* 修改缩小UI策略，仅连接rokid glass的时候进行ui缩放；
+* 修复西雨动画app在多路下无法工作的问题；
+* 投屏的camera背景不做裁剪，并支持APP实现双屏异显；
+* Ota UI修改，并添加升级进度提示；
+* 增加按power键息屏时，投屏界面也一起息屏的功能；
+* 修复快速插拔usb导致camera底层不可用的问题；
+* 恢复多路异常抛出机制；
+* 系统App更新：
+	* RokidAiSdk：
+		- lothal so 升级到1.2.1.8版本，修改标准版模型及指令校准文件;
+	* RokidCamera:
+		* 语音指令SDK 提升为1.2.7版本；
+		* 应用名称从“相机”改成“我的相机”；
+		* 相机页面添加“打开相册”指令；
+		* 去除相机页面“无线投屏”指令；
+	* RokidSettings：
+		* 网络连接添加正在连接状态和ip；
+		* 添加当前wifi状态；
+		* 图标替换界面调整；
+	* RokidGallery：
+		* 添加上一个下一个，ui调整；
+		* 删除图片和视频没有同步问题修复；
+		* 回到首页改为关闭应用，避免重新进入文件不同步问题；
+		* 测试一下打开第几个数字和实际效果是否对应（特别是超出9个以后）；
+		* imu Anr问题修复；
+	* RokidLook：
+		* 语音sdk更新；
+	* RokidLauncher：
+		* 修改状态栏样式；
+		* 拦截全局指令"回到首页"；
+		* 修改默认指令；
+	* RokidLuban：
+		* 增加usb插拔广播；
+		* 修改实时标注的实现方式；
+		* 增加显示对方画面，并调节显示分辨率；
+		* 屏幕共享放大窗口，收起窗口，动态调节背景投屏；
+	* RokidCameraWallpaper：
+		* 增加对USB camera插拔判断；
+	* RokidCameraDeploy：
+		* 使用LRU缓存人脸信息，避免频繁跨进程访问；
+		* 修改单人识别框位置；
+		* UI风格调整；
+	* RokidAcitvation：
+		* 修改sconfig为dconfig，优化特征库添加流程；
+
+#### 若琪眼镜APP
+* 无
+
+# 0.5.0-20200102-100000
+
+#### 系统更新
+
+* 当使用投屏时，vsync切换为软件30fps，结束投屏时，恢复硬件vsync 60fps；
+* 调整UI，整体向右下角缩小10%；
+* 调整系统默认字体大小为130%；
+* 当眼镜拔出时，如果当前正在使用相机、人脸识别、远程协助，则强制退出上述应用，回到Home；
+* 修复若干多路camera崩溃问题；
+* 调整alignment参数，因眼镜结构一致性差异，目前仅保证1号4号眼镜比较准，其他眼镜可能略有偏差；
+* 系统App更新：
+	* RokidAiSdk：
+		- 语音升级lothal 1.2.1.6 版本模型及相关配置;
+	* RokidCamera:
+		* 整体修改显示UI，提升语音指令sdk版本；
+		* 修改录像时，其他语音指令触发后的处理逻辑；
+	* RokidSettings：
+		* Imu添加指示进度条；
+		* 滑动速度提高；
+		* 选择项目等文案修改 ；
+		* toast样式修改；
+	* RokidGallery：
+		* Imu添加指示进度条；
+		* 滑动速度提高；
+		* 选择项目等文案修改 ；
+		* toast样式修改；		
+	* RokidLook：
+		* 名字改为“我的文件”；
+		* 替换电路图；
+	* RokidLauncher：
+		* 替换状态栏默认图标；
+		* zoom状态去除；
+		* 增加IMU状态焦点；
+		* MU角度可视化；
+		* 增加IMU 重置坐标语音；
+#### 若琪眼镜APP
+* 无
+
+# 0.4.1-20191226-100000
+
+#### 系统更新
+
+* 当adb断开时，发送广播关闭camera wallpaper；
+* 预置camera 固件升级程序，当插入camera并检测到固件更新时，将弹窗提醒更新；
+* 移除预装的远程协作app；
+* 系统App更新：
+	* RokidAiSdk：
+		- 语音升级lothal 1.2.1.5 版本模型及相关配置;
+  		-  添加Usb连接成功音效;
+  		-  改解决方案和开发者调试配置的拷贝逻辑，添加强制拷贝功能;
+	* RokidCamera:
+		* 修复语音操作，延时大的问题；
+	* RokidSettings：
+		* wifi和列表页面添加imu控制	* RokidGallery：
+	* RokidLook：
+		* 改为只有跟随模式；
+		* 添加缩略图；
+	* RokidGallery：
+		* 修复语音不识别问题
+	* RokidCameraDeploy：
+		* 支持阿里5G在线识别（识别库人脸数有限）；
+		* 支持语音和长按切换在线离线识别，语音命令为关闭离线识别，开启离线识别；
+		* 在线识别增加识别中抠图显示；
+		* 默认进入多人布控tab；
 	* RokidActivation：
-		1. 修改连接方式为udp+websocket,用长连接维护设备状态；
-		2. 将uniqueId和masterId绑定解绑区分开，uniqueId对应设备绑定，masterId对应账号登录；
-		3. 解绑uniqueId的同时，需要解绑master，远程协作不可再用； 
-		2. 登录若琪账号后，每次都发送广播,用于远程协作更新masterId状态；
-		3. UDP组播携带绑定时的时间戳，用于判定设备绑定先后顺序；
-	* RokidSettings：从master主分支合并代码；
-		1. 扫码解析时间戳；
-		2. 修复WIFI扫描连接新的网络时，实际已连接成功，但页面提示连接失败；
-		3. 修改获取序列号为直接读取属性值；
-		4. 修改设置中时区的英文翻译；
-		5. fix media play position problem；
-		6. 保持二维码分辨率1280*720；
-		7. 升级cameralib版本到2.1.6 ；
-		8. 修改About界面宽度；
-		9. fix bug: the large year limit set；
-		10. 解决扫描错误的wifi二维码显示连接成功，实际未连接；
-		11. 解决无法连接无密码的wifi网络。
-
-#### 若琪眼镜APP
-
-**RokidGlassMobileApp：v4.1.1**
-
-1. wifi二维码携带时间戳，用于判定设备绑定先后；
-2. 远程协作拨号列表，选择最后一个；
-3. 登出时，会解绑同一deviceTypeId的所有设备，保证每次只有一个绑定；
-4. 退出登录，先调用若琪SDK登出，再调用http接口解绑masterId。
-
-# 0.5.3-20190730-150000
-#### 系统更新
-* 更新system app
-	* RokidLauncher：版本重构；
-	* RokidCamera：修改App icon；
-	* RokidGallery：修改App icon；
-	* RokidCameraDeploy：修改App icon；
-	* RokidTranslate：修改App icon；
-	3. RokidAiSdk：
-		- 若琪语音浮层弹出时会重置系统灭屏时间；
-		- 抽出条件控制中心架构，统一管理PSensor、Pause Order、Usb Mic 三种条件，并根据不同版本可。
-		- 解决audioai 进程crash后，turenso进程无法完全重启的bug；
-	1. RokidGlassIME: 新增若琪眼镜输入法。
-	2. RokidRemoteCooperation：修改App icon；修复oom内存异常问题，使用系统输入法。
-	3. 
-	
-* OTA增加下载升级进度提示信息。
-* 默认使能USB MTP，眼镜连接PC时可以像U盘一样拷贝文件。（Windows10直接可用，Mac需要安装https://www.android.com/filetransfer/）。
-* 移除一些无用自带app，节省rom空间。
-* 修复自动曝光不可用问题
-* 合并创达更新：
-	* 使能usb-otg U盘功能；
-	* 更新WLAN固件，改善WFD功能稳定性；
-	* 修复电池电量跳变问题；
-	* 新增单天线配置；
-	* 修复蓝牙压力测试时打开失败的问题；
-	* 一套image同时兼容单双天线配置；
-* 更新PVT机器的alignment参数，提升人脸识别框精度；
-
-# 0.4.7-20190625-150001
-#### 系统更新
-
-* 更新system app
-
-	1. RokidSettings: 修改日期设置，最大年份到2037年；
-	2. RokidProvision：修改日期设置，最大年份到2037年；
-	3. RokidCameraDeploy：更新sdk，使用新的sdk校验方式，解决因日期设置错误导致人脸识别不能使用的问题；解决音量过小的问题
-
-* 增加系统property属性，用于人脸识别sdk校验
-#### 若琪眼镜APP
-
-**RokidGlassMobileApp：v4.0.6**
-
- 1. 更新菊风sdk，解决眼镜端音量过小的问题
-
-# 0.4.6-20190614-150000
-#### 系统更新
-
-* 更新system app
-
-	1. RokidGallery：修复以下bug
-		1. 在相册外语音控制删除图片或视频，删除后界面显示的文件统计数显示错误
-		2. 在2000+张图片和视频情况下，进入相册点击文件无法进行全屏显示，显示桌面且长时间卡顿
-		3. 播放视频中摘下再戴上眼镜，视频显示的时间为暂停播放的时间，但是再次播放却是从头开始播放
-		4. 播放视频时关闭/打开电源，播放界面会跳动闪烁一次
-		5. 多种场景下进入相册浏览界面，均会闪烁一次
-	2. RokidRemoteCooperation：修复以下bug
-		1. 通话时间运行长时间之后，时间显示有问题
-		2. glass向重新绑定手机号拨打远程协作，app显示的主叫号码错误
-		3. 循环执行多次glass呼叫手机app，偶现双方接通后无任何视频媒体
-	3. RokidAiSdk
-		1. 全面升级标准版本第三方配置方案。
-		2. 支持turen配置文件本地附加配置功能.
-		3. 修改离线指令运行配置，部分后羿功能释放成标准方案，通过配置控制。
+		* 集成新的人脸识别SDK v3.1.2.2；
 
 
-* 修改屏幕默认亮度为80%（OTA的不会更改用户设置的亮度，刷机版本默认亮度为80%）
-* 优化拉起原生投屏ui的方式
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v4.0.4**
-
-1. 修复若琪眼镜app切换到后台时，手机熄屏状态下glass拨打，手机端无任何反应，打开app也不会弹出接听界面
-
-
-# 0.4.5-20190610-150001
-#### 系统更新
-
-* 更新system app
-
-	1. RokidCameraDeploy：
-		* 单人脸识别，选择满足条件的最大人脸；
-		* 优化bitmap内存回收
-	2. RokidSettings：
-		* 增加投屏UI；
-		* 优化打开usb调试的点击次数
-	3. RokidGallery：
-		* 版本重构
-		* **需回归测试相册所有功能**
-
-* 更新关机音乐时长。
-* 更新开机动画。
-
-# 0.4.4-20190531-150000
-#### 系统更新
-
-* 更新system app
-
-	1. RokidCameraDeploy：
-		* 退出应用调用finish，并且杀进程；
-	2. RokidSettings：
-		* 增加恢复出厂设置倒计时功能，倒计时6s，可点击任意键取消；
-	3. RokidRemoteCooperation：
-		* 解决时间窗口显示异常问题；
-	4. RokidCamera：
-		* 解决相机内存泄漏；
-		* 解决压力测试中的空指针异常。
-
-* 替换了标准版新的关机动画；
-* 替换了关机充电的图标。
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v4.0.3**
-
-1. 增加远程协作涂鸦区域显示和隐藏的动画。
-
-# 0.4.3-20190524-150000
+# 0.4.0-20191220-100000
 
 #### 系统更新
 
-* 更新system app
+* 应用未设置对焦模式，则默认为定焦；
+* 更新sensor HAL，支持BNO080，原Ivensence不再支持；
+* 修复人脸识别preview倒置问题；
+* 优化TP点击和长按体验；
+* 默认UI改为720P，底层自适应不同光机；
+* 预置RokidCameraWallpaper，供投屏使用；
+* 移除翻译应用；
+* 系统App更新：
+	* RokidAiSdk：
+		- 添加语音服务重启成功后，发送重启成功广播的功能;
+  		-  解决方案添加配置文件（solution_config.json)深度配置功能，能够选择清除默认turen配置，只使用解决方案自己的配置;
+  		-  将RecordClientSocket 在重启前destroy，重启后重新创建；
+	* RokidCamera:
+		* 修改为定焦模式；
+		* 录像设置成录制720p；
+	* RokidSettings：
+		* 样式修改，语音和imu控制添加（网络和wifi列表页修改未添加，头控开关具体功能未添加）；
+	* RokidGallery：
+		* 样式修改，添加语音加头控功能；
+	* RokidLook：
+		* 初始版本开发，具体实现还要调整，可以只测下几个语音词的灵敏度；
+	* RokidCameraDeploy：
+		* 新增识别音效；
+		* 新增多人识别记录、识别人数，当前人脸数显示；
+		* 单人识别去除识别中状态；
+		* UI改版；
 
-	1. RokidActivation: 
-		* 人脸抠图放大为人脸框的两倍，并且上移1/8高;
-	2. RokidCameraDeploy：
-		* 修复对若琪说"关闭人脸识别"导致的crash；
-		* facelib升级到2.2.1.12；
-		* 人脸抠图放大为人脸框的两倍，并且上移1/8；
-	3. RokidSettings：
-		* 增加usb调试开关，在系统信息页面连续点击tp 6次以上调出开关页面；
-	4. RokidRemoteCooperation：
-		* 延迟展示来电显示，避免显示过期来电消息；
-		* 解决了通话过程中部分手机端画面会发生抖动的问题；
-		* 解决连接vysor时触摸事件引起crash的问题；
-		* alignment根据property获取，并在通话接通前发送给手机端；
-
-* 重新校准了DVT设备的alignment参数，解决人脸识别框偏移问题；
-* framework增加对Ethernet连接方式的支持，当有ethernet连接或断开时将发送系统广播；
-* 优化戴上、摘下眼镜的开关屏幕方案；
-* 增加user编译选项，默认关闭usb调试，关闭usb授权；
-* 修改OTA时英文文案。
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v4.0.2**
-
-1. 移除无人脸信息页面，合并到列表页，状态切换即可；
-2. UI修改，文案优化；
-3. facelib升级到2.2.1.12；
-4. 人脸框抠图放大到两倍，上移1/8；
-5. 拨打电话的语音提示；
-6. 切换后台的语音处理；
-7. 水滴屏适配；
-8. 增加Alignment动态适配。
-
-# 0.4.2-20190517-150000
+# 0.3.5-20191212-100000
 
 #### 系统更新
 
-* 更新system app
-
-	1. RokidActivation: 
-		* 通过MQTT方式来上报局域网地址，更加及时;
-		* 修复删除后返回剩余用户数目的BUG;
-		* 保存操作的延时改成300ms;
-	2. RokidCamera：解决连续进出相机拍照，无拍照音的BUG；
-   6. RokidGallery：修复bug：修复bug：播放暂停，播放完毕后时间变为00:00:00;
-   7. RokidAiSdk：
-	   * 修改眼镜语音公共版默认语音功能，使用双麦语音，添加60、120度两路波束配置；
-		* 优化所有turen配置文件，全部改为lothal，去除本地绝对路径；
-		* 后羿离线ASR添加“打开/关闭智能识别”、“打开/关闭智能布控”相关指令词；
-   7. RokidRemoteCooperation：
-		* 降低相机预览帧率至15，优化高功耗导致CPU高温的问题；
-		* 解决切换中英文导致应用crash的问题；
-		* 解决被动挂断电话后，屏幕闪现手机预览画面的问题；
-		* 将相机预览帧格式从YV12改为YUV\_420\_888的格式，以适配multi和passthrough两种情况；
-		* 修改返回桌面时显示的时间记录的背景色；
-
-* 修复按键卡顿导致关机的问题；
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v4.0.0**
-
-1. 修改离线状态时首页功能模块显示；
-2. 修复人脸特征管理全选删除，无法选择取消部分勾选；
-3. 修复上传某张特定人脸特征记录，界面显示扫描成功且上传成功，但实际并未保存记录；
-4. 修复非图片文件上传失败，文件被删除问题；
-5. 修复手机切后台，出现无文字的接听界面;
-6. 修复远程连接成功，本地没有视频显示；
-7. 修复黑屏状态接听，只有取消按钮；
-8. 其他异常情况处理;
+* 灭屏状态下长按power键也可关机；
+* 修复滑动tp时发送click事件的bug；
+* 默认音量改为60%；
+* 修改BT名字为CYCLOPS：SN后10位；
+* 修改默认字体；
+* WFD的video bitrate改为5M；
+* UI默认设为720P，移除UI的缩放平移操作；
+* 将NPU库加入白名单，允许第三方应用调用；
+* 增加日志收集工具，使用指南：https://gitlab.rokid-inc.com/xinyu.zhu/rklog-userguide
+* 系统App更新：
+	* RokidAiSdk：
+	  - 更新lothal 1.2.1.3版本系列so及配置文件；
+	  - 语音助手架构整体缩减与优化；
+	  - 完成语音助手根据客户端解决方案变化而适应性再重启的功能；
+	  - 完成语音助手标准版模型离线替换，二代全部换成4麦录音。
+	* RokidCamera:
+		* 添加语音本地指令SDK，完成相机所有语音离线指令；
+		* 相机整体UI布局进行优化，调整相机外部启动命令；
 
 
-# 0.4.1-20190515-150001（未部署OTA）
+# 0.3.4-20191205-100000
 
 #### 系统更新
 
-* 更新system app
+* 禁用屏幕亮度自动调节，降低CPU消耗；
+* 合并amlogic NPU patch，使能NPU；
+* 修复原生camera无法打开及拍照的问题；
+* 优化Camera HAL读取数据的流程，降低CPU消耗；
+* 默认不开启usb mtp模式，降低CPU消耗；
+* 修改更新app时（PackageInstaller）的默认UI；
+* 关机流程一开始即关闭LED灯，优化体验；
+* 系统App更新：
+	* RokidActivation：
+		* [FEAT] 适配FaceSDK 3.0.1.6，启用NPU；
+		* [FEAT] 支持人脸数据的增删改查；
+		* [FEAT] 实现ContentProvider，提供人脸识别app查询接口；
+		* [FEAT] 增加监听USB拔出事件，解压离线特征；
+	* RokidCameraDeploy: 
+		* [FEAT] 接入NPU版本，识别结果通过ContentProvider查询；人脸图显示圆角；
+		* [TEST] 引入测光逻辑；预览分辨率改为720P；
+		* [TEST] 一二代做兼容；
+		* [MDF] 替换应用图标；
 
-	1. RokidActivation: 
-		* 优化和手机APP连网操作
-		* 提供WEB服务器操作人脸特征库(在设置—本机信息—中查看web服务地址，在同一个局域网电脑上打开这个地址)
-	2. RokidSettings：
-	   * 解决开机进入设置-wifi,界面下方存在未命名热点；
-  	   * 修改设置中条目信息的最大字符串长度；
-	3. RokidCameraDeploy： 
-		* 修复未上传人脸库时打开人脸识别失败问题；
-		* 对名字和tag显示做长度限制，单人都为12个字符，多人为5个字符
-	4. RokidCamera：解决退出再进入相机，状态错误的BUG；
-	5. RokidTranslate：
-	   * 修复音频临时文件不断创建保存问题；
-      * 修改未联网文案；
-   6. RokidGallery：修复bug：播放视频过程中暂停/恢复后，播放完毕时显示视频时长为00:00:00
-   7. RokidRemoteCooperation：
-	   * 添加英文应用名和英文提示语句，适配系统语言为英文的情况，并将名字由远程协助改为远程协作；
-		* 添加通话时APP中开启关闭手机摄像头时的页面更新；
-		* 灭屏时，显示来电提醒时点亮屏幕；
-		* 添加来电铃声；
-		* 添加拨打电话时，所拨号码不存在的音频提示；
-		* 修复来电被动挂断后，来电提醒对话框未消失的问题；
-		* 修复通话过程中，因camera2预览数据长度异常引发的crash问题；
-		* 修复退出activity时，DialogPress未结束引发crash的问题；
 
-* 修复WFD时非中心点layer位置错误问题；
-* 修改power长按关机时间为3s；
-* 修改刷机第一次启动时加密文案错误。
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v3.1.3**
-
-1. 增加拨号和接听的语音；
-2. 通话界面增加通话状态的icon显示；
-3. 修复bug：
-	* 远程协助连接后，返回，异常退出；
-	* 在小米手机非全屏显示，视频底部存在白边；
-	* 通话应答时间设置为60s。
-
-4. 已知问题：
-	1. 在通话界面，开关前置摄像头，画面会刷新
-	2. 涂鸦的区域缩小放大功能未完善
-
-# 0.4.1-20190513-150000（未部署OTA）
+# 0.3.3-20191121-100000
 
 #### 系统更新
 
-* 更新system app
-
-	5. RokidActivation: 支持HTTP方式管理人脸特征库和文件管理；
-	7. RokidSettings：修复激活词文案显示错误；
-	9. RokidLauncher：增加远程协助图标管理；
-	10. RokidCameraDeploy： 指定数据库目录，不做拷贝；
-	11. RokidRemoteCooperation：新增远程协助功能。
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v3.1.1**
-
-1. 人脸信息通过Http增删改查；
-2. 调整交互；
-3. 增加远程协助功能；
+* 修改camera HAL，使开关自动对焦的指令能正确生效；
+* 修复远程协作时开启camera录像会导致camera应用退出的问题；
+* 蓝牙模式回退为sink模式；
+* 系统App更新：
+	* RokidActivation：修改拷贝离线特征库所在的路径；
+	* RokidSettings: 
+		* [FIX]清除数据时，按power键不会撤销该操作，按音量+-键会撤销该操作但同时会调节音量；
+		* [FIX]点击连接新网络进入二维码扫描界面，等待熄屏后按back键，提示“系统设置已停止运行” ；
+		* [ADD]增加从设置首页长按直接进入投屏；
+	* RokidAiSdk：
+		  - 更新lothal 1.2.1.1版本系列so；
+		  - 更新语音前端最新校正2/4麦配置文件；
 
 
-# 0.4.0-20190510-150000
+# 0.3.2-20191107-100000
 
 #### 系统更新
 
-* 更新system app
+* 修复monkey测试系统挂掉的问题；
+* 更新系统alignment参数；
+* 系统App更新：
+	* RokidActivation：支持人脸SDK 3.0版本；
+	* RokidSettings: 去掉IMU头控模块；
+	* RokidCameraDeploy：升级FaceSDK 3.0版本；调整alignment；
 
-	5. RokidCamera
-		* 解决在录像界面无法在线语音”拍照“的问题；
-		* 增加离线语音支持(打开相机，拍照，关闭相机)；
-	6. RokidGallery：增加语音识别支持；
-	7. RokidSettings：
-		* 添加系统音量、系统电量、系统休眠 三个本地技能；
-		* 添加显示WEB服务地址；
-	8. RokidAiSdk：
-		* 眼镜激活从压制系统、媒体声音改为只压制媒体声音；
-	   * 眼镜语音 key、secret 改成从系统 prop中读取，默认值兜底；
-	   * 眼镜语音添加 “返回桌面”等全局拦截处理；
-	9. RokidLauncher：增加远程协助、绘本识别、物体识别等app的icon；
+# 0.3.1-20191031-100000
 
-* 合并创达更新：更新camera tuning库，修复若干bug；
-* 修复OTA文案错误。
+* 当WFD设备不可用时，显示不可用状态，修复点击无效问题；
+* 修复系统没有按键音的问题；
+* 系统增加插入眼镜即唤醒亮屏的功能；
+* 移除RADA游戏；
+* 系统App更新：
+	* RokidActivation：支持人脸SDK 3.0版本；
+* 已知问题：
+	* 人脸识别易崩溃；
+	* 远程协助时开启camera录像会导致camera应用退出；
+	* 开机音乐有时会播放中断；
+	* P-sensor控制亮灭屏暂未实现；
 
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v3.1.10**
+# 0.3.0-20191024-100000
 
-1. 优化UI显示；
-2. 解决眼镜无法连接手机热点的问题。
+* 修复远程协助时按back键弹出选择Launcher的问题；
+* 系统App更新：
+	* RokidAiSdk：
+		1. 更新最新turen lothal相关so；
+		2. 更新二代眼镜最新算法模型配置文件；
+	* RokidAiCloudApp：修正FadeInTextView跑马灯动画在跳帧情况下会丢字的bug；
+	* RokidCamera：修改UI，适配二代；
+	* RokidTranslate：
+		1. 修复无法录音问题；
+		2. 修复录音后无法发起HTTP请求进行翻译的BUG；
+	* RokidActivation：去除socket和无用日志版本，解决CPU占用过高问题；
 
+# 0.2.0-20191022-100000
 
-# 0.3.9-20190430-150000
+* 新增开关机动画；
+* 修改系统弹出对话框默认样式；
+* WFD默认叠加camera预览，并改善WFD的流畅度；
+* 新增alignment参数，改善多人识别框准度；
+* 支持方案切换；
+* 一代标准版app均已预置；
 
-#### 系统更新
+# 0.1.0-20190830-100000
 
-* 更新system app
-
-	5. RokidActivation:支持文件管理HTTP模式
-	6. RokidProvision：修复稳定性bug
-
-* 更新多路camera服务，修复概率性录像失败问题；
-* 降低WFD时camera预览画面的亮度，模拟更真实环境；
-* 修改调节音量时的逻辑，使用PLATFORM_TELEVISION策略；
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v3.0.1**
-
-1. 根据设计完成新版人脸特征管理UI和交互
-2. 支持自定义相机拍照，前后置摄像头切换，对前置拍照照片作反镜像处理
-3. 批处理支持进度显示，完成后显示批处理数量结果
-4. 修改应用启动图标
-5. 修改文件管理为HTTP模式
-6. 代码优化，细节优化
-
-# 0.3.8-20190426-150000
-
-#### 系统更新
-
-* 更新system app
-
-	1. RokidCameraDeploy:
-		- 修复退出人脸识别，没有关闭camera的问题；
-		- 更新人脸识别sdk2.2.1.2；
-	2. RokidSettings：增加恢复出厂设置前的电量检查，低于25%将不允许恢复出厂设置 ；
-	3. RokidAiSdk：
-		- 修改眼镜语音默认 Activity 启动部分逻辑；
-		- 添加asr、nlp前置拦截器；
-		- 添加识别状态返回接口，可以区分SDK当前是使用在线还是离线识别状态；
-		- 添加通过配置自动设置自定义激活词功能；
-* 更新多路camera服务，优化功耗；
-
-* 优化OTA流程，提高稳定性；
-
-* 修改调节音量时的显示逻辑，不再显示震动 闹钟等文案；
-
-* 修复若干user版本的问题。
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v2.1.4**
-
-1. 修复无法批量导入图片问题；
-2. 增加绑定设备后同步眼镜端人脸数据；
-
-# 0.3.7-20190417-150000
-
-* 更新system app
-
-	1. RokidCameraDeploy:
-		- 解决卡在识别中界面的BUG；
-		- 解决出现”识别中“和”请对正脸“连续切换的问题；
-		- 解决偶现SDK中出现crash问题；
-	2. RokidActivation：
-		- 修改加密算法，解决部分机器无法绑定的问题；
-		- 增加和公版APP交互功能(特征库管理)；
-	3. RokidCamera：增加每次拍照后发送媒体库变化的广播；
-	4. RokidTranslate：状态动画修改，线程优化；
-* 调整关机充电百分比文字的位置；
-
-#### 若琪眼镜APP
-**RokidGlassMobileApp：v2.1.1**
-
-1. 增加对眼镜端在线状态的判断；
-2. 增加绑定眼镜后，同步眼镜端特征库功能；
-3. 修复其他一些异常crash；
-4. 修改设备管理UI，增加APP版本显示；
-
-2. 已知问题
-	- 在添加特征库过程如果出现失败，数据库没有重传机制。所以请确保在添加特征库过程，眼镜端保持在线。
-
-# 0.3.6-20190413-150001
-
-* 更新system app
-	1. RokidSetting：增加日期设置；
-	2. RokidLauncher：替换远程协助icon；
-	3. RokidProvision：修复bug；
-	4. RokidAiSdk：
-		- 修复client socket crash 后，再次连接，无法将数据传送到turen的bug；
-		- 修复turen error之后，再次使用主动拾音，只能吐出asr，不返回nlp的bug；
-	5. RokidCameraDeploy:
-		- 人脸识别库动态更新；
-		- 单人识别中针对区域识别；
-		- sdk版本2.2.0.6版本；
-	6. RokidActivation：
-		- 增加HTTP服务器，用来接收特征库数据库；
-		- 增加接收媒体库变化的广播；
-	7. RokidCamera：增加每次拍照后发送媒体库变化的广播
-* 更新创达改动：
-	- 修复多路cam录像花屏问题，偶现crash问题；
-	- 更新了正式release的modem和xbl分区；
-* 增大关机充电百分比文字的字体；
-* 关闭了自动时间和时区校准；
-* 增大了投屏显示的ui大小.
-
-# 0.3.5-20190404-150003
-
-* 更新system app
-	1. RokidSetting：移除后羿相关逻辑代码；
-	2. RokidLauncher：去除了单击back键启动相机的功能；
-	3. RokidProvision：增加了日期设置；
-	4. RokidAiSdk：
-		- 向外暴露每次激活时本次激活的激活词信息；
-		- 修复不激活无法使用离线asr的问题；
-		- 接入lothal 最近版本，修改录音方式到多路麦克录音。
-* power+vol减截屏时，打开camera拍摄一张图片叠加在ui上；
-
-* 增大了刷机后第一次启动时的默认音量；
-
-* 增加了多路mac的功能。
-# 0.3.4-20190329-150000
-
-*	合并创达patch：修复多路camera拍照后无法预览问题，支持API2的FULL level；
-*	修复音量加键偶现无反应的问题；
-*	增加sdk加密校验算法；
-*	修改OTA ui效果
-*	更新系统app
-	1.	RokidAiSdk
-		-	完成按键语音识别流程改为根据录音状态来判断是否显示浮层。
-		-	添加中英文错误Toast提示
-	2.	RokidCameradeploy
-		-	解决RokidCameraDeploy出现闪退问题
-		-	修改UI显示
-	3.	RokidSettings
-		-	增加恢复出厂设置选项
-		-	修改UI显示
+* 多路camera功能默认使能；
+* 裁剪部分系统APP；
+* 修改蓝牙名称及蓝牙默认可见时间；
+* APP crash和ANR时不再弹出对话框，改为直接kill，并弹toast提醒；
+* 当用户安装Launcher时，将用户Launcher作为默认Launcher；
+* APP更新：
+	* 远程协作：修复无法接通，无法退到后台等问题；
 
 
-# 0.3.2-20190322-150001
+# 0.0.2-20190816-100000
 
-* 合并创达patch
-	1. 回退最大音量修改patch，重新修改
-	2. 更新camera tunning库
-	3. 修复待机电流bug
-* 修复开机超过5分钟后进行蓝牙配对，不弹窗的问题
-* 根据RokidSetting的需求，修改双击tp的键值为ENTER
-* 更新系统app
-	1. RokidAiSdk
-		- System.Exit时 添加清空技能栈逻辑。
-		- 修复无法重新启动rokid语音功能的bug。
-		- 修复眼镜浮层偶现需要10秒才能关闭的bug。
-		- 优化语音相关的配置文件。
-	2. RokidAiSkillEngine
-		- 关闭在线状态的本地指令功能，其他app语音控制改为本地技能模式。
-		- 修复SkillEngine中技能栈上报链路出错的bug。
-		- 修复清空技能栈的同时没有清空clear 技能cache的bug。
-	3. RokidCameradeploy
-		- 增加语音控制。
-		- 修改使用CameraLabraity版本1.0.7.8功能。
-		- 修改UI显示，优化新朋友显示逻辑。
-	4. RokidLauncher : 修复电量显示bug，修改ui布局设计
-	5. RokidSettings
-		- 接入语音操作功能
-		- 在关于界面长按直接进入投屏
-		- 取消重启语音服务的toast
-	6. RokidTranslate：接入语音操作功能
-	7. RokidCamera：接入语音操作功能
-	8. RokidGallery: 接入语音操作功能
+* 使能蓝牙功能；
+* 修复关机充电bug；
+* 使用软件mjpeg解码，camera可用；
+* 集成系统OTA功能；
+* 集成眼镜输入法，并作为默认输入法；
+* APP更新：
+	* 眼镜Launcher：
+		1. replace package 图标显示问题；
+		2. 中英文切换；
+		3. 进入和退出应用系统声音；
+	* 相册:修复手机上传图片，眼镜端无法刷新问题；
 
-# 0.3.1-20190318-150000
+# 0.0.1-20190802-100000
 
-*	更新system app
-	1.	RokidSetting：系统信息页面长按tp可以直接拉起投射。
-	2.	RokidCameraDeploy：重新设计ui，增加单脸识别和多脸识别功能，支持若琪眼镜app导入人脸数据。 
-*	修复WFD时视频播放显示异常的问题
-*	关闭联网后自动时间校准
-
-# 0.3.0-20190315-150000
-
-*	更新system app
-	1.	RokidAiSdk：
-		*	添加后羿离线语音功能，语音SDK会通过包名是否存在探测当前设备是普通模式还是后羿模式。。
-		*	解决语音SDK初次启动偶现跨进程监听之后，无法自启动数据链接工具类的bug。
-		*	修复按键模式语音浮层首次弹出，无法自动关闭的bug。
-	2.	RokidSetting：
-		*	重新设计WIFI 扫描二维码模块，支持camera2 API
-		*	修改按键keycodedpadcenter
-		*	修改蓝牙可见性
-	3.	RokidGallery：修改按键keycodedpadcenter。
-	4.	RokidProvision：修改按键keycodedpadcenter。
-	5.	RokidCamera：修改录像尺寸为16：9，修改按键keycodedpadcenter。
-	6.	RokidActivation：增加特征库管理接收数据功能。
-	7.	RokidTranslate：修改按键keycodedpadcenter。
-
-*	合并TS的多路camera patch，可以支持多app同时打开camera。
-*	App crash或ANR时不再弹出dialog，改为toast提醒。
-*	增大系统property字节数到128。
-*	增加系统alignment和当前硬件版本的property属性。
-*	删除系统vr feature的xml配置文件。
-*	根据aligment参数调整WFD显示区域。
-*	修复截屏图像异常bug。
-*	修改系统TP点击按键键值，从ENTER改为DPAD_CENTER。
-*	修改蓝牙可见时间，当应用打开蓝牙未设置可见时间时，蓝牙始终可见。
-
-# 0.2.2-20190308-150056
-
-*	更新system app
-	1.	RokidAiSdk：
-		*	添加后羿模式，通过包名判断。
-		*	去除“没事了”激活词配置。
-		*	优化录音架构并修改代码，使用系统改动来规避麦克风权限占用问题。
-	2.	RokidAiSkillEngine：
-		*	统一校准离线asr字段。
-	3.	RokidGallery：更新头控sdk方向。
-	4.	RokidSetting：重新排列菜单项，更新头控sdk方向。
-	5.	RokidLauncher：更新电量显示，更新头控sdk方向。
-	6.	RokidRadashoot：更新IMU方向。
-*	修改了系统IMU方向，与普通手机竖放的方向一致，可兼容google vr app的方向。
-*	修复设置语言后，rokidkeyboard无法拉起的问题。
-*	放开系统Audio source HOTWORD的权限，可供语音助手使用。
-*	修改OTA服务启动时间，开机后直接启动，不再等待90s。
-
-# 0.2.1-20190301-150055
-
-*	更新system app
-	1.	RokidCamera: 修改左右滑动可以自由切换录像和拍照模式
-	2.	RokidAiSdk：
-		*	接入turen新架构版本lothal，完善全部jni。
-		*	添加中文离线asr识别功能。
-		*	通用版本中添加网络变动时自动切换成离线/在线功能。
-	3.	RokidAiSkillEngine：
-		*	添加本地指令处理离线asr命令功能。
-		*	本地指令中添加全局固定指令配置。
-		*	修改一些技能的默认本地指令配置。
-	4.	RokidActivation：添加登录后上报设备信息，可以在若琪APP设置中查看。
-	5.	RokidGallery：修改删除图片英文提示。
-	6.	RokidSetting：增加操作指南和时间设置入口，增加系统更新入口，拉起原生setting的功能改为直接拉起“显示”设置页面。
-	7.	RokidLauncher：修改游戏名称图标支持。
-	8.	RokidProvision：新增开机系统引导App，在刷完机第一次开机时或者恢复出厂设置后启动。
-	9.	RokidTranslate：修改新的交互方式。
-	10.	RokidRadashoot：替换为新游戏：突袭。
-	11.	CameraDeploy: 修改人脸最大识别数10，修复camera抢占问题。
-*	修改系统SystemUi默认通知展示的样式：修改长宽及背景色。
-*	重构OTA流程，移除了自动更新，需要用户在setting中主动发起。
-
-# 0.1.9-20190222-150053
-
-*	更新system app
-	1.	RokidCamera: 拍照分辨率改成16：9
-	2.	RokidAiSdk：
-		*	按键模式下，增添不佩戴无法使用限制。
-		*	更新代码并适配最新的RokidAiSkillEngine。
-		*	将本地指令迁移到RokidAiSkillEngine中。
-	3.	RokidAiSkillEngine：
-		*	架构完全重构，提出center、executor概念模块。
-		*  修改消息传递方式，预留出适应局域网传递接口。
-		*	增加本地技能搜索、nlp传递、拦截控制等相关功能。
-	4.	RokidAiCloudApp：
-		*	更新代码并适配最新的RokidAiSkillEngine。
-	5.	RokidCameraDeploy：支持中英文菜单
-*	back双击改回默认launcher，可以通过修改system/etc/SystemConfig.prop的配置自定义
-*	增加property属性，可以设置默认launcher
-*	增加后羿device目录，编译后羿专用镜像
-集成进RokidKeyboard，并设置成默认输入法，支持tp操作：前后滑动tp控制光标左右，音量键+-控制光标上下，点击tp确认输入。
-
-# 0.1.8-20190201-150052
-
-*	更新system app
-	1.	RokidCamera: 相机增加语音控制拍照和退出功能
-	2.	RokidCameraDeploy: 重构识别流程，优化识别速度
-	3.	RokidShow：移除
-*	移除自动时区功能
-*	增加realtek r8150/8152 USB网卡驱动支持
-*	ota更新增加dsp.img分区
-*	修复默认setting中投射无法点击的问题
-*	同步创达更新
-	1.	配合产线需求和PC工具，增加Psensor校准功能
-	2.	配合产线需求和PC工具，修改音频测试配置
-	3.	合入高通解决modem死机patch
-	4.	删除动态库中的冗余打印
-
-# 0.1.7-20190125-150044
-
-*	更新system app
-	1.	RokidActivation：修复文件管理的一些BUG
-	2.	RokidCamera: 修改切换到视频模式就停止语音，避免录像和语音服务冲突导致的crash
-	3.	RokidSettings: 增加在本机信息中启动原生设置的隐藏入口
-	4.	RokidGallery：修复了连续删除照片crash问题
-*	修改打开投射时，默认开启wfd功能
-*	修改setting，打开投射时获取按键焦点，方便tp控制wfd
-*	整理按键逻辑，修复双击返回键遗留bug
-*  修复zoom app 没有声音的bug
-
-# 0.1.4-20190118-150041
-
-*  更新system app 
-	1.	RokidAiCloudApp 伟明 -迁出engine、TtsService，并优化剩余代码
-	2.	RokidAiSdk/ 伟明 -接入ProximitySensor监听，完成眼镜语音助手“若琪”激活模式用户佩戴、不戴、息屏、亮屏等交互逻辑优化; 修复语音浮层弹出，屏幕亮起功能
-	3.	RokidCamera/ 恒锋 -
-	4.	RokidCameraDepoly/。 闻斌 无更新
-	5.	RokidGallery/。 杨剑 -1. 替换删除按钮​​.2. app那边删除图片同步
-	6.	RokidLauncher/。 杨剑 -修复时间显示的crash
-	7.	RokidSettings/ 恒锋 -
-	8.	RokidTranslate/。 恒锋 无更新
-	9.	RokidActivation 恒锋 -。
-* WFD功能增加camera 预览为背景
-* 双击返回不再回到launcher，改为发送intent广播 
-* ota升级成功后发送intent广播
-* 同步创达更新
-	1. remove gps hal
-	2. remove unused module in kernel
-	3. TRY_SINK to swap to UFP while plugging in a typec dev
-	4. modify audio ftm config file
-	5. update TP firmware
-	6. remove iop
-	7. resolve AutioTimeZone issue
-
-# 0.1.3-20190111-150040
-
-* 更新system app 
-	1.	RokidAiCloudApp 伟明 -修改tts通知名称，用新正则过滤所有技能tts
-	2.	RokidAiSdk/ 伟明 -语音唤醒词修改 rada为游戏、showroom为播放器，优化其他本地指令
-	3.	RokidCamera/ 恒锋 -录制过程中无法唤醒若琪; 录制视频的时间放在中间显眼的位置
-	4.	RokidCameraDepoly/。 闻斌 -识别不到的时候显示绿色框和“新朋友”文案
-	5.	RokidGallery/。 杨剑 -长按删除照片及视频交互方式改变。
-	6.	RokidLauncher/。 杨剑 -桌面支持头部运动浏览图标
-	7.	RokidSettings/ 恒锋 -设置新增头部运动开关，控制相册、桌面、设置列表的头部运动浏览。
-	8.	RokidTranslate/。 恒锋 无更新
-	9.	RokidActivation 恒锋 -集成mqtt，实现glass扫二维码后与账户绑定，glass语音触发可在app上看到相应信息；在APP端管理相册中的照片及视频。
-* 增加从persist分区读取seed并设置property的功能
-* 修复md5校验错误导致无法下载新的ota升级包的问题 
-* 修复ota弹窗显示不全的问题
-
-# 0.1.2-20180104-150033
-
-*	 更新system app（RokidAiCloudApp, RokidAiSdk, RokidCameraDeploy, RokidGallery, RokidLauncher，RokidTranslate），增加RokidActivation
-*	 增加rokid glass type id
-*	 修复keyevent 事件的上报逻辑
-*	 去除Psensor自动校正
-*	 更新IMU sensor校正
-*	 修改百度时区sdk的key
-*	 删除vendor下的Generic.kl，解决增量编译按键错误的问题
-
-
-
+* init版本；
+* 已集成系统APP：
+	* 眼镜Launcher；
+	* 相机；
+	* 相册；
+	* 人脸识别；
+	* 远程协助；
+	* 设置；
+	* 若琪语音；
