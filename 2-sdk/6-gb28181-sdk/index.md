@@ -1,7 +1,7 @@
 
 # GB28181 SDK
 
-## **Version：GB28181Engine 1.0.0**
+## **Version：GB28181Lib 1.0.0**
 
 ## 接口使用示例demo
 [Demo](https://github.com/RokidGlass/RokidGB28181Demo)
@@ -165,12 +165,13 @@ Rokid GB28181SDK 提供SIP连接GB28181服务器加推送本地视频（YUV420P-
 
     **参数说明：**
 
-      参数|含义
-    ------|----------
-     context |  上下文context
-     sipParam | GB28181 SIP参数
-     gbMediaParam | GB28181 媒体参数
-    **返回：**
+  参数|含义
+------|----------
+context |  上下文context
+sipparam | gb28181 sip参数
+gbmediaparam | gb28181 媒体参数
+
+    ** 返回：**
     无
 
     **示例：**
@@ -187,10 +188,10 @@ Rokid GB28181SDK 提供SIP连接GB28181服务器加推送本地视频（YUV420P-
     ```
     **参数说明：**
 
-      参数|含义
-    ------|----------
-     context |  上下文context
-     callback | 回调接口
+参数|含义
+------|----------
+context |  上下文context
+callback | 回调接口
 
     **返回：**
     无
