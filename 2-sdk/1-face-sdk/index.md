@@ -1,5 +1,6 @@
 # 人脸识别离线SDK
-**Version：facelib 3.1.2.2**
+**Version：3.1.2.2**
+
 ---
 
 ## 接口使用示例demo
