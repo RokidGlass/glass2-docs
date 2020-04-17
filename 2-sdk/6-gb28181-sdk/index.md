@@ -1,8 +1,9 @@
 
 # GB28181 SDK
 
-## **Version：GB28181Lib 1.0.0**
+**Version：1.0.X-SNAPSHOT**
 
+---
 ## 接口使用示例demo
 [Demo](https://github.com/RokidGlass/RokidGB28181Demo)
 
