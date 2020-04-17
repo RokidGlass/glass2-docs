@@ -1,8 +1,9 @@
 
 # ScreenRecord SDK
 
-## **Version：ScreenRecordLib 1.0.X-SNAPSHOT**
+**Version：1.0.X-SNAPSHOT**
 
+---
 ## 接口使用示例demo
 
 https://github.com/RokidGlass/ScreenRecordDemo
@@ -63,24 +64,24 @@ Rokid ScreenRecordLib 是实现了录制系统屏幕和系统声音的库。实�
 
 ## 三、接口说明及示例
 
-#### 3.1  ScreenRecord.getInstancec()
+### 3.1  ScreenRecord.getInstancec()
 *   获取ScreenRecord单例。
    
-#### 3.2 ScreenRecord.init()
+### 3.2 ScreenRecord.init()
 *   ScreenRecord初始化
   
-#### 3.3 ScreenRecord.setAudioCallback(MediaEncoder.DataCallback callback)
+### 3.3 ScreenRecord.setAudioCallback(MediaEncoder.DataCallback callback)
 *   设置音频回调函数（必须实现）
 
-#### 3.4 ScreenRecord.setVideoCallback(MediaEncoder.DataCallback callback)
+### 3.4 ScreenRecord.setVideoCallback(MediaEncoder.DataCallback callback)
 *   设置视频回调函数（必须实现）
 
-#### 3.5 ScreenRecord.cameraTrigger(boolean flag)
+### 3.5 ScreenRecord.cameraTrigger(boolean flag)
 *   是否需要开始camera preview录制
 
-#### 3.6 ScreenRecord.start()
+### 3.6 ScreenRecord.start()
 *   开始录制
 
-#### 3.7 ScreenRecord.stop()
+### 3.7 ScreenRecord.stop()
 *   停止录制
 
