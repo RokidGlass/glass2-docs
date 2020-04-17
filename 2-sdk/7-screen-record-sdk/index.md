@@ -60,10 +60,10 @@ Rokid ScreenRecordLib 是实现了录制系统屏幕和系统声音的库。实�
         <uses-permission android:name="android.permission.RECORD_AUDIO" />
         <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
     ```
+
 ## 三、接口说明及示例
 
 #### 3.1  ScreenRecord.getInstancec()
-
 *   获取ScreenRecord单例。
    
 #### 3.2 ScreenRecord.init()
@@ -73,14 +73,14 @@ Rokid ScreenRecordLib 是实现了录制系统屏幕和系统声音的库。实�
 *   设置音频回调函数（必须实现）
 
 #### 3.4 ScreenRecord.setVideoCallback(MediaEncoder.DataCallback callback)
-
 *   设置视频回调函数（必须实现）
-#### 3.5 ScreenRecord.cameraTrigger(boolean flag)
-  
-*   是否需要开始camera preview录制
-#### 3.6 ScreenRecord.start()
 
+#### 3.5 ScreenRecord.cameraTrigger(boolean flag)
+*   是否需要开始camera preview录制
+
+#### 3.6 ScreenRecord.start()
 *   开始录制
+
 #### 3.7 ScreenRecord.stop()
 *   停止录制
 
