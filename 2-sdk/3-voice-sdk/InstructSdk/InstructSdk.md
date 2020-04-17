@@ -1,13 +1,9 @@
+# Glass 语音离线指令 SDK
+**Version: 1.3.4**  
 
-# 语音离线指令SDK
 
-## **Version：instructsdk 1.3.4**
 
-## 接口使用示例demo
-
-https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
-
-## 一. SDK概述
+## 一. 离线指令SDK概述
 
 Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
 
@@ -18,6 +14,10 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   adb shell dumpsys package com.rokid.ai.glassaudio
   ```
 
+
+接口使用示例demo：
+
+https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 
 ## 二. 集成说明
