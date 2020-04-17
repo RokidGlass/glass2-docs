@@ -26,6 +26,9 @@ Rokid Glass文档
     - 流媒体国标 
         - [使用说明](2-sdk/6-gb28181-sdk/index.md)
         - [版本信息](2-sdk/6-gb28181-sdk/ReleaseNotes.md)
+    - AR录屏
+        - [使用说明](2-sdk/7-screen-record-sdk/index.md)
+        - [版本信息](2-sdk/7-screen-record-sdk/ReleaseNotes.md)
 * 公版App
     - Android
         - [使用说明](3-app/1-android/index.md)
