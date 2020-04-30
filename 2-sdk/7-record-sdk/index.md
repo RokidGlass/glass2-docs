@@ -147,7 +147,7 @@ void onOutputBufferAvailable(byte[] data);
  data|获取到的原始数据
 
 #### 3.8.2 编码后数据回调
-说明：暂时没有用到。后期PCM数据或者YUV数据时候可以用
+说明：编码后的数据回调
 ```
 void onOutputBufferAvailable(ByteBuffer data, MediaCodec.BufferInfo info);
 ```
