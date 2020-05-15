@@ -1,6 +1,10 @@
 # 版本更新信息
+## 1.5.4
+* 统一 Dialog 样式
+
 ## 1.2.3
 * 新增`RokidSystem`的getProjectionMatrix_OpticalSeeThrough方法，获取 Unity 3D 的 alignment
+
 ## 1.2.0
 * 新增`RokidSystem`的getWindowRect
 

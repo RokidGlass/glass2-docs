@@ -1,8 +1,8 @@
 # Glass UI SDK
-**Version: 1.2.3**  
+**Version: 1.5.4**
 
----
 ## 一、UI SDK介绍
+---
 ### 1.1 概述
 提供一套在Rokid Glass上开发应用的基础UI库,目前已经提供以下支持：  
 
@@ -16,8 +16,8 @@ Glass自定义的Button
 **3. GlassDialog**   
 提供了一系列常用的对话框
 
----
 ## 二、集成说明
+---
 在project的build.gradle中添加jcenter依赖：
 ``` gradle
 allprojects {
@@ -29,14 +29,14 @@ allprojects {
 ```
 ### 2.1 Gradle依赖
 ``` gradle
-implementation 'com.rokid.glass:ui:1.2.3'
+implementation 'com.rokid.glass:ui:1.5.4'
 ```
 
 ### 2.2 Demo
-[Glass UI Demo](https://github.com/RokidGlass/glass-ui)
+[Glass UI Demo](https://github.com/rokid/glass-ui)
 
----
 ## 三、功能列表
+---
 ### 3.1 RokidSystem
 Alignment概念：
 Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
@@ -130,417 +130,78 @@ Glass自定义的Button
 
 `Focused`:  
 
-![](images/glass_button_focused.png)
+![](images/highlight_button.png)
 
 `Normal`
 
-![](images/glass_button_normal.png)
+![](images/normal_button.png)
 
 #### 3.2.1 用法
 ``` xml
-<com.rokid.glass.ui.button.GlassButton
-    android:id="@+id/confirm_btn"
-    style="@style/GlassButton"
-    android:layout_width="@dimen/glass_button_width"
-    android:layout_height="@dimen/glass_button_height"
-    android:text="@string/confirm_text" />
+ <com.rokid.glass.ui.button.GlassButton
+    android:id="@+id/custom_dialog_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Custom Dialog"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/dialog_btn" />
 ```
 ### 3.3 GlassDialog
 提供了一系列常用的对话框,通过不同Builder 来构建不同类型的对话框。
 目前提供的Builder:
-#### 3.3.1 NotificationDialogBuilder
-通知栏通知（出现固定时间后消失）
+#### 3.3.1 CommonDialogBuilder
+通用的 DialogBuilder
 
-![](images/notification.png)
+![](images/common_dialog.png)
 
-|方法|含义|默认值
+|方法|含义|备注
 |---|---|---|
-|setTitle|设置通知栏标题|null|
-|setMessage|设置通知栏内容|null|
-|setIconRes|设置通知icon||
-|setDuration|设置通知栏消息时间(ms)|3000|
-
-**示例代码**
-``` java
-GlassDialog notificationDialog = new GlassDialog.NotificationDialogBuilder(this)
-            .setTitle(getString(R.string.notification_title))
-            .setMessage(getString(R.string.notification_message))
-            .setIconRes(R.mipmap.ic_launcher)
-            .setDuration(3000)
-            .create();
-notificationDialog.show();
-```
-
-
-#### 3.3.2 SimpleVoiceDialogBuilder
-纯语音通知
-
-![](images/notify_simple_voice.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
+|setTitle|设置标题||
+|setContent|设置内容|和自定义内容布局选其一|
+|setConfirmText|设置确定按钮文字||
+|setCancelText|设置取消按钮文字||
+|setContentLayoutId|设置内容自定义布局id||
+|setContentLayoutView|设置内容自定义布局View|和setContentLayoutId选其一|
 |setConfirmListener|设置Confirm监听||
 |setCancelListener|设置Cancel监听||
-|dynamicTitle|动态改变标题||
-|dynamicConfirmText|动态改变确定按钮文字| |
-|dynamicCustomConfirmView|自定义Confirm界面布局| - |
 
 **示例代码**
 ``` java
-GlassDialog simpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)
-            .setTitle(getString(R.string.voice_test))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Confirm", Toast.LENGTH_SHORT).show();
+new GlassDialog.CommonDialogBuilder(this)
+        .setTitle("Title")
+        .setContent("Content")
+        .setConfirmText("Confirm")
+        .setCancelText("Cancel")
+        .setContentLayoutId(R.layout.layout_custom_dialog_content)
+        .setConfirmListener(new GlassDialogListener() {
+            @Override
+            public void onClick(View view) {
 
-                    mSimpleVoiceDialogBuilder.dynamicTitle(getString(R.string.voice_playing));
-                    mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+            }
+        })
+        .setCancelListener(new GlassDialogListener() {
+            @Override
+            public void onClick(View view) {
 
-                    countDownManager.start();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                    if (null != countDownManager) {
-                        countDownManager.cancel();
-                    }
-                }
-            });
-
-simpleVoiceDialogBuilder.show();
+            }
+        })
+        .show();
 ```
-
-
-#### 3.3.3 ImageDialogBuilder
-语音图片通知
-
-![](images/notify_image.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式||
-|setNotifyBitmap|设置图片显示,bitmap方式||
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听||
-|dynamicConfirmText|动态改变确定按钮文字||
-|dynamicCustomConfirmView|自定义Confirm界面布局|-|
-
-**示例代码**
+### 3.4 屏幕适配
+接入，在app的`AndroidManifest.xml`声明：
 ``` java
-mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
-            .setTitle(getString(R.string.image_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setNotifyResId(R.mipmap.ic_notify_img)
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Confirm", Toast.LENGTH_SHORT).show();
-
-                    mImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
-                    countDownManager.start();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                    if (null != countDownManager) {
-                        countDownManager.cancel();
-                    }
-                }
-            });
-
-mImageDialogBuilder.show();
+<manifest>
+    <application>            
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="640"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="360"/>           
+     </application>           
+</manifest>
 ```
-
-
-#### 3.3.4 SimpleMessageDialogBuilder
-仅有标题  
-
-![](images/notify_simple_title.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听||
-|setCancelListener|设置Cancel监听|-|
-
-**示例代码**
-``` java
-new GlassDialog.SimpleMessageDialogBuilder(this)
-            .setTitle(getString(R.string.simple_message_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Confirm", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                }
-            }).show();
-```
-
-#### 3.3.5 SimpleContentDialogBuilder
-标题+正文
-
-![](images/nofity_simple_content.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听|-|
-
-**示例代码**
-```java
-new GlassDialog.SimpleContentDialogBuilder(this)
-            .setTitle(getString(R.string.simple_message_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setContent(getString(R.string.simple_content))
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Confirm", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                }
-            }).show();
-```
-
-
-#### 3.3.6 ImageContentDialogBuilder
-标题+图片
-
-![](images/notify_image_content.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setNotifyResId|设置图片显示,res方式||
-|setNotifyBitmap|设置图片显示,bitmap方式||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听|-|
-
-**示例代码**
-```java
-new GlassDialog.ImageContentDialogBuilder(this)
-            .setTitle(getString(R.string.image_content_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setNotifyResId(R.mipmap.ic_notify_img)
-            .setContent(getString(R.string.simple_content))
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Confirm", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                }
-            }).show();
-```
-
-#### 3.3.7 CustomSimpleMsgDialogBuilder
-自定义标题内容
-
-![](images/notifiy_customer_content.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setCustomText|自定义按钮文本||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听| |
-|setCustomListener|自定义按钮监听|-|
-
-**示例代码**
-```java
-mCustomMessageDialog = new GlassDialog.CustomSimpleMsgDialogBuilder(this)
-            .setTitle(getString(R.string.image_content_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setCustomText(getString(R.string.voice_custom))
-            .setContent(getString(R.string.simple_content))
-            .setCustomListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Custom", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Confirm", Toast.LENGTH_SHORT).show();
-                    if (null != mCustomMessageDialog && mCustomMessageDialog.isShowing()) {
-                        mCustomMessageDialog.dismiss();
-                    }
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                }
-            })
-            .show();
-```
-
-#### 3.3.8 CustomImageDialogBuilder
-自定义图片样式1
-
-![](images/notify_customer_image1.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setCustomText|自定义按钮文本||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式| |
-|setNotifyBitmap|设置图片显示,bitmap方式| |
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听| |
-|setCustomListener|自定义按钮监听|-|
-
-**示例代码**
-```java
-mCustomImageDialogBuilder = new GlassDialog.CustomImageDialogBuilder(this)
-            .setTitle(getString(R.string.image_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setCustomText(getString(R.string.voice_custom))
-            .setNotifyResId(R.mipmap.ic_notify_img)
-            .setCustomListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Custom", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Play", Toast.LENGTH_SHORT).show();
-                    mCustomImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
-                    countDownManager.start();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
-mCustomImageDialogBuilder.show();
-```
-
-#### 3.3.9 CustomImageContentDialogBuilder
-自定义图片样式2
-
-![](images/notify_customer_image2.png)
-
-|方法|含义|默认值
-|---|---|---|
-|setTitle|设置标题|null|
-|setContent|设置内容|null|
-|setCustomText|自定义按钮文本||
-|setConfirmText|设置确定按钮文字|确定|
-|setCancelText|设置取消按钮文字|取消|
-|setNotifyResId|设置图片显示,res方式| |
-|setNotifyBitmap|设置图片显示,bitmap方式| |
-|setConfirmListener|设置Confirm监听| |
-|setCancelListener|设置Cancel监听| |
-|setCustomListener|自定义按钮监听|-|
-
-**示例代码**
-```java
-new GlassDialog.CustomImageContentDialogBuilder(this)
-            .setTitle(getString(R.string.image_content_title))
-            .setConfirmText(getString(R.string.voice_play))
-            .setCancelText(getString(R.string.voice_collapse))
-            .setNotifyResId(R.mipmap.ic_notify_img)
-            .setContent(getString(R.string.multi_content))
-            .setCustomText(getString(R.string.voice_custom))
-            .setCustomListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Custom", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setConfirmListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Play", Toast.LENGTH_SHORT).show();
-                }
-            })
-            .setCancelListener(new GlassDialogListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this,
-                            "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                }
-            })
-            .show();
-```
+这里的都是根据设计图的尺寸来，以宽或者高为基准，默认是宽。
+#### 模拟器Preview设置
+![](images/preview.jpg)
