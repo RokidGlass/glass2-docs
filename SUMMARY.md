@@ -5,7 +5,8 @@ Rokid Glass文档
 * [Rokid Glass](README.md)
 * [FAQ](0-faq/index.md) 
 * 系统
-    - [系统配置](1-system/index.md)
+    - [开发指南](1-system/index.md)
+    - [系统配置](1-system/system.md)
     - [版本信息](1-system/ReleaseNotes.md)
 * SDK
     - 人脸离线识别

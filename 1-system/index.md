@@ -1,56 +1,13 @@
 **Version：V1.1**
 
-<h2 id="1">1. 设备按键键值以及intent事件定义</h2>
+<h2 id="1">设备按键键值（System KeyCode）</h2>
 
-用户操作  | 简单功能描述 | 应用层键值或意图 | 注释
+用户操作(Action)  | 简单功能描述(Result) | 应用层键值（KeyCode） | 注释（Notes）
 -------  | ----------- | ------------ | ---
-Back-长  | 开启音量调节窗口  | 开启音量调节窗口 | 注：被系统占用
-Back-单  | 返回  | KEYCODE\_BACK = 4 | 
-Back-双击  |   |  | 开发者可自己定义
-TP-右滑  | 连续收到多个<br>KEYCODE\_DPAD\_RIGHT键值  | KEYCODE\_DPAD\_RIGHT = 22 | 应用可接收“连续键值”
-TP-左滑  | 连续收到多个<br>KEYCODE\_DPAD\_LEFT键值  | KEYCODE\_DPAD\_LEFT = 21 | 应用可接收“连续键值”
-TP-快速右滑  | 快速右滑离开TP。同时收到多个<br>KEYCODE\_DPAD\_RIGHT键值和单个<br>KEYCODE\_DPAD\_DOWN键值  | KEYCODE\_DPAD\_DOWN = 20 | 应用可接收“单次键值”
-TP-快速左滑  | 快速左滑离开TP。同时收到多个<br>KEYCODE\_DPAD\_LEFT键值和单个<br>KEYCODE\_DPAD\_UP键值  | KEYCODE\_DPAD\_UP = 19 | 应用可接收“单次键值”
-TP-单击 | 确认 | KEYCODE\_DPAD\_CENTER = 23
-TP-长按 |  | KEYCODE\_TV = 170 | 开发者可自定义
-Power | 电源键 | KEYCODE\_POWER = 26 |
-
-
-
-<h2 id="2">2. 默认launcher配置方法</h2>
-
-系统中允许预装多个launcher，通过prop属性配置选择默认launcher，不需要用户手动选择。
-
-```
-adb shell下使用setprop命令可以直接修改
-setprop persist.boot.defaultlauncher your_launcher_packagename
-setprop persist.boot.defaultactivity your_launcher_activityname
-adb reboot
-```
-
-<h2 id="3">3. 系统应用黑名单配置</h2>
-黑名单配置，不显示系统的某些应用   
-通过配置文件launcher.json 配置不显示的应用列表，文件配置路径/sdcard/rokid/，配置完成后，重启生效  
-示例：
-
-``` 
-{
-  "reset": false,
-  "favorites": [
-    {
-      "packageName": "com.rokid.translate"
-    },
-    {
-      "packageName": "com.rokid.glass.Assault"
-    }
-  ]
-}
-```
-### 3.1 系统应用列表
-名称      |  packageName 
--------  | ----------- 
-相机      | com.rokid.glass.camera
-相册      | com.rokid.glass.gallery
-设置     |com.rokid.glass.settings
-
-
+Back-长<br>(Back long press)| 开启快捷菜单<br>(open shortcut)| none | 被系统占用<br>(System handled)
+Back-单<br>(Back click)  | 返回<br>(Back)  | KEYCODE\_BACK = 4 | 
+TP-前滑<br>(swipe forward)  | 应用可同时收到多个<br>KEYCODE\_DPAD\_RIGHT键值和单个<br>KEYCODE\_DPAD\_DOWN键值<br>(App can get severl KEYCODE\_DPAD\_RIGHT and one KEYCODE\_DPAD\_DOWN )  | KEYCODE\_DPAD\_DOWN = 20<br>KEYCODE\_DPAD\_RIGHT = 22 | 希望焦点跳一个，使用DOWN；希望焦点跳多个，使用RIGHT，键值数与滑动距离正相关；<br>(Use DOWN for next focus; use RIGHT for severl focus switch, KEYCODE\_DPAD\_RIGHT number is releated to swipe length.) |
+TP-后滑<br>(swipe backward)  | 应用可同时收到多个<br>KEYCODE\_DPAD\_LEFT键值和单个<br>KEYCODE\_DPAD\_UP键值<br>(App can get severl KEYCODE\_DPAD\_LEFT and one KEYCODE\_DPAD\_UP )  | KEYCODE\_DPAD\_UP = 19<br>KEYCODE\_DPAD\_LEFT = 21 |希望焦点跳一个，使用UP；希望焦点跳多个，使用LEFT，键值数与滑动距离正相关；<br>(Use UP for previous focus; use LEFT for severl focus switch; KEYCODE\_DPAD\_LEFT number is releated to swipe length.)
+TP-单击<br>(TP tap) | 确认<br>(Confirm/Select) | KEYCODE\_DPAD\_CENTER = 23
+TP-长按<br>(TP-long press) |  | KEYCODE\_TV = 170 | 应用可自定义<br>(App handle)
+Power | 电源键<br>(turn on/off screen) | KEYCODE\_POWER = 26 |
