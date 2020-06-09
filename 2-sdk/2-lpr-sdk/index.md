@@ -1,18 +1,18 @@
 # 车牌识别SDK
-**Version: 2.0.0**  
-
+**Version：3.2.1.0**
 ---
-## 一、介绍
 
-### 1.1 概述
-RokidLprSDK提供车牌检测和车牌识别接口。
+## 接口使用示例demo
+https://github.com/Rokid/RokidLprSDK
 
+## 一. 概述
+
+RokidLPRSDK提供车牌检测+车牌识别功能，根据camera输入数据，输出车牌字符串，车牌位置，识别质性度。
+
+## 二. 集成说明
 ---
-## 二、集成说明
-
-### 2.1 添加第三方依赖库
+### 2.1 添加三方依赖库
 在project的build.gradle中添加jcenter依赖
-
 ```java
 allprojects {
     repositories {
@@ -23,109 +23,116 @@ allprojects {
 ```
 
 在app的build.gradle中添加依赖
-
 ```java
 dependencies {
-    implementation 'com.rokid.glass:lpr:2.0.0'
+    implementation 'com.rokid.glass:lpr:3.2.1.0'
 }
 ```
 
 ### 2.2 需要如下权限
-
+读取外部存储权限：
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE/>
+```
 相机权限：
-
 ```xml
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-feature android:name="android.hardware.camera" />
 <uses-feature android:name="android.hardware.camera.autofocus" />
 ```
 
-### 2.3 Demo
-[RokidLprSDK](https://github.com/RokidGlass/RokidLprSDK)
-
+## 三. 接口说明及示例
 ---
-## 三、接口说明
-
-### 3.1 初始化
-
+### 3.0 车牌识别引擎初始化
+在应用的Application的onCreate方法中初始化引擎：
 ```java
-public long init(Context context)
+RokidLPR.Init(Context context,boolean npuMode);
 ```
-
 参数|含义
 ------|---------
 context | 上下文context
+npuMode | 是否切换到npu模式（注意：设备必须支持npu才能将该值设为true）
 
-**返回:**  
 
-`Pipeline句柄`
-
-### 3.2 相机预览识别
-
-#### 3.2.1 车牌检测
-
-```java
-public int[] detect(byte[] data, int w, int h, int method, long  object)
+### 3.1 参数配置
+**1. 设置数据源宽高**
+``` java
+LPRConfig lprConfig = new LPRConfig();
+lprConfig.width = PREVIEW_WIDTH;
+lprConfig.height = PREVIEW_HEIGHT;
 ```
-
 参数|含义
 ------|---------
-data | 相机预览数据
-w | 预览图片的宽
-h | 预览图片的高
-method | 检测方法
-object | 初始化时拿到的Pipeline句柄
+width | 输入数据的宽
+height | 输入数据的高
 
-**返回：**
 
-`图片中车牌的位置[x, y, width, height]，当有多个车牌时可能有多组数据`
-
-#### 3.2.2 车牌识别
-
-```java
-public String recogAll(byte[] data, int w, int h, int method, int[] rects, long  object)
+### 3.2 车牌识别
+#### 3.2.1 车牌sdk创建
+``` java
+RokidLPR rokidLPR = new RokidLPR();
 ```
 
+**返回:**
+`RokidLPR` 车牌识别接口
+
+#### 3.3.2 设置相机预览数据
+说明：将相机数据传入sdk
+``` java
+void setData(byte[] data)
+```
 参数|含义
 ------|---------
-data | 相机预览数据
-w | 预览图片的宽
-h | 预览图片的高
-method | 检测方法
-rects | 车牌位置
-object | 初始化时拿到的Pipeline句柄
+data | camera数据 要求nv21格式
 
-**返回：**
-
-`车牌号`
-
-### 3.3 图片输入识别
-
+示例代码：
 ```java
-public String recognizationBGR(byte[] data, int w, int h, int method, long  object)
+rokidLPR.setData(data);
+```
+#### 3.3.3 车牌识别结果获取
+说明：检测结果会统一以LPRModel数据结构返回
+``` java
+void startLPR(RokidLPRCallback rokidLPRCallback)
+```
+参数|含义
+------|---------
+rokidLPRCallback | 车牌识别结果统一回调接口
+
+示例代码：
+```java
+rokidLPR.startLPR(new RokidLPRCallback(){
+            @Override
+            public void onLPRCallback(LPRModel model) {
+            
+            }
+        });
+```
+#### 3.3.5 车牌识别接口的销毁
+说明：车牌识别接口的内存回收
+```java
+rokidLPR.destroy();
 ```
 
-参数|含义
-------|---------
-data | RGB格式图片数据
-w | 图片的宽
-h | 图片的高
-method | 检测方法
-object | 初始化时拿到的Pipeline句柄
+### 3.5 车牌实体类
 
-**返回：**
+#### 3.5.1 车牌数据类
+```java
+public class LPRModel {
+    public int width;
+    public int height;
+    public List<LPRDO> lps = new ArrayList();//车牌数据model，包含LPRDOlist
 
-`车牌号`
+    public LPRModel() {
+    }
+}
 
----
-## 四、sample说明
+public class LPRDO {
+    public RectF position;//车牌在camera中的位置
+    public String licensePlate;//车牌字符串
+    public float score;//车牌识别质性度
 
-### 4.1 android_sample
-
-	可运行在普通安卓手机上，对预览界面内车牌进行自动识别。
-
-### 4.2 glass_sample
-
-	运行在glass上，对固定视线区域内车牌进行自动识别。
-
-	
+    public LPRDO() {
+    }
+}
+```
