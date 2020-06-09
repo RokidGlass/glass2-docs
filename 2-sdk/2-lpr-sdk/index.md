@@ -8,7 +8,7 @@ https://github.com/Rokid/RokidLprSDK
 
 ## 一. 概述
 
-RokidLPRSDK提供车牌检测+车牌识别功能，根据camera输入数据，输出车牌字符串，车牌位置，识别质性度。
+RokidLPRSDK提供车牌检测+车牌识别功能，根据camera输入数据，输出车牌字符串，车牌位置，识别质信度。
 
 ## 二. 集成说明
 ---
