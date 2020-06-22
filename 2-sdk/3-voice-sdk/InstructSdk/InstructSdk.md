@@ -1,5 +1,5 @@
 # Glass 语音离线指令 SDK
-**Version: 1.3.4**  
+**Version: 1.3.9**  
 
 
 
@@ -41,7 +41,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.3.4'
+      implementation 'com.rokid.ai.glass:instructsdk:1.3.9'
   }
   ```
 - Jcenter Maven信息
@@ -50,7 +50,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.3.4</version>
+    <version>1.3.9</version>
     <type>pom</type>
   </dependency>
   ```
@@ -956,6 +956,26 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
       mInstructionManager.removeInstruct(EntityKey.Language.zh, "开始播放");
   }
   ```
+
+#### 3.6.20、setLeftBackShowing 设置tips左侧back返回上一级是否展示
+
+  ```java
+  public void setLeftBackShowing(boolean showing);
+  ```
+  设置tips浮层左侧back返回上一级是否展示。
+
+参数：
+
+  showing : true，展示；false，不展示；
+  不展示时，back内容为View.INVISIBLE，会占用tips浮层左侧内容；
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.setLeftBackShowing(false);
+  }
+  ```
+
 
 ### 3.6、连续数字相关指令
 
