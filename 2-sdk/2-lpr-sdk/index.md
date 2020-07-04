@@ -1,5 +1,5 @@
 # 车牌识别SDK
-**Version:3.2.1.0**
+**Version：3.2.1.0**
 
 ---
 
@@ -70,7 +70,7 @@ height | 输入数据的高
 
 
 ### 3.2 车牌识别
-#### 3.2.1 车牌sdk创建
+#### 1. 车牌sdk创建
 ``` java
 RokidLPR rokidLPR = new RokidLPR();
 ```
@@ -78,7 +78,7 @@ RokidLPR rokidLPR = new RokidLPR();
 **返回:**
 `RokidLPR` 车牌识别接口
 
-#### 3.3.2 设置相机预览数据
+#### 2. 设置相机预览数据
 说明：将相机数据传入sdk
 ``` java
 void setData(byte[] data)
@@ -91,7 +91,7 @@ data | camera数据 要求nv21格式
 ```java
 rokidLPR.setData(data);
 ```
-#### 3.3.3 车牌识别结果获取
+#### 3. 车牌识别结果获取
 说明：检测结果会统一以LPRModel数据结构返回
 ``` java
 void startLPR(RokidLPRCallback rokidLPRCallback)
@@ -109,15 +109,14 @@ rokidLPR.startLPR(new RokidLPRCallback(){
             }
         });
 ```
-#### 3.3.5 车牌识别接口的销毁
+#### 4. 车牌识别接口的销毁
 说明：车牌识别接口的内存回收
 ```java
 rokidLPR.destroy();
 ```
 
-### 3.5 车牌实体类
+### 3.3 车牌实体类
 
-#### 3.5.1 车牌数据类
 ```java
 public class LPRModel {
     public int width;
