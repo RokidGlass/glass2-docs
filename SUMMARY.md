@@ -4,9 +4,7 @@ Rokid Glass文档
 ---------
 * [Rokid Glass](README.md)
 * 系统
-    - [开发指南](1-system/index.md)
-    - [系统配置](1-system/system.md)
-    - [版本信息](1-system/ReleaseNotes.md)
+    - [键值说明](1-system/index.md)
 * SDK
     - 基础SDK
         - Glass UI
