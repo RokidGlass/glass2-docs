@@ -7,6 +7,17 @@
 -   本文档包含了系统信息，Rokid Glass SDK使用文档及示例。
 
 ## 系统信息说明
+### 基本信息
+
+* AP：amlogicS905D3
+* RAM：2G
+* ROM：32G
+* IMU：9轴，支持ROTATION_VECTOR
+* Camera：拍照最大分辨率3264x2448，录像1080p@30fps
+* 屏幕分辨率1280x720，横屏，320dpi
+* 基于Android9.0，开发工具AndroidStudio
+* 交互方式：[触摸板、按键](1-system/index.md)、语音、头控
+
 ## SDK简介
 ### 基础SDK
 |名称|简介|
