@@ -34,13 +34,13 @@
 ### 基础SDK
 |名称|简介|
 |---|---|
-| [Glass UI](2-sdk/5-ui-sdk/index.md) | 提供一套在Rokid Glass上开发应用的基础UI库<br>真实世界和 Preview 之间的关系<br>|
-| [语音识别](2-sdk/3-voice-sdk/index.md)| 离线语音|
+| [Glass UI](2-sdk/5-ui-sdk/index.md) | 1. 提供一套在Rokid Glass上开发应用的基础UI库<br>2. 真实世界和 Preview 之间的关系以及相机映射(alignment)<br>|
+| [语音识别](2-sdk/3-voice-sdk/index.md)| 1.Glass语音助手的使用 <br> 2.离线语音SDK的使用|
 
 ### 业务SDK
 |名称|简介|
 |---|---|
-| [人脸离线识别](2-sdk/1-face-sdk/index.md) | |
-| [人脸在线识别](2-sdk/1-face-online-sdk/index.md)| |
-| [车牌识别](2-sdk/2-lpr-sdk/index.md)| |
-| [流媒体国标](2-sdk/6-gb28181-sdk/index.md)| |
+| [人脸离线识别](2-sdk/1-face-sdk/index.md) | 人脸识别SDK接入和接口说明|
+| [人脸在线识别](2-sdk/1-face-online-sdk/index.md)| 人脸在线识别的接口规范和使用|
+| [车牌识别](2-sdk/2-lpr-sdk/index.md)|车牌识别提供车牌检测+车牌识别功能 |
+| [流媒体国标](2-sdk/6-gb28181-sdk/index.md)|提供SIP连接GB28181服务器加推送本地视频流到远端服务器功能|
