@@ -13,7 +13,7 @@ Rokid Glass文档
         - 语音识别
             - [语音助手说明](2-sdk/3-voice-sdk/index.md)
             - [离线指令SDK](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)
-    - 业务SDK
+    - 功能SDK
         - 人脸离线识别
             - [使用说明](2-sdk/1-face-sdk/index.md)
             - [版本信息](2-sdk/1-face-sdk/ReleaseNotes.md)

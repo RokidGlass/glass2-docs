@@ -10,7 +10,7 @@
 ### 基本信息
 |名称|简介|
 |---|---|
-| AP | amlogicS905D3|
+| AP | Amlogic-S905D3|
 | RAM |2G|
 | ROM |32G|
 | IMU |9轴，支持ROTATION_VECTOR|
@@ -20,24 +20,29 @@
 | 交互方式 |[触摸板、按键](1-system/index.md)、语音、头控|
 
 ## 简要开发指南
-* Glass无touch screen，部分类型的控件需要自定义焦点控制。
-* 有preview -> 无preview：真实世界不需要preview。
-* 相机映射[alignment](2-sdk/5-ui-sdk/index.md#三、功能列表)：相机世界需要映射到真实世界。
-* Glass风格的UI：参考UI设计规范和[UI SDK](2-sdk/5-ui-sdk/index.md)。
-* 如果需要使用系统内置的AR录屏功能，并需要叠加Camera预览作为录屏背景，需注意：
+* **眼镜开发和安卓开发的区别：**
+  * Glass没有触摸屏，只有触摸板，部分类型的控件需要自定义焦点控制。
+  * Glass上建议可以不显示相机预览（preview），因为AR眼镜可透视真实世界。具体实现可参考[相机映射](2-sdk/5-ui-sdk/index.md#三、功能列表)
+  * Glass风格的UI：参考UI设计规范和[UI SDK](2-sdk/5-ui-sdk/index.md)。
+  * 如果需要使用系统内置的AR录屏功能，并需要叠加Camera预览作为录屏背景，需注意：
 	* App使用Camera API2接口；
-	* 需要叠加Camera预览的Activity，开启时需发送广播``android.intent.action.CAMERA_WALLPAPER_START_PREVIE``
-	* 结束时发送广播``android.intent.action.CAMERA_WALLPAPER_STOP_PREVIE``
+	* 需要叠加Camera预览的Activity，开启时需发送广播 ``android.intent.action.CAMERA_WALLPAPER_START_PREVIE``
+	* 结束时发送广播 ``android.intent.action.CAMERA_WALLPAPER_STOP_PREVIE``
 
+* **眼镜开发的步骤：**
+  1. 新建Android工程，或者基于现有的Android工程改造。
+  2. 按照Android TV的开发模式，用Glass触摸板控制焦点变化。
+  3. 使用提供的**基础SDK**进行Glass语音和头控的交互方式进行开发。
+  4. 根据应用场景，选择对应的**功能SDK**来加快开发速度。
 
 ## SDK简介
 ### 基础SDK
 |名称|简介|
 |---|---|
-| [Glass UI](2-sdk/5-ui-sdk/index.md) | 1. 提供一套在Rokid Glass上开发应用的基础UI库<br>2. 真实世界和 Preview 之间的关系以及相机映射(alignment)<br>|
+| [Glass UI](2-sdk/5-ui-sdk/index.md) | 1. 提供一套在Rokid Glass上开发应用的基础UI库<br>2. 真实世界和相机预览（Preview） 之间的关系以及相机映射(alignment)<br>|
 | [语音识别](2-sdk/3-voice-sdk/index.md)| 1.Glass语音助手的使用 <br> 2.离线语音SDK的使用|
 
-### 业务SDK
+### 功能SDK
 |名称|简介|
 |---|---|
 | [人脸离线识别](2-sdk/1-face-sdk/index.md) | 人脸识别SDK接入和接口说明|
