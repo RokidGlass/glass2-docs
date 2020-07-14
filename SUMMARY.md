@@ -26,4 +26,5 @@ Rokid Glass文档
         - 流媒体国标 
             - [使用说明](2-sdk/6-gb28181-sdk/index.md)
             - [版本信息](2-sdk/6-gb28181-sdk/ReleaseNotes.md)
+* [OS 设计规范](5-design/index.md)
 * [FAQ](0-faq/index.md) 

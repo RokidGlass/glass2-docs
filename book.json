@@ -5,7 +5,8 @@
       "vistors-github",
       "mermaid-gb3",
       "github-issue-feedback",
-      "github"
+      "github",
+      "embed-pdf"
     ],
     "pluginsConfig" : {
       "vistors-github": {
