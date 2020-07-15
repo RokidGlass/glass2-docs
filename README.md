@@ -1,12 +1,13 @@
-# Glass（二代）软件开发文档
+# Rokid Glass（二代）软件开发文档
 
 [![Build Status](https://travis-ci.org/RokidGlass/glass2-docs.svg?branch=master)](https://travis-ci.org/github/RokidGlass/glass2-docs)
 
-## 介绍
+## 一、介绍
 -   本文档面向Rokid Glass的开发者，介绍了开发者如何在Rokid Glass上开发应用。   
--   本文档包含了系统信息，Rokid Glass SDK使用文档及示例。
+-   本文档包含了系统信息，开发指南，Rokid Glass SDK使用文档及示例，OS设计规范，FAQ和论坛。
+-   详细页面跳转请点击gitbook左上角“目录”。
 
-## 系统信息说明
+## 二、系统信息说明
 ### 基本信息
 |名称|简介|
 |---|---|
@@ -19,7 +20,7 @@
 | 基于Android9.0 |开发工具AndroidStudio|
 | 交互方式 |[触摸板、按键](1-system/index.md)、语音、头控|
 
-## 简要开发指南
+## 三、简要开发指南
 * **眼镜开发和安卓开发的区别：**
   * Glass没有触摸屏，只有触摸板，部分类型的控件需要自定义焦点控制。
   * Glass上建议可以不显示相机预览（preview），因为AR眼镜可透视真实世界。具体实现可参考[相机映射](2-sdk/5-ui-sdk/index.md#三、功能列表)
@@ -35,7 +36,7 @@
   3. 可以使用提供的**基础SDK**进行Glass语音和头控的交互方式进行开发。
   4. 根据应用场景，可以选择对应的**功能SDK**来加快开发速度。
 
-## SDK简介
+## 四、SDK简介
 ### 基础SDK
 |名称|简介|
 |---|---|

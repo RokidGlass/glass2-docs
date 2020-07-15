@@ -1,8 +1,8 @@
 # Summary
 ---------
-Rokid Glass文档
+Rokid Glass文档目录
 ---------
-* [Rokid Glass](README.md)
+* [Rokid Glass软件开发文档引导](README.md)
 * 系统
     - [键值说明](1-system/index.md)
 * SDK
@@ -28,3 +28,4 @@ Rokid Glass文档
             - [版本信息](2-sdk/6-gb28181-sdk/ReleaseNotes.md)
 * [OS 设计规范](5-design/index.md)
 * [FAQ](0-faq/index.md) 
+* [论坛](6-forum/index.md)
