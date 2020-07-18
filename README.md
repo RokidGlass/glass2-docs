@@ -41,7 +41,7 @@
 |名称|简介|
 |---|---|
 | [Glass UI](2-sdk/5-ui-sdk/index.md) | 1. 提供一套在Rokid Glass上开发应用的基础UI库<br>2. 真实世界和相机预览（Preview） 之间的关系以及相机映射(alignment)<br>|
-| [语音交互](2-sdk/3-voice-sdk/index.md)| 1.Glass语音助手的使用 <br> 2.离线语音SDK的使用|
+| [语音交互](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)| 可以通过集成离线语音sdk，使用系统内置的语音助手控制Rokid Glass|
 
 ### 功能SDK
 |名称|简介|
