@@ -19,7 +19,7 @@ Glass自定义的Button
 由于AR 眼镜特有的屏幕显示特性，在开发眼镜上的识别类应用时，     
 需要对marked UI做一次align，以保证人眼看到的marked UI和真实世界对齐。
 
-**5. IMU View （to be released）**
+**5. IMU View （to be released）**   
 头控接口
 
 ## 二、集成说明
