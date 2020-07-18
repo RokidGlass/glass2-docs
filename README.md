@@ -36,12 +36,12 @@
   3. 可以使用提供的**基础SDK**进行Glass语音和头控的交互方式进行开发。
   4. 根据应用场景，可以选择对应的**功能SDK**来加快开发速度。
 
-## 四、SDK简介
+## 四、SDK简介和下载
 ### 基础SDK
 |名称|简介|
 |---|---|
 | [Glass UI](2-sdk/5-ui-sdk/index.md) | 1. 提供一套在Rokid Glass上开发应用的基础UI库<br>2. 真实世界和相机预览（Preview） 之间的关系以及相机映射(alignment)<br>|
-| [语音识别](2-sdk/3-voice-sdk/index.md)| 1.Glass语音助手的使用 <br> 2.离线语音SDK的使用|
+| [语音交互](2-sdk/3-voice-sdk/index.md)| 1.Glass语音助手的使用 <br> 2.离线语音SDK的使用|
 
 ### 功能SDK
 |名称|简介|
