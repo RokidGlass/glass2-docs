@@ -12,7 +12,7 @@ Rokid Glass文档目录
             - [版本信息](2-sdk/5-ui-sdk/ReleaseNotes.md)
         - 语音交互
             - [使用说明](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)
-            - [版本信息]
+            - [版本信息](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
     - 功能SDK
         - 人脸离线识别
             - [使用说明](2-sdk/1-face-sdk/index.md)

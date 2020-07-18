@@ -1,11 +1,14 @@
 # Glass 语音离线指令 SDK
-**Version: 1.4.0**  
+**Version: 1.4.2**  
 
 
 
 ## 一. 离线指令SDK概述
 
-Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
+Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。
+* 语音指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
+* 语音指令需要依附Activity的生命周期，指令设置在整个Activity内适用，目前不支持独自Fragment、dialog设置独立指令组。
+* 语音指令以当前系统语音为语言基础选定指令语言类型，如果没有与当前系统语言对应的语言类型指令，会选取中文zh为默认语言类型指令。
 
 附：语音助手RokidAiSdk需要v2.2.1版本及以上。
 
@@ -41,7 +44,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.4.0'
+      implementation 'com.rokid.ai.glass:instructsdk:1.4.2'
   }
   ```
 - Jcenter Maven信息
@@ -50,13 +53,13 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.2</version>
     <type>pom</type>
   </dependency>
   ```
 
 - 修改时间
-  2020年04月2日18:00
+  2020年07月18日
 
 
 ### 2.2、 AndroidManifest.xml及Application配置
@@ -255,7 +258,7 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
 * zh：回到桌面 en：Navigate Home
   * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
-* zh：回到上一级 en：Navigate Back
+* zh：回到上一级 / 返回上一级 en：Navigate Back
   * 功能：返回上一个Activity页面，并关闭(finish)当前当前Activity；
 * zh：显示帮助 en: show help
   * 功能：弹出语音指令词帮助浮窗；
@@ -916,8 +919,24 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
+#### 3.6.18、clearNumberInstruct 清除当前全部数字类型指令
 
-#### 3.6.18、getInstructByName 通过指令名称来获取指令实体
+  ```java
+  public void clearNumberInstruct();
+  ```
+  清除当前全部数字类型指令，单独清除sdk端的指令配置，会在下次onResume()时生效，如需立即生效，需要调用InstructionManager的sendWtWords()方法。
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.clearNumberInstruct();
+
+      mInstructionManager.sendWtWords();
+  }
+  ```
+
+
+#### 3.6.19、getInstructByName 通过指令名称来获取指令实体
 
   ```java
   public InstructEntity getInstructByName(EntityKey.Language language, String name);
@@ -937,7 +956,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.19、removeInstruct 清除单个指令
+#### 3.6.20、removeInstruct 清除单个指令
 
   ```java
   public boolean removeInstruct(EntityKey.Language language, String name);
@@ -957,7 +976,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.20、setLeftBackShowing 设置tips左侧back返回上一级是否展示
+#### 3.6.21、setLeftBackShowing 设置tips左侧back返回上一级是否展示
 
   ```java
   public void setLeftBackShowing(boolean showing);
@@ -977,15 +996,15 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   ```
 
 
-### 3.6、连续数字相关指令
+### 3.6、NumberTypeControler 使用连续数字指令
 
-#### 3.6.1、NumberTypeControler 连续数字指令使用
+#### 3.6.1、NumberTypeControler 连续数字指令普通使用
 
   ```java
 public static List<InstructEntity> doTypeControl(int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
   ```
 
-通过给定的数字指令配置，返回成组的数字指令实体InstructEntity，并衔接好指令触发后的CallBack处理。
+通过给定的数字指令配置，返回成组的数字指令实体InstructEntity，并衔接好指令触发后的CallBack处理，指令会在onResume()后生效
 
 参数：
 
@@ -1013,7 +1032,121 @@ config.addInstructList(NumberTypeControler.doTypeControl(3, 20,
       );
   ```
 
-#### 3.6.2、NumberKey 数字指令实体EntityKey
+#### 3.6.2、NumberTypeControler 连续数字指令更多控制
+
+  ```java
+public static List<InstructEntity> doTypeControl(boolean ignoreToast, boolean ignoreSoundEffect, boolean ignorehelp, int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
+  ```
+
+通过给定的数字指令配置，返回成组的数字指令实体InstructEntity，并衔接好指令触发后的CallBack处理，指令会在onResume()后生效
+
+参数：
+
+  ignoreToast ：boolean，指令命中时是否不显示指令名Toast，默认显示
+
+  ignoreSoundEffect ：boolean，指令命中时是否不发出命中音效，默认发出音效
+
+  ignorehelp ：boolean，在帮助页面中是否不显示指令帮助内容，默认显示
+
+  startNumber ：int，初始的数字
+
+  endNumber ：int，结束的数字
+
+  cb ：NumberTypeCallBack，指令触发后的处理实体
+
+  keyList ：NumberKey，中文、英文及其他文字的指令实体EntityKey
+  
+  ```java
+// eg：
+InstructConfig config = new InstructConfig();
+config.addInstructList(NumberTypeControler.doTypeControl(true, true, false, 3, 20,
+              new NumberTypeControler.NumberTypeCallBack() {
+                  @Override
+                  public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
+                      Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
+                  }
+              },
+              new NumberKey(EntityKey.Language.zh, "第", "页", "可以说第3/4.../20页"),
+              new NumberKey(EntityKey.Language.en, "the", "page", "the 3/4.../20 page")
+              )
+      );
+  ```
+
+#### 3.6.3、NumberTypeControler 普通设置连续数字指令并立即生效
+
+  ```java
+public static void setNumberAndRunning(InstructionManager manager, int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
+  ```
+
+通过给定的数字指令配置，返回成组的数字指令实体InstructEntity，并衔接好指令触发后的CallBack处理, 会清除之前的数字指令，推荐在初始化初次 onResume()后使用，适合动态添加修改数字指令场景。
+
+参数：
+
+  manager ：InstructionManager，指令控制中心
+
+  startNumber ：int，初始的数字
+
+  endNumber ：int，结束的数字
+
+  cb ：NumberTypeCallBack，指令触发后的处理实体
+
+  keyList ：NumberKey，中文、英文及其他文字的指令实体EntityKey
+  
+  ```java
+// eg：
+NumberTypeControler.doTypeControl(mInstructionManager, 3, 20,
+              new NumberTypeControler.NumberTypeCallBack() {
+                  @Override
+                  public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
+                      Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
+                  }
+              },
+              new NumberKey(EntityKey.Language.zh, "第", "页", "可以说第3/4.../20页"),
+              new NumberKey(EntityKey.Language.en, "the", "page", "the 3/4.../20 page")
+              );
+  ```
+
+#### 3.6.4、NumberTypeControler 更多控制设置连续数字指令并立即生效
+
+  ```java
+public static void setNumberAndRunning(InstructionManager manager, boolean ignoreToast, boolean ignoreSoundEffect, boolean ignorehelp, int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList) 
+  ```
+
+通过给定的数字指令配置，返回成组的数字指令实体InstructEntity，并衔接好指令触发后的CallBack处理, 会清除之前的数字指令，推荐在初始化初次 onResume()后使用，适合动态添加修改数字指令场景。
+
+参数：
+
+  manager ：InstructionManager，指令控制中心
+
+  ignoreToast ：boolean，指令命中时是否不显示指令名Toast，默认显示
+
+  ignoreSoundEffect ：boolean，指令命中时是否不发出命中音效，默认发出音效
+
+  ignorehelp ：boolean，在帮助页面中是否不显示指令帮助内容，默认显示
+  
+  startNumber ：int，初始的数字
+
+  endNumber ：int，结束的数字
+
+  cb ：NumberTypeCallBack，指令触发后的处理实体
+
+  keyList ：NumberKey，中文、英文及其他文字的指令实体EntityKey
+  
+  ```java
+// eg：
+NumberTypeControler.doTypeControl(mInstructionManager, true, true, false, 3, 20,
+              new NumberTypeControler.NumberTypeCallBack() {
+                  @Override
+                  public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
+                      Log.d(TAG, "AudioAi Number onInstructReceive command = " + key + ", number = " + number);
+                  }
+              },
+              new NumberKey(EntityKey.Language.zh, "第", "页", "可以说第3/4.../20页"),
+              new NumberKey(EntityKey.Language.en, "the", "page", "the 3/4.../20 page")
+              );
+  ```
+
+#### 3.6.5、NumberKey 数字指令实体EntityKey
 
   ```java
 public NumberKey(EntityKey.Language language, String prefix, String subfix, String helpContent)
