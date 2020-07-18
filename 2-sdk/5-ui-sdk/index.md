@@ -274,7 +274,7 @@ mImuView.setAdapter(mAdapter);
 </declare-styleable>
 ```
 
-#### 3.5.2 滑动模式选择
+#### 3.5.3 滑动模式选择
 
 配置方式：通过imutouchstyle属性配置
 
