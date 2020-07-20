@@ -35,8 +35,7 @@ allprojects {
 ```
 ### 2.1 Gradle依赖
 ``` gradle
-implementation 'com.rokid.glass:ui:1.5.4'
-implementation 'com.rokid.glass:imu:1.3.8'//导入IMUView控件
+implementation 'com.rokid.glass:ui:1.5.6'
 ```
 
 ### 2.2 Demo下载
