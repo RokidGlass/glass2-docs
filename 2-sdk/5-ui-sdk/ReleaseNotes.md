@@ -1,4 +1,7 @@
 # Glass UI版本更新信息
+## 1.5.6
+* 添加 IMUView 头控自动滑动列表控件
+
 ## 1.5.4
 * 统一 Dialog 样式
 
@@ -12,8 +15,3 @@
 * 新增`GlassButton`
 * 新增`GlassDialog`
 * 新增工具类`CountDownManager`,`RokidSystem`
-
-# IMU View版本更新信息
-
-## 1.3.8
-* 新增`IMUView` 控件
