@@ -1,5 +1,5 @@
 # Glass UI SDK
-**Version: 1.5.4**
+**Version: 1.5.6**
 
 ## 一、UI SDK介绍
 ---
