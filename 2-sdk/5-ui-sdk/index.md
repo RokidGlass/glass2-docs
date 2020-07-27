@@ -126,13 +126,15 @@ new GlassDialog.CommonDialogBuilder(this)
 <img width="500" src="images/preview.jpg">
 
 ### 3.4 GlassAlignment
-Alignment概念：
-Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
+* Alignment概念：
+    * Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
 
-在手机上开发如下图：
+* 在手机上开发如下图：    
+
 <img width="500" src="images/alignment_phone.png">
 
-在眼镜上开发如下图：
+* 在眼镜上开发如下图：    
+
 <img width="500" src="images/alignment_glass.png">
 
 1. 蓝色代表`相机预览`的画面  
