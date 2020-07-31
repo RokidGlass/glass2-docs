@@ -277,8 +277,10 @@ mImuView.setAdapter(mAdapter);
 
 #### 3.5.3 滑动模式选择
 
-配置方式：通过imutouchstyle属性配置
+配置方式：通过imutouchstyle属性配置。
+匀速滑动模式：列表进行匀速滑动，每个item不会有停顿效果，多用于内容多比较快速的滚动，类似图库。
+模拟touch滑动模式：模拟手动touch滑动的效果，经过每个item会有停顿的效果，便于用户看清，是默认的滑动模式。
 
-匀速滑动模式：列表进行匀速滑动，每个item不会有停顿效果，多用于内容多比较快速的滚动，类似图库
+#### 3.5.4 自定义头控相关功能
 
-模拟touch滑动模式：模拟手动touch滑动的效果，经过每个item会有停顿的效果，便于用户看清，是默认的滑动模式
+可以注册SensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)的旋转矢量传感器类型，在onSensorChanged(SensorEvent event)回调中获取实时的方位信息，根据其每次回调内容的差值判断当前头控的状态做对应的处理。
