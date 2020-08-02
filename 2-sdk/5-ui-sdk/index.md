@@ -217,7 +217,7 @@ float projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
 
 ### 3.5 IMU View
 
-* IMU View控件：提供了一个可通过头部左右移动，横向自动滚动的列表控件，帮助开发者快速使用“头控快划”功能。
+* IMU View控件：提供了一个可通过头部左右转动，控制横向自动滚动的列表控件，帮助开发者快速使用“头控快划”功能。
 * 当用户打开系统设置中的“头控快划”后，你的IMU View控件就生效了。
 
 #### 3.5.1 使用示例
