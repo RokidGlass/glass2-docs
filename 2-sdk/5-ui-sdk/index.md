@@ -19,7 +19,7 @@ Glass自定义的Button
 由于AR 眼镜特有的屏幕显示特性，在开发眼镜上的识别类应用时，     
 需要对marked UI做一次align，以保证人眼看到的marked UI和真实世界对齐。
 
-**5. IMU View **   
+**5. IMU View**   
 提供了一个可通过头控横向自动滚动的列表控件
 
 ## 二、集成说明
@@ -217,6 +217,9 @@ float projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
 
 ### 3.5 IMU View
 
+* IMU View控件：提供了一个可通过头部左右移动，横向自动滚动的列表控件，帮助开发者快速使用“头控快划”功能。
+* 当用户打开系统设置中的“头控快划”后，你的IMU View控件就生效了。
+
 #### 3.5.1 使用示例
 
 <img width="400" src="images/imuview_simple.png">
@@ -277,9 +280,9 @@ mImuView.setAdapter(mAdapter);
 
 #### 3.5.3 滑动模式选择
 
-配置方式：通过imutouchstyle属性配置。
-匀速滑动模式：列表进行匀速滑动，每个item不会有停顿效果，多用于内容多比较快速的滚动，类似图库。
-模拟touch滑动模式：模拟手动touch滑动的效果，经过每个item会有停顿的效果，便于用户看清，是默认的滑动模式。
+* 配置方式：通过imutouchstyle属性配置。
+* 匀速滑动模式：列表进行匀速滑动，每个item不会有停顿效果，多用于内容多比较快速的滚动，类似图库。
+* 模拟touch滑动模式：模拟手动touch滑动的效果，经过每个item会有停顿的效果，便于用户看清，是默认的滑动模式。
 
 #### 3.5.4 自定义头控相关功能
 
