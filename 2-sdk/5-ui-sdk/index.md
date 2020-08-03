@@ -287,3 +287,5 @@ mImuView.setAdapter(mAdapter);
 #### 3.5.4 自定义头控相关功能
 
 可以注册SensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)的旋转矢量传感器类型，在onSensorChanged(SensorEvent event)回调中获取实时的方位信息，根据其每次回调内容的差值判断当前头控的状态做对应的处理。
+Android官网地址：
+https://developer.android.google.cn/reference/kotlin/android/hardware/SensorManager?hl=en
