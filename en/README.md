@@ -7,7 +7,7 @@
 -   本文档包含了系统配置方法，Rokid Glass SDK使用文档。(The document includes the system settings, and the user guide for Rokid Glass SDK)
 
 ## 如何在Glass上开发App？(how to devlep app in glasses)
--   开发者可以基于Rokid提供的SDK开发眼镜端App，或者用已有的Android App做眼镜适配。(THe developers can build the app in the glasses with SDK or port the Android app into the glasses.
+-   开发者可以基于Rokid提供的SDK开发眼镜端App，或者用已有的Android App做眼镜适配。(The developers can build the app in the glasses with SDK or port the Android app into the glasses.
 -   眼镜适配方法（与Android手机上App的开发区别）(Porting apps into the glasses/Different from developing app in the smartphone)：
     -   Touch screen -> Touch pad：部分类型的控件需要自定义焦点控制。
     	 (Touch screen -> Touch pad：some controls need to be customized for the 		focus control)
