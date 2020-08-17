@@ -24,7 +24,6 @@ Rokid GB28181SDK 提供SIP连接GB28181服务器加推送本地视频（YUV420P-
       repositories {
           google()
           jcenter()
-          maven { url 'http://mvnrepo.rokid-inc.com/nexus/content/groups/public/' }
 
       }
           // Snapshot 库时使用，强制取消缓存，并更新依赖库
