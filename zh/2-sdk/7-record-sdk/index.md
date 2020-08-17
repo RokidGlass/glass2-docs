@@ -24,8 +24,6 @@ Rokid Recordlib 实现了Camera录制，系统录屏，MIC 录制，系统声音
       repositories {
           google()
           jcenter()
-          maven { url 'http://mvnrepo.rokid-inc.com/nexus/content/groups/public/' }
-          maven { url "http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/"}
       }
   }
   ```
