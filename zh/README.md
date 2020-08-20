@@ -49,4 +49,3 @@
 | [人脸离线识别](2-sdk/1-face-sdk/index.md) | 人脸识别SDK接入和接口说明|
 | [人脸在线识别](2-sdk/1-face-online-sdk/index.md)| 人脸在线识别的接口规范和使用|
 | [车牌识别](2-sdk/2-lpr-sdk/index.md)|车牌识别提供车牌检测+车牌识别功能 |
-| [流媒体国标](2-sdk/6-gb28181-sdk/index.md)|提供SIP连接GB28181服务器加推送本地视频流到远端服务器功能|

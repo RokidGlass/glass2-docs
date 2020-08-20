@@ -23,9 +23,6 @@ Rokid Glass文档目录
         - 车牌识别
             - [使用说明](2-sdk/2-lpr-sdk/index.md)
             - [版本信息](2-sdk/2-lpr-sdk/ReleaseNotes.md)
-        - 流媒体国标 
-            - [使用说明](2-sdk/6-gb28181-sdk/index.md)
-            - [版本信息](2-sdk/6-gb28181-sdk/ReleaseNotes.md)
 * [OS 设计规范](5-design/index.md)
 * [FAQ](0-faq/index.md) 
 * [论坛](6-forum/index.md)
