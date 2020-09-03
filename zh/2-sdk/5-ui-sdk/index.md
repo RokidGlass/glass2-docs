@@ -16,8 +16,8 @@ Glass自定义的Button
 屏幕适配方案，可以在Rokid Glass上保持UI统一按比例显示
 
 **4. GlassAlignment**   
-由于AR 眼镜特有的屏幕显示特性，在开发眼镜上的识别类应用时，     
-需要对marked UI做一次align，以保证人眼看到的marked UI和真实世界对齐。
+由于AR 眼镜特有的屏幕显示特性(Optical see through)，在开发眼镜上的"识别类应用"时，     
+为保证好的体验，建议不显示camera preview，然后把识别后要显示出来的标定内容做一次对齐映射，以保证人眼看到的标定内容固定在真实物体上。
 
 **5. IMU View**   
 提供了一个可通过头控横向自动滚动的列表控件
@@ -203,7 +203,7 @@ config.setRoi(roiRect);
 ```
 
 #### 3.4.3 getProjectionMatrix_OpticalSeeThrough
-说明：获取OpticalSeeThrough场景下，OpenGLES 3D 应用的投影矩阵（横屏状态），以便人眼看到的marked UI和真实世界对齐
+说明：获取OpticalSeeThrough场景下，OpenGLES 3D 应用的投影矩阵（横屏状态），以便人眼看到的标定内容和真实世界对齐
 ``` java
 public static float[] getProjectionMatrix_OpticalSeeThrough()
 ```
