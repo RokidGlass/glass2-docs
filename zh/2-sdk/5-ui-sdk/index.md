@@ -34,8 +34,13 @@ allprojects {
 }
 ```
 ### 2.1 Gradle依赖
+在项目的 /app/build.gradle 文件中，增加如下依赖：
 ``` gradle
-implementation 'com.rokid.glass:ui:1.5.6'
+...
+dependencies {
+    ...
+    implementation 'com.rokid.glass:ui:1.5.6'
+}
 ```
 
 ### 2.2 Demo下载
@@ -168,12 +173,7 @@ Rect rect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRe
 //根据
 canvas.save();
 canvas.translate((rect.left + rect.right) / 2f, (rect.top + rect.bottom) / 2f);
-
-drawRect(canvas, 0, rect.width(), rect.height(), paint, rectConfig);
-drawRect2(canvas, 0, rect.width(), rect.height(), paint, rectConfig);
-drawRect(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
-drawRect2(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
-
+...
 canvas.restore();
 ...
 ```
@@ -186,21 +186,7 @@ public static Rect getWindowRect(final int previewWidth, final int previewHeight
 |---|---|---|
 |previewWidth|Camera preview宽||
 |previewHeight|Camera preview高||
-|windowRect|屏幕上的Rect||
-
-示例代码: 根据屏幕上的roi区域，得到preview 上的roi区域
-```java
-Rect window = new Rect(0,0,1280,720);
-roiRect = RokidSystem.getWindowRect2K(CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, window);
-roiRect = FaceRectUtils.scaleRect(roiRect, CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, FaceParams.roiScale);
-...
-
-VideoDFaceConf config = new VideoDFaceConf();
-config.setDataType(DataFormat.DATA_YUV420);
-config.setSize(CameraParams.PREVIEW_WIDTH, CameraParams.PREVIEW_HEIGHT);
-config.setRoi(roiRect);
-
-```
+|windowRect|LCD屏幕上的Rect||
 
 #### 3.4.3 getProjectionMatrix_OpticalSeeThrough
 说明：获取OpticalSeeThrough场景下，OpenGLES 3D 应用的投影矩阵（横屏状态），以便人眼看到的标定内容和真实世界对齐
