@@ -255,7 +255,7 @@ tips UI可以使用 InstructionManager对象的setTipsContent(String content)方
 
 #### 2.3.7、系统指令说明：
 Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页面都可以使用。
-* zh：回到桌面 en：Navigate Home
+* zh：回到桌面 / 返回桌面 en：Navigate Home
   * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
 * zh：回到上一级 / 返回上一级 en：Navigate Back
@@ -272,11 +272,17 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
 * zh：小点声 en: Volume Down
   * 功能：音量调低一档；
   * 注意：系统指令，全局类型
-* zh：增强亮度 en: Brightness Up
+* zh：亮一点 en: Brightness Up
   * 功能：亮度调高一档；
   * 注意：系统指令，全局类型
-* zh：降低亮度 en: Brightness Down
+* zh：暗一点 en: Brightness Down
   * 功能：亮度调低一档；
+  * 注意：系统指令，全局类型
+* zh：点亮屏幕 en: Screen On
+  * 功能：控制屏幕点亮；
+  * 注意：系统指令，全局类型
+* zh：熄灭屏幕 en: Screen Off
+  * 功能：控制屏幕熄灭；
   * 注意：系统指令，全局类型
 
 ## 三、API参考
@@ -698,35 +704,8 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.3、showHelpLayer 显示帮助浮层
 
-  ```java
-  public void showHelpLayer();
-  ```
-  设置显示帮助浮层。
-
-  ```java
-// eg:
-  if (mInstructionManager != null) {
-      mInstructionManager.showHelpLayer();
-  }
-  ```
-
-#### 3.6.4、hideHelpLayer 关闭帮助浮层
-
-  ```java
-  public void hideHelpLayer();
-  ```
-  设置关闭帮助浮层。
-
-  ```java
-// eg:
-  if (mInstructionManager != null) {
-      mInstructionManager.hideHelpLayer();
-  }
-  ```
-
-#### 3.6.5、showTipsLayer 显示tips浮层
+#### 3.6.3、showTipsLayer 显示tips浮层
 
   ```java
   public void showTipsLayer();
@@ -740,7 +719,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.6、hideTipsLayer 关闭tips浮层
+#### 3.6.4、hideTipsLayer 关闭tips浮层
 
   ```java
   public void hideTipsLayer();
@@ -754,7 +733,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.7、setMenuShowing 设置是否显示tip条中的"显示菜单"字样
+#### 3.6.5、setMenuShowing 设置是否显示tip条中的"显示菜单"字样
 
   ```java
   public void setMenuShowing(boolean showing);
@@ -772,7 +751,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.8、isHelpLayerShowing 帮助浮层是否正在展示
+#### 3.6.6、isHelpLayerShowing 帮助浮层是否正在展示
 
   ```java
   public boolean isHelpLayerShowing();
@@ -780,7 +759,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   帮助浮层是否正在展示， true 展示，false 未展示。
 
 
-#### 3.6.9、sendWtWords 将指令词设置到语音助手
+#### 3.6.7、sendWtWords 将指令词设置到语音助手
 
   ```java
   public void sendWtWords();
@@ -795,7 +774,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.10、clearWtWords 清除语音助手当前所有语音指令
+#### 3.6.8、clearWtWords 清除语音助手当前所有语音指令
 
   ```java
   public void clearWtWords();
@@ -809,7 +788,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.11、getInstructConfig 获取当前页面指令配置
+#### 3.6.9、getInstructConfig 获取当前页面指令配置
 
   ```java
   public InstructConfig getInstructConfig();
@@ -817,7 +796,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   获取当前页面指令配置。
 
 
-#### 3.6.12、setInstructConfig 设置当前页面的指令配置
+#### 3.6.10、setInstructConfig 设置当前页面的指令配置
 
   ```java
   public void setInstructConfig(InstructConfig instructConfig);
@@ -835,7 +814,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.13、addInstructList 成组添加语音指令
+#### 3.6.11、addInstructList 成组添加语音指令
 
   ```java
   public void addInstructList(List<InstructEntity> instructList);
@@ -853,7 +832,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.14、addInstructEntity 单个添加语音指令
+#### 3.6.12、addInstructEntity 单个添加语音指令
 
   ```java
   public void addInstructEntity(InstructEntity entity);
@@ -871,7 +850,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.15、clearUserInstruct 清除用户级指令
+#### 3.6.13、clearUserInstruct 清除用户级指令
 
   ```java
   public void clearUserInstruct();
@@ -887,7 +866,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.16、clearGlobalInstruct 清除用户级指令
+#### 3.6.14、clearGlobalInstruct 清除用户级指令
 
   ```java
   public void clearGlobalInstruct();
@@ -903,7 +882,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.17、clearAllInstruct 清除用户级指令
+#### 3.6.15、clearAllInstruct 清除用户级指令
 
   ```java
   public void clearAllInstruct();
@@ -919,7 +898,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.18、clearNumberInstruct 清除当前全部数字类型指令
+#### 3.6.16、clearNumberInstruct 清除当前全部数字类型指令
 
   ```java
   public void clearNumberInstruct();
@@ -936,7 +915,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   ```
 
 
-#### 3.6.19、getInstructByName 通过指令名称来获取指令实体
+#### 3.6.17、getInstructByName 通过指令名称来获取指令实体
 
   ```java
   public InstructEntity getInstructByName(EntityKey.Language language, String name);
@@ -956,7 +935,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.20、removeInstruct 清除单个指令
+#### 3.6.18、removeInstruct 清除单个指令
 
   ```java
   public boolean removeInstruct(EntityKey.Language language, String name);
@@ -976,7 +955,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.21、setLeftBackShowing 设置tips左侧back返回上一级是否展示
+#### 3.6.19、setLeftBackShowing 设置tips左侧back返回上一级是否展示
 
   ```java
   public void setLeftBackShowing(boolean showing);
