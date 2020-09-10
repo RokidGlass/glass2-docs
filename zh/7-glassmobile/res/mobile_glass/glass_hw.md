@@ -8,7 +8,7 @@
 
 # SDK集成步骤
 1. 工程build.gradle配置maven仓库地址
-    
+   
     ```groovy
     allprojects {
             repositories {
@@ -18,7 +18,7 @@
     ```
     
 2. 模块build.gradle配置SDK依赖
-    
+   
     ```groovy
     implementation 'com.rokid.alliance.usbcamera:usbcamera:1.0.0.7'
     ```
@@ -36,7 +36,7 @@
     ```
     
 4. targetSdkVesion必需<=27
-    
+   
     ```groovy
     defaultConfig {
         targetSdkVersion 27
@@ -164,7 +164,7 @@
     ```
 
 6. sdk释放
-    
+   
     ```java
     RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
 RKGlassDevice.getInstance().deInit();
@@ -200,14 +200,14 @@ opticalId | String | 可区分眼镜生产批次，其值目前有三个，分�
 ## 获取方式
 1. [初始化](#sdk_use)
 2. 监听camera数据回调
-    
+   
     ```java
      RKGlassDevice.getInstance().setOnPreviewFrameListener(bytes -> {
             //TODO
         });
     ```
 3. 取消camera数据回调
-    
+   
     ```java
     RKGlassDevice.getInstance().removeOnPreviewFrameListener(AbstractUVCCameraHandler.OnPreViewResultListener: onPreviewFrameListener);
     ```
@@ -331,7 +331,14 @@ Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
 4. 白色代表物体映射到`LCD屏幕`的显示区域
 
 
-## 获取Alligment
+## 获取Alignment
 
+以下示例针对矩形框进行Alignment校准，如果是其他形状请参考以下示例进行校准：
 
+```java
+Rect rect = new Rect(20, 20, 100, 100);//相机预览Rect位置，比如人脸识别使用Camera数据进行人脸检测后得到的人脸框，这个人脸框绘制到眼镜屏幕上需要进行校准，真实的位置需要根据眼镜硬件的生产批次进行位置调整
+
+//PREVIEW_WIDTH和PREVIEW_HEIGHT为屏幕的分辨率，ROKID二代眼镜分辨率是1280*720，rect为待校准的人脸框，返回校准后的人脸框，这个人脸框就是最终绘制到屏幕的区域
+Rect rectAfterAlignment = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT, rect);
+```
 
