@@ -35,6 +35,7 @@ Rokid Glass文档目录
         * [SDK集成步骤](7-glassmobile/res/mobile_glass/glass_hw.md#sdk集成步骤)
         * [USB主机](7-glassmobile/res/mobile_glass/glass_hw.md#眼镜连接android主机信息说明)
         * [摄像头数据获取](7-glassmobile/res/mobile_glass/glass_hw.md#摄像头数据)
+        * [Alignment](7-glassmobile/res/mobile_glass/glass_hw.md#aligment对齐)
     * [人脸、车牌识别](7-glassmobile/res/mobile_glass/ai.md)
         * [人脸sdk集成](7-glassmobile/res/mobile_glass/ai.md#人脸sdk集成)
         * [离线人脸导入](7-glassmobile/res/mobile_glass/ai.md#添加离线人脸数据)

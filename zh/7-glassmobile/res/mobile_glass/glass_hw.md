@@ -306,3 +306,32 @@ RKGlassDevice.getInstance().setBrightness(int: brightness);
 int brightness = RKGlassDevice.getInstance().getBrightness();
 ```
 
+
+
+
+
+# Aligment对齐
+
+
+##  Alignment概念
+
+Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
+
+* 在手机上开发如下图：
+
+<img width="500" src="media/alignment_phone.png">
+
+* 在眼镜上开发如下图：
+
+<img width="500" src="media/alignment_glass.png">
+
+1. 蓝色代表`相机预览`的画面
+2. 绿色代表`相机预览`中物体的坐标
+3. 橙色代表`LCD屏幕`在`相机预览`的映射区域,百分比表示真实世界在虚拟世界的比例
+4. 白色代表物体映射到`LCD屏幕`的显示区域
+
+
+## 获取Alligment
+
+
+
