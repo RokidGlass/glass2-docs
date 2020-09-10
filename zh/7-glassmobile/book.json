@@ -1,0 +1,32 @@
+{
+  "plugins" : [
+    "expandable-chapters-interactive",
+    "advanced-emoji",
+    "toc",
+    "highlight",
+    "-sharing",
+    "-lunr",
+    "-search",
+    "search-plus",
+    "flexible-alerts",
+    "sectionx",
+    "todo",
+    "github",
+    "local-video",
+    "copy-code-button",
+    "back-to-top-button",
+    "anchors",
+    "disqus"
+  ],
+  "pluginsConfig": {
+    "sectionx": {
+      "tag": "b"
+    },
+    "github": {
+        "url": "https://github.com/puppiesmeat"
+    },
+    "disqus": {
+        "shortName": "rokid-sdk"
+    }
+  }
+}
