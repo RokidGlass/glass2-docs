@@ -20,7 +20,7 @@
 2. 模块build.gradle配置SDK依赖
    
     ```groovy
-    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.0.0.7'
+    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.0.0'
     ```
     
 3. SDK依赖权限如下

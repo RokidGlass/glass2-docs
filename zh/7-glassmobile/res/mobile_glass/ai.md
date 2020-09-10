@@ -9,13 +9,13 @@
 1. [sdk集成](glass_hw.md#sdk集成步骤)
 
 2. build.gradle集成人脸车牌sdk
-    
+   
     ```groovy
-    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.0.0.3'
+    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.0.0'
     ```
 
 3. 加载模型
-    
+   
     函数：
     
     ```java
@@ -35,19 +35,19 @@
 		<th>说明</th>
  	</tr>
  	<tr>
-  		<td>context</td>
-   		<td>Context</td>
+    		<td>context</td>
+      		<td>Context</td>
 		<td>ApplicationContext</td>
  	</tr>
 	<tr>
-  		<td>preparedListener</td>
-   		<td>PreparedListener</td>
+    		<td>preparedListener</td>
+      		<td>PreparedListener</td>
 		<td>加载模型成功回调函数</td>
  	  </tr>
     </table>    
 
 4. 初始化人脸sdk
-    
+   
     函数：
     
     ```java
@@ -68,18 +68,18 @@
 		<th>说明</th>
  	</tr>
  	<tr>
-  		<td>context</td>
-   		<td>Context</td>
+    		<td>context</td>
+      		<td>Context</td>
 		<td>ApplicationContext</td>
  	</tr>
 	<tr>
-  		<td>roi</td>
-   		<td>Rect</td>
+    		<td>roi</td>
+      		<td>Rect</td>
 		<td>人脸识别有效区域，传null为所有区域有效</td>
  	  </tr>
  	  <tr>
-  		<td>preparedListener</td>
-   		<td>PreparedListener</td>
+    		<td>preparedListener</td>
+      		<td>PreparedListener</td>
 		<td>初始化成功回调函数</td>
  	  </tr>
     </table>
@@ -106,23 +106,23 @@
 		<th>说明</th>
  	</tr>
  	<tr>
-  		<td>width</td>
-   		<td>int</td>
+    		<td>width</td>
+      		<td>int</td>
 		<td>原始图片宽（可以理解为Camera出来的数据）</td>
  	</tr>
 	<tr>
-  		<td>height</td>
-   		<td>int</td>
+    		<td>height</td>
+      		<td>int</td>
 		<td>原始图片高</td>
  	  </tr>
  	  <tr>
-  		<td>data</td>
-   		<td>byte[]</td>
+    		<td>data</td>
+      		<td>byte[]</td>
 		<td>原始图片数据</td>
  	  </tr>
  	  <tr>
-  		<td>faces</td>
-   		<td>List<RKFaceDO></td>
+    		<td>faces</td>
+      		<td>List<RKFaceDO></td>
 		<td>对应图片包含的人脸</td>
  	  </tr>
     </table>    
@@ -171,7 +171,7 @@
         <td>人脸特征，**用于离线人脸**</td>
     </tr>
 </table>
-        
+    ​    
     
 ## 离线人脸识别
 
@@ -179,7 +179,7 @@
 
 1. [人脸sdk集成](glass_hw.md#sdk集成步骤)
 2. 添加离线人脸
-    
+   
     示例：
     
     ```java
@@ -187,6 +187,7 @@
     if (featResult.getResultCode() == 0) {//图片特征提取成功 
         FaceDataManager.getInstance().addPerson(Person: person, List<FeatFileInfo> featFileInfos, null, true);//添加到数据库
     }
+    ```
 ```
 
     API说明：
@@ -235,8 +236,8 @@
     
     ```java
     ErrorCode errorCode = FaceDataManager.getInstance().addPerson(Person: person, List<FeatFileInfo> featFileInfos, String covertId, boolean needSave);
-    ```
-    
+```
+
     参数：
         
     <table>
@@ -348,7 +349,7 @@
 </table>
     
 3. 根据识别结果查询数据库
-    
+   
     示例：
     
     ```java
@@ -431,9 +432,9 @@
 1. [车牌sdk集成](glass_hw.md#sdk集成步骤)
 
 2. 加载模型
-    
+   
     函数：
-       
+    
     ```java
         RKAlliance.getInstance().loadLPRModel(getApplicationContext(), new PreparedListener() {
                     @Override

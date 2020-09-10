@@ -18,7 +18,7 @@
 2. build.gradle配置maven库
 
     ```groovy
-     implementation 'com.rokid.alliance.glassui:glassui:1.0.0.0'
+     implementation 'com.rokid.alliance.glassui:glassui:1.1.0.0'
     ```
 
 3. sdk依赖权限申请
@@ -42,7 +42,7 @@
     ```
 
 5. 人脸、车牌识别
-    
+   
     1. 在线识别
     
         ```java
