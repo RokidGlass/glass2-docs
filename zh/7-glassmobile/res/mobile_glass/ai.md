@@ -100,33 +100,33 @@
     RKFaceModel：
     
     <table>
-	<tr>
-		<th>字段</th>
-		<th>类型</th>
-		<th>说明</th>
- 	</tr>
- 	<tr>
-    		<td>width</td>
-      		<td>int</td>
-		<td>原始图片宽（可以理解为Camera出来的数据）</td>
- 	</tr>
-	<tr>
-    		<td>height</td>
-      		<td>int</td>
-		<td>原始图片高</td>
- 	  </tr>
- 	  <tr>
-    		<td>data</td>
-      		<td>byte[]</td>
-		<td>原始图片数据</td>
- 	  </tr>
- 	  <tr>
-    		<td>faces</td>
-      		<td>List<RKFaceDO></td>
-		<td>对应图片包含的人脸</td>
- 	  </tr>
-    </table>    
-    
+    <tr>
+        <td>字段</td>
+        <td>类型</td>
+        <td>说明</td>
+    </tr>
+    <tr>
+        <td>width</td>
+        <td>int</td>
+        <td>原始图片宽（可以理解为Camera出来的数据）</td>
+    </tr>
+    <tr>
+        <td>height</td>
+        <td>int</td>
+        <td>原始图片高</td>
+    </tr>
+    <tr>
+        <td>data</td>
+        <td>byte[]</td>
+        <td>原始图片数据</td>
+    </tr>
+    <tr>
+        <td>faces</td>
+        <td>List</td>
+        <td>对应图片包含的人脸</td>
+    </tr>
+    </table>
+        
     RKFaceDO：<div id="rkfacedo"></div>
     
     <table>
@@ -170,8 +170,7 @@
         <td>String</td>
         <td>人脸特征，**用于离线人脸**</td>
     </tr>
-</table>
-    ​    
+    </table>
     
 ## 离线人脸识别
 
@@ -188,8 +187,7 @@
         FaceDataManager.getInstance().addPerson(Person: person, List<FeatFileInfo> featFileInfos, null, true);//添加到数据库
     }
     ```
-```
-
+    
     API说明：
     
     ExtractFeatResult featResult = FaceDataManager.getInstance().extractFeat(Bitmap: bitmap);
@@ -197,22 +195,22 @@
     参数：
         
     <table>
-    <tr>
-        <td>字段</td>
-        <td>类型</td>
-        <td>说明</td>
-    </tr>
-    <tr>
-        <td>bitmap</td>
-        <td>Bitmap</td>
-        <td>需要提取人脸特征的人脸照片（正脸）</td>
-    </tr>
-    <tr>
-        <td>featResult</td>
-        <td>ExtractFeatResult</td>
-        <td>提取特征的返回值</td>
-    </tr>
-</table>
+        <tr>
+            <td>字段</td>
+            <td>类型</td>
+            <td>说明</td>
+            </tr>
+            <tr>
+            <td>bitmap</td>
+            <td>Bitmap</td>
+            <td>需要提取人脸特征的人脸照片（正脸）</td>
+            </tr>
+            <tr>
+            <td>featResult</td>
+            <td>ExtractFeatResult</td>
+            <td>提取特征的返回值</td>
+            </tr>
+    </table>
         
     ExtractFeatResult：
     
@@ -232,12 +230,11 @@
         <td>String</td>
         <td>提取失败原因</td>
     </tr>
-</table>
+    </table>
     
     ```java
     ErrorCode errorCode = FaceDataManager.getInstance().addPerson(Person: person, List<FeatFileInfo> featFileInfos, String covertId, boolean needSave);
 ```
-
     参数：
         
     <table>
