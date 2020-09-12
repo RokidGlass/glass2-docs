@@ -1,5 +1,5 @@
 # Glass 语音离线指令 SDK
-**Version: 1.4.2**  
+**Version: 1.5.1**  
 
 
 
@@ -9,6 +9,8 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 * 语音指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
 * 语音指令需要依附Activity的生命周期，指令设置在整个Activity内适用，目前不支持独自Fragment、dialog设置独立指令组。
 * 语音指令以当前系统语音为语言基础选定指令语言类型，如果没有与当前系统语言对应的语言类型指令，会选取中文zh为默认语言类型指令。
+
+
 
 附：语音助手RokidAiSdk需要v2.2.1版本及以上。
 
@@ -25,7 +27,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 ## 二. 集成说明
 
-### 2.1、 添加三方依赖库
+### 2.1 添加三方依赖库
 
 - 总工程build.gradle配置：
 
@@ -44,7 +46,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.4.2'
+      implementation 'com.rokid.ai.glass:instructsdk:1.5.1'
   }
   ```
 - Jcenter Maven信息
@@ -53,16 +55,16 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.4.2</version>
+    <version>1.5.1</version>
     <type>pom</type>
   </dependency>
   ```
 
 - 修改时间
-  2020年07月18日
+  2020年09月12日
 
 
-### 2.2、 AndroidManifest.xml及Application配置
+### 2.2 AndroidManifest.xml及Application配置
 
 - 自定义application
 
@@ -79,52 +81,196 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
   
 
-- 自定义application java文件中进行语音SDK初始化及全局指令设置：
+- 自定义application java文件中进行语音SDK初始化及全局指令设置
+
 	```java
-	/**
-	 * 设置ManagerBasicSkill的context
-   */
-	@Override
-	public void onCreate() {
-	    super.onCreate();
-	    // 初始化语音指令SDK
-	    VoiceInstruction.init(this);
-	  
-	    // 设置全局指令，无全局指令可以删掉下面的代码
-	    // eg：”返回“指令
-	    VoiceInstruction.getInstance().addGlobalInstruct(
-	            new InstructEntity()
-	                    .setGlobal(true)
-                      .addEntityKey(new EntityKey("返回", "fan hui"))
-                      .addEntityKey(new EntityKey(EntityKey.Language.en, "back last page"))
-	                    .setCallback(new IInstructReceiver() {
-	                        @Override
-	                        public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
-	                            try {
-	                                if (act != null) {
-	                                    act.finish();
-	                                }
-	                            } catch (Exception e) {
-	                                e.printStackTrace();
-	                            }
-	                        }
-	                    })
-	    );
-	}
+public class InstructApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // 初始化语音指令SDK
+  	    VoiceInstruction.init(this);
+  	  
+  	    // 设置全局指令，无全局指令可以删掉下面的代码
+  	    // eg：”返回“指令
+  	    VoiceInstruction.getInstance().addGlobalInstruct(
+  	            new InstructEntity()
+  	                    .setGlobal(true)
+                        .addEntityKey(new EntityKey("返回", "fan hui"))
+                        .addEntityKey(new EntityKey(EntityKey.Language.en, "back last page"))
+  	                    .setCallback(new IInstructReceiver() {
+  	                        @Override
+  	                        public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
+  	                            try {
+  	                                if (act != null) {
+  	                                    act.finish();
+  	                                }
+  	                            } catch (Exception e) {
+  	                                e.printStackTrace();
+  	                            }
+  	                        }
+  	                    })
+    }
+}
+
 	```
-	
-	
 
-### 2.3、 App Activity中调用
+语音指令支持三种使用方式：
+1. 通过InstructLifeManager使用LifeCycle方式；（推荐）
+2. 直接继承InstructionActivity方式；
+3. 模仿InstructionActivity方式；
 
-#### 2.3.1、基础Activity继承InstructionActivity.java：
+
+### 2.3 通过InstructLifeManager使用LifeCycle方式（推荐）
+
+说明：这种使用方式需要给InstructLifeManager提供一个LifeCycle的入参对象，指令的生命周期以此LifeCycle为主；
+
+#### 2.3.1 InstructLifeManager初始化
+
+  ```java 
+  /**
+  * InstructLifeManager 初始化函数
+  * @param act Activity 实例
+  * @param lifecycle android.arch.lifecycle.Lifecycle 实例
+  * @param lifeListener IInstructLifeListener 回调监听实例
+  */
+ public InstructLifeManager(Activity act, Lifecycle lifecycle, IInstructLifeListener lifeListener)
+  ```
+
+#### 2.3.2 IInstructLifeListener回调
+
+  ```java
+    /**
+   * InstructLifeManager 一些回调监听
+   */
+  public interface IInstructLifeListener {
+      /**
+       * 指令处理拦截
+       *
+       * @param command
+       * @return
+       */
+      boolean onInterceptCommand(String command);
+
+      /**
+       * tips ui 准备完毕回调
+       */
+      void onTipsUiReady();
+
+      /**
+       * 帮助浮层显隐
+       *
+       * @param show true， 显示；false，隐藏
+       */
+      void onHelpLayerShow(boolean show);
+  }
+  ```
+
+#### 2.3.2 InstructLifeManager使用
+
+  ```java
+
+public class BasicEasyAct extends AppCompatActivity {
+
+    private static final String TAG = BasicEasyAct.class.getSimpleName();
+
+    private InstructLifeManager mLifeManager;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_basic_easy);
+        configInstruct();
+    }
+
+    public void configInstruct() {
+        mLifeManager = new InstructLifeManager(this, getLifecycle(), mInstructLifeListener);
+        mLifeManager.addInstructEntity(
+                new InstructEntity()
+                        .addEntityKey(new EntityKey("上一个", null))
+                        .addEntityKey(new EntityKey(EntityKey.Language.en, "last one"))
+                        .setShowTips(true)
+                        .setCallback(new IInstructReceiver() {
+                            @Override
+                            public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
+                                Log.d(TAG, "上一个 触发 ");
+                            }
+                        })
+                )
+                .addInstructEntity(
+                        new InstructEntity()
+                                .addEntityKey(new EntityKey("下一个", null))
+                                .addEntityKey(new EntityKey(EntityKey.Language.en, "next one"))
+                                .setShowTips(true)
+                                .setCallback(new IInstructReceiver() {
+                                    @Override
+                                    public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
+                                        Log.d(TAG, "下一个 触发 ");
+                                    }
+                                })
+                )
+                .addInstructEntity(
+                        new InstructEntity()
+                                .addEntityKey(new EntityKey("进入视频", null))
+                                .addEntityKey(new EntityKey(EntityKey.Language.en, "open video"))
+                                .setShowTips(true)
+                                .setIgnoreHelp(true)
+                                .setCallback(new IInstructReceiver() {
+                                    @Override
+                                    public void onInstructReceive(Activity act, String key, InstructEntity instruct) {
+                                        Log.d(TAG, "进入视频 触发 ");
+                                    }
+                                })
+                );
+    }
+
+    private InstructLifeManager.IInstructLifeListener mInstructLifeListener = new InstructLifeManager.IInstructLifeListener() {
+        @Override
+        public boolean onInterceptCommand(String command) {
+            if ("需要拦截的指令".equals(command)) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onTipsUiReady() {
+            Log.d("AudioAi", "onTipsUiReady Call ");
+        }
+
+        @Override
+        public void onHelpLayerShow(boolean show) {
+
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+}
+
+  ```
+
+
+### 2.4  直接继承InstructionActivity方式
+
+说明：这种方式的Activity必须继承InstructionActivity，InstructionActivity继承基本的Activity。
+
+#### 2.4.1 Activity继承InstructionActivity.java
   
   ```java
   public class HomeTestAct extends InstructionActivity {}
   ```
-  **注：**如果不能直接继承InstructionActivity.java，则需要将InstructionActivity的内部方法调用实现在自己的BaseActivity中。
   
-#### 2.3.2、添加普通指令：
+#### 2.4.2 添加普通指令
   
   ```java
   // 添加指令    
@@ -178,7 +324,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   
   ```
   
-#### 2.3.3、指令拦截：
+#### 2.4.3 指令拦截
   
   ```java
   // HomeTestAct.java 中
@@ -192,21 +338,183 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   public boolean doReceiveCommand(String command) {
       Log.d(TAG, "doReceiveCommand command = " + command);
   
-      if ("进入视频".equals(command)) {
+      if ("需要拦截的指令".equals(command)) {
           return true;
       }
       return false;
   }
   
   ```
+
+#### 2.4.4 Activity中关闭语音指令方法 (非必须Override)
+
+  ```java
+      /**
+       * 是否关闭语音指令开关， 默认开启，继承可以选择关闭
+       *
+       * @return false:开启， true:关闭
+       */
+      @Override
+      public boolean closeInstruction() {
+          return false;
+      }
+  ```
+
+#### 2.4.5 Activity中 配置指令方法, 返回 InstructConfig指令配置实体 (必须Override)
+
+  ```java
+  public InstructConfig configInstruct()
+  ```
+
+#### 2.4.6 指令相关浮条UI生成完毕，想要进行修改 (非必须Override)
+
+  ```java
+  // HomeTestAct.java 中
+  /**
+   * 插件浮层相关UI已经准备并添加到主View树完毕，可以进行UI相关修改
+   */
+  @Override
+  public void onInstrucUiReady() {
+      super.onInstrucUiReady();
+  }
+  ```
+
   
-#### 2.3.4、默认帮助相关指令：
-  * zh: 显示帮助  en: show help
-  * zh: 关闭帮助  en: close help
+### 2.5 模仿InstructionActivity方式
 
-  无需用户添加，语言助手会自动添加到系统指令集中
+说明：此种方式适合有自己的基础BasicActivity，无法直接继承InstructionActivity的场景，其他使用与直接继承InstructionActivity方式相同。
 
-#### 2.3.5、指令拼音设置：
+#### 2.5.1 模仿实现InstructionActivity
+
+  ```java
+
+public abstract class BasicInstructionActivity extends BasicActivity[App自己的基础Activity] implements IInstruction{
+
+    protected InstructionManager mInstructionManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mInstructionManager = new InstructionManager(this, closeInstruction(), configInstruct(), mInstructionListener);
+    }
+
+    protected InstructionManager.IInstructionListener mInstructionListener = new InstructionManager.IInstructionListener() {
+        @Override
+        public boolean onReceiveCommand(String command) {
+            return doReceiveCommand(command);
+        }
+
+        @Override
+        public void onHelpLayerShow(boolean show) {
+            onHelpLayerShow(show);
+        }
+    };
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mInstructionManager != null) {
+            mInstructionManager.onStart();
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        if (mInstructionManager != null) {
+            mInstructionManager.onResume();
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        if (mInstructionManager != null) {
+            mInstructionManager.onPause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mInstructionManager != null) {
+            mInstructionManager.onDestroy();
+            mInstructionManager = null;
+        }
+        super.onDestroy();
+    }
+
+    /**
+     * 清空当前指令组
+     */
+    @Override
+    public void clearWtWords() {
+        if (mInstructionManager != null) {
+            mInstructionManager.clearWtWords();
+        }
+    }
+
+    /**
+     * 是否关闭语音指令开关， 默认开启，继承可以选择关闭
+     *
+     * @return false:开启， true:关闭
+     */
+    @Override
+    public boolean closeInstruction() {
+        return false;
+    }
+
+    /**
+     * 插件浮层相关UI已经准备并添加到主View树完毕，可以进行UI相关修改
+     */
+    @Override
+    public void onInstrucUiReady() {
+
+    }
+
+    /**
+     * 帮助浮层显隐
+     *
+     * @param show true， 显示；false，隐藏
+     */
+    public void onHelpLayerShow(boolean show) {
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        boolean ret = false;
+        if (mInstructionManager != null) {
+            ret = mInstructionManager.onKeyDown(keyCode, event);
+        }
+        return ret || super.onKeyDown(keyCode, event);
+    }
+
+    /**
+     * 获取语音指令配置
+     *
+     * @return
+     */
+    @Override
+    public abstract InstructConfig configInstruct();
+
+    /**
+     * 是否拦截处理当前语音指令，拦截后之前配置的指令闭包不会被调用
+     * （可以用来提前处理一些指令，然后返回false）
+     * @param command
+     * @return true：拦截事件 false：不进行拦截
+     */
+    @Override
+    public abstract boolean doReceiveCommand(String command);
+}
+
+  ```
+
+### 2.6 其他公共示例
+
+#### 2.6.1 指令拼音设置
+
   * sdk中会对中文指令名做默认的拼音转化，但是针对部分多音字，更确切的读音需要用户自己设置
   * eg：重心、重复
   
@@ -246,15 +554,16 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   
   ```
 
-#### 2.3.6、动态设置指令说明：
-默认的指令会在Activity onCreate() 时全部配置好，UI相关会在onStart()时生成，onResume()时会将指令设置到语音助手，onPause()时会将指令从语音助手中移除。
+#### 2.6.2 动态设置指令说明
 
-如果指令需要异步数据才能生成，生成后可以使用 InstructionManager对象的sendWtWords()进行指令设置。
+1. 默认的指令会在Activity onCreate() 时全部配置好，Tips UI相关会在onStart()时生成，onResume()时会将指令设置到语音助手，onPause()时会将指令从语音助手中移除；
+2. 如果指令需要异步数据才能生成，生成后可以使用 InstructLifeManager 或 InstructionManager对象的sendWtWords()进行指令设置；
+3. Tips UI可以使用 InstructionManager对象的setTipsContent(String content)方法来设置显示内容；
+4. Tips UI根据指令自动生成只会在Activity初次设置指令时生效，UI准备完毕会回调 onInstrucUiReady()（集成InstructionActivity方式） 或 onTipsUiReady()（LifeCycle方式）方法。再次设置UI不会动态变化，需要用户手动调用setTipsContent(String content)方法来设置显示内容；
 
-tips UI可以使用 InstructionManager对象的setTipsContent(String content)方法来设置显示内容
+#### 2.6.3 系统指令说明
 
-#### 2.3.7、系统指令说明：
-Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页面都可以使用。
+Rokid Glass XR系统中，默认设置了一些系统指令，在每个页面都可以使用。
 * zh：回到桌面 / 返回桌面 en：Navigate Home
   * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
@@ -285,11 +594,12 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
   * 功能：控制屏幕熄灭；
   * 注意：系统指令，全局类型
 
+
 ## 三、API参考
 
-### 3.1、VoiceInstruction中公共方法说明
+### 3.1 VoiceInstruction中公共方法说明
 
-#### 3.1.1、VoiceInstruction中初始化 (必须在客户端的Application中调用)
+#### 3.1.1 VoiceInstruction中初始化 (必须在客户端的Application中调用)
 
   ```java
       /**
@@ -298,11 +608,10 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
        * @param appContext Application级别Context
        */
       @Override
-      public static void init(Context appContext) {
-      }
+      public static void init(Context appContext) 
   ```
 
-#### 3.1.2、VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用，中文环境使用)
+#### 3.1.2 VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用，中文环境使用)
 
   ```java
     /**
@@ -310,15 +619,14 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
     *
     * @param context Activity级别的Context
     * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
-    * @param configAllUseSolution true：所有配置全部使用解决方案的 false：素有配置使用系统默认和解决方案混合（默认推荐false）
+    * @param configAllUseSolution true：所有配置全部使用解决方案的 false：所有配置使用系统默认和解决方案混合（默认推荐false）
     * @param notifyRealRestart    true：真正重启才触发后续的指令词设置 false：只要有广播返回就触发后续的指令词设置（默认推荐false）
     * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
     */
-    public static void restartVoiceServer(Context context, boolean mustRestart, boolean configAllUseSolution, final boolean notifyRealRestart, final InstructionManager instructionManager) {
-    }
+    public static void restartVoiceServer(Context context, boolean mustRestart, boolean configAllUseSolution, final boolean notifyRealRestart, final InstructionManager instructionManager) 
   ```
 
-#### 3.1.3、恢复标准模型配置
+#### 3.1.3 恢复标准模型配置
 
   ```java
     /**
@@ -326,11 +634,10 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
     *
     * @param context
     */
-    public static void recoveryVoiceServer(Context context) {
-    }
+    public static void recoveryVoiceServer(Context context) 
   ```
 
-#### 3.1.4、添加全局指令
+#### 3.1.4 添加全局指令
 
   ```java
       /**
@@ -339,11 +646,10 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
        * @param entity InstructEntity实体
        * @return
        */
-      public VoiceInstruction addGlobalInstruct(InstructEntity entity){
-      }
+      public VoiceInstruction addGlobalInstruct(InstructEntity entity)
   ```
 
-#### 3.1.5、去除全局指令
+#### 3.1.5 去除全局指令
 
   ```java
       /**
@@ -352,77 +658,13 @@ Rokid Glass 二代系统中，默认设置了一些系统指令，在每个页�
        * @param entity InstructEntity实体
        * @return
        */
-      public VoiceInstruction removeGlobalInstruct(InstructEntity entity){
-      }
+      public VoiceInstruction removeGlobalInstruct(InstructEntity entity)
   ```
 
-
-### 3.2、Activity中需要Override方法说明
-
-#### 3.2.1、Activity中关闭语音指令方法 (非必须Override)
-
-  ```java
-      /**
-       * 是否关闭语音指令开关， 默认开启，继承可以选择关闭
-       *
-       * @return false:开启， true:关闭
-       */
-      @Override
-      public boolean closeInstruction() {
-          return false;
-      }
-  ```
-
-#### 3.2.2、Activity中 指令拦截方法 (必须Override)
-
-  ```java
-  /**
-   * 是否拦截处理当前语音指令，拦截后之前配置的指令闭包不会被调用
-   * （可以用来提前处理一些指令，然后返回false）
-   * @param command
-   * @return true：拦截事件 false：不进行拦截
-   */
-  public boolean doReceiveCommand(String command)
-  ```
+### 3.2 InstructConfig.java 指令配置实体
 
 
-#### 3.2.3、Activity中 配置指令方法, 返回 InstructConfig指令配置实体 (必须Override)
-
-  ```java
-  public InstructConfig configInstruct()
-  ```
-
-#### 3.2.4、指令相关浮条UI生成完毕，想要进行修改 (非必须Override)
-
-  ```java
-  // HomeTestAct.java 中
-  /**
-   * 插件浮层相关UI已经准备并添加到主View树完毕，可以进行UI相关修改
-   */
-  @Override
-  public void onInstrucUiReady() {
-      super.onInstrucUiReady();
-  }
-  ```
-
-#### 3.2.5、指令帮助浮层UI生成完毕，想要进行修改 (非必须Override)
-
-  ```java
-  // HomeTestAct.java 中
-  /**
-   * 插件帮助UI已经准备并添加到主View树完毕，可以进行UI相关修改
-   */
-  @Override
-  public void onInstrucHelpReady() {
-      super.onInstrucHelpReady();
-  }
-  ```
-
-
-### 3.3、InstructConfig.java 指令配置实体
-
-
-#### 3.3.1、setActionKey
+#### 3.2.1 setActionKey
 
   ```java
 public InstructConfig setActionKey(String actionKey);
@@ -439,7 +681,7 @@ InstructConfig config = new InstructConfig();
 config.setActionKey(HomeTestAct.class.getName() + InstructConfig.ACTION_SUFFIX)
   ```
 
-#### 3.3.2、addInstructEntity
+#### 3.2.2 addInstructEntity
 
   ```java
 public InstructConfig addInstructEntity(InstructEntity entity);
@@ -473,7 +715,7 @@ config.addInstructEntity(
 )
   ```
 
-#### 3.3.3、addInstructList
+#### 3.2.3 addInstructList
 
   ```java
 public InstructConfig addInstructList(List<InstructEntity> instructList);
@@ -500,7 +742,7 @@ config.addInstructList(NumberTypeControler.doTypeControl(3, 20,
       );
   ```
 
-#### 3.3.4、setIgnoreGlobal
+#### 3.2.4 setIgnoreGlobal
 
   ```java
 public void setIgnoreGlobal(boolean ignoreGlobal);
@@ -517,7 +759,7 @@ public void setIgnoreGlobal(boolean ignoreGlobal);
   config.setIgnoreGlobal(true);
   ```
 
-#### 3.3.5、setIgnoreSystem
+#### 3.2.5 setIgnoreSystem
 
   ```java
 public void setIgnoreSystem(boolean ignoreSystem);
@@ -535,15 +777,15 @@ public void setIgnoreSystem(boolean ignoreSystem);
   ```
 
 
-#### 3.3.6、其他
+#### 3.2.6 其他
 
   具体看InstructConfig中方法实现。
 
 
 
-### 3.4、InstructEntity.java 指令实体
+### 3.3 InstructEntity.java 指令实体
 
-#### 3.4.1、属性定义
+#### 3.3.1 属性定义(支持getter、setter方式调用)
 | 属性| 类型 |含义|
 |----|---|---|
 | keyMap | Map (EntityKey.Language, EntityKey) | 指令的识别key map，会根据系统语言来确定当前使用的EntityKey， 当前语音找不到对应的Key值时，使用中文zh 的 EntityKey |
@@ -554,7 +796,7 @@ public void setIgnoreSystem(boolean ignoreSystem);
 | ignoreToast | boolean | 是否忽略命中后显示的Toast内容提示 |
 | callback | IInstructReceiver | 指令回调闭包，void onInstructReceive(Activity act, String key, InstructEntity instruct); |
 
-#### 3.4.2、方法定义
+#### 3.3.2 方法定义
 以上属性均支持getter、setter方式调用 
 
 keyMap 支持 添加、查找、删除 EntityKey 操作
@@ -587,7 +829,7 @@ keyMap 支持 添加、查找、删除 EntityKey 操作
 
 ```
 
-#### 3.4.3、EntityKey.java 指令key定义
+#### 3.3.3 EntityKey.java 指令key定义(支持getter、setter方式调用)
 | 属性| 类型 |含义|
 |----|---|---|
 | language | EntityKey.Language | EntityKey 语言类型，不能为空，zh为中文、en为英文 |
@@ -597,7 +839,7 @@ keyMap 支持 添加、查找、删除 EntityKey 操作
 | other | Object | EntityKey其他数据，需要指令附带一些数据可以利用这个属性 |
 | helpContent | String | EntityKey提示文字，默认为EntityKey name，如果设置，以此为高优先级 |
 
-#### 3.4.4、EntityKey.java 方法定义
+#### 3.3.4 EntityKey.java 方法定义
 EntityKey 以上属性均支持getter、setter方式调用
 
 EntityKey 构造函数：
@@ -625,9 +867,9 @@ EntityKey 构造函数：
 
 
 
-### 3.5、IInstructReceiver.java 指令触发回调方法实体
+### 3.4 IInstructReceiver.java 指令触发回调方法实体
 
-#### 3.5.1、onInstructReceive
+#### 3.4.1 onInstructReceive
 
   ```java
 void onInstructReceive(Activity act, String key, InstructEntity instruct);
@@ -668,25 +910,31 @@ config.addInstructEntity(
 )
   ```
 
-### 3.6、InstructionManager.java 语音指令管理实体
+### 3.5 InstructLifeManager 或 InstructionManager 语音指令管理实体
 
-#### 3.6.1、InstructionManager实例获取
-InstructionManager 实例会在客户端Activity继承的InstructionActivity中生成：
-可以直接通过mInstructionManager来调用
+说明： 一下通用方法均适用于 InstructLifeManager 或 InstructionManager的实例，用来完成一些语音设置操作；
+* InstructLifeManager 用于使用LifeCycle方式使用语音指令SDK；
+* InstructionManager 用于使用InstructionActivity或自定义BasicActivity方式使用语音指令SDK；
+
+#### 3.5.1 Manager实例获取
+
+* InstructLifeManager 通常用户自己创建，参考InstructLifeManager构造函数：
+
   ```java
-  public abstract class InstructionActivity extends Activity implements IInstruction{
 
-      protected InstructionManager mInstructionManager;
-
-      @Override
-      protected void onCreate(Bundle savedInstanceState) {
-          super.onCreate(savedInstanceState);
-          mInstructionManager = new InstructionManager(this, closeInstruction(), configInstruct(), mInstructionListener);
-      }
-  }
+     /**
+  * InstructLifeManager 初始化函数
+  * @param act Activity 实例
+  * @param lifecycle android.arch.lifecycle.Lifecycle 实例
+  * @param lifeListener IInstructLifeListener 回调监听实例
+  */
+ public InstructLifeManager(Activity act, Lifecycle lifecycle, IInstructLifeListener lifeListener)
   ```
 
-#### 3.6.2、setTipsContent 设置tips显示文案
+* InstructionManager 实例会在客户端Activity继承的InstructionActivity中生成：
+可以直接通过mInstructionManager来调用
+
+#### 3.5.2 setTipsContent 设置tips显示文案
 
   ```java
   public void setTipsContent(String content);
@@ -705,7 +953,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   ```
 
 
-#### 3.6.3、showTipsLayer 显示tips浮层
+#### 3.5.3 showTipsLayer 显示tips浮层
 
   ```java
   public void showTipsLayer();
@@ -719,7 +967,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.4、hideTipsLayer 关闭tips浮层
+#### 3.5.4 hideTipsLayer 关闭tips浮层
 
   ```java
   public void hideTipsLayer();
@@ -733,7 +981,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.5、setMenuShowing 设置是否显示tip条中的"显示菜单"字样
+#### 3.5.5 setMenuShowing 设置是否显示tip条中的"显示菜单"字样
 
   ```java
   public void setMenuShowing(boolean showing);
@@ -751,7 +999,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.6、isHelpLayerShowing 帮助浮层是否正在展示
+#### 3.5.6 isHelpLayerShowing 帮助浮层是否正在展示
 
   ```java
   public boolean isHelpLayerShowing();
@@ -759,7 +1007,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   帮助浮层是否正在展示， true 展示，false 未展示。
 
 
-#### 3.6.7、sendWtWords 将指令词设置到语音助手
+#### 3.5.7 sendWtWords 将指令词设置到语音助手
 
   ```java
   public void sendWtWords();
@@ -774,7 +1022,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.8、clearWtWords 清除语音助手当前所有语音指令
+#### 3.5.8 clearWtWords 清除语音助手当前所有语音指令
 
   ```java
   public void clearWtWords();
@@ -788,7 +1036,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.9、getInstructConfig 获取当前页面指令配置
+#### 3.5.9 getInstructConfig 获取当前页面指令配置
 
   ```java
   public InstructConfig getInstructConfig();
@@ -796,7 +1044,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   获取当前页面指令配置。
 
 
-#### 3.6.10、setInstructConfig 设置当前页面的指令配置
+#### 3.5.10 setInstructConfig 设置当前页面的指令配置
 
   ```java
   public void setInstructConfig(InstructConfig instructConfig);
@@ -814,7 +1062,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.11、addInstructList 成组添加语音指令
+#### 3.5.11 addInstructList 成组添加语音指令
 
   ```java
   public void addInstructList(List<InstructEntity> instructList);
@@ -832,7 +1080,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.12、addInstructEntity 单个添加语音指令
+#### 3.5.12 addInstructEntity 单个添加语音指令
 
   ```java
   public void addInstructEntity(InstructEntity entity);
@@ -850,7 +1098,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.13、clearUserInstruct 清除用户级指令
+#### 3.5.13 clearUserInstruct 清除用户级指令
 
   ```java
   public void clearUserInstruct();
@@ -866,7 +1114,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.14、clearGlobalInstruct 清除用户级指令
+#### 3.5.14 clearGlobalInstruct 清除用户级指令
 
   ```java
   public void clearGlobalInstruct();
@@ -882,7 +1130,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.15、clearAllInstruct 清除用户级指令
+#### 3.5.15 clearAllInstruct 清除用户级指令
 
   ```java
   public void clearAllInstruct();
@@ -898,7 +1146,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.16、clearNumberInstruct 清除当前全部数字类型指令
+#### 3.5.16 clearNumberInstruct 清除当前全部数字类型指令
 
   ```java
   public void clearNumberInstruct();
@@ -915,7 +1163,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   ```
 
 
-#### 3.6.17、getInstructByName 通过指令名称来获取指令实体
+#### 3.5.17 getInstructByName 通过指令名称来获取指令实体
 
   ```java
   public InstructEntity getInstructByName(EntityKey.Language language, String name);
@@ -935,7 +1183,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.18、removeInstruct 清除单个指令
+#### 3.5.18 removeInstruct 清除单个指令
 
   ```java
   public boolean removeInstruct(EntityKey.Language language, String name);
@@ -955,7 +1203,7 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   }
   ```
 
-#### 3.6.19、setLeftBackShowing 设置tips左侧back返回上一级是否展示
+#### 3.5.19 setLeftBackShowing 设置tips左侧back返回上一级是否展示
 
   ```java
   public void setLeftBackShowing(boolean showing);
@@ -975,9 +1223,9 @@ InstructionManager 实例会在客户端Activity继承的InstructionActivity中�
   ```
 
 
-### 3.6、NumberTypeControler 使用连续数字指令
+### 3.6 NumberTypeControler 使用连续数字指令
 
-#### 3.6.1、NumberTypeControler 连续数字指令普通使用
+#### 3.6.1 NumberTypeControler 连续数字指令普通使用
 
   ```java
 public static List<InstructEntity> doTypeControl(int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
@@ -1011,7 +1259,7 @@ config.addInstructList(NumberTypeControler.doTypeControl(3, 20,
       );
   ```
 
-#### 3.6.2、NumberTypeControler 连续数字指令更多控制
+#### 3.6.2 NumberTypeControler 连续数字指令更多控制
 
   ```java
 public static List<InstructEntity> doTypeControl(boolean ignoreToast, boolean ignoreSoundEffect, boolean ignorehelp, int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
@@ -1051,7 +1299,7 @@ config.addInstructList(NumberTypeControler.doTypeControl(true, true, false, 3, 2
       );
   ```
 
-#### 3.6.3、NumberTypeControler 普通设置连续数字指令并立即生效
+#### 3.6.3 NumberTypeControler 普通设置连续数字指令并立即生效
 
   ```java
 public static void setNumberAndRunning(InstructionManager manager, int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList)
@@ -1085,7 +1333,7 @@ NumberTypeControler.doTypeControl(mInstructionManager, 3, 20,
               );
   ```
 
-#### 3.6.4、NumberTypeControler 更多控制设置连续数字指令并立即生效
+#### 3.6.4 NumberTypeControler 更多控制设置连续数字指令并立即生效
 
   ```java
 public static void setNumberAndRunning(InstructionManager manager, boolean ignoreToast, boolean ignoreSoundEffect, boolean ignorehelp, int startNumber, int endNumber, NumberTypeCallBack cb, NumberKey... keyList) 
@@ -1125,7 +1373,7 @@ NumberTypeControler.doTypeControl(mInstructionManager, true, true, false, 3, 20,
               );
   ```
 
-#### 3.6.5、NumberKey 数字指令实体EntityKey
+#### 3.6.5 NumberKey 数字指令实体EntityKey
 
   ```java
 public NumberKey(EntityKey.Language language, String prefix, String subfix, String helpContent)
