@@ -1,0 +1,631 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>使用说明(User Guide) · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ReleaseNotes.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Rokid Glass Developer Documents</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Rokid Glass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    系统(System)
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../1-system/">
+            
+                <a href="../../1-system/">
+            
+                    
+                    开发指南(Developer Guide)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../1-system/system.html">
+            
+                <a href="../../1-system/system.html">
+            
+                    
+                    系统配置(System Environment)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    SDK
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    Glass UI
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    使用说明(User Guide)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="ReleaseNotes.html">
+            
+                <a href="ReleaseNotes.html">
+            
+                    
+                    版本信息(Release Version)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >使用说明(User Guide)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#glass-ui-sdk-user-guide"><b></b>Glass UI SDK (User Guide)</a></li><ul><li><span class="title-icon "></span><a href="#&#x4E00;&#x3001;ui-sdk&#x4ECB;&#x7ECD;&#xFF08;ui-sdk-introduction"><b></b>&#x4E00;&#x3001;UI SDK&#x4ECB;&#x7ECD;&#xFF08;UI SDK Introduction)</a></li><ul><li><span class="title-icon "></span><a href="#11-&#x6982;&#x8FF0;&#xFF08;introduction"><b></b>1.1 &#x6982;&#x8FF0;&#xFF08;Introduction)</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E8C;&#x3001;&#x96C6;&#x6210;&#x8BF4;&#x660E;integration"><b></b>&#x4E8C;&#x3001;&#x96C6;&#x6210;&#x8BF4;&#x660E;(Integration)</a></li><ul><li><span class="title-icon "></span><a href="#21-gradle&#x4F9D;&#x8D56;-gradle-dependency"><b></b>2.1 Gradle&#x4F9D;&#x8D56; (Gradle Dependency)</a></li><li><span class="title-icon "></span><a href="#22-demo"><b></b>2.2 Demo</a></li></ul><li><span class="title-icon "></span><a href="#&#x4E09;&#x3001;&#x529F;&#x80FD;&#x5217;&#x8868;-feature-list"><b></b>&#x4E09;&#x3001;&#x529F;&#x80FD;&#x5217;&#x8868; (Feature List)</a></li><ul><li><span class="title-icon "></span><a href="#31-rokidsystem"><b></b>3.1 RokidSystem</a></li><li><span class="title-icon "></span><a href="#32-glassbutton"><b></b>3.2 GlassButton</a></li><li><span class="title-icon "></span><a href="#33-glassdialog"><b></b>3.3 GlassDialog</a></li><li><span class="title-icon "></span><a href="#34-&#x5C4F;&#x5E55;&#x9002;&#x914D;display-setting"><b></b>3.4 &#x5C4F;&#x5E55;&#x9002;&#x914D;(Display Setting)</a></li></ul></ul></ul></div><a href="#glass-ui-sdk-user-guide" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="glass-ui-sdk-user-guide"><a name="glass-ui-sdk-user-guide" class="anchor-navigation-ex-anchor" href="#glass-ui-sdk-user-guide"><i class="fa fa-link" aria-hidden="true"></i></a>Glass UI SDK (User Guide)</h1>
+<p><strong>Version: 1.5.4</strong></p>
+<h2 id="&#x4E00;&#x3001;ui-sdk&#x4ECB;&#x7ECD;&#xFF08;ui-sdk-introduction"><a name="&#x4E00;&#x3001;ui-sdk&#x4ECB;&#x7ECD;&#xFF08;ui-sdk-introduction" class="anchor-navigation-ex-anchor" href="#&#x4E00;&#x3001;ui-sdk&#x4ECB;&#x7ECD;&#xFF08;ui-sdk-introduction"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x3001;UI SDK&#x4ECB;&#x7ECD;&#xFF08;UI SDK Introduction)</h2>
+<hr>
+<h3 id="11-&#x6982;&#x8FF0;&#xFF08;introduction"><a name="11-&#x6982;&#x8FF0;&#xFF08;introduction" class="anchor-navigation-ex-anchor" href="#11-&#x6982;&#x8FF0;&#xFF08;introduction"><i class="fa fa-link" aria-hidden="true"></i></a>1.1 &#x6982;&#x8FF0;&#xFF08;Introduction)</h3>
+<p>&#x63D0;&#x4F9B;&#x4E00;&#x5957;&#x5728;Rokid Glass&#x4E0A;&#x5F00;&#x53D1;&#x5E94;&#x7528;&#x7684;&#x57FA;&#x7840;UI&#x5E93;,&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x652F;&#x6301;&#xFF1A;<br>Rokid provides Basic UI SDK to help the developers to build apps in the Rokid Glass:</p>
+<p><strong>1. GlassAlignment</strong><br>&#x7531;&#x4E8E;AR &#x773C;&#x955C;&#x7279;&#x6709;&#x7684;&#x5C4F;&#x5E55;&#x663E;&#x793A;&#x7279;&#x6027;&#xFF0C;&#x5728;&#x5F00;&#x53D1;&#x773C;&#x955C;&#x4E0A;&#x7684;&#x8BC6;&#x522B;&#x7C7B;&#x5E94;&#x7528;&#x65F6;&#xFF0C;<br>&#x9700;&#x8981;&#x5BF9;marked UI&#x505A;&#x4E00;&#x6B21;align&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x4EBA;&#x773C;&#x770B;&#x5230;&#x7684;marked UI&#x548C;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x5BF9;&#x9F50;&#x3002;</p>
+<p><strong>GlassAlignment</strong> helps to make the alignemnt between the &quot;markered UI&quot; and the real physiclal when  developing the app with recognition features. </p>
+<p><strong>2. GlassButton</strong><br>Glass&#x81EA;&#x5B9A;&#x4E49;&#x7684;Button
+<strong>GlassButton</strong> helps to customize the events for the physical buttons.</p>
+<p><strong>3. GlassDialog</strong><br>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x5E38;&#x7528;&#x7684;&#x5BF9;&#x8BDD;&#x6846;
+<strong>GlassDialog</strong> helps the developer to design and use the dialog in Glass.</p>
+<h2 id="&#x4E8C;&#x3001;&#x96C6;&#x6210;&#x8BF4;&#x660E;integration"><a name="&#x4E8C;&#x3001;&#x96C6;&#x6210;&#x8BF4;&#x660E;integration" class="anchor-navigation-ex-anchor" href="#&#x4E8C;&#x3001;&#x96C6;&#x6210;&#x8BF4;&#x660E;integration"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E8C;&#x3001;&#x96C6;&#x6210;&#x8BF4;&#x660E;(Integration)</h2>
+<hr>
+<p>&#x5728;project&#x7684;build.gradle&#x4E2D;&#x6DFB;&#x52A0;jcenter&#x4F9D;&#x8D56;
+(Add jcenger into the build.gradle in the product):</p>
+<pre><code class="lang-gradle"><span class="hljs-keyword">allprojects</span> {
+    <span class="hljs-keyword">repositories</span> {
+        google()
+        jcenter()
+    }
+}
+</code></pre>
+<h3 id="21-gradle&#x4F9D;&#x8D56;-gradle-dependency"><a name="21-gradle&#x4F9D;&#x8D56;-gradle-dependency" class="anchor-navigation-ex-anchor" href="#21-gradle&#x4F9D;&#x8D56;-gradle-dependency"><i class="fa fa-link" aria-hidden="true"></i></a>2.1 Gradle&#x4F9D;&#x8D56; (Gradle Dependency)</h3>
+<pre><code class="lang-gradle">implementation <span class="hljs-string">&apos;com.rokid.glass:ui:1.5.4&apos;</span>
+</code></pre>
+<h3 id="22-demo"><a name="22-demo" class="anchor-navigation-ex-anchor" href="#22-demo"><i class="fa fa-link" aria-hidden="true"></i></a>2.2 Demo</h3>
+<p><a href="https://github.com/rokid/glass-ui" target="_blank">Glass UI Demo</a></p>
+<h2 id="&#x4E09;&#x3001;&#x529F;&#x80FD;&#x5217;&#x8868;-feature-list"><a name="&#x4E09;&#x3001;&#x529F;&#x80FD;&#x5217;&#x8868;-feature-list" class="anchor-navigation-ex-anchor" href="#&#x4E09;&#x3001;&#x529F;&#x80FD;&#x5217;&#x8868;-feature-list"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E09;&#x3001;&#x529F;&#x80FD;&#x5217;&#x8868; (Feature List)</h2>
+<hr>
+<h3 id="31-rokidsystem"><a name="31-rokidsystem" class="anchor-navigation-ex-anchor" href="#31-rokidsystem"><i class="fa fa-link" aria-hidden="true"></i></a>3.1 RokidSystem</h3>
+<p>Alignment&#x6982;&#x5FF5;&#xFF1A;
+Camera&#x9884;&#x89C8;&#x754C;&#x9762;&#x901A;&#x8FC7;Glass&#x663E;&#x793A;&#x5C4F;&#x5E55;&#x8FDB;&#x5165;&#x4EBA;&#x773C;&#x775B;&#x7684;&#x6620;&#x5C04;&#x8FC7;&#x7A0B;.</p>
+<p>Alignment: Camera preview is mirrored into the display in the glasses. </p>
+<p>&#x5728;&#x624B;&#x673A;&#x4E0A;&#x5F00;&#x53D1;&#x5982;&#x4E0B;&#x56FE;(Developing app in the mobile device)
+<img src="images/alignment_phone.png" alt=""></p>
+<p>&#x5728;&#x773C;&#x955C;&#x4E0A;&#x5F00;&#x53D1;&#x5982;&#x4E0B;&#x56FE;(Developing app in the AR glasses)
+<img src="images/alignment_glass.png" alt=""></p>
+<ol>
+<li>&#x84DD;&#x8272;&#x4EE3;&#x8868;<code>&#x76F8;&#x673A;&#x9884;&#x89C8;</code>&#x7684;&#x753B;&#x9762;  (Blue canvas is for &quot;Camera Preview&quot;)</li>
+<li>&#x7EFF;&#x8272;&#x4EE3;&#x8868;<code>&#x76F8;&#x673A;&#x9884;&#x89C8;</code>&#x4E2D;&#x7269;&#x4F53;&#x7684;&#x5750;&#x6807;   (Green part is for the bunding box of the target in the &quot;Camera Preview&quot;)</li>
+<li>&#x6A59;&#x8272;&#x4EE3;&#x8868;<code>LCD&#x5C4F;&#x5E55;</code>&#x5728;<code>&#x76F8;&#x673A;&#x9884;&#x89C8;</code>&#x7684;&#x6620;&#x5C04;&#x533A;&#x57DF;,&#x767E;&#x5206;&#x6BD4;&#x8868;&#x793A;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x5728;&#x865A;&#x62DF;&#x4E16;&#x754C;&#x7684;&#x6BD4;&#x4F8B; (Orange canvas is for the area of the LCD display of AR glasses in the &quot;Camera Preview&quot;)</li>
+<li>&#x767D;&#x8272;&#x4EE3;&#x8868;&#x7269;&#x4F53;&#x6620;&#x5C04;&#x5230;<code>LCD&#x5C4F;&#x5E55;</code>&#x7684;&#x663E;&#x793A;&#x533A;&#x57DF; (White part is for the LCD display of AR glasses with the target)</li>
+</ol>
+<h4 id="311-getalignmentrect"><a name="311-getalignmentrect" class="anchor-navigation-ex-anchor" href="#311-getalignmentrect"><i class="fa fa-link" aria-hidden="true"></i></a>3.1.1 getAlignmentRect</h4>
+<p>&#x8BF4;&#x660E;&#xFF1A;&#x6839;&#x636E;preview&#x7684;rect&#xFF0C;&#x83B7;&#x53D6;&#x5230;&#x6620;&#x5C04;&#x5230;LCD&#x5C4F;&#x5E55;&#x7684;&#x533A;&#x57DF;
+Note: get the rectangle value of preivew in the LCD display </p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Rect <span class="hljs-title">getAlignmentRect</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> previewWidth, <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> previewHeight, <span class="hljs-keyword">final</span> Rect previewRect)</span>
+</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;(Parameter)</th>
+<th>&#x542B;&#x4E49;(Meaning)</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;&#xFF08;Default Value)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>previewWidth</td>
+<td>Camera preview&#x5BBD;(Camera Preview Width)</td>
+<td></td>
+</tr>
+<tr>
+<td>previewHeight</td>
+<td>Camera preview&#x9AD8;(Camera Preview Height)</td>
+<td></td>
+</tr>
+<tr>
+<td>previewRect</td>
+<td>Camera preview&#x7684;Rect (Camera Preview Rectangle Area)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;&#x4EBA;&#x8138;&#x8BC6;&#x522B;&#x540E;&#xFF0C;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x753B;&#x51FA;&#x4EBA;&#x8138;Rect<br>Sample Code: After the face recognition, draw the Rect of face in the LCD display</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> PREVIEW_WIDTH = <span class="hljs-number">1280</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> PREVIEW_HEIGHT = <span class="hljs-number">720</span>;
+
+<span class="hljs-comment">//camera preview&#x7684;&#x4EBA;&#x8138;&#x533A;&#x57DF; (Face bundling rect area in the camera preview) </span>
+Rect previewRect = faceDoCache.faceDo.toRect(getWidth(), getHeight());
+
+<span class="hljs-comment">//&#x6839;&#x636E;preview&#x7684;&#x4EBA;&#x8138;Rect&#xFF0C;&#x6620;&#x5C04;&#x540E;&#xFF0C;&#x83B7;&#x53D6;&#x6700;&#x7EC8;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x7ED8;&#x5236;&#x7684;Rect (Face bundling rect area in LCD display)</span>
+Rect rect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
+
+...
+canvas.save();
+canvas.translate((rect.left + rect.right) / <span class="hljs-number">2f</span>, (rect.top + rect.bottom) / <span class="hljs-number">2f</span>);
+
+drawRect(canvas, <span class="hljs-number">0</span>, rect.width(), rect.height(), paint, rectConfig);
+drawRect2(canvas, <span class="hljs-number">0</span>, rect.width(), rect.height(), paint, rectConfig);
+drawRect(canvas, <span class="hljs-number">180</span>, rect.width(), rect.height(), paint, rectConfig);
+drawRect2(canvas, <span class="hljs-number">180</span>, rect.width(), rect.height(), paint, rectConfig);
+
+canvas.restore();
+...
+</code></pre>
+<h4 id="312-getwindowrect"><a name="312-getwindowrect" class="anchor-navigation-ex-anchor" href="#312-getwindowrect"><i class="fa fa-link" aria-hidden="true"></i></a>3.1.2 getWindowRect</h4>
+<p>&#x8BF4;&#x660E;&#xFF1A;&#x6839;&#x636E;LCD&#x5C4F;&#x5E55;&#x7684;rect&#xFF0C;&#x83B7;&#x53D6;&#x5230;preview&#x7684;&#x533A;&#x57DF;rect
+Note: get the Rect area in preview based on the rect in LCD display.</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Rect <span class="hljs-title">getWindowRect</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> previewWidth, <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> previewHeight, <span class="hljs-keyword">final</span> Rect windowRect)</span>
+</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;(Parameter)</th>
+<th>&#x542B;&#x4E49;(Meaning)</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;(Default Value)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>previewWidth</td>
+<td>Camera preview&#x5BBD; (Width of camera preview)</td>
+<td></td>
+</tr>
+<tr>
+<td>previewHeight</td>
+<td>Camera preview&#x9AD8; (Height of camera preview)</td>
+<td></td>
+</tr>
+<tr>
+<td>windowRect</td>
+<td>&#x5C4F;&#x5E55;&#x4E0A;&#x7684;Rect(Rect in LCD)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;: &#x6839;&#x636E;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;roi&#x533A;&#x57DF;&#xFF0C;&#x5F97;&#x5230;preview &#x4E0A;&#x7684;roi&#x533A;&#x57DF;
+Sample Code: get the roi area in preview based on the roid in LCD display.</p>
+<pre><code class="lang-java">Rect window = <span class="hljs-keyword">new</span> Rect(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1280</span>,<span class="hljs-number">720</span>);
+roiRect = RokidSystem.getWindowRect2K(CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, window);
+roiRect = FaceRectUtils.scaleRect(roiRect, CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, FaceParams.roiScale);
+...
+
+VideoDFaceConf config = <span class="hljs-keyword">new</span> VideoDFaceConf();
+config.setDataType(DataFormat.DATA_YUV420);
+config.setSize(CameraParams.PREVIEW_WIDTH, CameraParams.PREVIEW_HEIGHT);
+config.setRoi(roiRect);
+</code></pre>
+<h4 id="313-getprojectionmatrixopticalseethrough"><a name="313-getprojectionmatrixopticalseethrough" class="anchor-navigation-ex-anchor" href="#313-getprojectionmatrixopticalseethrough"><i class="fa fa-link" aria-hidden="true"></i></a>3.1.3 getProjectionMatrix_OpticalSeeThrough</h4>
+<p>&#x8BF4;&#x660E;&#xFF1A;&#x83B7;&#x53D6;OpticalSeeThrough&#x573A;&#x666F;&#x4E0B;&#xFF0C;OpenGLES 3D &#x5E94;&#x7528;&#x7684;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF08;&#x6A2A;&#x5C4F;&#x72B6;&#x6001;&#xFF09;&#xFF0C;&#x4EE5;&#x4FBF;&#x4EBA;&#x773C;&#x770B;&#x5230;&#x7684;marked UI&#x548C;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x5BF9;&#x9F50;
+Notes: As for the Optical-See-Through scenario get the projection matrix of OpenGLES 3D apps to ensure the alignment between the marked UI and the phyisical world. </p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span>[] getProjectionMatrix_OpticalSeeThrough()
+</code></pre>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;: &#x5BF9;&#x4E8E;&#x6A2A;&#x5C4F;&#x5E94;&#x7528;&#xFF0C;&#x83B7;&#x53D6;OpenGLES MVP&#x77E9;&#x9635;&#x7684;&#x6295;&#x5F71;&#x77E9;&#x9635;
+Sample Coce: As for the apps with the landscape orientation, get the projection matrix of OpenGLES MVP</p>
+<pre><code class="lang-java"><span class="hljs-keyword">float</span> projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
+...
+</code></pre>
+<h3 id="32-glassbutton"><a name="32-glassbutton" class="anchor-navigation-ex-anchor" href="#32-glassbutton"><i class="fa fa-link" aria-hidden="true"></i></a>3.2 GlassButton</h3>
+<p>Glass&#x81EA;&#x5B9A;&#x4E49;&#x7684;Button (Pre-defined buttons in the glasses)</p>
+<p><code>Focused</code>:  </p>
+<p><img src="images/highlight_button.png" alt=""></p>
+<p><code>Normal</code></p>
+<p><img src="images/normal_button.png" alt=""></p>
+<h4 id="321-&#x7528;&#x6CD5;how-to-use"><a name="321-&#x7528;&#x6CD5;how-to-use" class="anchor-navigation-ex-anchor" href="#321-&#x7528;&#x6CD5;how-to-use"><i class="fa fa-link" aria-hidden="true"></i></a>3.2.1 &#x7528;&#x6CD5;(How to use)</h4>
+<pre><code class="lang-xml"> <span class="hljs-tag">&lt;<span class="hljs-name">com.rokid.glass.ui.button.GlassButton</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/custom_dialog_btn&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span>
+    <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Custom Dialog&quot;</span>
+    <span class="hljs-attr">app:layout_constraintLeft_toLeftOf</span>=<span class="hljs-string">&quot;parent&quot;</span>
+    <span class="hljs-attr">app:layout_constraintRight_toRightOf</span>=<span class="hljs-string">&quot;parent&quot;</span>
+    <span class="hljs-attr">app:layout_constraintTop_toBottomOf</span>=<span class="hljs-string">&quot;@id/dialog_btn&quot;</span> /&gt;</span>
+</code></pre>
+<h3 id="33-glassdialog"><a name="33-glassdialog" class="anchor-navigation-ex-anchor" href="#33-glassdialog"><i class="fa fa-link" aria-hidden="true"></i></a>3.3 GlassDialog</h3>
+<p>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x5E38;&#x7528;&#x7684;&#x5BF9;&#x8BDD;&#x6846;,&#x901A;&#x8FC7;&#x4E0D;&#x540C;Builder &#x6765;&#x6784;&#x5EFA;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8BDD;&#x6846;&#xFF08;Rokid provides the useful dialog framework to help build the various dialog box with Builders):
+We provide the following Builders:</p>
+<h4 id="331-commondialogbuilder"><a name="331-commondialogbuilder" class="anchor-navigation-ex-anchor" href="#331-commondialogbuilder"><i class="fa fa-link" aria-hidden="true"></i></a>3.3.1 CommonDialogBuilder</h4>
+<p>&#x901A;&#x7528;&#x7684; DialogBuilder(Universal DialogBuilder)</p>
+<p><img src="images/common_dialog.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;(Function)</th>
+<th>&#x542B;&#x4E49;(Meaning)</th>
+<th>&#x5907;&#x6CE8;(Notes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setTitle</td>
+<td>&#x8BBE;&#x7F6E;&#x6807;&#x9898;(Set Title)</td>
+<td></td>
+</tr>
+<tr>
+<td>setContent</td>
+<td>&#x8BBE;&#x7F6E;&#x5185;&#x5BB9;(Set Content&#xFF09;</td>
+<td>&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x5185;&#x5BB9;&#x5E03;&#x5C40;&#x9009;&#x5176;&#x4E00;&#xFF08;Use setContent or customized content)</td>
+</tr>
+<tr>
+<td>setConfirmText</td>
+<td>&#x8BBE;&#x7F6E;&#x786E;&#x5B9A;&#x6309;&#x94AE;&#x6587;&#x5B57;&#xFF08;Set text for confirm button)</td>
+<td></td>
+</tr>
+<tr>
+<td>setCancelText</td>
+<td>&#x8BBE;&#x7F6E;&#x53D6;&#x6D88;&#x6309;&#x94AE;&#x6587;&#x5B57;&#xFF08;Set text for cancel button)</td>
+<td></td>
+</tr>
+<tr>
+<td>setContentLayoutId</td>
+<td>&#x8BBE;&#x7F6E;&#x5185;&#x5BB9;&#x81EA;&#x5B9A;&#x4E49;&#x5E03;&#x5C40;id&#xFF08;Set customized content layout ID)</td>
+<td></td>
+</tr>
+<tr>
+<td>setContentLayoutView</td>
+<td>&#x8BBE;&#x7F6E;&#x5185;&#x5BB9;&#x81EA;&#x5B9A;&#x4E49;&#x5E03;&#x5C40;View&#xFF08;Set customized content layout View)</td>
+<td>&#x548C;setContentLayoutId&#x9009;&#x5176;&#x4E00;(Use &#x2018;setContentLayoutView&#x2019; or setContentLayoutId)</td>
+</tr>
+<tr>
+<td>setConfirmListener</td>
+<td>&#x8BBE;&#x7F6E;Confirm&#x76D1;&#x542C;(set the listener for Confirm</td>
+<td></td>
+</tr>
+<tr>
+<td>setCancelListener</td>
+<td>&#x8BBE;&#x7F6E;Cancel&#x76D1;&#x542C;(set the listener for Cancel</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x793A;&#x4F8B;&#x4EE3;&#x7801;(Sample Code)</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">new</span> GlassDialog.CommonDialogBuilder(<span class="hljs-keyword">this</span>)
+        .setTitle(<span class="hljs-string">&quot;Title&quot;</span>)
+        .setContent(<span class="hljs-string">&quot;Content&quot;</span>)
+        .setConfirmText(<span class="hljs-string">&quot;Confirm&quot;</span>)
+        .setCancelText(<span class="hljs-string">&quot;Cancel&quot;</span>)
+        .setContentLayoutId(R.layout.layout_custom_dialog_content)
+        .setConfirmListener(<span class="hljs-keyword">new</span> GlassDialogListener() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>{
+
+            }
+        })
+        .setCancelListener(<span class="hljs-keyword">new</span> GlassDialogListener() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View view)</span> </span>{
+
+            }
+        })
+        .show();
+</code></pre>
+<h3 id="34-&#x5C4F;&#x5E55;&#x9002;&#x914D;display-setting"><a name="34-&#x5C4F;&#x5E55;&#x9002;&#x914D;display-setting" class="anchor-navigation-ex-anchor" href="#34-&#x5C4F;&#x5E55;&#x9002;&#x914D;display-setting"><i class="fa fa-link" aria-hidden="true"></i></a>3.4 &#x5C4F;&#x5E55;&#x9002;&#x914D;(Display Setting)</h3>
+<p>&#x63A5;&#x5165;&#xFF0C;&#x5728;app&#x7684;<code>AndroidManifest.xml</code>&#x58F0;&#x660E;(Add the following statement in the app&apos;s <code>AndroidManifest.xml</code>):</p>
+<pre><code class="lang-java">&lt;manifest&gt;
+    &lt;application&gt;            
+        &lt;meta-data
+            android:name=&quot;design_width_in_dp&quot;
+            android:value=&quot;640&quot;/&gt;
+        &lt;meta-data
+            android:name=&quot;design_height_in_dp&quot;
+            android:value=&quot;360&quot;/&gt;           
+     &lt;/application&gt;           
+&lt;/manifest&gt;
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x90FD;&#x662F;&#x6839;&#x636E;&#x8BBE;&#x8BA1;&#x56FE;&#x7684;&#x5C3A;&#x5BF8;&#x6765;&#xFF0C;&#x4EE5;&#x5BBD;&#x6216;&#x8005;&#x9AD8;&#x4E3A;&#x57FA;&#x51C6;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x5BBD;&#x3002;
+The dimension is based the value of width or height. The width value is set as default.</p>
+<h4 id="&#x6A21;&#x62DF;&#x5668;preview&#x8BBE;&#x7F6E;preview-setting-for-the-emulator-in-android-studio"><a name="&#x6A21;&#x62DF;&#x5668;preview&#x8BBE;&#x7F6E;preview-setting-for-the-emulator-in-android-studio" class="anchor-navigation-ex-anchor" href="#&#x6A21;&#x62DF;&#x5668;preview&#x8BBE;&#x7F6E;preview-setting-for-the-emulator-in-android-studio"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6A21;&#x62DF;&#x5668;Preview&#x8BBE;&#x7F6E;(Preview Setting for the emulator in Android Studio)</h4>
+<p><img src="images/preview.jpg" alt=""></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="ReleaseNotes.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 版本信息(Release Version)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"使用说明(User Guide)","level":"1.3.1.1","depth":3,"next":{"title":"版本信息(Release Version)","level":"1.3.1.2","depth":3,"path":"2-sdk/ui-sdk/ReleaseNotes.md","ref":"2-sdk/ui-sdk/ReleaseNotes.md","articles":[]},"previous":{"title":"Glass UI","level":"1.3.1","depth":2,"ref":"","articles":[{"title":"使用说明(User Guide)","level":"1.3.1.1","depth":3,"path":"2-sdk/ui-sdk/index.md","ref":"2-sdk/ui-sdk/index.md","articles":[]},{"title":"版本信息(Release Version)","level":"1.3.1.2","depth":3,"path":"2-sdk/ui-sdk/ReleaseNotes.md","ref":"2-sdk/ui-sdk/ReleaseNotes.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchor-navigation-ex","expandable-chapters-interactive","vistors-github","mermaid-gb3","github-issue-feedback","github","embed-pdf"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github-issue-feedback":{"repo":"Rokid/glass-docs"},"github":{"url":"https://github.com/RokidGlass/glass2-docs"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"vistors-github":{"repo":"Rokid/glass-docs"},"mermaid-gb3":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"expandable-chapters-interactive":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"embed-pdf":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"2-sdk/ui-sdk/index.md","mtime":"2020-09-14T13:15:39.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-14T13:16:32.232Z"},"basePath":"../..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters-interactive/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-vistors-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github-issue-feedback/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
