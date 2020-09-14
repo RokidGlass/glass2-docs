@@ -1,5 +1,7 @@
 # ChangeLog
 * 首次创建文档
+* 减小sdk体积
+* 移除sdk对DataBinding、Lombok的依赖
 
 ## 文档更新历史
 
