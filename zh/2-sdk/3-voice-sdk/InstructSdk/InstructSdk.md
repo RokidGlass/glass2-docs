@@ -1,5 +1,5 @@
 # Glass 语音离线指令 SDK
-**Version: 1.5.1**  
+**Version: 1.5.3**  
 
 
 
@@ -46,7 +46,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.5.1'
+      implementation 'com.rokid.ai.glass:instructsdk:1.5.3'
   }
   ```
 - Jcenter Maven信息
@@ -55,7 +55,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.5.1</version>
+    <version>1.5.3</version>
     <type>pom</type>
   </dependency>
   ```
@@ -406,7 +406,7 @@ public abstract class BasicInstructionActivity extends BasicActivity[App自己�
 
         @Override
         public void onHelpLayerShow(boolean show) {
-            onHelpLayerShow(show);
+            onHelpLayerShowed(show);
         }
     };
 
@@ -446,16 +446,6 @@ public abstract class BasicInstructionActivity extends BasicActivity[App自己�
     }
 
     /**
-     * 清空当前指令组
-     */
-    @Override
-    public void clearWtWords() {
-        if (mInstructionManager != null) {
-            mInstructionManager.clearWtWords();
-        }
-    }
-
-    /**
      * 是否关闭语音指令开关， 默认开启，继承可以选择关闭
      *
      * @return false:开启， true:关闭
@@ -478,17 +468,8 @@ public abstract class BasicInstructionActivity extends BasicActivity[App自己�
      *
      * @param show true， 显示；false，隐藏
      */
-    public void onHelpLayerShow(boolean show) {
+    public void onHelpLayerShowed(boolean show) {
 
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        boolean ret = false;
-        if (mInstructionManager != null) {
-            ret = mInstructionManager.onKeyDown(keyCode, event);
-        }
-        return ret || super.onKeyDown(keyCode, event);
     }
 
     /**
@@ -1219,6 +1200,34 @@ config.addInstructEntity(
 // eg:
   if (mInstructionManager != null) {
       mInstructionManager.setLeftBackShowing(false);
+  }
+  ```
+
+#### 3.5.20 showHelpLayer 展示系统帮助浮层
+
+  ```java
+  public void showHelpLayer();
+  ```
+  展示系统帮助浮层
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.showHelpLayer();
+  }
+  ```
+
+#### 3.5.21 hideHelpLayer 关闭系统帮助浮层
+
+  ```java
+  public void hideHelpLayer();
+  ```
+  展示系统帮助浮层
+
+  ```java
+// eg:
+  if (mInstructionManager != null) {
+      mInstructionManager.hideHelpLayer();
   }
   ```
 
