@@ -18,7 +18,7 @@
 2. build.gradle配置maven库
 
     ```groovy
-     implementation 'com.rokid.alliance.glassui:glassui:1.1.0.2'
+     implementation 'com.rokid.alliance.glassui:glassui:1.1.6'
     ```
 
 3. sdk依赖权限申请
@@ -38,6 +38,7 @@
     ```java
     RKAlliance.getInstance().loadFaceModel(getApplicationContext(), null);
     RKAlliance.getInstance().loadLPRModel(getApplicationContext(), null);
+    RKGlassUI.getInstance().recogSettingChanged(RecognizeType.IS_MULTI_RECOGNIZE, true);
     RKGlassUI.getInstance().initGlassUI(getApplicationContext());
     ```
 

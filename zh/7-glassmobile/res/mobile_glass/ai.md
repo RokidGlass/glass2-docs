@@ -11,7 +11,7 @@
 2. build.gradle集成人脸车牌sdk
    
     ```groovy
-    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.0.2'
+    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.6'
     ```
 
 3. 加载模型
