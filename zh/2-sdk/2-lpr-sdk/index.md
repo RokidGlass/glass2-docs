@@ -1,5 +1,5 @@
 # 车牌识别SDK
-**Version：3.2.1.0**
+**Version：3.7.1.1**
 
 ---
 
@@ -26,7 +26,7 @@ allprojects {
 在app的build.gradle中添加依赖
 ```java
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.2.1.0'
+    implementation 'com.rokid.glass:lpr:3.7.1.1'
 }
 ```
 
