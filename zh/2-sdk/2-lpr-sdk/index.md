@@ -25,8 +25,13 @@ allprojects {
 
 在app的build.gradle中添加依赖
 ```java
+//cpu版本集成
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.7.1.1'
+    implementation 'com.rokid.glass:lpr:3.7.1.1-cpu'
+}
+//npu版本集成
+dependencies {
+    implementation 'com.rokid.glass:lpr:3.7.1.1-npu'
 }
 ```
 
