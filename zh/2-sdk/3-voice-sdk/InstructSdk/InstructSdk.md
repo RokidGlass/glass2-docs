@@ -1,5 +1,5 @@
 # Glass 语音离线指令 SDK
-**Version: 1.5.3**  
+**Version: 1.5.4**  
 
 
 
@@ -46,7 +46,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.5.3'
+      implementation 'com.rokid.ai.glass:instructsdk:1.5.4'
   }
   ```
 - Jcenter Maven信息
@@ -55,7 +55,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.5.3</version>
+    <version>1.5.4</version>
     <type>pom</type>
   </dependency>
   ```
@@ -131,11 +131,11 @@ public class InstructApplication extends Application {
   ```java 
   /**
   * InstructLifeManager 初始化函数
-  * @param act Activity 实例
+  * @param context Context 实例
   * @param lifecycle android.arch.lifecycle.Lifecycle 实例
   * @param lifeListener IInstructLifeListener 回调监听实例
   */
- public InstructLifeManager(Activity act, Lifecycle lifecycle, IInstructLifeListener lifeListener)
+ public InstructLifeManager(Context context, Lifecycle lifecycle, IInstructLifeListener lifeListener)
   ```
 
 #### 2.3.2 IInstructLifeListener回调
