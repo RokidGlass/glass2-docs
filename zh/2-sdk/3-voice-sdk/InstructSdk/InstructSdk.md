@@ -20,9 +20,33 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
   ```
 
 
-接口使用示例demo：
+插件使用示例Demo：
 
 https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
+
+### 1.1 使用时注意事项
+
+#### 1.1.1 插件使用注意事项
+- 针对需要给Fragment、dialog设置独立指令的场景，建议使用LifeCycle方式；
+- 使用中文指令时，尽量明确指定指令词的拼音；
+- 在中文指令场景时，指令词的name不要设置成其他语言类型的文字；
+- 涉及到需要proguard的app应用，可以参考示例demo中的proguard文件；
+
+#### 1.1.2 中文指令词定义规则
+- 发音
+  1. 避免包含叠词，多个同音字的指令词，如：小鹿贝贝、巴巴爸爸等；
+  2. 同一个场景的指令词，不要存在包含关系，如：录像和开始录像；
+
+
+- 字数
+  1. 指令的字数在2~10字之间；
+  2. 全局指令需为4字及以上指令；
+
+
+- 数量
+  1. 全局指令数量建议不超过8个；
+  2. 应用级指令尽量减少2字、3字指令使用，占比不超过总指令数的20%；
+  3. 全局+局部指令最多的页面，指令数量加起来不超过20个；
 
 
 ## 二. 集成说明
@@ -61,7 +85,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   ```
 
 - 修改时间
-  2020年09月12日
+  2020年09月21日
 
 
 ### 2.2 AndroidManifest.xml及Application配置
@@ -124,14 +148,14 @@ public class InstructApplication extends Application {
 
 ### 2.3 通过InstructLifeManager使用LifeCycle方式（推荐）
 
-说明：这种使用方式需要给InstructLifeManager提供一个LifeCycle的入参对象，指令的生命周期以此LifeCycle为主；
+说明：这种使用方式需要给InstructLifeManager提供一个LifeCycle的入参对象，指令的生命周期以此LifeCycle为主；当Context不是Activity类型实例时，页面不会展示tips浮条。
 
 #### 2.3.1 InstructLifeManager初始化
 
   ```java 
   /**
   * InstructLifeManager 初始化函数
-  * @param context Context 实例
+  * @param context Context 实例，当Context不是Activity类型实例时，页面不会展示tips浮条
   * @param lifecycle android.arch.lifecycle.Lifecycle 实例
   * @param lifeListener IInstructLifeListener 回调监听实例
   */
