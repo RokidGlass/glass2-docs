@@ -4,8 +4,7 @@ Rokid Glass文档目录
 ---------
 * [Rokid系统方案](README.md)
     * [Rokid Glass软件开发文档引导](README.md)
-    * 系统
-        - [键值说明](1-system/index.md)
+    * [触摸板键值说明](1-system/index.md)
     * SDK
         - 基础SDK
             - Glass UI
@@ -27,6 +26,8 @@ Rokid Glass文档目录
     * [OS 设计规范](5-design/index.md)
     * [FAQ](0-faq/index.md) 
     * [论坛](6-forum/index.md)
+
+
 * [Rokid眼镜连接手机方案](7-glassmobile/res/mobile_glass/introduction.md)
     * [变更记录](7-glassmobile/res/mobile_glass/ChangeLog.md)
     * [简介](7-glassmobile/res/mobile_glass/introduction.md)
