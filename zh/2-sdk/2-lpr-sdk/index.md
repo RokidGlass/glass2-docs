@@ -1,5 +1,5 @@
 # 车牌识别SDK
-**Version：3.7.1.1**
+**Version：3.8.2.0**
 
 ---
 
@@ -27,11 +27,11 @@ allprojects {
 ```java
 //cpu版本集成
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.7.1.1-cpu'
+    implementation 'com.rokid.glass:lpr:3.8.2.0-cpu'
 }
 //npu版本集成
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.7.1.1-npu'
+    implementation 'com.rokid.glass:lpr:3.8.2.0-npu'
 }
 ```
 
@@ -126,6 +126,7 @@ rokidLPR.destroy();
 public class LPRModel {
     public int width;
     public int height;
+    public byte[] img_data;
     public List<LPRDO> lps = new ArrayList();//车牌数据model，包含LPRDOlist
 
     public LPRModel() {
