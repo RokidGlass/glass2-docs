@@ -1,5 +1,5 @@
 # 人脸识别离线SDK
-**Version：facelib 4.5.3.1**
+**Version：facelib 4.15.3.2**
 
 ---
 
@@ -9,7 +9,7 @@ https://github.com/Rokid/RokidFaceSDK/tree/master/sample
 ## 一. FaceSDK介绍
 
 ### 版本号说明：
-前两位4.5表示算法版本号，后两位3.1表示sdk版本号
+前两位4.15表示算法版本号，后两位3.2表示sdk版本号
 ### 1.1 概述
 RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：
 
@@ -33,12 +33,18 @@ allprojects {
 ```
 
 在app的build.gradle中添加依赖
+若使用该sdk的终端使用一般cpu计算平台，则：
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:4.5.3.1'
+    implementation 'com.rokid.glass:facelib:4.15.3.2-cpu'
 }
 ```
-
+若使用该sdk的终端使用s905d3计算平台(rokid glass二代)，则：
+```java
+dependencies {
+    implementation 'com.rokid.glass:facelib:4.15.3.2-s905d3'
+}
+```
 ### 2.2 需要如下权限
 网络权限：
 ```xml
@@ -65,12 +71,11 @@ dependencies {
 **1. 人脸识别引擎初始化**
 
 ```java
-RokidFace.Init(Context context,boolean npuMode);
+RokidFace.Init(Context context);
 ```
 参数|含义
 ------|---------
 context | 上下文context
-npuMode | 是否切换到npu模式（注意：设备必须支持npu才能将该值设为true）
 
 ### 3.1 人脸数据库操作
 #### 3.1.1 人脸数据库初始化
