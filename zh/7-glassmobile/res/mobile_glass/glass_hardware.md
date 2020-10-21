@@ -29,13 +29,13 @@
     ```
     
 3. SDK权限依赖
-    
+   
     ```groovy
-    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-    Manifest.permission.READ_EXTERNAL_STORAGE,
-    Manifest.permission.RECORD_AUDIO,
-    Manifest.permission.CAMERA,
-    Manifest.permission.READ_PHONE_STATE,
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     ```
     
 4. 修改`app/build.gradle`中targetSdkVersion<=27
@@ -203,7 +203,7 @@ opticalId | String | 可区分眼镜生产批次，其值目前有三个，分�
     RKGlassDevice.getInstance().removeOnPreviewFrameListener(AbstractUVCCameraHandler.OnPreViewResultListener: onPreviewFrameListener);
     ```
 
-## Aligment对齐
+## Alignment对齐
 
 
 ###  Alignment概念
