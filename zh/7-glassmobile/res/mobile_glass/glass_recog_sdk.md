@@ -1,18 +1,16 @@
-## 人脸、车牌相关SDK
+# 人脸、车牌SDK
 
-### 简介
+## 简介
 
 车牌人脸SDK主要功能包含车牌人脸检测、人脸跟踪、人脸质量、离线车牌人脸识别等；可以快速识别眼前的人脸车牌数据，并与数据库进行对比，对重点车牌人脸数据进行报警提示；
 
-### 接入前提
+## 接入前提
 
-- <font color="#ff0000">在接入人脸车牌识别SDK前需要先接入 眼镜硬件SDK，详情查看1.0眼镜硬件相关文档</font>
+- [在接入人脸车牌识别SDK前需要先接入 眼镜硬件SDK，详情查看1.0眼镜硬件相关文档](glass_hardware.md)
 
-### 快速上手
+## 快速上手
 
-1. 集成SDK
-
-- 首先需要在项目的build.gradle文件中引入如下配置：
+1. 首先需要在项目的build.gradle文件中引入如下配置：
 
   ```java
    allprojects {
@@ -22,17 +20,17 @@
    }
   ```
 
-- 在项目的module的build.gradle中导入如下依赖
+2. 在项目的module的build.gradle中导入如下依赖
 
   ```java
   dependencies {
     .......
     // 集成人脸车牌sdk
-  	implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.7'
+    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.7'
   }
   ```
 
-- 其他配置注意说明:
+3. 其他配置注意说明:
 
   ```java
    defaultConfig {
@@ -42,7 +40,6 @@
           // targetSdkVersion <= 27
           targetSdkVersion 27
       }
-  
   // 需要指定java 8版本
   compileOptions {
       sourceCompatibility JavaVersion.VERSION_1_8
@@ -50,9 +47,7 @@
   }
   ```
 
-2. 相关权限
-
-- 以下权限在6.0以上设备上需要动态申请
+4. 以下权限在6.0以上设备上需要动态申请
 
   ```java
   private static final String[] REQUIRED_PERMISSION_LIST = new String[]{
@@ -64,44 +59,40 @@
    }
   ```
 
-3.  初始化SDK及设备
+5. 初始化SDK及设备
 
-- 初始化设备以及设置识别模式
+	> 初始化设备以及设置识别模式
 
   ```java
   private void initGlass(){
-  		// initUsb设备，需要传入CameraViewInterface，如果不需要该view可见，可以将其宽高大小设置为1dp
+      // initUsb设备，需要传入CameraViewInterface，如果不需要该view可见，可以将其宽高大小设置为1dp
       RKGlassDevice.RKGlassDeviceBuilder.buildRKGlassDevice().build().initUsbDevice(this, findViewById(R.id.uvc_preview), new OnGlassConnectListener() {
           @Override
           public void onGlassConnected(UsbDevice usbDevice, GlassInfo glassInfo) {
               // 眼镜连接成功回调
           }
-  
+
           @Override
           public void onGlassDisconnected() {
               // 眼镜断开连接回调
           }
       });
-  
+
       BaseLibrary.initialize(getApplication());
-    
+
       // 设置识别类型,以及是否为在线模式
       // 首次调用必须在initGlassUI函数被调用之前 后续切换识别模式正常调用即可
+      //  RecognizeType.IS_SINGLE_RECOGNIZE 单人布控
+      //  RecognizeType.IS_MULTI_RECOGNIZE 多人核查 
+      // RecognizeType.IS_PLATE_RECOGNIZE  车牌识别
       RKGlassUI.getInstance().recogSettingChanged(RecognizeType.IS_MULTI_RECOGNIZE, true);
       RKGlassUI.getInstance().initGlassUI(getApplicationContext());
   }
   ```
 
-  recogSettingChanged(@RecognizeType int recogType, boolean isOnline);
+6. 在线 人脸 && 车牌 识别 
 
-  | 参数                             | 类型    | 说明                                                         |
-  | -------------------------------- | ------- | ------------------------------------------------------------ |
-  | RecognizeType.IS_MULTI_RECOGNIZE | int     | RecognizeType.IS_SINGLE_RECOGNIZE 单人布控<br/>RecognizeType.IS_MULTI_RECOGNIZE 多人核查 <br/>RecognizeType.IS_PLATE_RECOGNIZE  车牌识别 |
-  | isOnline                         | boolean | True  在线模式<br/>False 离线模式                            |
-
-4. 在线 人脸 && 车牌 识别 
-
-- 在线识别需要将识别到的图片上传到云端进行对比，将对比结果返回。然后在相应回调用将返回结果发送给眼镜端进行展示；
+	> 在线识别需要将识别到的图片上传到云端进行对比，将对比结果返回。然后在相应回调用将返回结果发送给眼镜端进行展示；
 
   ```java
   /*
@@ -112,7 +103,7 @@
       RKAlliance.getInstance().loadFaceModel(getApplicationContext(), null);
       // 加载车牌模型
       RKAlliance.getInstance().loadLPRModel(getApplicationContext(), null);
-    
+
       // 人脸车牌在线识别监听返回结果
       OnlineRecgHelper.getInstance().init(new OnlineRequest() {
           @Override
@@ -134,7 +125,7 @@
               respOnlineSingleFaceMessage.setServerCode(RespOnlineSingleFaceMessage.ServerErrorCode.OK);
               OnlineRecgHelper.getInstance().onFaceOnlineResp(respOnlineSingleFaceMessage);   //调用此接口将在线识别结果返回给眼镜
           }
-  
+
           @Override
           public void sendPlateInfo(ReqCarRecognizeMessage reqCarRecognizeMessage) {
               //TODO: 将车牌信息上传云端做比对
@@ -153,7 +144,7 @@
           }
       });
   }
-  
+
   @Override
   protected void onDestroy() {
       super.onDestroy();
@@ -165,11 +156,9 @@
   }
   ```
 
-<font color="#ff0000">5. 离线人脸识别</font>
+7. 离线人脸识别
 
-- 离线人脸识别较为复杂，大致需要如下几个步骤，具体参考示例代码;
-
-- 1. 新建相关的监听回调
+	> 新建相关的监听回调
 
   ```java
   /*
@@ -181,7 +170,7 @@
           RKAlliance.getInstance().setData(bytes);
       }
   };
-  
+
   /**
    * 人脸识别成功监听回调
    */
@@ -210,7 +199,7 @@
   };
   ```
 
-  2. 加载人脸模型，初始化人脸SDK，注册人脸监听识别
+	> 加载人脸模型，初始化人脸SDK，注册人脸监听识别
 
   ```java
   /**
@@ -226,7 +215,7 @@
               FaceDataManager.getInstance().init(getApplicationContext());
           }
       });
-  
+
       // 初始化人脸SDK
       RKAlliance.getInstance().initFaceSDK(getApplicationContext(), Utils.getInstance().getRoi(), new PreparedListener() {
           @Override
@@ -234,13 +223,13 @@
               RKGlassDevice.getInstance().setOnPreviewFrameListener(onPreviewFrameListener);
           }
       });
-  
+
       // 注册人脸识别监听
       RKAlliance.getInstance().registerFaceListener(faceCallback);
   }
   ```
 
-  3. 添加人脸到数据库中，并重新loadsdk
+	> 添加人脸到数据库中，并重新loadsdk
 
   ```java
   /**
@@ -250,7 +239,7 @@
       Person person = new Person();
       person.setName("姓名");
       person.setCardNo("身份证号");
-    
+
       // 图片路径
       String faceFilePath = Utils.getRealFilePath(getApplicationContext(), faceUri);
       Log.d(TAG, "addImportData: faceFilePath:::" + faceFilePath);
@@ -271,7 +260,7 @@
           Toast.makeText(this, extractFeatResult.getResultMsg() + "", Toast.LENGTH_LONG).show();
       }
   }
-  
+
   /**
    * 新增数据时需要重新loadsdk
    */
@@ -280,22 +269,22 @@
       RKAlliance.getInstance().loadFaceModel(getApplicationContext(), new PreparedListener() {
           @Override
           public void onPrepared() {
-  
+
           }
       });
-  
+
       RKAlliance.getInstance().initFaceSDK(getApplicationContext(), Utils.getInstance().getRoi(), new PreparedListener() {
           @Override
           public void onPrepared() {
-  
+
           }
       });
-  
+
       RKAlliance.getInstance().registerFaceListener(faceCallback);
   }
   ```
 
-  4. 释放相关资源
+	> 释放相关资源
 
   ```java
   @Override
@@ -308,17 +297,16 @@
   }
   ```
 
+8. 离线车牌识别
 
-<font color="#ff0000">6. 离线车牌识别</font>
-
-- 1. 相关的监听回调
+	> 相关的监听回调
 
   ```java
   /**
    * 车牌识别监听回调
    */
   final Callback<RKLPRModel> plateCallBack = new Callback<RKLPRModel>() {
-  
+
       @Override
       public void onDataResult(RKLPRModel lprModel, byte[] bytes) {
           if (lprModel.lps == null || lprModel.lps.size() == 0){
@@ -332,7 +320,7 @@
                       tvPlateResult.setText(plateNum);
                       Bitmap bm = BitmapUtils.nv21ToBitmap(bytes, PREVIEW_WIDTH, PREVIEW_HEIGHT, lprItem.toRect(PREVIEW_WIDTH, PREVIEW_HEIGHT));
                       imgPlateResult.setImageBitmap(bm);
-  
+
                       PlateInfo plateInfo = PlateManager.getInstance().queryPlateInfo(plateNum);
                       if (plateInfo !=null){
                           tvOwnerResult.setText("品牌：" + plateInfo.getBrand() + "， 车主：" + plateInfo.getOwner());
@@ -346,38 +334,38 @@
   };
   ```
 
-  2. 识别设置
+	> 识别设置
 
   ```java
-  
+
   private void initGlassView() {
       BaseLibrary.initialize(getApplication());
-  
+
       // 设置为离线车牌识别
       BaseLibrary.getInstance().setRecogType(RecognizeType.IS_PLATE_RECOGNIZE);
       BaseLibrary.getInstance().setIsOnline(false);
       RKGlassUI.getInstance().initGlassUI(getApplicationContext());
-  
+
       // 注册识别监听
       RKAlliance.getInstance().registerLPRCallback(plateCallBack);
-  
+
       // 加载车牌模型
       RKAlliance.getInstance().loadLPRModel(getApplicationContext(), new PreparedListener() {
           @Override
           public void onPrepared() {
-  
+
           }
       });
-  
+
       // 初始化车牌sdk
       RKAlliance.getInstance().initPlateSDK(new PreparedListener() {
           @Override
           public void onPrepared() {
-  
+
           }
       });
   }
-  
+
   @Override
   protected void onDestroy() {
       super.onDestroy();
@@ -386,11 +374,11 @@
   }
   ```
 
-  
 
-### 进阶内容
 
-#### 1. 离线人脸数据库操作
+## 进阶内容
+
+### 离线人脸数据库操作
 
 > 添加离线人脸数据时，会将人物信息保存在tbl_user表中，而将人脸图片保存在tbl_mapping表中；
 >
@@ -400,12 +388,12 @@
 
 - 添加数据:: ErrorCode addPerson(Person person, List<FeatFileInfo> featFileInfos, String coverId, boolean needSave)；
 
-  | 参数          | 类型               | 能否为空 | 说明               |
-  | ------------- | ------------------ | -------- | ------------------ |
-  | person        | Person             | False    | 人员信息           |
-  | featFileInfos | List<FeatFileInfo> | False    | 人脸图片的特征信息 |
-  | coverId       | String             | True     | 作为底图的图片id   |
-  | needSave      | boolean            | False    | 是否需要保存       |
+| 参数          | 类型               | 能否为空 | 说明               |
+| ------------- | ------------------ | -------- | ------------------ |
+| person        | Person             | False    | 人员信息           |
+| featFileInfos | List<FeatFileInfo> | False    | 人脸图片的特征信息 |
+| coverId       | String             | True     | 作为底图的图片id   |
+| needSave      | boolean            | False    | 是否需要保存       |
 
   ```java
   private void addData() {
@@ -435,12 +423,12 @@
 
 - 查询数据:: DeployTaskListInfo getDeployTaskListByOffset(String searchString, int offset, int pageSize)；
 
-  | 参数         | 类型   | 能否为空 | 说明                                         |
-  | ------------ | ------ | -------- | -------------------------------------------- |
-  | searchString | String | True     | 关键词，根据姓名或者身份证号信息进行模糊查询 |
-  | offset       | int    | False    | 数据起始位置                                 |
-  | pageSize     | int    | False    | 查询数量                                     |
-  
+| 参数         | 类型   | 能否为空 | 说明                                         |
+| ------------ | ------ | -------- | -------------------------------------------- |
+| searchString | String | True     | 关键词，根据姓名或者身份证号信息进行模糊查询 |
+| offset       | int    | False    | 数据起始位置                                 |
+| pageSize     | int    | False    | 查询数量                                     |
+
   ```java
   private void queryData() {
       int dataCount = FaceIdManager.getInstance().getAllUserNum();
@@ -461,12 +449,12 @@
 
 - 修改数据:: ErrorCode updatePerson(String uid, Person person, List<FeatFileInfo> addList)
 
-  | 参数    | 类型               | 能否为空 | 说明               |
-  | ------- | ------------------ | -------- | ------------------ |
-  | uid     | String             | False    | uuid               |
-  | person  | Person             | False    | 人员信息           |
-  | addList | List<FeatFileInfo> | True     | 人脸图片的特征信息 |
-  
+| 参数    | 类型               | 能否为空 | 说明               |
+| ------- | ------------------ | -------- | ------------------ |
+| uid     | String             | False    | uuid               |
+| person  | Person             | False    | 人员信息           |
+| addList | List<FeatFileInfo> | True     | 人脸图片的特征信息 |
+
   ```java
   private void updateData() {
       // demo默认修改第一条数据
@@ -490,10 +478,10 @@
 
 - 删除数据:: ErrorCode deletePersons(List<String> uids);
 
-  | 参数 | 类型         | 能否为空 | 说明 |
-  | ---- | ------------ | -------- | ---- |
-  | uids | List<String> | False    | Uuid |
-  
+| 参数 | 类型         | 能否为空 | 说明 |
+| ---- | ------------ | -------- | ---- |
+| uids | List<String> | False    | Uuid |
+
   ```java
   **
    * 删除数据
@@ -513,13 +501,13 @@
   }
   ```
 
-#### 2. 离线车牌数据库操作
+### 离线车牌数据库操作
 
 - 添加数据:: int addPlateInfo(PlateInfo info) ；
 
-- | 参数      | 类型      | 说明     |
-  | --------- | --------- | -------- |
-  | PlateInfo | PlateInfo | 车牌对象 |
+| 参数      | 类型      | 说明     |
+| --------- | --------- | -------- |
+| PlateInfo | PlateInfo | 车牌对象 |
 
   ```java
   private void addPlate() {
@@ -536,11 +524,11 @@
 
   >  方式一：List<PlateInfo> queryPlateInfoListByOffset(int start, int pageSize, String searchKey);
 
-  | 参数      | 类型   | 说明                                      |
-  | --------- | ------ | ----------------------------------------- |
-  | start     | int    | 数据库第几条数据；                        |
-  | pageSize  | int    | 查询的数据数目；                          |
-  | searchKey | String | 查询的关键词,针对车牌号和所有者的模糊查询 |
+| 参数      | 类型   | 说明                                      |
+| --------- | ------ | ----------------------------------------- |
+| start     | int    | 数据库第几条数据；                        |
+| pageSize  | int    | 查询的数据数目；                          |
+| searchKey | String | 查询的关键词,针对车牌号和所有者的模糊查询 |
 
   ```java
   private void queryPlate() {
@@ -551,9 +539,9 @@
 
 - > 方式二：PlateInfo queryPlateInfo(String plate);
 
-  | 参数  | 类型   | 说明   |
-  | ----- | ------ | ------ |
-  | Plate | String | 车牌号 |
+| 参数  | 类型   | 说明   |
+| ----- | ------ | ------ |
+| Plate | String | 车牌号 |
 
   ```java
   private void queryPlate() {
@@ -563,10 +551,10 @@
 
 - 删除数据::  int deletePlates(boolean isAll, List<String> plates)；
 
-  | 参数   | 类型         | 说明             |
-  | ------ | ------------ | ---------------- |
-  | isAll  | boolean      | 是否删除所有数据 |
-  | plates | List<String> | 要删除的车牌号   |
+| 参数   | 类型         | 说明             |
+| ------ | ------------ | ---------------- |
+| isAll  | boolean      | 是否删除所有数据 |
+| plates | List<String> | 要删除的车牌号   |
 
   ```java
   private void deletePlate(String plate) {
@@ -578,9 +566,9 @@
 
 - 更新数据:: int updatePlateInfo(PlateInfo info);
 
-  | 参数      | 类型      | 说明     |
-  | --------- | --------- | -------- |
-  | PlateInfo | PlateInfo | 车牌对象 |
+| 参数      | 类型      | 说明     |
+| --------- | --------- | -------- |
+| PlateInfo | PlateInfo | 车牌对象 |
 
   ```java
   private void updatePlate(String plate) {
@@ -595,7 +583,7 @@
   }
   ```
 
-### 相关的数据结构
+## 相关的数据模型
 
 RecognizeType
 
