@@ -672,3 +672,8 @@ PlateInfo
 | date     | String | 日期   |
 | tag      | String | 标签   |
 
+
+## 最佳实践
+
+**[参考Demo工程](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+
