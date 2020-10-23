@@ -26,7 +26,7 @@
   dependencies {
     .......
     // 集成人脸车牌sdk
-    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.7'
+    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.9'
   }
   ```
 
