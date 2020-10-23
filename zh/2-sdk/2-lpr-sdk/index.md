@@ -1,5 +1,5 @@
 # 车牌识别SDK
-**Version：3.8.2.0**
+**Version：3.9.2.1**
 
 ---
 
@@ -27,11 +27,11 @@ allprojects {
 ```java
 //cpu版本集成
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.8.2.0-cpu'
+    implementation 'com.rokid.glass:lpr:3.9.2.1-cpu'
 }
 //npu版本集成
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.8.2.0-npu'
+    implementation 'com.rokid.glass:lpr:3.9.2.1-npu-s905d3'
 }
 ```
 
