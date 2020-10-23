@@ -193,7 +193,7 @@ opticalId | String | 可区分眼镜生产批次，其值目前有三个，分�
 1. 监听camera数据回调
    
     ```java
-     RKGlassDevice.getInstance().setOnPreviewFrameListener(bytes -> {//NV12
+     RKGlassDevice.getInstance().setOnPreviewFrameListener(bytes -> {//NV21
             //TODO
         });
     ```
