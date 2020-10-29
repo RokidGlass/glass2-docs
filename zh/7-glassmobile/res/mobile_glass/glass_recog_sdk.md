@@ -80,13 +80,14 @@
 
       BaseLibrary.initialize(getApplication());
 
+    	RKGlassUI.getInstance().initGlassUI(getApplicationContext());
       // 设置识别类型,以及是否为在线模式
       // 首次调用必须在initGlassUI函数被调用之前 后续切换识别模式正常调用即可
       //  RecognizeType.IS_SINGLE_RECOGNIZE 单人布控
       //  RecognizeType.IS_MULTI_RECOGNIZE 多人核查 
       // RecognizeType.IS_PLATE_RECOGNIZE  车牌识别
       RKGlassUI.getInstance().recogSettingChanged(RecognizeType.IS_MULTI_RECOGNIZE, true);
-      RKGlassUI.getInstance().initGlassUI(getApplicationContext());
+      
   }
   ```
 
@@ -483,7 +484,7 @@
 | uids | List<String> | False    | Uuid |
 
   ```java
-  **
+  /**
    * 删除数据
    */
   private void deleteData() {
