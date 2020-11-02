@@ -501,6 +501,42 @@
       }
   }
   ```
+- 批量添加人脸数据:: FaceDataManager.getInstance().addPersons(DeployInfo deployInfo, String filePath, List<BatchPersons> batchPersons, boolean isOverwrite) ;
+
+| 参数 | 类型         | 能否为空 | 说明 |
+| ---- | ------------ | -------- | ---- |
+| deployInfo | DeployInfo | False    | 布控包信息 |
+| filePath | String | False    | 人脸图片压缩包路径 |
+| batchPersons | List<BatchPersons> | False    | 离线人员数据信息 |
+| isOverwrite | boolean | False    | 是否覆盖 |
+  ```java
+ /**
+   * 批量添加人脸数据
+   */
+    private void batchAddData() {
+        // 此为mock布控包数据
+        DeployInfo deployInfo = new DeployInfo();
+        deployInfo.setName("布控包名");
+        deployInfo.setExpireTime(System.currentTimeMillis() + 60 * 60 * 24 * 7 * 1000); // 布控包有效期
+        deployInfo.setNewFriendAlarm(true);   //陌生人告警
+        deployInfo.setNewFriendDesc(""); //陌生人标签
+
+      // 人脸图片压缩文件
+        String fileName = "images.zip";
+        String newFilePath = this.getFilesDir().getAbsolutePath() + File.separator + fileName;
+        Logger.i("FileManager:: newFilePath:" + newFilePath);
+
+        FileManager.copyAssetsFile2Phone(this, fileName, newFilePath);
+
+        String batchDataJson = FileManager.getJson(this, "batchPerson.json");
+
+        List<BatchPersons> batchPersonsList = new Gson().fromJson(batchDataJson, new TypeToken<List<BatchPersons>>() {
+        }.getType());
+
+        // 批量添加人脸数据信息
+        FaceDataManager.getInstance().addPersons(deployInfo, newFilePath, batchPersonsList, true);
+    }
+  ```
 
 ### 离线车牌数据库操作
 
@@ -672,6 +708,31 @@ PlateInfo
 | status   | String | 状态   |
 | date     | String | 日期   |
 | tag      | String | 标签   |
+
+DeployInfo (布控包信息)
+
+| 字段     | 类型   | 说明   |
+| -------- | ------ | ------ |
+| name    | String | 布控包名称 |
+| expireTime    | String | 有效时间 |
+| updateTime   | String | 更新时间 |
+| personNum  | String | 人员数量 |
+| faceImgNum | String | 人脸图片数量 |
+| newFriendSwitch    | boolean | 是否陌生人识别 |
+| newFriendDesc    | String | 陌生人标签 |
+| newFriendAlarm   | boolean | 陌生人告警 |
+
+BatchPersons（布控人员信息）
+
+| 字段     | 类型   | 说明   |
+| -------- | ------ | ------ |
+| name | String | 布控人员名称 |
+| cardNo | String | 身份证 |
+| birthPlace | String | 籍贯 |
+| tag | String | 标签         |
+| pictureList | List<String> | 图片名称 |
+| isAlarm | boolean | 是否告警 |
+
 
 
 ## 最佳实践
