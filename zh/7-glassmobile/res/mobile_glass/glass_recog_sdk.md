@@ -207,13 +207,11 @@
    * 初始化离线识别
    */
   private void initOfflineGlass() {
-      // 加载人脸模型
+      // 加载人脸模型,loadFaceModel中会有人脸相关数据库的初始化；
       RKAlliance.getInstance().loadFaceModel(getApplicationContext(), new PreparedListener() {
           @Override
           public void onPrepared() {
-              // 初始化人脸数据库
-              FaceIdManager.getInstance().init(getApplicationContext());
-              FaceDataManager.getInstance().init(getApplicationContext());
+           
           }
       });
 
@@ -227,6 +225,12 @@
 
       // 注册人脸识别监听
       RKAlliance.getInstance().registerFaceListener(faceCallback);
+    
+      RKGlassUI.getInstance().initGlassUI(getApplicationContext());
+      // 单人离线识别
+      RKGlassUI.getInstance().recogSettingChanged(RecognizeType.IS_SINGLE_RECOGNIZE, false);
+      // 多人离线识别
+      // RKGlassUI.getInstance().recogSettingChanged(RecognizeType.IS_MULTI_RECOGNIZE, false);
   }
   ```
 
