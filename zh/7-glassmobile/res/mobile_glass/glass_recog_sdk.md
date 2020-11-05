@@ -389,7 +389,7 @@
 >
 > tbl_user表：数据模型为UserInfo.java；
 >
-> tbl_mapping表：数据模型为œFaceMapping.java；
+> tbl_mapping表：数据模型为FaceMapping.java；
 
 - 添加数据:: ErrorCode addPerson(Person person, List<FeatFileInfo> featFileInfos, String coverId, boolean needSave)；
 
@@ -438,7 +438,7 @@
   private void queryData() {
       int dataCount = FaceIdManager.getInstance().getAllUserNum();
       // 查询数据
-      DeployTaœskListInfo deployTaskList = FaceDataManager.getInstance().getDeployTaskListByOffset(null,0,dataCount);
+      DeployTaskListInfo deployTaskList = FaceDataManager.getInstance().getDeployTaskListByOffset(null,0,dataCount);
       List<DeployTask> deployTasks = deployTaskList.getDeployTasks();
     
       StringBuffer stringBuffer = new StringBuffer();
