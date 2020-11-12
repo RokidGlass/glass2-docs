@@ -10,7 +10,7 @@
 	* Click: display battery
 	* long Press: Turn on or turn off
 
-<h3 id="3">3、示例代码</h3>
+<h3 id="3">3、The sample code</h3>
 
 ```java
 @Override
