@@ -1,31 +1,30 @@
-# Glass UI SDK (User Guide)
-**Version: 1.5.4**
+# Glass UI SDK
+**Version: 1.5.6**
 
-## 一、UI SDK介绍（UI SDK Introduction)
+## 1、UI SDK Introduction
 ---
-### 1.1 概述（Introduction)
-提供一套在Rokid Glass上开发应用的基础UI库,目前已经提供以下支持：  
-Rokid provides Basic UI SDK to help the developers to build apps in the Rokid Glass:
+### 1.1 Overview
+Provid a set of basic UI data for the application development currenthy the following support are provided:
 
-**1. GlassAlignment**   
-由于AR 眼镜特有的屏幕显示特性，在开发眼镜上的识别类应用时，     
-需要对marked UI做一次align，以保证人眼看到的marked UI和真实世界对齐。
+**1. GlassButton**   
+Glass Customized Button
 
-**GlassAlignment** helps to make the alignemnt between the "markered UI" and the real physiclal when  developing the app with recognition features. 
+**2. GlassDialog**   
+Provides a series of commonly used dialog boxes
 
-**2. GlassButton**   
-Glass自定义的Button
-**GlassButton** helps to customize the events for the physical buttons.
+**3. Screen adaptation**
+Screen adaptation scheme, which can keep the UI uniformly and proportionally displayed on Rokid Glass
 
-**3. GlassDialog**   
-提供了一系列常用的对话框
-**GlassDialog** helps the developer to design and use the dialog in Glass.
+**4. GlassAlignment**   
+Due to the unique screen display characteristics of AR glasses (Optical see through), when developing "recognition applications" on glasses,
+To ensure a good experience, it is recommended not to display the camera preview, and then perform an alignment mapping of the calibration content to be displayed after recognition to ensure that the calibration content seen by the human eye is fixed on the real object.
 
-## 二、集成说明(Integration)
+**5. IMU View**   
+Provides a list control that can be automatically scrolled horizontally through the head control
+
+## 2、Integration instructions
 ---
-在project的build.gradle中添加jcenter依赖
-(Add jcenger into the build.gradle in the product):
-
+Add jcenter dependency in the project's build.gradle:
 ``` gradle
 allprojects {
     repositories {
@@ -34,125 +33,34 @@ allprojects {
     }
 }
 ```
-### 2.1 Gradle依赖 (Gradle Dependency)
+### 2.1 Gradle dependency
+n the project's /app/build.gradle file, add the following dependencies:
 ``` gradle
-implementation 'com.rokid.glass:ui:1.5.4'
+...
+dependencies {
+    ...
+    implementation 'com.rokid.glass:ui:1.5.6'
+}
 ```
 
-### 2.2 Demo
+### 2.2 Demo download
 [Glass UI Demo](https://github.com/rokid/glass-ui)
 
-## 三、功能列表 (Feature List)
+## 3、function list
 ---
-### 3.1 RokidSystem
-Alignment概念：
-Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
 
-Alignment: Camera preview is mirrored into the display in the glasses. 
-
-
-在手机上开发如下图(Developing app in the mobile device)
-![](images/alignment_phone.png)
-
-在眼镜上开发如下图(Developing app in the AR glasses)
-![](images/alignment_glass.png)
-
-1. 蓝色代表`相机预览`的画面  (Blue canvas is for "Camera Preview")
-2. 绿色代表`相机预览`中物体的坐标   (Green part is for the bunding box of the target in the "Camera Preview")
-3. 橙色代表`LCD屏幕`在`相机预览`的映射区域,百分比表示真实世界在虚拟世界的比例 (Orange canvas is for the area of the LCD display of AR glasses in the "Camera Preview")
-4. 白色代表物体映射到`LCD屏幕`的显示区域 (White part is for the LCD display of AR glasses with the target)
-
-#### 3.1.1 getAlignmentRect
-说明：根据preview的rect，获取到映射到LCD屏幕的区域
-Note: get the rectangle value of preivew in the LCD display 
-```java
-public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect)
-```  
-|参数(Parameter)|含义(Meaning)|默认值（Default Value)
-|---|---|---|
-|previewWidth|Camera preview宽(Camera Preview Width)||
-|previewHeight|Camera preview高(Camera Preview Height)||
-|previewRect|Camera preview的Rect (Camera Preview Rectangle Area)||
-
-示例代码：人脸识别后，在屏幕上画出人脸Rect   
-Sample Code: After the face recognition, draw the Rect of face in the LCD display
-``` java
-public static final int PREVIEW_WIDTH = 1280;
-public static final int PREVIEW_HEIGHT = 720;
-
-//camera preview的人脸区域 (Face bundling rect area in the camera preview) 
-Rect previewRect = faceDoCache.faceDo.toRect(getWidth(), getHeight());
-
-//根据preview的人脸Rect，映射后，获取最终在屏幕上绘制的Rect (Face bundling rect area in LCD display)
-Rect rect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
-
-...
-canvas.save();
-canvas.translate((rect.left + rect.right) / 2f, (rect.top + rect.bottom) / 2f);
-
-drawRect(canvas, 0, rect.width(), rect.height(), paint, rectConfig);
-drawRect2(canvas, 0, rect.width(), rect.height(), paint, rectConfig);
-drawRect(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
-drawRect2(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
-
-canvas.restore();
-...
-```
-#### 3.1.2 getWindowRect
-说明：根据LCD屏幕的rect，获取到preview的区域rect
-Note: get the Rect area in preview based on the rect in LCD display.
-``` java
-public static Rect getWindowRect(final int previewWidth, final int previewHeight, final Rect windowRect)
-```
-|参数(Parameter)|含义(Meaning)|默认值(Default Value)
-|---|---|---|
-|previewWidth|Camera preview宽 (Width of camera preview)||
-|previewHeight|Camera preview高 (Height of camera preview)||
-|windowRect|屏幕上的Rect(Rect in LCD)||
-
-示例代码: 根据屏幕上的roi区域，得到preview 上的roi区域
-Sample Code: get the roi area in preview based on the roid in LCD display.
-```java
-Rect window = new Rect(0,0,1280,720);
-roiRect = RokidSystem.getWindowRect2K(CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, window);
-roiRect = FaceRectUtils.scaleRect(roiRect, CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, FaceParams.roiScale);
-...
-
-VideoDFaceConf config = new VideoDFaceConf();
-config.setDataType(DataFormat.DATA_YUV420);
-config.setSize(CameraParams.PREVIEW_WIDTH, CameraParams.PREVIEW_HEIGHT);
-config.setRoi(roiRect);
-
-```
-
-#### 3.1.3 getProjectionMatrix_OpticalSeeThrough
-说明：获取OpticalSeeThrough场景下，OpenGLES 3D 应用的投影矩阵（横屏状态），以便人眼看到的marked UI和真实世界对齐
-Notes: As for the Optical-See-Through scenario get the projection matrix of OpenGLES 3D apps to ensure the alignment between the marked UI and the phyisical world. 
-
-``` java
-public static float[] getProjectionMatrix_OpticalSeeThrough()
-```
-
-示例代码: 对于横屏应用，获取OpenGLES MVP矩阵的投影矩阵
-Sample Coce: As for the apps with the landscape orientation, get the projection matrix of OpenGLES MVP
-```java
-float projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
-...
-
-```
-
-### 3.2 GlassButton
-Glass自定义的Button (Pre-defined buttons in the glasses)
+### 3.1 GlassButton
+Glass Customized Button
 
 `Focused`:  
 
-![](images/highlight_button.png)
+<img width="280" src="images/highlight_button.png">
 
 `Normal`
 
-![](images/normal_button.png)
+<img width="280" src="images/normal_button.png">
 
-#### 3.2.1 用法(How to use)
+#### 3.1.1 usage
 ``` xml
  <com.rokid.glass.ui.button.GlassButton
     android:id="@+id/custom_dialog_btn"
@@ -163,27 +71,28 @@ Glass自定义的Button (Pre-defined buttons in the glasses)
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@id/dialog_btn" />
 ```
-### 3.3 GlassDialog
-提供了一系列常用的对话框,通过不同Builder 来构建不同类型的对话框（Rokid provides the useful dialog framework to help build the various dialog box with Builders):
-We provide the following Builders:
+### 3.2 GlassDialog
+A series of commonly used dialog boxes are provided, and different types of dialog boxes can be constructed through different Builders.
+Currently provided Builder:
 
-#### 3.3.1 CommonDialogBuilder
-通用的 DialogBuilder(Universal DialogBuilder)
+#### 3.2.1 CommonDialogBuilder
+Generic DialogBuilder
 
-![](images/common_dialog.png)
+<img width="280" src="images/common_dialog.png">
 
-|方法(Function)|含义(Meaning)|备注(Notes)
+|method| meaning|Remarks
 |---|---|---|
-|setTitle|设置标题(Set Title)||
-|setContent|设置内容(Set Content）|和自定义内容布局选其一（Use setContent or customized content)|
-|setConfirmText|设置确定按钮文字（Set text for confirm button)||
-|setCancelText|设置取消按钮文字（Set text for cancel button)||
-|setContentLayoutId|设置内容自定义布局id（Set customized content layout ID)||
-|setContentLayoutView|设置内容自定义布局View（Set customized content layout View)|和setContentLayoutId选其一(Use ‘setContentLayoutView’ or setContentLayoutId)|
-|setConfirmListener|设置Confirm监听(set the listener for Confirm||
-|setCancelListener|设置Cancel监听(set the listener for Cancel||
+|setTitle|Set title||
+|setContent|Set Content|Choose one with custom content layout|
+|setConfirmText|Set the OK button text||
+|setCancelText|Set the cancel button text||
+|setContentLayoutId|Set content custom layout id||
+|setContentLayoutView|Set content custom layout View|And setContentLayoutId choose one|
+|setConfirmListener|Set Confirm monitor||
+|setCancelListener|Set up Cancel listener||
 
-**示例代码(Sample Code)**
+Sample Code
+
 ``` java
 new GlassDialog.CommonDialogBuilder(this)
         .setTitle("Title")
@@ -205,8 +114,8 @@ new GlassDialog.CommonDialogBuilder(this)
         })
         .show();
 ```
-### 3.4 屏幕适配(Display Setting)
-接入，在app的`AndroidManifest.xml`声明(Add the following statement in the app's `AndroidManifest.xml`):
+### 3.3 Screen adaptation
+In the app’s `AndroidManifest.xml` statement:
 ``` java
 <manifest>
     <application>            
@@ -219,7 +128,158 @@ new GlassDialog.CommonDialogBuilder(this)
      </application>           
 </manifest>
 ```
-这里的都是根据设计图的尺寸来，以宽或者高为基准，默认是宽。
-The dimension is based the value of width or height. The width value is set as default.
-#### 模拟器Preview设置(Preview Setting for the emulator in Android Studio) 
-![](images/preview.jpg)
+Here are based on the size of the design drawing, based on width or height, and the default is width.
+#### Simulator Preview settings
+<img width="500" src="images/preview.jpg">
+
+### 3.4 GlassAlignment
+* Alignment concept:
+    * Mapping process in witch the Camera preview interface enters the human eye  through the Glass display screen.
+
+* Develop on the phone as shown below:
+
+<img width="500" src="images/alignment_phone.png">
+
+* The development on the glasses is as follows:
+
+<img width="500" src="images/alignment_glass.png">
+
+1. Blue represents the image of `camera preview`
+2. Green represents the coordinates of the object in the camera preview
+3. Orange represents the mapping area of the LCD screen in the camera preview, and the percentage represents the ratio of the real world to the virtual world
+4. White represents the object mapped to the display area of the `LCD screen`
+
+#### 3.4.1 getAlignmentRect
+Description: Obtain the area mapped to the LCD screen according to the preview rect
+```java
+public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect)
+```
+|parameter|meaning|default value
+|---|---|---|
+|previewWidth|Camera preview width||
+|previewHeight|Camera preview height||
+|previewRect|Camera preview Rect||
+
+ample code: After face recognition, draw a face Rect on the screen
+``` java
+public static final int PREVIEW_WIDTH = 1280;
+public static final int PREVIEW_HEIGHT = 720;
+
+//Face area of camera preview
+Rect previewRect = faceDoCache.faceDo.toRect(getWidth(), getHeight());
+
+//According to the face Rect of preview, after mapping, get the Rect that is finally drawn on the screen
+Rect rect = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HEIGHT,previewRect);
+
+...
+
+canvas.save();
+canvas.translate((rect.left + rect.right) / 2f, (rect.top + rect.bottom) / 2f);
+...
+canvas.restore();
+...
+```
+#### 3.4.2 getWindowRect
+Description: According to the rect of the LCD screen, get the preview area rect
+``` java
+public static Rect getWindowRect(final int previewWidth, final int previewHeight, final Rect windowRect)
+```
+|parameter|meaning|default value
+|---|---|---|
+|previewWidth|Camera preview width||
+|previewHeight|Camera preview height||
+|windowRect|Rect on LCD screen||
+
+#### 3.4.3 getProjectionMatrix_OpticalSeeThrough
+Description: Obtain the projection matrix (horizontal screen state) of the OpenGLES 3D application in the Optical See Through scene, so that the calibration content seen by the human eye is aligned with the real world
+
+``` java
+public static float[] getProjectionMatrix_OpticalSeeThrough()
+```
+
+Sample code: For horizontal screen applications, get the projection matrix of the OpenGLES MVP matrix
+
+```java
+float projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
+...
+
+```
+
+### 3.5 IMU View
+
+* IMU View ：Provides a list control that can control horizontal automatic scrolling by turning the head left and right, helping developers to quickly use the "head-controlled swipe" function.
+
+* When the user opens the "Head Control Swipe" in the system settings, your IMU View control will take effect.
+
+#### 3.5.1 Usage example
+
+<img width="400" src="images/imuview_simple.png">
+
+#### 3.5.2 Instructions
+
+
+
+```java
+nitialize in Application:
+IMUSdk.init(this);
+Specific use:
+getLifecycle().addObserver(mImuView);//Life cycle binding
+mImuView.setSlow();//The default is fast sliding mode, set here can be set to slow sliding mode
+mImuView.setAdapter(mAdapter);
+```
+
+``` xml
+<com.rokid.glass.imusdk.core.IMUView
+        android:id="@+id/ui_recycler_view"
+        imulabmarginleft="10"
+        imulabmargintop="10"
+        imutouchstyle="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:imuscale="1.1"
+        app:imutouchstyle="true" />
+
+```
+
+|Property configuration|meaning|
+|---|---|
+|imuscale|Configure the zoom ratio of the selected item|
+|imupadding|Configure the space filled in the item to reserve zoom space|
+|imuspeed|Configure the sliding speed of the uniform sliding mode|
+|imuguide|he top navigation bar|
+|imuunable|The default is false, set to true will block the imu head control function|
+|imutitlewidth|Configure the width of the default display template title|
+|imulabmarginleft|Configure the upper left corner position to prompt the distance between the lab and the left boundary|
+|imulabmargintop|Configure the upper left corner position to prompt the distance between the lab and the upper boundary|
+|imutouchstyle|Provides two sliding modes true: simulated touch sliding mode false: uniform sliding mode|
+|imutouchinterval|Configure the sliding speed of the simulated touch sliding mode|
+
+```xml
+<declare-styleable name="imuview">
+    <attr name="imuscale" format="float"/>
+    <attr name="imupadding" format="dimension" />
+    <attr name="imuspeed" format="integer" />
+    <attr name="imuguide" format="boolean" />
+    <attr name="imuunable" format="boolean" />
+    <attr name="imutitlewidth" format="dimension" />
+    <attr name="imulabmarginleft" format="dimension" />
+    <attr name="imulabmargintop" format="dimension" />
+    <attr name="imutouchstyle" format="boolean" />
+    <attr name="imutouchinterval" format="dimension" />
+</declare-styleable>
+```
+
+#### 3.5.3 Swipe mode selection
+
+* Configuration method: Configure via imutouchstyle attribute.
+
+* Uniform sliding mode: The list slides at a constant speed, and each item will not have a pause effect. It is mostly used for faster scrolling of content, similar to a gallery.
+
+* Simulated touch sliding mode: Simulates the effect of manual touch sliding. After each item, there will be a pause effect, which is easy for users to see. It is the default sliding mode.
+
+#### 3.5.4 Customized head control related functions
+
+* You can register the rotation vector sensor type of SensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR), get the real-time orientation information in the onSensorChanged(SensorEvent event) callback, and judge the current head control status according to the difference of each callback content and do the corresponding processing
+
+* Android official website address
+https://developer.android.google.cn/reference/kotlin/android/hardware/SensorManager?hl=en

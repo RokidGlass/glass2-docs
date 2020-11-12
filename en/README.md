@@ -1,21 +1,52 @@
-# Glass（二代）软件开发文档
+# Rokid Glass Software Development Document
 
 [![Build Status](https://travis-ci.org/RokidGlass/glass2-docs.svg?branch=master)](https://travis-ci.org/github/RokidGlass/glass2-docs)
 
-## 介绍
--   本文档面向Rokid Glass的开发者，介绍了开发者如何在Rokid Glass上开发应用。(The document provides the guidelines for the developers to build the app in Rokid Glass)
--   本文档包含了系统配置方法，Rokid Glass SDK使用文档。(The document includes the system settings, and the user guide for Rokid Glass SDK)
+## 1、Introduction
+-   This document is aimed at the developers of Rokid Glass and introduces how to develop applications on Rokid Glass.
+-   This document contains system information, development guide, Rokid Glass SDK usage documents and examples.
+-   For detailed page jump, please click "Directory" in the upper left corner of gitbook.
 
-## 如何在Glass上开发App？(how to devlep app in glasses)
--   开发者可以基于Rokid提供的SDK开发眼镜端App，或者用已有的Android App做眼镜适配。(The developers can build the app in the glasses with SDK or port the Android app into the glasses.
--   眼镜适配方法（与Android手机上App的开发区别）(Porting apps into the glasses/Different from developing app in the smartphone)：
-    -   Touch screen -> Touch pad：部分类型的控件需要自定义焦点控制。
-    	 (Touch screen -> Touch pad：some controls need to be customized for the 		focus control)
-    -   有preview -> 无preview：真实世界不需要preview（具体可参考UI SDK）。
-    	 (With Preview -> No Preview: the preview is not nessesary in the real world.(UI SDK))
-    -   相机映射alignment：相机世界需要映射到真实世界（具体可参考UI SDK）。
-    	(Aligment between Camera and Display: mirror the camera prevew into the real world. (UI SDK))
-    -   Glass风格的UI：参考UI设计规范和UI SDK。
-    	(UI for Glasses: UI guideline and SDK)
-    -   如果需要使用系统AR投屏功能, 建议使用Android Camera2.0开发应用。
-    	(Suggest to use Camera2.0 if developing the app with the feature of the system-level AR project)
+## 2、System information description
+### Basic Information
+|name|Introduction|
+|---|---|
+| AP | Amlogic-S905D3|
+| RAM |2G|
+| ROM |32G|
+| IMU |9 axis, support ROTATION_VECTOR|
+| Camera |The maximum resolution of photos is 3264x2448, and video is 1080p@30fps|
+| Screen | Resolution 1280x720, horizontal screen, 320dpi |
+| Based on Android9.0 |Development Tools AndroidStudio|
+| interactive mode |[Touchpad, buttons](1-system/index.md), head control|
+
+## 3、Brief development guide
+* The difference between glasses development and Android development
+  
+  * Glass does not have a touch screen, only a touch pad. Some types of controls require custom focus control
+  * It is recommended on Glass not to display the camera preview (preview), because AR glasses can see through the real world. For specific implementation, please refer to [Camera Mapping](2-sdk/ui-sdk/index.md#3. Function list)
+  * Glass style UI: Refer to [UI SDK](2-sdk/ui-sdk/index.md).
+  * If you need to use the built-in AR screen recording function of the system and need to overlay the Camera preview as the screen recording background, please note:
+	* App uses Camera API2 interface;
+	* The Activity that needs to be superimposed on the Camera preview, and it needs to be broadcast when it is turned on. ``android.intent.action.CAMERA_WALLPAPER_START_PREVIE``
+	
+    
+	
+	* Send the broadcast ``android.intent.action.CAMERA_WALLPAPER_STOP_PREVIE``
+	
+* Steps of glasses development:
+  
+  1. Create a new Android project, or rebuild based on an existing Android project.
+  
+  2. According to the development model of Android TV, use the Glass touchpad to control focus changes (refer to [Touchpad key value description](1-system/index.md))。<br>Congratulations! You can use your own app with the touchpad on the glasses!
+  
+  3. You can use the provided **Basic SDK** to develop the interactive mode of Glass voice and head control.
+  
+  4. According to the application scenario, you can select the corresponding **function SDK** to speed up development.
+
+## 4、SDK introduction and download
+### Basic SDK
+|name|Introduction|
+|---|---|
+| [Glass UI](2-sdk/ui-sdk/index.md) | 1. Provide a set of basic UI libraries for developing applications on Rokid Glass<br>2. The relationship between the real world and camera preview (Preview) and camera mapping (alignment)<br> |
+

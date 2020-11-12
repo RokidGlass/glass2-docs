@@ -1,14 +1,17 @@
-# 版本更新信息(Version)
+# Glass UI version update information
+## 1.5.6
+* Add IMUView head control automatic sliding list control
+
 ## 1.5.4
-* 统一 Dialog 样式 (Unified the layout of Dialog)
+* Unified Dialog style
 
 ## 1.2.3
-* 新增`RokidSystem`的getProjectionMatrix_OpticalSeeThrough方法，获取 Unity 3D 的 alignment (Add the function - getProjectionMatrix_OpticalSeeThrough in `RokidSystem` to get the alignment in Unity 3D
+* Added the getProjectionMatrix_OpticalSeeThrough method of `RokidSystem` to get Unity 3D alignment
 
 ## 1.2.0
-* 新增`RokidSystem`的getWindowRect(Add the function - getWindowRect in `RokidSystem`)
+* Added getWindowRect of `RokidSystem`
 
 ## 1.0.0
-* 新增`GlassButton`(Add 'GlassButton')
-* 新增`GlassDialog`(Add 'GlassDialog')
-* 新增工具类`CountDownManager`,`RokidSystem`(Add Class 'CountDownManager', 'RokidSystem')
+* add `GlassButton`  
+* add`GlassDialog`
+* New tools`CountDownManager`,`RokidSystem`
