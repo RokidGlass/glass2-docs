@@ -4,7 +4,7 @@
 ## 1、UI SDK Introduction
 ---
 ### 1.1 Overview
-Provid a set of basic UI data for the application development currenthy the following support are provided:
+Provides a set of basic UI libraries for developing applications on Rokid Glass, and currently supports the following:
 
 **1. GlassButton**   
 Glass Customized Button
@@ -34,7 +34,7 @@ allprojects {
 }
 ```
 ### 2.1 Gradle dependency
-n the project's /app/build.gradle file, add the following dependencies:
+In the project's /app/build.gradle file, add the following dependencies:
 ``` gradle
 ...
 dependencies {
