@@ -1,5 +1,5 @@
 # Glass 语音离线指令 SDK
-**Version: 1.5.6**  
+**Version: 1.5.7**  
 
 
 
@@ -70,7 +70,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.5.6'
+      implementation 'com.rokid.ai.glass:instructsdk:1.5.7'
   }
   ```
 - Jcenter Maven信息
@@ -79,7 +79,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.5.6</version>
+    <version>1.5.7</version>
     <type>pom</type>
   </dependency>
   ```
