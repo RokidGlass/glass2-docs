@@ -1,5 +1,5 @@
 # Glass 语音离线指令 SDK
-**Version: 1.5.7**  
+**Version: 1.5.8**  
 
 
 
@@ -70,7 +70,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.5.7'
+      implementation 'com.rokid.ai.glass:instructsdk:1.5.8'
   }
   ```
 - Jcenter Maven信息
@@ -79,13 +79,13 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.5.7</version>
+    <version>1.5.8</version>
     <type>pom</type>
   </dependency>
   ```
 
 - 修改时间
-  2020年10月21日
+  2020年12月10日
 
 
 ### 2.2 AndroidManifest.xml及Application配置
@@ -113,9 +113,12 @@ public class InstructApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // 初始化语音指令SDK
+        // 初始化语音指令SDK，App运行时默认关闭百灵鸟 
   	    VoiceInstruction.init(this);
-  	  
+        // 或者使用下面的，插件与百灵鸟混合模式
+  	    // VoiceInstruction.init(this, false);
+
+
   	    // 设置全局指令，无全局指令可以删掉下面的代码
   	    // eg：”返回“指令
   	    VoiceInstruction.getInstance().addGlobalInstruct(
@@ -608,12 +611,22 @@ Rokid Glass XR系统中，默认设置了一些系统指令，在每个页面都
 
   ```java
       /**
-       * 是否关闭语音指令开关， 默认开启，继承可以选择关闭
+       * 语音指令插件sdk初始化，App运行时默认关闭百灵鸟模式
        *
        * @param appContext Application级别Context
        */
       @Override
       public static void init(Context appContext) 
+
+      /**
+       * 语音指令插件sdk初始化，插件与百灵鸟混合模式
+       *
+       * @param appContext Application级别Context
+       * @param ignoreLark 是否忽略百灵鸟模式，true 忽略，false 启用
+       */
+      @Override
+      public static void init(Context appContext, boolean ignoreLark) 
+
   ```
 
 #### 3.1.2 VoiceInstruction中根据解决方案重启语音助手服务 (SDK 1.1.5及以上版本，语音助手RokidAiSdk 2.0.5版本及以上可用，中文环境使用)
