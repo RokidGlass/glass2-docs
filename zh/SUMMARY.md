@@ -5,7 +5,7 @@ Rokid Glass文档目录
 * [Rokid系统方案](README.md)
     * [Rokid Glass软件开发文档引导](README.md)
     * [触摸板键值说明](1-system/index.md)
-    * [android nn 操作说明](8-android nn/index.md)
+    * [android nn 使用说明](8-android nn/index.md)
     * SDK
         - 基础SDK
             - Glass UI
