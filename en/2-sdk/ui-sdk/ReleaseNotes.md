@@ -1,4 +1,7 @@
 # Glass UI version update information
+## 1.6.2
+* Fixed bugs like ClickEvent does not match current item when using ImuView
+
 ## 1.5.6
 * Add IMUView head control automatic sliding list control
 
