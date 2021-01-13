@@ -21,7 +21,28 @@
 	方案二：Camera API2
 	int aeCompMode; //0 全局曝光，1 下三角曝光
 	mPreviewBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, aeCompMode);
-	```	
+	```
+
+
+* **Q: 应用获取眼镜传感器获取问题**
+	A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支持获取 raw data.
+
+	| sensor type       |  status    |
+	| ----------------------------------- | ---- |
+	| android.sensor.accelerometer 				| Fail |
+	| android.sensor.gyroscope            | Fail |
+	| android.sensor.magnetic_field       | Fail |
+	| android.sensor.game_rotation_vector | OK |
+	| android.sensor.rotation_vector      | OK |
+	| android.sensor.light                | OK |
+	| android.sensor.proximity            | OK |
+
+	考虑到某些应用场景需要获取 raw data，我们提供刷机工具更新眼镜固件，以满足使用场景。更新后可以支持获取 raw data，但此时没有四元数数据。刷机工具可咨询工程师获取。
+
+
+
+
+
 
 ## 二、眼镜系统版本OTA升级方法:
 
