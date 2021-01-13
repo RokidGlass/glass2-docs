@@ -4,15 +4,15 @@
 
 ## 一、常见开发问题
 
-* **Q: 开发眼镜上应用时，使用硬件h264编码失败？**
-	A: 系统硬件mediacodec编码有size的限制，要求输入流的width必须为16的倍数，hight必须为2的倍数，否则编码将报错。如遇到硬件h264编码失败或崩溃，请检查输入流的size是否满足要求。
+### **Q: 开发眼镜上应用时，使用硬件h264编码失败？**
+	
+A: 系统硬件mediacodec编码有size的限制，要求输入流的width必须为16的倍数，hight必须为2的倍数，否则编码将报错。如遇到硬件h264编码失败或崩溃，请检查输入流的size是否满足要求。
 
-
-* **Q: 开发眼镜上应用时，为什么无法设置自动曝光补偿的亮度？**
-	A: 当前提供了扩展的相机曝光模式，借用自动曝光补偿接口，应用可参考以下接口：
-		
-	```java
-	方案一：Camera API1
+### **Q: 开发眼镜上应用时，为什么无法设置自动曝光补偿的亮度？**
+A: 当前提供了扩展的相机曝光模式，借用自动曝光补偿接口，应用可参考以下接口.
+	
+```java
+   方案一：Camera API1
 	int aeCompMode; //0 全局曝光，1 下三角曝光
 	Camera.Parameters parameters = mCamera.getParameters();
 	parameters.setExposureCompensation(aeCompMode);
@@ -21,21 +21,21 @@
 	方案二：Camera API2
 	int aeCompMode; //0 全局曝光，1 下三角曝光
 	mPreviewBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, aeCompMode);
-	```
+    ```
 
 
-* **Q: 应用获取眼镜传感器获取问题**
-	A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支持获取 raw data.
+### **Q: 应用获取眼镜传感器获取问题**
+A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支持获取 raw data.
 
-	| sensor type       |  status    |
-	| ----------------------------------- | ---- |
-	| android.sensor.accelerometer 				| Fail |
-	| android.sensor.gyroscope            | Fail |
-	| android.sensor.magnetic_field       | Fail |
-	| android.sensor.game_rotation_vector | OK |
-	| android.sensor.rotation_vector      | OK |
-	| android.sensor.light                | OK |
-	| android.sensor.proximity            | OK |
+| sensor type       |  status    |
+    | ----------------------------------- | ---- |
+    | android.sensor.accelerometer | Fail |
+    | android.sensor.gyroscope            | Fail |
+    | android.sensor.magnetic_field       | Fail |
+    | android.sensor.game_rotation_vector | OK |
+    | android.sensor.rotation_vector      | OK |
+    | android.sensor.light                | OK |
+    | android.sensor.proximity            | OK |
 
 	考虑到某些应用场景需要获取 raw data，我们提供刷机工具更新眼镜固件，以满足使用场景。更新后可以支持获取 raw data，但此时没有四元数数据。刷机工具可咨询工程师获取。
 
