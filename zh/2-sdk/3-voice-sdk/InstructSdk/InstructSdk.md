@@ -107,7 +107,7 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 - 自定义application java文件中进行语音SDK初始化及全局指令设置
 
-	```java
+```java
 public class InstructApplication extends Application {
 
     @Override
@@ -141,7 +141,7 @@ public class InstructApplication extends Application {
     }
 }
 
-	```
+```
 
 语音指令支持三种使用方式：
 1. 通过InstructLifeManager使用LifeCycle方式；（推荐）
