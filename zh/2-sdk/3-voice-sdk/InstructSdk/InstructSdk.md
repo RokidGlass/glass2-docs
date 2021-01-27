@@ -603,6 +603,107 @@ Rokid Glass XR系统中，默认设置了一些系统指令，在每个页面都
   * 注意：系统指令，全局类型
 
 
+### 2.7 关闭全部语音指令
+
+某些情况下，App为了更好地沉浸式体验，类似3D放映、3D游戏等，需要在当前App关闭、清除所有语音指令，去除语音标志。要实现上述功能，需要用户集成语音插件，并做一下功能组合调用。
+
+#### 2.7.1 在LifeCycle形式的使用场景下，关闭语音指令
+
+  ```java
+/**
+ * 清除全部指令 Act
+ * LifeCycle方式
+ */
+public class NoAllInstructAct extends AppCompatActivity {
+
+    private InstructLifeManager mLifeManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_no_instruct);
+        configInstruct();
+    }
+
+    public void configInstruct() {
+        mLifeManager = new InstructLifeManager(this, getLifecycle(), mInstructLifeListener);
+        // 清除全部系统指令
+        mLifeManager.getInstructConfig().setIgnoreSystem(true);
+    }
+
+    private InstructLifeManager.IInstructLifeListener mInstructLifeListener = new InstructLifeManager.IInstructLifeListener() {
+        @Override
+        public boolean onInterceptCommand(String command) {
+            return false;
+        }
+
+        @Override
+        public void onTipsUiReady() {
+            // 清除页面底部"显示帮助"浮层
+            if (mLifeManager != null) {
+                mLifeManager.hideTipsLayer();
+            }
+        }
+
+        @Override
+        public void onHelpLayerShow(boolean show) {
+
+        }
+    };
+}
+  ```
+可参照Demo中的NoAllInstructLifeAct.java   如App内所有页面都需要关闭全部语音指令，可以在App的Base Activity中做上述代码操作。
+
+
+#### 2.7.2 在继承或者仿写InstructionActivity形式式的使用场景下，关闭语音指令
+
+  ```java
+/**
+ * 清除全部指令 Act
+ * 继承或仿照InstructionActivity方式
+ */
+public class NoAllInstructBaseExtendAct extends InstructionActivity {
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_no_instruct);
+    }
+    
+    @Override
+    public InstructConfig configInstruct() {
+        InstructConfig config = new InstructConfig();
+        // 设置ActionKey，需要保证不为空且唯一
+        config.setActionKey(getClass().getName() + InstructConfig.ACTION_SUFFIX);
+        // 清除全部系统指令
+        config.setIgnoreSystem(true);
+        return config;
+    }
+
+    @Override
+    public void onInstrucUiReady() {
+        super.onInstrucUiReady();
+        // 清除页面底部"显示帮助"浮层
+        if (mInstructionManager != null) {
+            mInstructionManager.hideTipsLayer();
+        }
+    }
+
+    /**
+     * 是否拦截处理当前语音指令，拦截后之前配置的指令闭包不会被调用
+     * （可以用来提前处理一些指令，然后返回false）
+     * @param command
+     * @return true：拦截事件 false：不进行拦截
+     */
+    @Override
+    public boolean doReceiveCommand(String command) {
+        return false;
+    }
+}
+  ```
+可参照Demo中的NoAllInstructBaseExtendAct.java  如App内所有页面都需要关闭全部语音指令，可以在App的Base Activity中做上述代码操作。
+
+
 ## 三、API参考
 
 ### 3.1 VoiceInstruction中公共方法说明
