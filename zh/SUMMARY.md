@@ -27,8 +27,6 @@ Rokid Glass文档目录
         - [使用说明](2-sdk/2-lpr-sdk/index.md)
         - [版本信息](2-sdk/2-lpr-sdk/ReleaseNotes.md)
     * [OS 设计规范](5-design/index.md)
-* [FAQ](0-faq/index.md) 
-    * [论坛](6-forum/index.md)
     
 * [Rokid眼镜连接手机方案](7-glassmobile/res/mobile_glass/introduction.md)
     * [变更记录](7-glassmobile/res/mobile_glass/ChangeLog.md)
@@ -67,3 +65,6 @@ Rokid Glass文档目录
           * [离线车牌数据库操作](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#离线车牌数据库操作)
         * [相关数据模型](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#相关的数据模型)
         * [最佳实践](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#最佳实践)
+* [FAQ](0-faq/index.md) 
+* [论坛](6-forum/index.md)
+
