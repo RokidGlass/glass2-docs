@@ -125,4 +125,4 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 某些情况下，App为了更好地沉浸式体验，类似3D放映、3D游戏等，需要在当前App关闭、清除所有语音指令，去除语音标志。要实现上述功能，需要用户集成语音插件，并做一下功能组合调用。
 
-具体使用方式请参考离线指令SDK使用文档中的关闭全部语音指令，或者离线指令SDK使用Demo中的NoAllInstructLifeAct、NoAllInstructBaseExtendAct。
+具体使用方式请参考 语音交互 -> 使用说明（ 离线指令SDK使用文档 ）中的关闭全部语音指令，或者离线指令SDK使用Demo中的NoAllInstructLifeAct、NoAllInstructBaseExtendAct。
