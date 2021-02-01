@@ -18,7 +18,7 @@
 2. build.gradle配置maven库
 
     ```groovy
-     implementation 'com.rokid.alliance.glassui:glassui:1.1.9'
+     implementation 'com.rokid.alliance.glassui:glassui:1.1.13'
     ```
 
 3. sdk依赖权限申请

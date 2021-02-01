@@ -25,7 +25,7 @@
 2. 在`app/build.gradle`文件中添加模块依赖
 
     ```groovy
-    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.9'
+    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.11'
     ```
     
 3. SDK权限依赖
