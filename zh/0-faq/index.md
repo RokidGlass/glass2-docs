@@ -4,53 +4,86 @@
 
 ## 一、常见开发问题
 
-### **Q: 开发眼镜上应用时，使用硬件h264编码失败？**
-	
+### **Q1: 开发眼镜上应用时，使用硬件h264编码失败？**
+
 A: 系统硬件mediacodec编码有size的限制，要求输入流的width必须为16的倍数，hight必须为2的倍数，否则编码将报错。如遇到硬件h264编码失败或崩溃，请检查输入流的size是否满足要求。
 
 
-### **Q: 开发眼镜上应用时，如何在应用内完全禁用语音助手功能**
+### **Q2: 开发眼镜上应用时，如何在应用内完全禁用语音助手功能**
 
 A: 请参考语音SDK使用说明[关闭全部语音指令说明](../2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md### 2.7 关闭全部语音指令)
 
 
-### **Q: 开发眼镜上应用时，为什么无法设置自动曝光补偿的亮度？**
-A: 当前提供了扩展的相机曝光模式，借用自动曝光补偿接口，应用可参考以下接口.
-	
-```java
-   方案一：Camera API1
-	int aeCompMode; //0 全局曝光，1 下三角曝光
-	Camera.Parameters parameters = mCamera.getParameters();
-	parameters.setExposureCompensation(aeCompMode);
-	mCamera.setParameters(parameters);
-
-	方案二：Camera API2
-	int aeCompMode; //0 全局曝光，1 下三角曝光
-	mPreviewBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, aeCompMode);
-    ```
-
-
-### **Q: 应用获取眼镜传感器获取问题**
+### **Q3: 应用获取眼镜传感器获取问题**
 A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支持获取 raw data.
 
 | sensor type       |  status    |
-    | ----------------------------------- | ---- |
-    | android.sensor.accelerometer | Fail |
-    | android.sensor.gyroscope            | Fail |
-    | android.sensor.magnetic_field       | Fail |
-    | android.sensor.game_rotation_vector | OK |
-    | android.sensor.rotation_vector      | OK |
-    | android.sensor.light                | OK |
-    | android.sensor.proximity            | OK |
+| ----------------------------------- | ---- |
+| android.sensor.accelerometer | Fail |
+| android.sensor.gyroscope            | Fail |
+| android.sensor.magnetic_field       | Fail |
+| android.sensor.game_rotation_vector | OK |
+| android.sensor.rotation_vector      | OK |
+| android.sensor.light                | OK |
+| android.sensor.proximity            | OK |
 
 	考虑到某些应用场景需要获取 raw data，我们提供刷机工具更新眼镜固件，以满足使用场景。更新后可以支持获取 raw data，但此时没有四元数数据。刷机工具可咨询工程师获取。
 
 
 
+## 二、Camera特性篇
+
+### **Q1: 【glass2】camera对焦篇：系统版本1.5.3之后采用中心对焦方式？**
+
+A：Camera固件采用中心对焦的方式，取中心九分之一做中心区域对焦。可以解决背景过大、前景过小的对焦不准问题。
+经过系统级测试，改善了对焦速度、对焦精度和识别类应用的识别速度。这个不需要应用修改，默认支持。
+
+### Q2: 【glass2】camera曝光篇：系统版本1.5.3之后支持多种曝光模式选择
+A：目前支持全局曝光，下三角曝光和中心曝光三种方式，可以满足不同场景的需求。
+  •  全局曝光：相机应用关注整体观感，可以采用全局曝光
+  •  下三角曝光：在部分逆光场景下，减少天空对曝光的影响可以采用下三角曝光
+  •  中心曝光：二维码识别场景，中心有较亮的屏幕场景，使用中心曝光为宜。 应用接口如下：
+
+```
+方案一：Camera API1
+	int aeCompMode; //0 全局曝光，1 下三角曝光，2 中心区域曝光
+	Camera.Parameters parameters = mCamera.getParameters();
+	parameters.setExposureCompensation(aeCompMode);
+	mCamera.setParameters(parameters);
+
+方案二：Camera API2
+	int aeCompMode; //0 全局曝光，1 下三角曝光，2 中心区域曝光
+	mPreviewBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, aeCompMode);
+```
 
 
 
-## 二、眼镜系统版本OTA升级方法:
+
+### Q3: 【glass2】camera放大篇：系统版本1.5.3之后支持缩放模式
+A：camera支持在1080和720P输出分辨率时候，可以支持多级放大模式。
+放大模式：可以支持电子放大功能，可以增强图像的细节，对小物体和小图案的识别功能，有较大改善空间。
+应用接口如下：
+
+```
+ ## Camera API2
+ Rect rect = mCameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
+ float maxZoom = mCameraCharacteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
+ int zoomLevel = maxZoom;
+ float ratio = 1f / zoomLevel;
+ int croppedWidth = rect.width() - Math.round((float) rect.width() * ratio);
+ int croppedHeight = rect.height() - Math.round((float) rect.height() * ratio);
+
+ Rect mZoom = new Rect(croppedWidth / 2, croppedHeight / 2,
+        rect.width() - croppedWidth / 2, rect.height() - croppedHeight / 2);
+ mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION,mZoom);
+```
+
+
+
+
+
+
+## 三、眼镜系统版本OTA升级方法:
 
 ### Step 1: 信息查询
 设置-->本机信息-->版本号、SN号，若版本号较低，则需要手动OTA升级	 
@@ -72,7 +105,7 @@ A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支�
 升级成功，重启后生效。 	 原来额外安装在眼镜端的应用，如物体识别、绘本识别不受影响。	 
 <img width="280" src="images/image005.png">
 
-## 三、Windows连接眼镜
+## 四、Windows连接眼镜
 
 ### 概述
 
