@@ -40,8 +40,11 @@ A：Camera固件采用中心对焦的方式，取中心九分之一做中心区�
 
 ### Q2: 【glass2】camera曝光篇：系统版本1.5.3之后支持多种曝光模式选择
 A：目前支持全局曝光，下三角曝光和中心曝光三种方式，可以满足不同场景的需求。
-  •  全局曝光：相机应用关注整体观感，可以采用全局曝光
+
+  •  全局曝光：相机应用关注整体观感，可以采用全局曝光  
+ 
   •  下三角曝光：在部分逆光场景下，减少天空对曝光的影响可以采用下三角曝光
+  
   •  中心曝光：二维码识别场景，中心有较亮的屏幕场景，使用中心曝光为宜。 应用接口如下：
 
 ```
@@ -61,21 +64,37 @@ A：目前支持全局曝光，下三角曝光和中心曝光三种方式，可�
 
 ### Q3: 【glass2】camera放大篇：系统版本1.5.3之后支持缩放模式
 A：camera支持在1080和720P输出分辨率时候，可以支持多级放大模式。
-放大模式：可以支持电子放大功能，可以增强图像的细节，对小物体和小图案的识别功能，有较大改善空间。
+
+• 放大模式：可以支持电子放大功能，可以增强图像的细节，对小物体和小图案的识别功能，有较大改善空间。
 应用接口如下：
 
 ```
- ## Camera API2
- Rect rect = mCameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
- float maxZoom = mCameraCharacteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
- int zoomLevel = maxZoom;
- float ratio = 1f / zoomLevel;
- int croppedWidth = rect.width() - Math.round((float) rect.width() * ratio);
- int croppedHeight = rect.height() - Math.round((float) rect.height() * ratio);
+## Camera API1
 
- Rect mZoom = new Rect(croppedWidth / 2, croppedHeight / 2,
-        rect.width() - croppedWidth / 2, rect.height() - croppedHeight / 2);
- mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION,mZoom);
+Camera.Parameters parameters = mCamera.getParameters();
+
+boolean isZoom = parameters.isZoomSupported();
+int mMaxZoom = parameters.getMaxZoom();
+
+if (isZoom && zoomLevel <= mMaxZoom) {
+  parameters.setZoom(zoomLevel);
+  mCamera.setParameters(parameters);
+}
+ 
+ 
+ 
+## Camera API2
+Rect rect = mCameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
+float maxZoom = mCameraCharacteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
+int zoomLevel = maxZoom;
+float ratio = 1f / zoomLevel;
+int croppedWidth = rect.width() - Math.round((float) rect.width() * ratio);
+int croppedHeight = rect.height() - Math.round((float) rect.height() * ratio);
+
+Rect mZoom = new Rect(croppedWidth / 2, croppedHeight / 2,
+    rect.width() - croppedWidth / 2, rect.height() - croppedHeight / 2);
+mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION,mZoom);
+  
 ```
 
 
