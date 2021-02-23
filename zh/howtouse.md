@@ -7,7 +7,7 @@
 
 ### 物理按键介绍
 
-<video width="720" height="400" controls autoplay>
+<video width="720" height="400" controls>
     <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BB%8B%E7%BB%8D.mp4"  type="video/mp4">
 </video>
 
