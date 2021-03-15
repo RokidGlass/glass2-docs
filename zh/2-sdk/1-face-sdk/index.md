@@ -197,7 +197,7 @@ DetectFaceConf setMaxSize(float faceMaxSize)
 ```
 参数|含义
 ------|---------
-faceMaxSize | 识别的最大的人脸size 取值(0f-1f)。例：如果相机分辨率为1280*720，那能够识别的最大人脸的像素为 width：1280*faceMaxSize height:720*faceMaxSize
+faceMaxSize | 识别的最大的人脸size 取值(0f-1f)。例：如果相机分辨率为1280*720，那能够识别的最大人脸的像素为 width：1280 * faceMaxSize height:720 * faceMaxSize
 
 **返回:**
 
@@ -211,7 +211,7 @@ DetectFaceConf setMinSize(float faceMinSize)
 ```
 参数|含义
 ------|---------
-faceMinSize | 识别的最小的人脸size 取值(0f-1f)。例：如果相机分辨率为1280*720，那能够识别的最小人脸的像素为width：1280 * faceMaxSize height:720 * faceMaxSize
+faceMinSize | 识别的最小的人脸size 取值(0f-1f)。例：如果相机分辨率为1280*720，那能够识别的最大人脸的像素为width：1280 * faceMinSize height:720 * faceMinSize
 
 **返回:**
 
@@ -422,7 +422,7 @@ setImageFaceCallback(BitmapInput bitmapInput,ImageFaceCallBack callback)
 ```
 参数|含义
 ------|---------
-bitmapInput | bitmapInput图片输入的数据结构；
+bitmapInput | 图片输入的数据结构；
 callback | 图片人脸检测+人脸识别的统一回调接口
 
 示例代码：
