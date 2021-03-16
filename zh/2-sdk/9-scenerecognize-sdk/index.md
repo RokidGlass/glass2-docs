@@ -19,26 +19,27 @@ implementation 'com.rokid.glass.scenerecog:rkarmaz:1.0.5'
     
 ## SDK使用
 1.  创建识别引擎实例：
-    ```
+    ``` java
     ExhibitionEngine<R> mExhibitionEngine = new ExhibitionEngineImpl<>();
     ```
 2.  初始化识别引擎，设置状态回调：
-    ```
+    ``` java
     mExhibitionEngine.setEngineCallback(new EngineCallback<R>);
     mExhibitionEngine.init(this, modelPath, resourceMap, focusMode);
     ```
 3. 开始识别：
-    ```
+    ``` java
     mExhibitionEngine.startEngine();
     ```
 4. 停止识别：
-    ```
+    ``` java
     mExhibitionEngine.stopEngine();
     ```
 5. 销毁
-    ```
+    ``` java
     mExhibitionEngine.unInit();
     ```
+    
 ## 接口文档
 ### ExhibitionEngine 识别引擎
 | Return  | Method                                                                                  | 说明 
@@ -76,7 +77,7 @@ implementation 'com.rokid.glass.scenerecog:rkarmaz:1.0.5'
 
 ## 名词解释
  - `R` 是java中的泛型，在声明ExhibitionEngine对象时，传入具体类型，引擎的回调就会输出该类型，例如（只包含部分内容，仅供参考）：
- ```
+ ``` java
  public class ResourceBean {
 
     /**
