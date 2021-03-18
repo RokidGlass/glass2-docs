@@ -19,7 +19,7 @@ adb shell dumpsys package com.rokid.ai.glassaudio
 
 Example demo for using the plugin:
 
-https://github.com/RokidGlass/Rokid\_APG\_VoiceInstructDemo
+https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 
 ### 1.1 Notes for use
 
