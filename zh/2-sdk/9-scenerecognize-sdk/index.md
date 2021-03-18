@@ -1,23 +1,28 @@
-# ARMaz 场景识别SDK使用
+# 场景识别SDK
 
-## 依赖
+## 一、SDK介绍
+场景识别SDK基于图像算法实现，提供对物体、平面和场景的识别能力。SDK需要结合Rokid展陈数字云平台使用，
+将采集的训练素材上传到云平台，编辑数据库信息完成训练后，下载到本地，结合场景识别SDK快速完成识别流程
+    
+## 二、集成步骤
+
+### 添加依赖
+
 #### 根目录build.gradle添加：
 ```groovy
 allprojects {
     repositories {
-        ...
-        maven { url 'https://dl.bintray.com/rokid/components' }
+        google()
+        jcenter()
     }
 }
 ```
 #### module的build.gradle添加：
 ```groovy
-implementation 'com.rokid.glass.scenerecog:rkarmaz:1.0.5'
+implementation 'com.rokid.glass.scenerecognize:rkarmaz:1.0.0'
 ```
 
-
-    
-## SDK使用
+### 调用流程
 1.  创建识别引擎实例：
     ``` java
     ExhibitionEngine<R> mExhibitionEngine = new ExhibitionEngineImpl<>();
@@ -39,8 +44,8 @@ implementation 'com.rokid.glass.scenerecog:rkarmaz:1.0.5'
     ``` java
     mExhibitionEngine.unInit();
     ```
-    
-## 接口文档
+
+## 三、API说明
 ### ExhibitionEngine 识别引擎
 | Return  | Method                                                                                  | 说明 
 |---------|-----------------------------------------------------------------------------------------|----|
@@ -75,7 +80,7 @@ implementation 'com.rokid.glass.scenerecog:rkarmaz:1.0.5'
 |---------|-----------------------------------------------------------------------------------------|----|
 | void    | onPrepareDone();| 展示poi媒体资源前，可以进行前处理，比如动画、音效播放，准备完成必须调用EnginePrepareCallback.onPrepareDone()通知引擎
 
-## 名词解释
+## 四、名词解释
  - `R` 是java中的泛型，在声明ExhibitionEngine对象时，传入具体类型，引擎的回调就会输出该类型，例如（只包含部分内容，仅供参考）：
  ``` java
  public class ResourceBean {
@@ -102,5 +107,5 @@ implementation 'com.rokid.glass.scenerecog:rkarmaz:1.0.5'
 }
  ```
 
-## 注意事项
+## 五、注意事项
 - EngineCallback的接口均在子线程中回调，不可以在回调中直接更新UI，需要切换到UI线程
