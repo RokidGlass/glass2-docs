@@ -1,4 +1,4 @@
-# 场景识别SDK
+# 场景识别 SDK
 
 ## 一、SDK介绍
 场景识别SDK基于图像算法实现，提供对物体、平面和场景的识别能力。SDK需要结合Rokid展陈数字云平台使用，
@@ -14,6 +14,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {url "https://dl.bintray.com/rokid/components"}
     }
 }
 ```
