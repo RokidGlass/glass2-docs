@@ -7,7 +7,7 @@
 
 ## A demo of how to use the APIs
 
-https://github.com/Rokid/RokidFaceSDK/tree/master/sample
+[download demo](https://static.rokidcdn.com/sdk/sdk_facesdk_demo-1c52fc2.zip)
 
 ## 1. Introduction to FaceSDK
 
@@ -580,3 +580,4 @@ FaceLogger.i(TAG, "------- recog result < targetScore-------- trackid:" + face.g
 // Print this log when the current recognition produces no result.
 FaceLogger.i(TAG, "--------------- pairList: null");
 ```
+

@@ -22,7 +22,7 @@ Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手�
 
 插件使用示例Demo：
 
-https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
+[下载地址](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-866ab9f.zip)
 
 ### 1.1 使用时注意事项
 
@@ -1537,3 +1537,5 @@ public NumberKey(EntityKey.Language language, String prefix, String subfix, Stri
   subfix ：String，数字指令后缀，eg“第二页”的“页”
 
   helpContent ：String，帮助提示，eg“可以说第...页”
+
+

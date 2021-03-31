@@ -741,5 +741,5 @@ BatchPersons（布控人员信息）
 
 ## 最佳实践
 
-**[参考Demo工程](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
 

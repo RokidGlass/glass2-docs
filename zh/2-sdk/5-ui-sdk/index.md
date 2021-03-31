@@ -44,7 +44,7 @@ dependencies {
 ```
 
 ### 2.2 Demo下载
-[Glass UI Demo](https://github.com/rokid/glass-ui)
+[下载地址](https://static.rokidcdn.com/sdk/sdk_glass_ui-5e0971f.zip)
 
 ## 三、功能列表
 ---
@@ -204,3 +204,5 @@ float projectionMatrix[] = RokidSystem.getProjectionMatrix_OpticalSeeThrough();
 ### 3.5 IMU View
 
 * 参照IMU SDK中的使用说明
+
+

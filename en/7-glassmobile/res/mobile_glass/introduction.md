@@ -14,7 +14,7 @@ Please determine the functions to be implemented using the Rokid AR Mobile Solut
 
 # Best Practice
 
-**[Reference Demo project](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
 
 # Appendices
 
@@ -34,3 +34,5 @@ A supported mobile phone must meet the following requirements (you can directly 
 3. **The mobile phone is NOT supported if it does not meet either of these requirements:**
    1. Power supply is normal: Connect the glasses to the mobile phone with a data cable, put on the glasses and confirm screen of the glasses is on. ![Step 1](media/mobile phone support2.jpeg "Power supply is normal.")
    2. Display is normal: Confirm the image displayed on the glasses is normal. This image is usually a mirror of what is displayed on the mobile phone screen. ![Step 2](media/mobile phone support1.jpeg "Display is normal.")
+
+

@@ -737,4 +737,5 @@ BatchPersons (deploy person info)
 
 ## Best Practice
 
-**[Reference Demo project](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
+

@@ -116,10 +116,11 @@ The Lifecycle is used to control the currently active commands. Each page has un
 
 # Best Practice
 
-**[Reference Demo project](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
 
 # Contact us
 
 If you have any questions on using the SDK, please submit your questions by creating issues on Github.
 
 # ChangeLog
+
