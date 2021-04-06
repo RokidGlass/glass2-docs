@@ -7,6 +7,7 @@ Rokid Glass文档目录
     * [OS 设计规范](5-design/index.md)
     * [软件开发文档引导](README.md)
     * [触摸板键值说明](1-system/index.md)
+    * [系统App提供的功能](1-system/sysapp.md)
     * 语音交互
         - [版本信息](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
         - [语音介绍](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
