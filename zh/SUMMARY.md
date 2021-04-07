@@ -68,6 +68,7 @@ Rokid Glass文档目录
           * [离线车牌数据库操作](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#离线车牌数据库操作)
         * [相关数据模型](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#相关的数据模型)
         * [最佳实践](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#最佳实践)
+* [样机申请](3-support/index.md)
 * [FAQ](0-faq/index.md) 
 * [论坛](6-forum/index.md)
 
