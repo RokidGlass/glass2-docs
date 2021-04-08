@@ -25,6 +25,7 @@ this.startActivityForResult(intent, REQUEST_CODE_QR_SCAN_WIFI);
 
 系统预装的相机应用是我们重新开发定制的适配AR形态的相机，仍然支持调用原生相机的方式进行拍照和录像，并返回相关结果。
 
+[官方方法](https://developer.android.com/training/camera/photobasics)
 
 ### 2.3 我的文件
 

@@ -8,6 +8,7 @@ Rokid Glass document directory
     * [OS design guidelines](5-design/index.md)
     * [A guide to software development documentation](README.md)
     * [Description of touchpad key values](1-system/index.md)
+    * [Functions provided by pre-installed applications](1-system/sysapp.md)
     * Voice interactions
         - [Release notes](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
         - [An introduction to voice interactions](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
