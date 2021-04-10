@@ -64,6 +64,7 @@ Rokid Glass document directory
             * [Offline license plate database operations](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#offline-license-plate-database-operations)
         * [Related data models](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#related-data-models)
         * [Best practices](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#best-practice)
+* [Sample Application](3-support/index.md)
 * [FAQ](0-faq/index.md)
 * [Forum](6-forum/index.md)
 
