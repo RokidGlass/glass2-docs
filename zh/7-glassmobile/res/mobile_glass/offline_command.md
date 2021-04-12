@@ -2,7 +2,7 @@
 
 #  简介
 
-  离线指令是在离线情况进行语音指令识别，所有的指令均依赖语音模型训练，因此不在当前已训练指令范围识别效果无法得到保障。当前离线指令包含的所有指令词请**[参考](https://docs.qq.com/sheet/DRGtvcW1qc01HTEdJ?tab=BB08J2)**
+  离线指令是在离线情况进行语音指令识别，所有的指令均依赖语音模型训练。
 
 # 环境准备
 
@@ -133,10 +133,6 @@
 # 最佳实践
 
 **[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
-
-# 联系我们
-
-SDK使用问题请直接通过github-issue提问即可。
 
 # ChangeLog
 
