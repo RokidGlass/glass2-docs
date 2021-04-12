@@ -7,27 +7,29 @@ Please read the following basic interactive use of Rokid Glass.
 ### Introduction to physical buttons
 
 <video width="720" height="400" controls >
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E7%89%A9%E7%90%86%E6%8C%89%E9%94%AE%E4%BB%8B%E7%BB%8D.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Physical%20Buttons.mp4
+"  type="video/mp4">
 </video>
 ### Network configuration of glasses
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E7%9C%BC%E9%95%9C%E9%85%8D%E7%BD%91.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Wi-Fi%20Connection.mp4"  type="video/mp4">
 </video>
 ### System upgrade
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E6%89%AB%E7%A0%81%E9%85%8D%E7%BD%91%2B%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC%2B%E7%B3%BB%E7%BB%9F%E5%8D%87%E7%BA%A7%E5%BD%95%E5%B1%8F%E6%8C%87%E5%AF%BC.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Check%20%26%20Update%20System.mp4"  type="video/mp4">
 </video>
 ### Scan the QR code to install the app
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20H5%E9%A1%B5%E9%9D%A2%E6%89%AB%E4%B8%80%E6%89%AB%E5%AE%89%E8%A3%85app.mp4"  type="video/mp4">
+    <source src="  https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/How%20to%20install%20apps.mp4"  type="video/mp4">
 </video>
 ### Uninstall the app
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E7%9C%BC%E9%95%9C%E7%AB%AF%E5%8D%B8%E8%BD%BDapp.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/How%20to%20Uninstall%20apps.mp4
+"  type="video/mp4">
 </video>
 ### AR projection
 
@@ -37,12 +39,12 @@ Please read the following basic interactive use of Rokid Glass.
 ### Head Control\_Voice control introduction
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E5%A4%B4%E6%8E%A7_%E8%AF%AD%E9%9F%B3%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Voice%20Control.mp4"  type="video/mp4">
 </video>
 ### Turn on head control
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E5%A6%82%E4%BD%95%E6%89%93%E5%BC%80%E8%AF%AD%E9%9F%B3_%E5%A4%B4%E6%8E%A7.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Head%20Movement%20Control%20.mp4"  type="video/mp4">
 </video>
 ### Switch entrance of head control
 
@@ -52,7 +54,7 @@ Please read the following basic interactive use of Rokid Glass.
 ### Screen recording
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E5%BD%95%E5%B1%8F%E4%BB%8B%E7%BB%8D.mp4"  type="video/mp4">
+    <source src=" https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Screen%20Record.mp4"  type="video/mp4">
 </video>
 ### Sleep and wake state of dock
 
@@ -72,7 +74,7 @@ Please read the following basic interactive use of Rokid Glass.
 ### Power button
 
 <video width="720" height="400" controls>
-    <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E9%95%BF%E6%8C%892s%E5%BC%80%E6%9C%BA.mp4"  type="video/mp4">
+    <source src="  https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Power%20Button.mp4"  type="video/mp4">
 </video>
 ### Import files into Windows
 
