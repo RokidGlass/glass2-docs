@@ -1,3 +1,5 @@
+![](images/glassConnectDock.png)
+
 # Rokid Glass Software Development Document
 
 [![Build Status](https://travis-ci.org/RokidGlass/glass2-docs.svg?branch=master)](https://travis-ci.org/github/RokidGlass/glass2-docs)

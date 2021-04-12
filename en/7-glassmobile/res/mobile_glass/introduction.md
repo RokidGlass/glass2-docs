@@ -1,4 +1,6 @@
 <!-- toc -->  
+
+![](media/glassConnectMobile.png)
       
 # A brief introduction
 
