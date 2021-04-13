@@ -1,8 +1,9 @@
 <!-- toc -->  
 
-![](media/glassConnectMobile.png)
       
 # A brief introduction
+
+<img width="280" src="media/glassConnectMobile.png">
 
 **The Rokid AR Mobile Solution** can be used to implement these capabilities: `camera data`, `key events`, `sensor events`, `microphone data`, `offline commands` and `dual screen display`.
 

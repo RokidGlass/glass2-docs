@@ -1,8 +1,8 @@
 <!-- toc -->        
 
-![](media/glassConnectMobile.png)
-
 # 简介
+
+<img width="280" src="media/glassConnectMobile.png">
 
 **眼镜连接手机方案**可实现能力：`Camera数据`、`按键事件`、`传感器事件`、`麦克风数据`、`离线指令`、`双屏异显`。
 
