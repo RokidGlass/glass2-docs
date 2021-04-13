@@ -24,7 +24,7 @@ Rokid Glass document directory
         - Online Face Recognition
             - [User Guide](2-sdk/1-face-online-sdk/index.md)
             - [Release notes](2-sdk/1-face-online-sdk/ReleaseNotes.md)
-    *Car Plate Recognition
+    * Car Plate Recognition
         - [User Guide](2-sdk/2-lpr-sdk/index.md)
         - [Release notes](2-sdk/2-lpr-sdk/ReleaseNotes.md)
 * [Rokid AR Mobile Solution](7-glassmobile/res/mobile_glass/introduction.md)
