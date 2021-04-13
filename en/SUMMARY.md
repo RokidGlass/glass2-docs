@@ -5,8 +5,10 @@ Rokid Glass document directory
 ---------
 * [Rokid system solution](README.md)
     * [Usage guide](howtouse.md)
+    * [OS design guidelines](5-design/index.md)
     * [A guide to software development documentation](README.md)
     * [Description of touchpad key values](1-system/index.md)
+    * [Functions provided by pre-installed applications](1-system/sysapp.md)
     * Voice interactions
         - [Release notes](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
         - [An introduction to voice interactions](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
@@ -25,7 +27,6 @@ Rokid Glass document directory
     * License plate recognition
         - [Usage guide](2-sdk/2-lpr-sdk/index.md)
         - [Release notes](2-sdk/2-lpr-sdk/ReleaseNotes.md)
-    * [OS design guidelines](5-design/index.md)
 * [Rokid AR Mobile Solution](7-glassmobile/res/mobile_glass/introduction.md)
     * [Revision history](7-glassmobile/res/mobile_glass/ChangeLog.md)
     * [A brief introduction](7-glassmobile/res/mobile_glass/introduction.md)
@@ -63,6 +64,7 @@ Rokid Glass document directory
             * [Offline license plate database operations](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#offline-license-plate-database-operations)
         * [Related data models](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#related-data-models)
         * [Best practices](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#best-practice)
+* [Sample Application](3-support/index.md)
 * [FAQ](0-faq/index.md)
 * [Forum](6-forum/index.md)
 

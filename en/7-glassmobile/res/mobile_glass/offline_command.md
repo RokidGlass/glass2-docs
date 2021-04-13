@@ -1,6 +1,6 @@
 # A brief introduction
 
-Offline commands are used to perform voice command recognition offline. All of these commands are dependent on voice model training. So, for those commands that have not been trained, their recognition result cannot be guaranteed. For all currently available offline commands, please **[refer to](https://docs.qq.com/sheet/DRGtvcW1qc01HTEdJ?tab=BB08J2) this document**.
+Offline commands are used to perform voice command recognition offline. All of these commands are dependent on voice model training.
 
 # Prepare the development environment
 
@@ -116,10 +116,9 @@ The Lifecycle is used to control the currently active commands. Each page has un
 
 # Best Practice
 
-**[Reference Demo project](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
 
-# Contact us
 
-If you have any questions on using the SDK, please submit your questions by creating issues on Github.
 
 # ChangeLog
+

@@ -19,7 +19,7 @@ adb shell dumpsys package com.rokid.ai.glassaudio
 
 Example demo for using the plugin:
 
-https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
+[download demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-866ab9f.zip)
 
 ### 1.1 Notes for use
 
@@ -1546,3 +1546,5 @@ prefix: String, the prefix of the number instruction, e.g., "the" in "the second
 subfix: String, the suffix of the number instruction, e.g., "page" in "the second page";
 
 helpContent: String, the help tip, e.g., "You can say the ... page."
+
+

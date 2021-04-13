@@ -4,7 +4,7 @@
 ---
 
 ## 接口使用示例demo
-https://github.com/Rokid/RokidLprSDK
+[下载地址](https://static.rokidcdn.com/sdk/sdk_lprsdk_demo-d96e88c.zip)
 
 ## 一. 概述
 
@@ -142,3 +142,5 @@ public class LPRDO {
     }
 }
 ```
+
+

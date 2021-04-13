@@ -4,7 +4,7 @@
 ---
 
 ## 接口使用示例demo
-https://github.com/Rokid/RokidFaceSDK/tree/master/sample
+[下载地址](https://static.rokidcdn.com/sdk/sdk_facesdk_demo-1c52fc2.zip)
 
 ## 一. FaceSDK介绍
 
@@ -485,3 +485,5 @@ FaceLogger.i(TAG, "------- recog result < targetScore-------- trackid:" + face.g
 //当次识别没有识别结果时的打印log
 FaceLogger.i(TAG, "--------------- pairList: null");
 ```
+
+

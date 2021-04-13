@@ -2,6 +2,8 @@
 
 # 简介
 
+<img width="280" src="media/glassConnectMobile.png">
+
 **眼镜连接手机方案**可实现能力：`Camera数据`、`按键事件`、`传感器事件`、`麦克风数据`、`离线指令`、`双屏异显`。
 
 # 快速上手
@@ -14,7 +16,7 @@
 
 # 最佳实践
 
-**[参考Demo工程](https://github.com/RokidGlass/RokidGlassMobileDemo)**
+**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
 
 
 # 附录

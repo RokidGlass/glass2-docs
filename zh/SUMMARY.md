@@ -4,8 +4,10 @@ Rokid Glass文档目录
 ---------
 * [Rokid系统方案](README.md)
     * [使用引导](howtouse.md)
+    * [OS 设计规范](5-design/index.md)
     * [软件开发文档引导](README.md)
     * [触摸板键值说明](1-system/index.md)
+    * [系统App提供的功能](1-system/sysapp.md)
     * 语音交互
         - [版本信息](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
         - [语音介绍](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
@@ -26,7 +28,6 @@ Rokid Glass文档目录
     * 车牌识别
         - [使用说明](2-sdk/2-lpr-sdk/index.md)
         - [版本信息](2-sdk/2-lpr-sdk/ReleaseNotes.md)
-    * [OS 设计规范](5-design/index.md)
     
 * [Rokid眼镜连接手机方案](7-glassmobile/res/mobile_glass/introduction.md)
     * [变更记录](7-glassmobile/res/mobile_glass/ChangeLog.md)
@@ -65,6 +66,7 @@ Rokid Glass文档目录
           * [离线车牌数据库操作](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#离线车牌数据库操作)
         * [相关数据模型](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#相关的数据模型)
         * [最佳实践](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#最佳实践)
+* [样机申请](3-support/index.md)
 * [FAQ](0-faq/index.md) 
 * [论坛](6-forum/index.md)
 

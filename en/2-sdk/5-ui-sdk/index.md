@@ -57,7 +57,7 @@ dependencies {
 
 ### 2.2 Demo download
 
-[Glass UI Demo](https://github.com/rokid/glass-ui)
+[download demo](https://static.rokidcdn.com/sdk/sdk_glass_ui-5e0971f.zip)
 
 ## 3. Function list
 
@@ -308,3 +308,4 @@ mImuView.setAdapter(mAdapter);
 
 * You can register the type of rotation vector sensor of SensorManager.getDefaultSensor(Sensor.TYPE\_GAME\_ROTATION\_VECTOR), and obtain the real-time orientation in the callback of onSensorChanged(SensorEvent event). According to the difference of each callback, judge the current header control state and do corresponding processing.
 * Android official website address: https://developer.android.google.cn/reference/kotlin/android/hardware/SensorManager?hl=en
+

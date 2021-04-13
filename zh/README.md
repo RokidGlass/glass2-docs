@@ -1,4 +1,8 @@
+
+
 # Rokid Glass 软件开发文档
+
+<img width="280" src="images/glassConnectDock.png">
 
 [![Build Status](https://travis-ci.org/RokidGlass/glass2-docs.svg?branch=master)](https://travis-ci.org/github/RokidGlass/glass2-docs)
 

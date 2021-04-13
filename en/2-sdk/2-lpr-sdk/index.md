@@ -7,7 +7,7 @@
 
 ## A demo of how to use the APIs
 
-https://github.com/Rokid/RokidLprSDK
+[download demo](https://static.rokidcdn.com/sdk/sdk_lprsdk_demo-d96e88c.zip)
 
 ## 1. Overview
 
@@ -175,3 +175,4 @@ public class LPRDO {
     }
 }
 ```
+
