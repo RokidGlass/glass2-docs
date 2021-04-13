@@ -15,8 +15,6 @@ Rokid Glass文档目录
     * Glass UI
         - [版本信息](2-sdk/5-ui-sdk/ReleaseNotes.md)
         - [使用说明](2-sdk/5-ui-sdk/index.md)
-    * 场景识别SDK
-        - [使用说明](2-sdk/9-scenerecognize-sdk/index.md)
     * [android nn 使用说明](8-android nn/index.md)
     * 人脸识别
         - 人脸离线识别
