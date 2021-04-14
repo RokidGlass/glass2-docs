@@ -1,4 +1,4 @@
-# Usage guide
+# User Guide
 
 [User guide link](https://www.rokid.com/userguide/rokid-glass/)
 
@@ -66,7 +66,7 @@ Please read the following basic interactive use of Rokid Glass.
     <source src="  https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/English/%E7%9C%BC%E9%95%9C%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/Power%20Button.mp4"  type="video/mp4">
 </video>
 
-### Document Transfer
+### File Transfer
 
 <video width="720" height="400" controls>
     <source src="https://rokid-glass-guide.oss-cn-hangzhou.aliyuncs.com/guide/GlassII/Chinese/GLASS%20II%20%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5windows%E6%8C%87%E5%8D%97.mp4"  type="video/mp4">
