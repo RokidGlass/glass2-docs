@@ -6,7 +6,7 @@ Copyright 2020 Rokid
 ## API 参考
 
 ### 头动跟踪与双目渲染API
- [Google Cardboard XR Unity API 参考](//developers.google.com/cardboard/reference/unity) 
+ [Google Cardboard XR Unity API 参考](https://developers.google.com/cardboard/reference/unity) 
 
 ### UXRManager
  UXRManager prefab 管理眼镜事件及状态的通知，也可以通过其执行一些控制命令.
