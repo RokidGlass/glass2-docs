@@ -17,7 +17,7 @@
     ```groovy
         allprojects {
                 repositories {
-                    maven { url = 'https://dl.bintray.com/rokid/alliance/' }
+                    maven { url = 'http://maven.rokid.com/repository/maven-public/' }
                 }
         }
     ```
@@ -25,7 +25,7 @@
 2. 在`app/build.gradle`文件中添加模块依赖
 
     ```groovy
-    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.11'
+    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.14'
     ```
     
 3. SDK权限依赖
@@ -64,6 +64,31 @@
                             @Override
                             public void onLSensorUpdate(final int lux) {
                                 tvLSensor.post(() -> tvLSensor.setText("光线传感器: " + lux));
+                            }
+    
+                            @Override
+                            public void OnRotationVectorUpdate(long timestamp, float[] data) {
+    
+                            }
+    
+                            @Override
+                            public void OnGameRotationVectorUpdate(long timestamp, float[] data) {
+    
+                            }
+    
+                            @Override
+                            public void OnAcceleroMeterEvent(long timestamp, float[] data) {
+    
+                            }
+    
+                            @Override
+                            public void OnMagnetFieldEvent(long timestamp, float[] data) {
+    
+                            }
+    
+                            @Override
+                            public void OnGyroscopEvnet(long timestamp, float[] data) {
+    
                             }
                         })
                         .withRKKeyListener(new RKKeyListener() {

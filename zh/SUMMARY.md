@@ -19,16 +19,10 @@ Rokid Glass文档目录
         - [使用说明](2-sdk/5-ui-sdk/index.md)
     * [android nn 使用说明](8-android nn/index.md)
     * 人脸识别
-        - 人脸离线识别
-            - [使用说明](2-sdk/1-face-sdk/index.md)
-            - [版本信息](2-sdk/1-face-sdk/ReleaseNotes.md)
-        - 人脸在线识别
-            - [使用说明](2-sdk/1-face-online-sdk/index.md)
-            - [版本信息](2-sdk/1-face-online-sdk/ReleaseNotes.md)
+        - [使用说明](2-sdk/1-face-sdk/index_offline.md)
     * 车牌识别
-        - [使用说明](2-sdk/2-lpr-sdk/index.md)
-        - [版本信息](2-sdk/2-lpr-sdk/ReleaseNotes.md)
-    
+        - [使用说明](2-sdk/2-lpr-sdk/index_offline.md)
+
 * [Rokid眼镜连接手机方案](7-glassmobile/res/mobile_glass/introduction.md)
     * [变更记录](7-glassmobile/res/mobile_glass/ChangeLog.md)
     * [简介](7-glassmobile/res/mobile_glass/introduction.md)
@@ -58,14 +52,7 @@ Rokid Glass文档目录
         * [联系我们](7-glassmobile/res/mobile_glass/offline_command.md#联系我们)
         * [最佳实践](7-glassmobile/res/mobile_glass/offline_command.md#最佳实践)
     * [人脸、车牌识别](7-glassmobile/res/mobile_glass/glass_recog_sdk.md)
-        * [简介](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#简介)
-        * [接入前提](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#接入前提)
-        * [快速上手](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#快速上手)
-        * [进阶内容](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#进阶内容)
-          * [离线人脸数据库操作](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#离线人脸数据库操作)
-          * [离线车牌数据库操作](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#离线车牌数据库操作)
-        * [相关数据模型](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#相关的数据模型)
-        * [最佳实践](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#最佳实践)
+       * [简介](7-glassmobile/res/mobile_glass/glass_recog_sdk_offline.md)
 * [Rokid Unity MR开发](9-uxr/index.md)
     * [快速上手](9-uxr/Quickstart_UXR_Unity_CN.md)
     * [API说明](9-uxr/UXR_API_CN.md)

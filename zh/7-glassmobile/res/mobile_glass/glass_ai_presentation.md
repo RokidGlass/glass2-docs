@@ -10,7 +10,7 @@
     ```groovy
     allprojects {
             repositories {
-                maven { url = 'https://dl.bintray.com/rokid/alliance/' }
+                maven { url = 'http://maven.rokid.com/repository/maven-public/' }
             }
     }
     ```
@@ -18,7 +18,7 @@
 2. build.gradle配置maven库
 
     ```groovy
-     implementation 'com.rokid.alliance.glassui:glassui:1.1.15'
+     implementation 'com.rokid.alliance.glassui:glassui:1.1.17'
     ```
 
 3. sdk依赖权限申请
@@ -38,6 +38,13 @@
     ```java
     RKAlliance.getInstance().loadFaceModel(getApplicationContext(), null);
     RKAlliance.getInstance().loadLPRModel(getApplicationContext(), null);
+    // 对车牌/人脸SDK进行鉴权认证，并将结果回调回来
+    RKAlliance.getInstance().doAuth(new RKAuth.IAuthCallback() {
+      @Override
+      public void onAuth(boolean isSuccess) {
+        //鉴权是否成功，不成功则无法正常使用车牌/人脸相关的识别功能 
+      }
+    });
     RKGlassUI.getInstance().recogSettingChanged(RecognizeType.IS_MULTI_RECOGNIZE, true);
     RKGlassUI.getInstance().initGlassUI(getApplicationContext());
     ```

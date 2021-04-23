@@ -11,12 +11,11 @@
 请确认使用眼镜+手机方案需实现功能，再从以下方案中选择合适的接入方式。
 
 1. [使用眼镜硬件能力(Camera数据、按键事件、传感器事件、双屏异显)眼镜硬件功能](glass_hardware.md#简介)
-2. [使用眼镜硬件能力+人脸识别、车牌识别](ai.md)
-3. [使用眼镜硬件能力+人脸识别、车牌识别+双屏异显](glass_ai_presentation.md)
+2. [使用眼镜硬件能力+人脸识别、车牌识别](glass_recog_sdk.md)
 
 # 最佳实践
 
-**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
+**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-0cb21d0.zip)**
 
 
 # 附录

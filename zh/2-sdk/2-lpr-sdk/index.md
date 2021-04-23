@@ -1,5 +1,6 @@
-# 车牌识别SDK
-**Version：3.9.2.1**
+车牌识别SDK
+
+**Version：3.9.2.4**
 
 ---
 
@@ -8,30 +9,38 @@
 
 ## 一. 概述
 
-RokidLPRSDK提供车牌检测+车牌识别功能，根据camera输入数据，输出车牌字符串，车牌位置，识别质信度。
+### 1.1 概述
+
+车牌识别SDK提供车牌检测+车牌识别功能，根据camera输入数据，输出车牌字符串，车牌位置，识别质信度。
+
+### 1.2 适用范围
+
+- 适用的硬件：Rokid Glass公共服务定制版眼镜
 
 ## 二. 集成说明
 ---
 ### 2.1 添加三方依赖库
-在project的build.gradle中添加jcenter依赖
+在project的build.gradle中添加maven依赖
 ```java
 allprojects {
     repositories {
         google()
         jcenter()
+        // 配置maven地址
+        maven { url 'http://maven.rokid.com/repository/maven-public/'}
     }
 }
 ```
 
 在app的build.gradle中添加依赖
 ```java
-//cpu版本集成
+//若连接Rokid眼镜并且使用该sdk的终端是一般cpu计算平台，则：
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.9.2.1-cpu'
+    implementation 'com.rokid.glass:lpr:3.9.2.4-cpu'
 }
-//npu版本集成
+//若使用该sdk的终端使用s905d3计算平台(rokid glass二代)，则：
 dependencies {
-    implementation 'com.rokid.glass:lpr:3.9.2.1-npu-s905d3'
+    implementation 'com.rokid.glass:lpr:3.9.2.4-npu-s905d3'
 }
 ```
 
@@ -60,8 +69,34 @@ RokidLPR.Init(Context context,boolean npuMode);
 context | 上下文context
 npuMode | 是否切换到npu模式（注意：设备必须支持npu才能将该值设为true）
 
+### 3.1 车牌识别鉴权
 
-### 3.1 参数配置
+在引擎初始化后调用，如果是手机接眼镜，需要在获取到连接眼镜usb权限申请授权后调用
+
+```java
+RokidLPR.doAuth(RKAuth.IAuthCallback callback);
+```
+
+| 参数     | 含义           |
+| -------- | -------------- |
+| callback | 授权结果的回调 |
+
+##### `RKAuth.IAuthCallback` 定义
+
+```
+public interface IAuthCallback {
+		void onAuth(boolean isSuccess);
+}
+```
+
+| 参数      | 含义                                                         |
+| --------- | ------------------------------------------------------------ |
+| isSuccess | 是否授权成功，如果返回false，则默认人脸识别相关的功能不可用。 |
+
+**特别说明：使用CPU版本运行时，需要保证拿到连接的Rokid眼镜的USB使用权限，才可正常进行授权验证，否则会授权失败 **
+
+### 3.2 参数配置
+
 **1. 设置数据源宽高**
 ``` java
 LPRConfig lprConfig = new LPRConfig();
@@ -74,7 +109,7 @@ width | 输入数据的宽
 height | 输入数据的高
 
 
-### 3.2 车牌识别
+### 3.3 车牌识别
 #### 1. 车牌sdk创建
 ``` java
 RokidLPR rokidLPR = new RokidLPR();
@@ -120,7 +155,7 @@ rokidLPR.startLPR(new RokidLPRCallback(){
 rokidLPR.destroy();
 ```
 
-### 3.3 车牌实体类
+### 3.4 车牌实体类
 
 ```java
 public class LPRModel {

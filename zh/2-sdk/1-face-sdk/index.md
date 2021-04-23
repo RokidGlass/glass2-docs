@@ -1,17 +1,17 @@
-# 人脸识别离线SDK
-**Version：facelib 4.16.3.3**
+# 人脸识别SDK
+**Version：facelib 4.16.3.7**
 
 ---
 
 ## 接口使用示例demo
 [下载地址](https://static.rokidcdn.com/sdk/sdk_facesdk_demo-1c52fc2.zip)
 
-## 一. FaceSDK介绍
+## 一. 人脸识别SDK
 
 ### 版本号说明：
-前两位4.16表示算法版本号，后两位3.3表示sdk版本号
+前两位4.16表示算法版本号，后两位3.7表示sdk版本号
 ### 1.1 概述
-RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：
+人脸识别SDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效进行多人识别。本SDK封装底层算法接口，提供：
 
 1.图片人脸检测+图片人脸识别<br>
 2.相机预览数据人脸检测，人脸跟踪，人脸识别。<br>
@@ -19,30 +19,37 @@ RokidFaceSDK提供基础的人脸检测+人脸跟踪+人脸识别，能够高效
 4.能够获取人脸角度以及人脸质量等信息<br>
 5.单帧图片人脸检测，支持bitmap、NV21格式数据人脸检测<br>
 
+### 1.2 适用范围
+
+- 适用的硬件：Rokid Glass公共服务定制版眼镜
+
 ## 二. 集成说明
 ---
 ### 2.1 添加三方依赖库
-在project的build.gradle中添加jcenter依赖
+在project的build.gradle中添加maven依赖
 ```java
 allprojects {
     repositories {
         google()
         jcenter()
+        // 配置maven地址
+        maven { url 'http://maven.rokid.com/repository/maven-public/'}
     }
 }
 ```
 
 在app的build.gradle中添加依赖
-若使用该sdk的终端使用一般cpu计算平台，则：
+若连接Rokid眼镜并且使用该sdk的终端是一般cpu计算平台，则：
+
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:4.16.3.3-cpu'
+    implementation 'com.rokid.glass:facelib:4.16.3.7-cpu'
 }
 ```
 若使用该sdk的终端使用s905d3计算平台(rokid glass二代)，则：
 ```java
 dependencies {
-    implementation 'com.rokid.glass:facelib:4.16.3.3-npu-s905d3'
+    implementation 'com.rokid.glass:facelib:4.16.3.7-npu-s905d3'
 }
 ```
 ### 2.2 需要如下权限
@@ -68,7 +75,7 @@ dependencies {
 ### 3.0 人脸识别引擎初始化
 在应用的Application的onCreate方法中初始化引擎：
 
-**1. 人脸识别引擎初始化**
+#### 3.0.1 人脸识别引擎初始化
 
 ```java
 RokidFace.Init(Context context);
@@ -77,7 +84,34 @@ RokidFace.Init(Context context);
 ------|---------
 context | 上下文context
 
+#### 3.0.2  人脸识别鉴权
+
+```java
+RokidFace.doAuth(RKAuth.IAuthCallback callback);
+```
+
+| 参数     | 含义           |
+| -------- | -------------- |
+| callback | 授权结果的回调 |
+
+##### `RKAuth.IAuthCallback` 定义
+
+```
+public interface IAuthCallback {
+		void onAuth(boolean isSuccess);
+}
+```
+
+| 参数      | 含义                                                         |
+| --------- | ------------------------------------------------------------ |
+| isSuccess | 是否授权成功，如果返回false，则默认人脸识别相关的功能不可用。 |
+
+**特别说明：使用CPU版本运行时，需要保证拿到连接的Rokid眼镜的USB使用权限，才可正常进行授权验证，否则会授权失败 **
+
+
+
 ### 3.1 人脸数据库操作
+
 #### 3.1.1 人脸数据库初始化
 人脸数据库初始化需要下面几步操作:
 

@@ -2,7 +2,7 @@
 
 ## 简介
 
-车牌人脸SDK主要功能包含车牌人脸检测、人脸跟踪、人脸质量、离线车牌人脸识别等；可以快速识别眼前的人脸车牌数据，并与数据库进行对比，对重点车牌人脸数据进行报警提示；
+车牌/人脸SDK主要功能包含车牌人脸检测、人脸跟踪、人脸质量、离线车牌人脸识别等；可以快速识别眼前的人脸车牌数据，并与数据库进行对比，对重点车牌人脸数据进行报警提示；
 
 ## 接入前提
 
@@ -15,7 +15,7 @@
   ```java
    allprojects {
            repositories {
-               maven { url = 'https://dl.bintray.com/rokid/alliance/' }
+               maven { url = 'http://maven.rokid.com/repository/maven-public/' }
            }
    }
   ```
@@ -26,7 +26,7 @@
   dependencies {
     .......
     // 集成人脸车牌sdk
-    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.12'
+    implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.13'
   }
   ```
 
@@ -104,7 +104,13 @@
       RKAlliance.getInstance().loadFaceModel(getApplicationContext(), null);
       // 加载车牌模型
       RKAlliance.getInstance().loadLPRModel(getApplicationContext(), null);
-
+      // 对车牌/人脸SDK进行鉴权认证，并将结果回调回来
+      RKAlliance.getInstance().doAuth(new RKAuth.IAuthCallback() {
+            @Override
+            public void onAuth(boolean isSuccess) {
+                //鉴权是否成功，不成功则无法正常使用车牌/人脸相关的识别功能 
+            }
+        });
       // 人脸车牌在线识别监听返回结果
       OnlineRecgHelper.getInstance().init(new OnlineRequest() {
           @Override
@@ -738,8 +744,4 @@ BatchPersons（布控人员信息）
 | isAlarm | boolean | 是否告警 |
 
 
-
-## 最佳实践
-
-**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
 
