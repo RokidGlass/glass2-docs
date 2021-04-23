@@ -12,6 +12,7 @@ Rokid Glass文档目录
         - [版本信息](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
         - [语音介绍](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
         - [使用说明](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)
+        - [在线语音](2-sdk/3-voice-sdk/SpeechManager.md)
     * IMU SDK
         * [使用说明](2-sdk/8-imu-sdk/index.md)
     * Glass UI
