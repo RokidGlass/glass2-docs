@@ -52,8 +52,8 @@ Rokid Glass文档目录
         * [FAQ](7-glassmobile/res/mobile_glass/offline_command.md#faq)
         * [联系我们](7-glassmobile/res/mobile_glass/offline_command.md#联系我们)
         * [最佳实践](7-glassmobile/res/mobile_glass/offline_command.md#最佳实践)
-    * [人脸、车牌识别](7-glassmobile/res/mobile_glass/glass_recog_sdk.md)
-       * [简介](7-glassmobile/res/mobile_glass/glass_recog_sdk_offline.md)
+    * 人脸、车牌识别
+       * [使用说明](7-glassmobile/res/mobile_glass/glass_recog_sdk_offline.md)
 * [Rokid Unity MR开发](9-uxr/index.md)
     * [快速上手](9-uxr/Quickstart_UXR_Unity_CN.md)
     * [API说明](9-uxr/UXR_API_CN.md)
