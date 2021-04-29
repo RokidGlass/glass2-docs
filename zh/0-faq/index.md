@@ -22,13 +22,55 @@ A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支�
 | android.sensor.accelerometer | Fail |
 | android.sensor.gyroscope            | Fail |
 | android.sensor.magnetic_field       | Fail |
-| android.sensor.game_rotation_vector | OK |
+| android.sensor.game\_rotation\_vector | OK |
 | android.sensor.rotation_vector      | OK |
 | android.sensor.light                | OK |
 | android.sensor.proximity            | OK |
 
 	考虑到某些应用场景需要获取 raw data，我们提供刷机工具更新眼镜固件，以满足使用场景。更新后可以支持获取 raw data，但此时没有四元数数据。刷机工具可咨询工程师获取。
 
+### **Q4: 应用要开机自启动该如何做**
+A: 如需要开机后自动进入自己的应用，可以在AndroidManifest.xml中静态注册系统开机广播，并在onReceive方法中启动应用的主activity，我们的系统并未限制应用的开机自启行为，参考方法如下：
+
+```
+<receiver
+    android:name=".BootBroadcastReceiver"
+    android:enabled="true"
+    android:exported="true"
+    android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+    <intent-filter android:priority="1000”>//提高广播的优先级
+        <!--.接收启动完成的广播-->
+        <category android:name="android.intent.category.DEFAULT" />
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+    </intent-filter>
+</receiver>
+
+
+private static final String ACTION_BOOT = "android.intent.action.BOOT_COMPLETED";
+@Override
+public void onReceive(Context context, Intent intent) {
+    if (intent.getAction().equals(ACTION_BOOT)) { //开机启动完成后，要做的事情
+        Log.d("BootBroadcastReceiver", "BootBroadcastReceiver onReceive(), Do thing!");
+        Intent playIntent = new Intent(context, MainActivity.class);
+        playIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(playIntent);
+
+    }
+}
+```
+
+### **Q5: 如何替换系统默认桌面**
+A: 我们支持开发者将自己的应用作为默认桌面，替换掉系统自带的桌面，为了方便用户使用，我们对原生Android的逻辑进行了修改，需要遵循以下步骤进行替换：
+
+1. 首先，应用必须具备HOME属性``android.intent.category.HOME``，
+2. 通过adb安装要作为Launcher的应用，
+3. 通过adb 设置两个系统属性，
+
+	```
+	adb shell setprop persist.boot.defaultlauncher 应用包名
+	adb shell setprop persist.boot.defaultactivity 主Activity名
+	```
+4. 重启设备生效。
 
 
 ## 二、Camera特性篇
