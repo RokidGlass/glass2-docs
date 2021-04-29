@@ -7,8 +7,12 @@ Rokid Glass document directory
     * [User Guide](howtouse.md)
     * [OS Design Guidelines](5-design/index.md)
     * [A Guide to Software Development Documentation](README.md)
-    * [Description of Touchpad Key Values](1-system/index.md)
-    * [Functions Provided by Pre-installed Applications](1-system/sysapp.md)
+    * Custom functions
+	   - [Functions Provided by Pre-installed Applications](1-system/sysapp.md)
+	   - [Auto start application after booting](1-system/AutoStart.md)
+	   - [Replace default Launcher](1-system/ReplaceLauncher.md)
+    * TouchPad Interactions
+    	 - [Description of Touchpad Key Values](1-system/index.md)
     * Voice Interactions
         - [Release Notes](2-sdk/3-voice-sdk/InstructSdk/ReleaseNotes.md)
         - [An Introduction to Voice Interactions](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
