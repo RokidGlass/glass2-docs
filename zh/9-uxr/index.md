@@ -16,7 +16,7 @@
 
 # 环境准备
   * 硬件环境
-    *  Rokid dock(支持亿道835 dock， 海思dock)
+    *  Rokid dock(支持亿道835 dock)
     *  Rokid glass(支持Rokid Vision2眼镜)
   * 软件环境
     *  Unity3D (支持2019.3.15f1 ~ 2020.1版本）
