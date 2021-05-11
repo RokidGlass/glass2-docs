@@ -2,7 +2,7 @@
 # UXR SDK
 
 # 简介
-* UXR SDK是一套适用于Rokid Glass的XR SDK，可帮助开发者创作眼镜上的XR应用。UXR基于Google Cardboard，包含如下特性
+* UXR SDK是一套适用于Rokid Yidao 主机的XR SDK，可帮助开发者创作眼镜上的XR应用。UXR基于Google Cardboard，包含如下特性
     * 头部追踪
     * 双目立体渲染
     * 语音识别
@@ -16,7 +16,7 @@
 
 # 环境准备
   * 硬件环境
-    *  Rokid dock(支持亿道835 dock， 海思dock)
+    *  Rokid dock(支持Rokid Yidao 主机)
     *  Rokid glass(支持Rokid Vision2眼镜)
   * 软件环境
     *  Unity3D (支持2019.3.15f1 ~ 2020.1版本）

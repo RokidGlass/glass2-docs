@@ -2,7 +2,7 @@
 
 本文展示如何利用Rokid UXR Unity SDK建立XR应用工程。
 
-UXR适用于Rokid AR Glass硬件，进行双目3D场景渲染、3DOF头动跟踪。
+UXR适用于Rokid Yidao 主机，进行双目3D场景渲染、3DOF头动跟踪。
 
 
 
