@@ -1,11 +1,11 @@
-# Glass 语音离线指令 SDK
+# Glass 语音指令 SDK
 **Version: 1.6.0**  
 
 
 
-## 一. 离线指令SDK概述
+## 一. 语音指令SDK概述
 
-Rokid 离线语音指令SDK 开发工具，方便开发配合Rokid语音助手一起使用的离线语音指令。
+Rokid 语音指令SDK 开发工具，方便开发结合Rokid语音助手一起使用的语音指令。
 * 语音指令触发需要用户打开眼镜设备''设置''中''语音助手激活''开关，另外语音指令对网络环境没有要求，在离线/在线环境下都可以使用。
 * 语音指令需要依附Activity的生命周期，指令设置在整个Activity内适用，目前不支持独自Fragment、dialog设置独立指令组。
 * 语音指令以当前系统语音为语言基础选定指令语言类型，如果没有与当前系统语言对应的语言类型指令，会选取中文zh为默认语言类型指令。
@@ -195,7 +195,7 @@ public class InstructApplication extends Application {
   }
   ```
 
-#### 2.3.2 InstructLifeManager使用
+#### 2.3.3 InstructLifeManager使用
 
   ```java
 
@@ -574,10 +574,10 @@ public abstract class BasicInstructionActivity extends BasicActivity[App自己�
 
 Rokid Glass XR系统中，默认设置了一些系统指令，在每个页面都可以使用。
 * zh：回到桌面 / 返回桌面 en：Navigate Home
-  * 功能：跳转到Launcher app页面，并关闭(finish)当前app的当前Activity；
+  * 功能：跳转到Launcher app页面，并关闭(finish)当前app展示的Activity；
   * 注意：并不会直接kill掉调用app的进程，如果需要对App进程进行清除，请通过指令拦截来特殊处理。
 * zh：回到上一级 / 返回上一级 en：Navigate Back
-  * 功能：返回上一个Activity页面，并关闭(finish)当前当前Activity；
+  * 功能：返回上一个Activity页面，并关闭(finish)当前Activity；
 * zh：显示帮助 en: show help
   * 功能：弹出语音指令词帮助浮窗；
   * 注意：系统指令，全局类型
@@ -738,7 +738,7 @@ public class NoAllInstructBaseExtendAct extends InstructionActivity {
     * 根据解决方案重启语音助手服务
     *
     * @param context Activity级别的Context
-    * @param mustRestart true：强制重启  false：如果语音助手使用的正式当前解决方案，则不必重启（默认推荐false）
+    * @param mustRestart true：强制重启  false：如果语音助手使用的正是当前解决方案，则不必重启（默认推荐false）
     * @param configAllUseSolution true：所有配置全部使用解决方案的 false：所有配置使用系统默认和解决方案混合（默认推荐false）
     * @param notifyRealRestart    true：真正重启才触发后续的指令词设置 false：只要有广播返回就触发后续的指令词设置（默认推荐false）
     * @param instructionManager InstructionManager 重启后使当前页面指令配置生效，如没有指令配置或后续自己单独配置，可以直接传null
@@ -806,7 +806,7 @@ config.setActionKey(HomeTestAct.class.getName() + InstructConfig.ACTION_SUFFIX)
   ```java
 public InstructConfig addInstructEntity(InstructEntity entity);
   ```
-  向配置中添加离线语音指令。
+  向配置中添加语音指令。
 
 参数：
 
@@ -840,7 +840,7 @@ config.addInstructEntity(
   ```java
 public InstructConfig addInstructList(List<InstructEntity> instructList);
   ```
-  向配置中添加离线语音指令组。
+  向配置中添加语音指令组。
 
 参数：
 
@@ -1333,7 +1333,7 @@ config.addInstructEntity(
 参数：
 
   showing : true，展示；false，不展示；
-  不展示时，back内容为View.INVISIBLE，会占用tips浮层左侧内容；
+  不展示时，back内容为View.INVISIBLE，会占用tips浮层左侧区域；
 
   ```java
 // eg:
@@ -1469,7 +1469,7 @@ public static void setNumberAndRunning(InstructionManager manager, int startNumb
   
   ```java
 // eg：
-NumberTypeControler.doTypeControl(mInstructionManager, 3, 20,
+NumberTypeControler.setNumberAndRunning(mInstructionManager, 3, 20,
               new NumberTypeControler.NumberTypeCallBack() {
                   @Override
                   public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
@@ -1509,7 +1509,7 @@ public static void setNumberAndRunning(InstructionManager manager, boolean ignor
   
   ```java
 // eg：
-NumberTypeControler.doTypeControl(mInstructionManager, true, true, false, 3, 20,
+NumberTypeControler.setNumberAndRunning(mInstructionManager, true, true, false, 3, 20,
               new NumberTypeControler.NumberTypeCallBack() {
                   @Override
                   public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {

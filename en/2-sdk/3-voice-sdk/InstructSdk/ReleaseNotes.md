@@ -1,5 +1,14 @@
 # Release notes
 
+### v1.6.0  --  April 21, 2021
+
+1. Add speech online aar, online tts related functions, use SpeechUserManager to call;
+2. Optimize the aar sharing logic, and change the shared warehouse from Jcenter to rokid's own external shared maven warehouse;
+
+### v1.5.9  --  February 28, 2021
+
+1. Open the lifeCycle lifecycle status setting received by the command, Resumed is used by default;
+
 ### v1.5.8  --  December 7, 2020
 
 1. The initialization process is modified, and the control switch of the mutex feature of the lark service is added (by default, it is enabled);

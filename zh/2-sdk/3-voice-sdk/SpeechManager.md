@@ -175,7 +175,8 @@ SpeechUserManager初始化
 
 | 字段    | 类型           | 必须？ | 描述                             |
 | ------- | -------------- | ------ | -------------------------------- |
-| options | PrepareOptions | 可选   | 选项，详见PrepareOptions数据结构 |
+| context | Context | 必须   | 如果当成全局功能，希望使用Application级别 |
+| immediatelyBind | boolean | 必须   | true，立即进行绑定，false，功能使用前再绑定 |
 
 
 #### 2）SpeechUserManager 回收
@@ -289,7 +290,7 @@ mSpeechUserManager.cancelTts(ttsId);
 | 返回类型 | 方法                                                         | 备注                       |
 | -------- | ------------------------------------------------------------ | ----------------------- |
 | void     | onStart(int id)                                              | asr开始拾音         |
-| void     | onIntermediateResult(int id, String asr, String extra)       | 给出当前已经转成语音的文字 |
+| void     | onIntermediateResult(int id, String asr, String extra)       | asr中间结果，识别中实时返回 |
 | void     | onAsrComplete(int id, String asr)                            | asr完整结果         |
 | void     | onComplete(int id, String nlp, String action)                | speech最终结果（保留方法）|
 | void     | onCancel(int id)                                             | asr被取消              |

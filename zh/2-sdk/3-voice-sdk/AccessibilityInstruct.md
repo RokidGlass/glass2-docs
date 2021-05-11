@@ -17,11 +17,11 @@ Glass 语音助手作为独立的系统App内置到Glass系统中，暂不支持
 
 ## 二. Glass语音助手使用说明
 
-### 2.1 离线指令SDK使用
+### 2.1 语音指令SDK使用
 如果系统内其他的Android apk想要精准使用离线语音指令，需要此应用apk和语音助手进行交互。Rokid提供了相应的语音指令SDK，具体使用方式请参考离线指令SDK使用文档。
 同时提供离线指令SDK使用示例Demo：
 
-https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
+[下载地址](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-20377c9.zip)
 
 ### 2.2 百灵鸟无侵入式语音指令控制服务说明
 系统内置的语音助手软件中，包含了百灵鸟独立的服务进程，能够为第三方App提供在不接入语音指令SDK的前提下，依然能够使用简单语音指令控制功能，完善此App在眼镜上的使用体验，完善眼镜的全语音控制能力。
@@ -126,3 +126,9 @@ https://github.com/RokidGlass/Rokid_APG_VoiceInstructDemo
 某些情况下，App为了更好地沉浸式体验，类似3D放映、3D游戏等，需要在当前App关闭、清除所有语音指令，去除语音标志。要实现上述功能，需要用户集成语音插件，并做一下功能组合调用。
 
 具体使用方式请参考 语音交互 -> 使用说明（ 离线指令SDK使用文档 ）中的关闭全部语音指令，或者离线指令SDK使用Demo中的NoAllInstructLifeAct、NoAllInstructBaseExtendAct。
+
+### 2.4 在线语音功能说明
+
+语音助手通过对接Rokid云平台，实现在线语音识别服务，为开发者提供语音ASR识别、TTS在线语音合成功能。
+
+具体使用方式请参考 语音交互 -> 在线语音（ 在线语音使用文档 ）中的关闭全部语音指令，或者语音指令SDK使用Demo中SpeechTestAct。

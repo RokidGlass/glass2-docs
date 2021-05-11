@@ -1,10 +1,10 @@
-# Offline voice instruction SDK for the glasses
+# Voice instruction SDK for the glasses
 
-**Version: 1.5.8**
+**Version: 1.6.0**
 
-## 1. Overview of the offline voice instruction SDK
+## 1. Overview of the voice instruction SDK
 
-The Rokid offline voice instruction SDK is provided to help develop the offline voice instructions used with the Rokid voice assistant.
+The Rokid voice instruction SDK is provided to help develop the voice instructions used with the Rokid voice assistant.
 
 * To trigger the voice instructions, you need to enable Voice Assistant Activation in Settings of the glasses device. In addition, there are no requirements for the network environment to use the voice instructions. You can use the instructions in both offline and online modes.
 * The voice instructions depend on the lifecycle of the activity, and the settings of instructions are applicable within the whole activity. The setting of an independent set of instructions for the fragment or dialog separately is not supported at present.
@@ -19,7 +19,7 @@ adb shell dumpsys package com.rokid.ai.glassaudio
 
 Example demo for using the plugin:
 
-[download demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-866ab9f.zip)
+[download demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-20377c9.zip)
 
 ### 1.1 Notes for use
 
@@ -58,6 +58,7 @@ Example demo for using the plugin:
   allprojects {
       repositories {
           google()
+          maven {url('https://maven.rokid.com/repository/maven-public/')}
           jcenter()
       }
   }
@@ -69,7 +70,7 @@ Example demo for using the plugin:
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // the voice instruction SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.5.8'
+      implementation 'com.rokid.ai.glass:instructsdk:1.6.0'
   }
   ```
 
@@ -79,12 +80,12 @@ Example demo for using the plugin:
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.5.8</version>
+    <version>1.6.0</version>
     <type>pom</type>
   </dependency>
   ```
 
-- Modified on December 10, 2020
+- Modified on April 4, 2021
 
 ### 2.2 Configuring AndroidManifest.xml and the application
 
@@ -190,7 +191,7 @@ public InstructLifeManager(Context context, Lifecycle lifecycle, IInstructLifeLi
        }
        ```
 
-#### 2.3.2 Using InstructLifeManager
+#### 2.3.3 Using InstructLifeManager
 
      ```java
 
@@ -1477,7 +1478,7 @@ keyList: NumberKey, the Chinese, English and the like instruction entity EntityK
 
 ```java
 // e.g.:
-NumberTypeControler.doTypeControl(mInstructionManager, 3, 20,
+NumberTypeControler.setNumberAndRunning(mInstructionManager, 3, 20,
             new NumberTypeControler.NumberTypeCallBack() {
                 @Override
                 public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {
@@ -1517,7 +1518,7 @@ keyList: NumberKey, the Chinese, English and the like instruction entity EntityK
 
 ```java
 // e.g.:
-NumberTypeControler.doTypeControl(mInstructionManager, true, true, false, 3, 20,
+NumberTypeControler.setNumberAndRunning(mInstructionManager, true, true, false, 3, 20,
             new NumberTypeControler.NumberTypeCallBack() {
                 @Override
                 public void onInstructReceive(Activity act, String key, int number, InstructEntity instruct) {

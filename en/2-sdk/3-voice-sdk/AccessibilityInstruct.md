@@ -22,7 +22,7 @@ As an independent system app, the voice assistant of the glasses is built into t
 
 If other Android APKs in the system need to use the offline voice instructions accurately, these APKs must interact with the voice assistant. Rokid provides the corresponding voice instruction SDK; for the specific method of use, refer to the user’s guide for the offline instruction SDK. Also, an example demo of use of the offline instruction SDK is provided at:
 
-https://github.com/RokidGlass/Rokid\_APG\_VoiceInstructDemo
+[Download Demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-20377c9.zip)
 
 ### 2.2 How to use the lark service for non-invasive control by voice instructions
 
@@ -128,3 +128,9 @@ Subsequently, the lark service will support the view for which you want to gener
 In some cases, the app needs to close and clear all voice instructions and remove the voice marks for a better immersive experience, for example, in a 3D projection or 3D game. To achieve this, the user needs to integrate the voice plug-in and call the feature portfolio.
 
 For specific use, refer to "Closing all voice instructions" in the offline instruction SDK user's guide, or NoAllInstructLifeAct and NoAllInstructBaseExtendAct in the demo of use of the offline instruction SDK.
+
+### 2.4 Online voice function description
+
+The voice assistant realizes online voice recognition services by connecting to the Rokid cloud platform, and provides developers with voice ASR recognition and TTS online voice synthesis functions.
+
+For specific usage, please refer to Voice Interaction -> Online Speech Recognition Service (Online Voice Use Document), turn off all voice commands, or use SpeechTestAct in Demo for voice command SDK.
