@@ -1,8 +1,15 @@
 ## Android NN usage guide
+#### Background
+- [The Android Neural Networks API (NNAPI)](https://developer.android.com/ndk/guides/neuralnetworks)) is an Android C API designed for running computationally intensive operations for machine learning on Android devices. NNAPI is designed to provide a base layer of functionality for higher-level machine learning frameworks, such as TensorFlow Lite and Caffe2, that build and train neural networks. The API is available on all Android devices running Android 8.1 (API level 27) or higher.
+
+- Android provides not only NN API, but also tflite architecture. Different frameworks have different acceleration performances for different model architectures. Fortunately, the APIs used in APP Layer are all the same except only one parameters(--use_nnapi=true)
+
+- Rokid has integrated NPU hardware into Android frameworks, in order for user in APP Layer to use it by the standard NNAPI. For specific development API operations, see [Android NN API](https://github.com/android /ndk-samples/tree/main/nn-samples)
+
+- Based on official introduction of Android NNAPI, you can convert your model to a 'tflite' model according to the following steps. The Android NN frameworks will decided whether to run tflite arch or NNAPI framework according to the user APP parameters. Emphasized to say, both of them run model using 'tflite' format.
 
 #### 1. Model conversion
-
-- You need to convert the inference model to TFLite model.
+- Convert your private model to TFLite model according to standard Android description.
 
 #### 2. Verify whether the model is speeding up inference
 
