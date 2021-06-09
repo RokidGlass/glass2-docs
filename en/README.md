@@ -52,4 +52,11 @@
 |name|Introduction|
 |---|---|
 | [Glass UI](2-sdk/ui-sdk/index.md) | 1. Provide a set of basic UI libraries for developing applications on Rokid Glass<br>2. The relationship between the real world and camera preview (Preview) and camera mapping (alignment)<br> |
+| [Voice Interaction](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)| You can use the built-in voice assistant to control Rokid Glass by integrating offline voice sdk|
 
+### Function SDK
+|Name|Introduction|
+|---|---|
+| [Face recognition offline](2-sdk/1-face-sdk/index.md) | Face recognition SDK access and interface description|
+| [Face Online Recognition](2-sdk/1-face-online-sdk/index.md)| Interface Specification and Use of Face Online Recognition|
+| [License Plate Recognition](2-sdk/2-lpr-sdk/index.md)|License plate recognition provides license plate detection + license plate recognition function |
