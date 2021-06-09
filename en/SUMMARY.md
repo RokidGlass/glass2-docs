@@ -18,6 +18,8 @@ Rokid Glass document directory
         - [An Introduction to Voice Interactions](2-sdk/3-voice-sdk/AccessibilityInstruct.md)
         - [User Guide](2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md)
         - [Online Speech Recognition Service](2-sdk/3-voice-sdk/SpeechManager.md)
+    * IMU SDK
+        - [Release Notes](2-sdk/8-imu-sdk/index.md)
     * Glass UI
         - [Release Notes](2-sdk/5-ui-sdk/ReleaseNotes.md)
         - [User Guide](2-sdk/5-ui-sdk/index.md)
