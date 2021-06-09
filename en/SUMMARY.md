@@ -23,15 +23,9 @@ Rokid Glass document directory
         - [User Guide](2-sdk/5-ui-sdk/index.md)
     * [Android NN User Guide](8-androidnn/index.md)
     * Face Recognition
-        - Offline Face Recognition
-            - [User Guide](2-sdk/1-face-sdk/index.md)
-            - [Release Notes](2-sdk/1-face-sdk/ReleaseNotes.md)
-        - Online Face Recognition
-            - [User Guide](2-sdk/1-face-online-sdk/index.md)
-            - [Release Notes](2-sdk/1-face-online-sdk/ReleaseNotes.md)
+        - [User Guide](2-sdk/1-face-sdk/index.md)
     * Car Plate Recognition
         - [User Guide](2-sdk/2-lpr-sdk/index.md)
-        - [Release Notes](2-sdk/2-lpr-sdk/ReleaseNotes.md)
 * [Rokid AR Mobile Solution](7-glassmobile/res/mobile_glass/introduction.md)
     * [Revision History](7-glassmobile/res/mobile_glass/ChangeLog.md)
     * [Introduction](7-glassmobile/res/mobile_glass/introduction.md)
@@ -61,14 +55,7 @@ Rokid Glass document directory
         * [Contact Us](7-glassmobile/res/mobile_glass/offline_command.md#contact-us)
         * [Best Practices](7-glassmobile/res/mobile_glass/offline_command.md#best-practice)
     * [Face & Car Plate Recognition](7-glassmobile/res/mobile_glass/glass_recog_sdk.md)
-        * [Introduction](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#a-brief-introduction)
-        * [Prerequisite for Use](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#prerequisite-for-use)
-        * [Quick Guide](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#quick-start-guide)
-        * [Advanced Topics](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#advanced-topics)
-            * [Offline face database operations](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#offline-face-database-operations)
-            * [Offline license plate database operations](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#offline-license-plate-database-operations)
-        * [Related Data Models](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#related-data-models)
-        * [Best Practices](7-glassmobile/res/mobile_glass/glass_recog_sdk.md#best-practice)
+        * [Introduction](7-glassmobile/res/mobile_glass/ai.md)
 * [Sample Application](3-support/index.md)
 * [FAQ](0-faq/index.md)
 * [Forum](6-forum/index.md)

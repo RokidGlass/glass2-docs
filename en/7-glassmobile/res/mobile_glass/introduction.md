@@ -35,7 +35,7 @@ A supported mobile phone must meet the following requirements (you can directly 
 1. The mobile phone has a USB Type-C port.
 2. The mobile phone supports DP output.
 3. **The mobile phone is NOT supported if it does not meet either of these requirements:**
-   1. Power supply is normal: Connect the glasses to the mobile phone with a data cable, put on the glasses and confirm screen of the glasses is on. ![Step 1](media/mobile phone support2.jpeg "Power supply is normal.")
-   2. Display is normal: Confirm the image displayed on the glasses is normal. This image is usually a mirror of what is displayed on the mobile phone screen. ![Step 2](media/mobile phone support1.jpeg "Display is normal.")
+   1. Power supply is normal: Connect the glasses to the mobile phone with a data cable, put on the glasses and confirm screen of the glasses is on. ![Step 1](media/手机支持2.jpeg "Power supply is normal.")
+   2. Display is normal: Confirm the image displayed on the glasses is normal. This image is usually a mirror of what is displayed on the mobile phone screen. ![Step 2](media/手机支持1.jpeg "Display is normal.")
 
 

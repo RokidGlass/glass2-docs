@@ -1048,7 +1048,6 @@ Note: All the following general methods apply to the instances of InstructLifeMa
 
 public InstructLifeManager(Activity act, Lifecycle lifecycle, IInstructLifeListener lifeListener)
 
-```
 
 * the InstructionManager instance is generated in the InstructionActivity inherited by the activity on the client side:
 you can call it directly by mInstructionManager
