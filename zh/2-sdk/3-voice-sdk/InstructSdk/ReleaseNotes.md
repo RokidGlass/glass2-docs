@@ -1,4 +1,8 @@
 # 版本更新信息
+### v1.6.1  --  2021年6月9日
+1. 修复语音指令插件与百灵鸟混合使用模式中，插件隐藏tips浮条，百灵鸟功能还会触发的bug；
+2. 修复InstructLifeManager工具化使用，Context参数不为Activity时会初始化失败的bug；
+
 ### v1.6.0  --  2021年4月21日
 1. 增加speech 在线aar 、在线tts 相关功能，使用SpeechUserManager调用；
 2. 优化aar分享逻辑，共享仓库从Jcenter改到rokid自己的对外分享maven仓库；

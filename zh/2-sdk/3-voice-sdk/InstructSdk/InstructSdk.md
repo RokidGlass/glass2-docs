@@ -1,5 +1,5 @@
 # Glass 语音指令 SDK
-**Version: 1.6.0**  
+**Version: 1.6.1**  
 
 
 
@@ -22,7 +22,7 @@ Rokid 语音指令SDK 开发工具，方便开发结合Rokid语音助手一起�
 
 插件使用示例Demo：
 
-[下载地址](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-20377c9.zip)
+[下载地址](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-ac8ced7.zip)
 
 ### 1.1 使用时注意事项
 
@@ -71,7 +71,7 @@ Rokid 语音指令SDK 开发工具，方便开发结合Rokid语音助手一起�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.6.0'
+      implementation 'com.rokid.ai.glass:instructsdk:1.6.1'
   }
   ```
 - Rokid Maven信息
@@ -80,13 +80,13 @@ Rokid 语音指令SDK 开发工具，方便开发结合Rokid语音助手一起�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <type>pom</type>
   </dependency>
   ```
 
 - 修改时间
-  2021年04月21日
+  2021年06月09日
 
 
 ### 2.2 AndroidManifest.xml及Application配置
