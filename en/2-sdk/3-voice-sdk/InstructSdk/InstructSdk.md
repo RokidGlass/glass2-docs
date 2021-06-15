@@ -1,6 +1,6 @@
 # Voice instruction SDK for the glasses
 
-**Version: 1.6.0**
+**Version: 1.6.1**
 
 ## 1. Overview of the voice instruction SDK
 
@@ -19,7 +19,7 @@ adb shell dumpsys package com.rokid.ai.glassaudio
 
 Example demo for using the plugin:
 
-[download demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-20377c9.zip)
+[download demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-ac8ced7.zip)
 
 ### 1.1 Notes for use
 
@@ -70,7 +70,7 @@ Example demo for using the plugin:
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // the voice instruction SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.6.0'
+      implementation 'com.rokid.ai.glass:instructsdk:1.6.1'
   }
   ```
 
@@ -80,12 +80,12 @@ Example demo for using the plugin:
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <type>pom</type>
   </dependency>
   ```
 
-- Modified on April 4, 2021
+- Modified on June 9, 2021
 
 ### 2.2 Configuring AndroidManifest.xml and the application
 

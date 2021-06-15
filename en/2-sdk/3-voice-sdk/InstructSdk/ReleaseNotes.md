@@ -1,5 +1,10 @@
 # Release notes
 
+### v1.6.1  --  June 9, 2021
+
+1. Fix the bug that the plug-in hides the tips floating bar and the Lark function will trigger in the mixed use mode of the voice command plug-in and the lark;
+2. Fix the bug that initialization fails when InstructLifeManager is used as a tool and the Context parameter is not Activity;
+
 ### v1.6.0  --  April 21, 2021
 
 1. Add speech online aar, online tts related functions, use SpeechUserManager to call;
