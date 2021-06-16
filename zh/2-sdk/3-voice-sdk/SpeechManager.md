@@ -35,7 +35,7 @@ TTS在线语音合成可以根据开发者提供的文字合成高质量的音�
   dependencies {
       implementation fileTree(dir: 'libs', include: ['*.jar'])
       // 语音指令SDK
-      implementation 'com.rokid.ai.glass:instructsdk:1.6.0'
+      implementation 'com.rokid.ai.glass:instructsdk:1.6.1'
   }
   ```
 - Rokid Maven信息
@@ -44,7 +44,7 @@ TTS在线语音合成可以根据开发者提供的文字合成高质量的音�
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <type>pom</type>
   </dependency>
   ```

@@ -35,7 +35,7 @@ The voice command plug-in provides the normal use of the voice ASR recognition a
   dependencies {
       implementation fileTree(dir:'libs', include: ['*.jar'])
       // Voice Command SDK
-      implementation'com.rokid.ai.glass:instructsdk:1.6.0'
+      implementation'com.rokid.ai.glass:instructsdk:1.6.1'
   }
   ```
 -Rokid Maven information
@@ -44,7 +44,7 @@ The voice command plug-in provides the normal use of the voice ASR recognition a
   <dependency>
     <groupId>com.rokid.ai.glass</groupId>
     <artifactId>instructsdk</artifactId>
-    <version>1.6.0</version>
+    <version>1.6.1</version>
     <type>pom</type>
   </dependency>
   ```

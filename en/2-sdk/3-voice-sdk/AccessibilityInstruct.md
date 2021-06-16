@@ -22,7 +22,7 @@ As an independent system app, the voice assistant of the glasses is built into t
 
 If other Android APKs in the system need to use the offline voice instructions accurately, these APKs must interact with the voice assistant. Rokid provides the corresponding voice instruction SDK; for the specific method of use, refer to the user’s guide for the offline instruction SDK. Also, an example demo of use of the offline instruction SDK is provided at:
 
-[Download Demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-20377c9.zip)
+[Download Demo](https://static.rokidcdn.com/sdk/sdk_apg_voiceInstruct_demo-ac8ced7.zip)
 
 ### 2.2 How to use the lark service for non-invasive control by voice instructions
 
