@@ -24,6 +24,7 @@
 | interactive mode |[Touchpad, buttons](1-system/index.md), head control|
 
 ## 3、Brief development guide
+
 * The difference between glasses development and Android development
   
   * Glass does not have a touch screen, only a touch pad. Some types of controls require custom focus control

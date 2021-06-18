@@ -57,7 +57,7 @@ dependencies {
 
 ### 2.2 Demo download
 
-[download demo](https://static.rokidcdn.com/sdk/sdk_glass_ui-5e0971f.zip)
+[download demo](https://static.rokidcdn.com/sdk/sdk_glass_ui-887ab09.zip)
 
 ## 3. Function list
 

@@ -44,7 +44,7 @@ dependencies {
 ```
 
 ### 2.2 Demo下载
-[下载地址](https://static.rokidcdn.com/sdk/sdk_glass_ui-5e0971f.zip)
+[下载地址](https://static.rokidcdn.com/sdk/sdk_glass_ui-887ab09.zip)
 
 ## 三、功能列表
 ---

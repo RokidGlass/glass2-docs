@@ -30,7 +30,7 @@
 
 * 示例代码：
 
-  https://github.com/RokidGlass/glass-ui/blob/master/demo/src/main/java/com/rokid/glass/ui/sample/IMUActivity.java
+参考GlassUI库的IMUActivity部分
 
 #### 3.1.1 使用示例
 

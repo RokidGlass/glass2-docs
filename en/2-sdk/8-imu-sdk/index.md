@@ -30,7 +30,7 @@ Refer to the integration and version update of Glass UI
 
 * Sample code：
 
-  https://github.com/RokidGlass/glass-ui/blob/master/demo/src/main/java/com/rokid/glass/ui/sample/IMUActivity.java
+  Refer to the ImuActivity section of the Glassui library
 
 #### 3.1.1 Example of use
 
