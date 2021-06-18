@@ -21,6 +21,11 @@ intent.setComponent(comp);
 this.startActivityForResult(intent, REQUEST_CODE_QR_SCAN_WIFI);
 ```
 
+
+扫一扫提供打开系统扫码界面并返回扫码结果的功能，使用方法如下：
+使用startactivityforresult打开com.rokid.glass.scan2/com.rokid.glass.scan2.activity.QrCodeActivity 界面
+从com.blikoon.qrcodescanner.got_qr_scan_relult字段取返回结果
+
 ### 2.2 相机
 
 系统预装的相机应用是我们重新开发定制的适配AR形态的相机，仍然支持调用原生相机的方式进行拍照和录像，并返回相关结果。

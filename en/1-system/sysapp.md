@@ -19,6 +19,10 @@ intent.setComponent(comp);
 this.startActivityForResult(intent, REQUEST_CODE_QR_SCAN_WIFI);
 ```
 
+Quick Scan provides a function to open the system scanning interface and returning the scanning result. The use method is as follows:
+Use startactivityforresult open com.rokid.glass.scan2/com.rokid.glass.scan2.activity.QrCodeActivity interface
+From com.blikoon.qrcodescanner.got_qr_scan_relult field returns the result
+
 ### 2.2 Camera
 
 The Camera application pre-installed in the system is a customized application adapted to AR content, which still supports basic functions such as taking pictures and videos and return relevant results.
