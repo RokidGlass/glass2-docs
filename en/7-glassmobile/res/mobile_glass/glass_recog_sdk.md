@@ -15,7 +15,7 @@ The face and license plate SDK provides the functions of face and license plate 
 ```java
  allprojects {
          repositories {
-             maven { url = 'https://dl.bintray.com/rokid/alliance/' }
+             maven { url = 'http://maven.rokid.com/repository/maven-public/' }
          }
  }
 ```
@@ -26,7 +26,7 @@ The face and license plate SDK provides the functions of face and license plate 
 dependencies {
   .......
   // Integrate face and license plate sdk
-  implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.9'
+  implementation 'com.rokid.alliance.magicsdk:magicsdk:1.1.14'
 }
 ```
 
@@ -198,7 +198,7 @@ final Callback<RKFaceModel> faceCallback = new Callback<RKFaceModel>() {
         }
     }
 };
-```
+  ```
 
     > Load face models, initialize face SDK, and register face monitoring recognition.
 
@@ -502,7 +502,7 @@ uids| List<String>| False| Uuid
           Toast.makeText(this, "deleting offline face data succedded", Toast.LENGTH_LONG).show();
       }
    }
-   ```
+  ```
 - Add face data in batches:: FaceDataManager.getInstance().addPersons(DeployInfo deployInfo, String filePath, List<BatchPersons> batchPersons, boolean isOverwrite) ;
 
 Parameter| Type| Null?| Description

@@ -1,6 +1,6 @@
 <!-- toc -->  
 
-      
+
 # A brief introduction
 
 <img width="280" src="media/glassConnectMobile.png">
@@ -13,11 +13,10 @@ Please determine the functions to be implemented using the Rokid AR Mobile Solut
 
 1. [[Using hardware capabilities of the Rokid Glass (camera data, key events, sensor events, dual screen display)](glass_hardware.md#A brief introduction)
 2. [Using hardware capabilities of Rokid Glass + face recognition and license plate recognition](ai.md)
-3. [Using hardware capabilities of Rokid Glass + face recognition and license plate recognition + dual screen display](glass_ai_presentation.md)
 
 # Best Practice
 
-**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
+**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-26c7a09.zip)**
 
 # Appendices
 
@@ -37,5 +36,4 @@ A supported mobile phone must meet the following requirements (you can directly 
 3. **The mobile phone is NOT supported if it does not meet either of these requirements:**
    1. Power supply is normal: Connect the glasses to the mobile phone with a data cable, put on the glasses and confirm screen of the glasses is on. ![Step 1](media/手机支持2.jpeg "Power supply is normal.")
    2. Display is normal: Confirm the image displayed on the glasses is normal. This image is usually a mirror of what is displayed on the mobile phone screen. ![Step 2](media/手机支持1.jpeg "Display is normal.")
-
 

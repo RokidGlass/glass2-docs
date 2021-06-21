@@ -25,7 +25,7 @@
 2. 在`app/build.gradle`文件中添加模块依赖
 
     ```groovy
-    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.14'
+    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.16'
     ```
     
 3. SDK权限依赖
@@ -187,8 +187,8 @@
 6. 释放SDK
 
     ```java
-RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
-RKGlassDevice.getInstance().deInit();
+    RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
+    RKGlassDevice.getInstance().deInit();
     ```
 
 # 进阶篇

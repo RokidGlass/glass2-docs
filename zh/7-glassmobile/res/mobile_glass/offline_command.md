@@ -24,7 +24,7 @@
 2. 在`app/build.gradle`文件中添加模块依赖
 
    ```groovy
-   implementation 'com.rokid.alliance.voicecommand:voicecommand:1.1.14'
+   implementation 'com.rokid.alliance.voicecommand:voicecommand:1.1.15'
    ```
 
 3. SDK权限依赖
@@ -132,7 +132,7 @@
 
 # 最佳实践
 
-**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-0cb21d0.zip)**
+**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-26c7a09.zip)**
 
 # ChangeLog
 

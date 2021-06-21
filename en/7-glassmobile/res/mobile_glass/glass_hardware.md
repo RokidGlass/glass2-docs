@@ -15,15 +15,15 @@
     ```groovy
        allprojects {
                repositories {
-                   maven { url = 'https://dl.bintray.com/rokid/alliance/' }
+                   maven { url = 'http://maven.rokid.com/repository/maven-public/' }
                }
        }
     ```
 
 2. Add module dependencies in the file `app/build.gradle`.
-    
+   
     ```groovy
-    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.9'
+    implementation 'com.rokid.alliance.usbcamera:usbcamera:1.1.16'
     ```
 
 3. Add the SDK permission dependencies.
@@ -41,128 +41,153 @@
 5. Initialize SDK.
    
     ```java
-       RKGlassDevice.RKGlassDeviceBuilder
-                       .buildRKGlassDevice()
-                       .withGlassSensorEvent(new GlassSensorEvent() {
-   
-                           /**
+    						RKGlassDevice.RKGlassDeviceBuilder
+                        .buildRKGlassDevice()
+                        .withGlassSensorEvent(new GlassSensorEvent() {
+       
+                            /**
                             * Distance sensor
                             * @param status  "true" indicates that the glass is worn and the optics is wakened up, and "false" indicates that the glass is taken off and the optics is off.
                             */
-                           @Override
-                           public void onPSensorUpdate(final boolean status) {
-                               RKGlassDevice.getInstance().setBrightness(status ? 100 : 0);//Determine whether the glass is worn and adjust the brightness of the optics for energy saving based on the distance sensor.
-                               lSensorBar.setProgress(status ? 100 : 0);
-                               tvPSensor.post(() -> tvPSensor.setText("distance sensor status: " + status));
-                           }
-   
-                           /**
+                            @Override
+                            public void onPSensorUpdate(final boolean status) {
+                                RKGlassDevice.getInstance().setBrightness(status ? 100 : 0);//Determine whether the glass is worn and adjust the brightness of the optics for energy saving based on the distance sensor.
+                                lSensorBar.setProgress(status ? 100 : 0);
+                                tvPSensor.post(() -> tvPSensor.setText("distance sensor status: " + status));
+                            }
+       
+                            /**
                             * Front light sensor
                             * @param lux minimum value 0
                             */
+                            @Override
+                            public void onLSensorUpdate(final int lux) {
+                                tvLSensor.post(() -> tvLSensor.setText("light sensor: " + lux));
+                            }
+    
+                            @Override
+                           public void OnRotationVectorUpdate(long timestamp, float[] data) {
+    
+                            }
+    
+                            @Override
+                            public void OnGameRotationVectorUpdate(long timestamp, float[] data) {
+    
+                            }
+    
                            @Override
-                           public void onLSensorUpdate(final int lux) {
-                               tvLSensor.post(() -> tvLSensor.setText("light sensor: " + lux));
-                           }
-                       })
-                       .withRKKeyListener(new RKKeyListener() {
+                            public void OnAcceleroMeterEvent(long timestamp, float[] data) {
+    
+                            }
+    
+                            @Override
+                            public void OnMagnetFieldEvent(long timestamp, float[] data) {
    
+                            }
+    
+                           @Override
+                            public void OnGyroscopEvnet(long timestamp, float[] data) {
+    
+                            }
+                        })
+                        .withRKKeyListener(new RKKeyListener() {
+        
                            /**
-                            * event of the Power key
-                            * @param eventType {@link KeyEventType}
+                             * event of the Power key
+                             * @param eventType {@link KeyEventType}
                             */
-                           @Override
-                           public void onPowerKeyEvent(final int eventType) {
-                               tvPower.post(() -> tvPower.setText("event of the Power key: " + eventToString(eventType)));
-                           }
-   
+                            @Override
+                            public void onPowerKeyEvent(final int eventType) {
+                                tvPower.post(() -> tvPower.setText("Power Key Press: " + eventToString(eventType)));
+                            }
+        
                            /**
-                            * Event of the Back key
-                            * @param eventType {@link KeyEventType}
+                             * Event of the Back key
+                             * @param eventType {@link KeyEventType}
                             */
-                           @Override
-                           public void onBackKeyEvent(final int eventType) {
-   
-                               tvBack.post(() -> tvBack.setText("event of the Back key: " + eventToString(eventType)));
-                           }
-   
-                           /**
-                            * Event of the touchpad
-                            * @param eventType {@link RKGlassTouchEvent}
-                            */
-                           @Override
+                            @Override
+                            public void onBackKeyEvent(final int eventType) {
+        
+                                tvBack.post(() -> tvBack.setText("Back Key Press: " + eventToString(eventType)));
+                            }
+       
+                            /**
+                             * Event of the touchpad
+                             * @param eventType {@link RKGlassTouchEvent}
+                             */
+                            @Override
                            public void onTouchKeyEvent(final int eventType) {
-   
-                               tvTouch.post(() -> tvTouch.setText("TouchBar event: " + eventToString(eventType)));
-                           }
-   
-                           /**
-                            * touchpad sliding backward
-                            */
-                           @Override
-                           public void onTouchSlideBack() {
-   
-                               tvSlide.post(() -> tvSlide.setText("slide backward"));
-                           }
-   
-                           /**
-                            * touchpad sliding forward
-                            */
-                           @Override
-                           public void onTouchSlideForward() {
-   
-                               tvSlide.post(() -> tvSlide.setText("slide forward"));
-                           }
+        
+                                tvTouch.post(() -> tvTouch.setText("TouchBar Press: " + eventToString(eventType)));
+                            }
+        
+                            /**
+                             * touchpad sliding backward
+                             */
+                            @Override
+                            public void onTouchSlideBack() {
+        
+                               tvSlide.post(() -> tvSlide.setText("touchpad sliding backward"));
+                            }
+        
+                            /**
+                             * touchpad sliding forward
+                             */
+                            @Override
+                            public void onTouchSlideForward() {
+       
+                                tvSlide.post(() -> tvSlide.setText("touchpad sliding forward"));
+                            }
                        })
-                       .build()
+                        .build()
                        .initUsbDevice(this, mPreview, new OnGlassConnectListener() {
-   
-                           /**
+        
+                             /**
                             Call back after the user authorizes the glass permissions
                             * @param usbDevice {@link UsbDevice}
                             * @param glassInfo {@link GlassInfo}
                             */
                            @Override
-                           public void onGlassConnected(UsbDevice usbDevice, GlassInfo glassInfo) {
-                               tvDeviceInfo.post(() -> tvDeviceInfo.setText("Glass information: vendorId:" + usbDevice.getVendorId()
-                                       + " productId: " + usbDevice.getProductId() + " deviceName: "
-                                       + usbDevice.getDeviceName() + " SN: " + glassInfo.getSn()));
-   
-                               lSensorBar.setProgress(RKGlassDevice.getInstance().getBrightness());
-                               lSensorBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                                   @Override
+                            public void onGlassConnected(UsbDevice usbDevice, GlassInfo glassInfo) {
+                                tvDeviceInfo.post(() -> tvDeviceInfo.setText("Glass Info：vendorId:" + usbDevice.getVendorId()
+                                        + " productId: " + usbDevice.getProductId() + " deviceName: "
+                                        + usbDevice.getDeviceName() + " SN: " + glassInfo.getSn()));
+        
+                                lSensorBar.setProgress(RKGlassDevice.getInstance().getBrightness());
+                                lSensorBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                                    @Override
                                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                                        // brightness adjustment range of optics 0~100
                                        RKGlassDevice.getInstance().setBrightness(progress);
                                    }
-   
+       
                                    @Override
                                    public void onStartTrackingTouch(SeekBar seekBar) {
-   
+       
                                    }
-   
+       
                                    @Override
                                    public void onStopTrackingTouch(SeekBar seekBar) {
-   
+       
                                    }
                                });
                            }
-   
+       
                            /**
-                            * When the glass is disconnected
-                            */
+                           * When the glass is disconnected
+                           */
                            @Override
                            public void onGlassDisconnected() {
-                               tvDeviceInfo.post(() -> tvDeviceInfo.setText("Glass disconnected"));
+                               tvDeviceInfo.post(() -> tvDeviceInfo.setText("Glass断开连接"));
                            }
-                       });
+                       });   
    ```
-
+   
 6. Release the SDK.
    
     ```java
-RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
-RKGlassDevice.getInstance().deInit();
+    RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
+    RKGlassDevice.getInstance().deInit();
     ```
 
 # Advanced topics

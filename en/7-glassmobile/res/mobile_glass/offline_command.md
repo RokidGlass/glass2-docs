@@ -10,23 +10,23 @@ Offline commands are used to perform voice command recognition offline. All of t
 # Quick start guide
 
 1.Configure the `maven` warehouse address in the root directory of the project.
-   
+
    ```groovy
        allprojects {
                repositories {
-                   maven { url = 'https://dl.bintray.com/rokid/alliance/' }
+                   maven { url = 'http://maven.rokid.com/repository/maven-public/' }
                }
        }
    ```
 
 2.Add module dependencies in the file `app/build.gradle`.
-   
+
    ```groovy
-   implementation 'com.rokid.alliance.voicecommand:voicecommand:1.1.9'
+   implementation 'com.rokid.alliance.voicecommand:voicecommand:1.1.16'
    ```
 
 3.Add the SDK permission dependencies.
-   
+
    ```groovy
    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -38,7 +38,7 @@ Offline commands are used to perform voice command recognition offline. All of t
    ```
 
 4.Initialize SDK.
-   
+
    ```java
    RKGlassDevice.RKGlassDeviceBuilder.buildRKGlassDevice().build().initUsbDevice(this, findViewById(R.id.camera_view), new OnGlassConnectListener() {
                @Override
@@ -55,7 +55,7 @@ Offline commands are used to perform voice command recognition offline. All of t
    ```
 
 5.Add an offline command
-   
+
    ```java
        private static final RKOfflineWords[] offlineWords = new RKOfflineWords[]{
                new RKOfflineWords("speak louder", "da sheng dian", defaultCallback),
@@ -67,13 +67,13 @@ Offline commands are used to perform voice command recognition offline. All of t
    ```
 
 6.Remove an offline command
-   
+
    ```java
    RKVoiceEngine.getInstance().clearOfflineWords(offlineWords);
    ```
 
 7.Release the SDK.
-   
+
    ```java
    RKVoiceEngine.getInstance().uninit();
    ```
@@ -83,7 +83,7 @@ Offline commands are used to perform voice command recognition offline. All of t
 The Lifecycle is used to control the currently active commands. Each page has unique commands. When a page is bound to the Lifecycle, the life cycle change of the page leads to activities on the commands, such as adding, restoring, and removing. The default implementation strategies are available for reference, but may not meet the product service requirements of actual scenarios. For more details, refer to RKOfflineCommandActivity, RKOfflineCommandFragment, and RKOfflineCommandPresentation.
 
 1.Create RKOfflineCommandManager instance
-   
+
    ```java
    private static final RKOfflineWords[] offlineWords = new RKOfflineWords[]{
                new RKOfflineWords("speak louder", "da sheng dian", defaultCallback),
@@ -95,19 +95,19 @@ The Lifecycle is used to control the currently active commands. Each page has un
    ```
 
 2.Bind Lifecycle
-   
+
    ```java
    mOfflineCommandManager.bindLifecycle(lifecycle:LifecycleOwner);
    ```
 
 3.Update offline commands
-   
+
    ```java
    mOfflineCommandManager.updateOfflineCommands(offlineWords);
    ```
 
 4.Remove an offline command
-   
+
    ```java
    mOfflineCommandManager.removeOfflineCommands(offlineWords);
    ```
@@ -116,7 +116,7 @@ The Lifecycle is used to control the currently active commands. Each page has un
 
 # Best Practice
 
-**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-177ebe7.zip)**
+**[Reference Demo project](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-26c7a09.zip)**
 
 
 

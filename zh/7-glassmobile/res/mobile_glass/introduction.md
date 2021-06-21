@@ -15,7 +15,7 @@
 
 # 最佳实践
 
-**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-0cb21d0.zip)**
+**[下载Demo工程](https://static.rokidcdn.com/sdk/sdk_glassmobile_demo-26c7a09.zip)**
 
 
 # 附录
@@ -36,9 +36,6 @@
  3. **以下条件任意一条不满足的手机都表明不支持此机型**
     1. 是否正常供电：将眼镜盒手机使用数据线连接，带上眼镜，确认眼镜屏幕是否点亮。 ![步骤一](media/手机支持2.jpeg "是否正常供电")
     2. 显示是否正常：查看眼镜显示画面是否正常，一般显示界面是手机界面的镜像显示 ![步骤二](media/手机支持1.jpeg "显示是否正常")
-       
-    
-
 
 
 
