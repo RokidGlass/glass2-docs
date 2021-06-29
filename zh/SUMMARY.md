@@ -28,6 +28,7 @@ Rokid Glass文档目录
         - [使用说明](2-sdk/1-face-sdk/index_offline.md)
     * 车牌识别
         - [使用说明](2-sdk/2-lpr-sdk/index_offline.md)
+    * [FAQ](0-faq/index.md) 
 
 * [Rokid眼镜连接手机方案](7-glassmobile/res/mobile_glass/introduction.md)
     * [变更记录](7-glassmobile/res/mobile_glass/ChangeLog.md)
@@ -60,6 +61,5 @@ Rokid Glass文档目录
     * 人脸、车牌识别
        * [使用说明](7-glassmobile/res/mobile_glass/glass_recog_sdk_offline.md)
 * [样机申请](3-support/index.md)
-* [FAQ](0-faq/index.md) 
 * [论坛](6-forum/index.md)
 

@@ -34,6 +34,10 @@
 	* 需要叠加Camera预览的Activity，开启时需发送广播 ``android.intent.action.CAMERA_WALLPAPER_START_PREVIE``
 	* 结束时发送广播 ``android.intent.action.CAMERA_WALLPAPER_STOP_PREVIE``
 
+    **注意：**开发前，请准备另外一根开发连接线，设备配置的线请不要作为开发使用，连接方式如下图：
+    
+    <img src="images/connect_tips.jpg">
+
 * **眼镜开发的步骤：**
   1. 新建Android工程，或者基于现有的Android工程改造。
   2. 按照Android TV的开发模式，用Glass触摸板控制焦点变化（可以参考[触摸板键值说明](1-system/index.md)）。<br>**恭喜你！可以在眼镜上用触摸板使用自己的App了！**
