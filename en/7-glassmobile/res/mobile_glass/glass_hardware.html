@@ -1003,13 +1003,13 @@
 <li><p>Configure the <code>maven</code> warehouse address in the root directory of the project.</p>
 <pre><code class="lang-groovy">    allprojects {
             repositories {
-                maven { url = <span class="hljs-string">&apos;https://dl.bintray.com/rokid/alliance/&apos;</span> }
+                maven { url = <span class="hljs-string">&apos;http://maven.rokid.com/repository/maven-public/&apos;</span> }
             }
     }
 </code></pre>
 </li>
 <li><p>Add module dependencies in the file <code>app/build.gradle</code>.</p>
-<pre><code class="lang-groovy"> implementation <span class="hljs-string">&apos;com.rokid.alliance.usbcamera:usbcamera:1.1.9&apos;</span>
+<pre><code class="lang-groovy"> implementation <span class="hljs-string">&apos;com.rokid.alliance.usbcamera:usbcamera:1.1.16&apos;</span>
 </code></pre>
 </li>
 <li><p>Add the SDK permission dependencies.</p>
@@ -1023,96 +1023,121 @@
 <li><p>Modify value of targetSdkVersion in <code>app/build.gradle</code> so that it is less than 27.</p>
 </li>
 <li><p>Initialize SDK.</p>
-<pre><code class="lang-java">    RKGlassDevice.RKGlassDeviceBuilder
-                    .buildRKGlassDevice()
-                    .withGlassSensorEvent(<span class="hljs-keyword">new</span> GlassSensorEvent() {
+<pre><code class="lang-java">                         RKGlassDevice.RKGlassDeviceBuilder
+                     .buildRKGlassDevice()
+                     .withGlassSensorEvent(<span class="hljs-keyword">new</span> GlassSensorEvent() {
 
-                        <span class="hljs-comment">/**
+                         <span class="hljs-comment">/**
                          * Distance sensor
                          * <span class="hljs-doctag">@param</span> status  &quot;true&quot; indicates that the glass is worn and the optics is wakened up, and &quot;false&quot; indicates that the glass is taken off and the optics is off.
                          */</span>
-                        <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPSensorUpdate</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> status)</span> </span>{
-                            RKGlassDevice.getInstance().setBrightness(status ? <span class="hljs-number">100</span> : <span class="hljs-number">0</span>);<span class="hljs-comment">//Determine whether the glass is worn and adjust the brightness of the optics for energy saving based on the distance sensor.</span>
-                            lSensorBar.setProgress(status ? <span class="hljs-number">100</span> : <span class="hljs-number">0</span>);
-                            tvPSensor.post(() -&gt; tvPSensor.setText(<span class="hljs-string">&quot;distance sensor status: &quot;</span> + status));
-                        }
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPSensorUpdate</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> status)</span> </span>{
+                             RKGlassDevice.getInstance().setBrightness(status ? <span class="hljs-number">100</span> : <span class="hljs-number">0</span>);<span class="hljs-comment">//Determine whether the glass is worn and adjust the brightness of the optics for energy saving based on the distance sensor.</span>
+                             lSensorBar.setProgress(status ? <span class="hljs-number">100</span> : <span class="hljs-number">0</span>);
+                             tvPSensor.post(() -&gt; tvPSensor.setText(<span class="hljs-string">&quot;distance sensor status: &quot;</span> + status));
+                         }
 
-                        <span class="hljs-comment">/**
+                         <span class="hljs-comment">/**
                          * Front light sensor
                          * <span class="hljs-doctag">@param</span> lux minimum value 0
                          */</span>
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLSensorUpdate</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> lux)</span> </span>{
+                             tvLSensor.post(() -&gt; tvLSensor.setText(<span class="hljs-string">&quot;light sensor: &quot;</span> + lux));
+                         }
+
+                         <span class="hljs-meta">@Override</span>
+                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnRotationVectorUpdate</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, <span class="hljs-keyword">float</span>[] data)</span> </span>{
+
+                         }
+
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnGameRotationVectorUpdate</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, <span class="hljs-keyword">float</span>[] data)</span> </span>{
+
+                         }
+
                         <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLSensorUpdate</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> lux)</span> </span>{
-                            tvLSensor.post(() -&gt; tvLSensor.setText(<span class="hljs-string">&quot;light sensor: &quot;</span> + lux));
-                        }
-                    })
-                    .withRKKeyListener(<span class="hljs-keyword">new</span> RKKeyListener() {
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnAcceleroMeterEvent</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, <span class="hljs-keyword">float</span>[] data)</span> </span>{
+
+                         }
+
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnMagnetFieldEvent</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, <span class="hljs-keyword">float</span>[] data)</span> </span>{
+
+                         }
+
+                        <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnGyroscopEvnet</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, <span class="hljs-keyword">float</span>[] data)</span> </span>{
+
+                         }
+                     })
+                     .withRKKeyListener(<span class="hljs-keyword">new</span> RKKeyListener() {
 
                         <span class="hljs-comment">/**
-                         * event of the Power key
-                         * <span class="hljs-doctag">@param</span> eventType {<span class="hljs-doctag">@link</span> KeyEventType}
+                          * event of the Power key
+                          * <span class="hljs-doctag">@param</span> eventType {<span class="hljs-doctag">@link</span> KeyEventType}
                          */</span>
-                        <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPowerKeyEvent</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> eventType)</span> </span>{
-                            tvPower.post(() -&gt; tvPower.setText(<span class="hljs-string">&quot;event of the Power key: &quot;</span> + eventToString(eventType)));
-                        }
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPowerKeyEvent</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> eventType)</span> </span>{
+                             tvPower.post(() -&gt; tvPower.setText(<span class="hljs-string">&quot;Power Key Press: &quot;</span> + eventToString(eventType)));
+                         }
 
                         <span class="hljs-comment">/**
-                         * Event of the Back key
-                         * <span class="hljs-doctag">@param</span> eventType {<span class="hljs-doctag">@link</span> KeyEventType}
+                          * Event of the Back key
+                          * <span class="hljs-doctag">@param</span> eventType {<span class="hljs-doctag">@link</span> KeyEventType}
                          */</span>
-                        <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackKeyEvent</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> eventType)</span> </span>{
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackKeyEvent</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> eventType)</span> </span>{
 
-                            tvBack.post(() -&gt; tvBack.setText(<span class="hljs-string">&quot;event of the Back key: &quot;</span> + eventToString(eventType)));
-                        }
+                             tvBack.post(() -&gt; tvBack.setText(<span class="hljs-string">&quot;Back Key Press: &quot;</span> + eventToString(eventType)));
+                         }
 
-                        <span class="hljs-comment">/**
-                         * Event of the touchpad
-                         * <span class="hljs-doctag">@param</span> eventType {<span class="hljs-doctag">@link</span> RKGlassTouchEvent}
-                         */</span>
-                        <span class="hljs-meta">@Override</span>
+                         <span class="hljs-comment">/**
+                          * Event of the touchpad
+                          * <span class="hljs-doctag">@param</span> eventType {<span class="hljs-doctag">@link</span> RKGlassTouchEvent}
+                          */</span>
+                         <span class="hljs-meta">@Override</span>
                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTouchKeyEvent</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> eventType)</span> </span>{
 
-                            tvTouch.post(() -&gt; tvTouch.setText(<span class="hljs-string">&quot;TouchBar event: &quot;</span> + eventToString(eventType)));
-                        }
+                             tvTouch.post(() -&gt; tvTouch.setText(<span class="hljs-string">&quot;TouchBar Press: &quot;</span> + eventToString(eventType)));
+                         }
 
-                        <span class="hljs-comment">/**
-                         * touchpad sliding backward
-                         */</span>
-                        <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTouchSlideBack</span><span class="hljs-params">()</span> </span>{
+                         <span class="hljs-comment">/**
+                          * touchpad sliding backward
+                          */</span>
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTouchSlideBack</span><span class="hljs-params">()</span> </span>{
 
-                            tvSlide.post(() -&gt; tvSlide.setText(<span class="hljs-string">&quot;slide backward&quot;</span>));
-                        }
+                            tvSlide.post(() -&gt; tvSlide.setText(<span class="hljs-string">&quot;touchpad sliding backward&quot;</span>));
+                         }
 
-                        <span class="hljs-comment">/**
-                         * touchpad sliding forward
-                         */</span>
-                        <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTouchSlideForward</span><span class="hljs-params">()</span> </span>{
+                         <span class="hljs-comment">/**
+                          * touchpad sliding forward
+                          */</span>
+                         <span class="hljs-meta">@Override</span>
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTouchSlideForward</span><span class="hljs-params">()</span> </span>{
 
-                            tvSlide.post(() -&gt; tvSlide.setText(<span class="hljs-string">&quot;slide forward&quot;</span>));
-                        }
+                             tvSlide.post(() -&gt; tvSlide.setText(<span class="hljs-string">&quot;touchpad sliding forward&quot;</span>));
+                         }
                     })
-                    .build()
+                     .build()
                     .initUsbDevice(<span class="hljs-keyword">this</span>, mPreview, <span class="hljs-keyword">new</span> OnGlassConnectListener() {
 
-                        <span class="hljs-comment">/**
+                          <span class="hljs-comment">/**
                          Call back after the user authorizes the glass permissions
                          * <span class="hljs-doctag">@param</span> usbDevice {<span class="hljs-doctag">@link</span> UsbDevice}
                          * <span class="hljs-doctag">@param</span> glassInfo {<span class="hljs-doctag">@link</span> GlassInfo}
                          */</span>
                         <span class="hljs-meta">@Override</span>
-                        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onGlassConnected</span><span class="hljs-params">(UsbDevice usbDevice, GlassInfo glassInfo)</span> </span>{
-                            tvDeviceInfo.post(() -&gt; tvDeviceInfo.setText(<span class="hljs-string">&quot;Glass information: vendorId:&quot;</span> + usbDevice.getVendorId()
-                                    + <span class="hljs-string">&quot; productId: &quot;</span> + usbDevice.getProductId() + <span class="hljs-string">&quot; deviceName: &quot;</span>
-                                    + usbDevice.getDeviceName() + <span class="hljs-string">&quot; SN: &quot;</span> + glassInfo.getSn()));
+                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onGlassConnected</span><span class="hljs-params">(UsbDevice usbDevice, GlassInfo glassInfo)</span> </span>{
+                             tvDeviceInfo.post(() -&gt; tvDeviceInfo.setText(<span class="hljs-string">&quot;Glass Info&#xFF1A;vendorId:&quot;</span> + usbDevice.getVendorId()
+                                     + <span class="hljs-string">&quot; productId: &quot;</span> + usbDevice.getProductId() + <span class="hljs-string">&quot; deviceName: &quot;</span>
+                                     + usbDevice.getDeviceName() + <span class="hljs-string">&quot; SN: &quot;</span> + glassInfo.getSn()));
 
-                            lSensorBar.setProgress(RKGlassDevice.getInstance().getBrightness());
-                            lSensorBar.setOnSeekBarChangeListener(<span class="hljs-keyword">new</span> SeekBar.OnSeekBarChangeListener() {
-                                <span class="hljs-meta">@Override</span>
+                             lSensorBar.setProgress(RKGlassDevice.getInstance().getBrightness());
+                             lSensorBar.setOnSeekBarChangeListener(<span class="hljs-keyword">new</span> SeekBar.OnSeekBarChangeListener() {
+                                 <span class="hljs-meta">@Override</span>
                                 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onProgressChanged</span><span class="hljs-params">(SeekBar seekBar, <span class="hljs-keyword">int</span> progress, <span class="hljs-keyword">boolean</span> fromUser)</span> </span>{
                                     <span class="hljs-comment">// brightness adjustment range of optics 0~100</span>
                                     RKGlassDevice.getInstance().setBrightness(progress);
@@ -1131,18 +1156,18 @@
                         }
 
                         <span class="hljs-comment">/**
-                         * When the glass is disconnected
-                         */</span>
+                        * When the glass is disconnected
+                        */</span>
                         <span class="hljs-meta">@Override</span>
                         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onGlassDisconnected</span><span class="hljs-params">()</span> </span>{
-                            tvDeviceInfo.post(() -&gt; tvDeviceInfo.setText(<span class="hljs-string">&quot;Glass disconnected&quot;</span>));
+                            tvDeviceInfo.post(() -&gt; tvDeviceInfo.setText(<span class="hljs-string">&quot;Glass&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&quot;</span>));
                         }
                     });
 </code></pre>
 </li>
 <li><p>Release the SDK.</p>
-<pre><code class="lang-java">RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
-RKGlassDevice.getInstance().deInit();
+<pre><code class="lang-java"> RKGlassDevice.getInstance().removeOnPreviewFrameListener(onPreviewFrameListener);
+ RKGlassDevice.getInstance().deInit();
 </code></pre>
 </li>
 </ol>
@@ -1303,7 +1328,7 @@ Rect rectAfterAlignment = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HE
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Glass Hardware Functions","level":"1.2.3","depth":2,"next":{"title":"Introduction","level":"1.2.3.1","depth":3,"anchor":"#a-brief-introduction","path":"7-glassmobile/res/mobile_glass/glass_hardware.md","ref":"7-glassmobile/res/mobile_glass/glass_hardware.md#a-brief-introduction","articles":[]},"previous":{"title":"Usage Restrictions","level":"1.2.2.5","depth":3,"anchor":"#usage-restrictions","path":"7-glassmobile/res/mobile_glass/introduction.md","ref":"7-glassmobile/res/mobile_glass/introduction.md#usage-restrictions","articles":[]},"dir":"ltr"},"config":{"plugins":["anchor-navigation-ex","expandable-chapters-interactive","vistors-github","mermaid-gb3","github-issue-feedback","github","embed-pdf"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github-issue-feedback":{"repo":"Rokid/glass-docs"},"github":{"url":"https://github.com/RokidGlass/glass2-docs"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"vistors-github":{"repo":"Rokid/glass-docs"},"mermaid-gb3":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"expandable-chapters-interactive":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"embed-pdf":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"7-glassmobile/res/mobile_glass/glass_hardware.md","mtime":"2021-06-15T06:44:55.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-15T06:45:50.324Z"},"basePath":"../../..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Glass Hardware Functions","level":"1.2.3","depth":2,"next":{"title":"Introduction","level":"1.2.3.1","depth":3,"anchor":"#a-brief-introduction","path":"7-glassmobile/res/mobile_glass/glass_hardware.md","ref":"7-glassmobile/res/mobile_glass/glass_hardware.md#a-brief-introduction","articles":[]},"previous":{"title":"Usage Restrictions","level":"1.2.2.5","depth":3,"anchor":"#usage-restrictions","path":"7-glassmobile/res/mobile_glass/introduction.md","ref":"7-glassmobile/res/mobile_glass/introduction.md#usage-restrictions","articles":[]},"dir":"ltr"},"config":{"plugins":["anchor-navigation-ex","expandable-chapters-interactive","vistors-github","mermaid-gb3","github-issue-feedback","github","embed-pdf"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github-issue-feedback":{"repo":"Rokid/glass-docs"},"github":{"url":"https://github.com/RokidGlass/glass2-docs"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"vistors-github":{"repo":"Rokid/glass-docs"},"mermaid-gb3":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"expandable-chapters-interactive":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"embed-pdf":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"7-glassmobile/res/mobile_glass/glass_hardware.md","mtime":"2021-07-01T02:42:40.226Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-01T02:42:49.858Z"},"basePath":"../../..","book":{"language":"en"}});
         });
     </script>
 </div>
@@ -1331,6 +1356,10 @@ Rect rectAfterAlignment = RokidSystem.getAlignmentRect(PREVIEW_WIDTH, PREVIEW_HE
     
         
         <script src="../../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
