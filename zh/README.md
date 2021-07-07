@@ -20,6 +20,7 @@
 | ROM |32G|
 | IMU |9轴（陀螺仪、加速度计、磁力计），支持ROTATION_VECTOR|
 | Camera |拍照最大分辨率3264x2448，录像1080p@30fps|
+| GPS&4G| 序列号为082开头的设备支持GPS&4G，用法同标准Android |
 | 屏幕 | 分辨率1280x720，横屏，320dpi|
 | 基于Android9.0 |开发工具AndroidStudio|
 | 交互方式 |[触摸板、按键](1-system/index.md)、语音、头控|

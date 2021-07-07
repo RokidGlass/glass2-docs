@@ -19,6 +19,7 @@
 | ROM |32G|
 | IMU |9 axis, support ROTATION_VECTOR|
 | Camera |The maximum resolution of photos is 3264x2448, and video is 1080p@30fps|
+| GPS&4G| Devices with a serial number starting with 082 support 4G and GPS, usage is the same as Android |
 | Screen | Resolution 1280x720, horizontal screen, 320dpi |
 | Based on Android9.0 |Development Tools AndroidStudio|
 | interactive mode |[Touchpad, buttons](1-system/index.md), head control|
