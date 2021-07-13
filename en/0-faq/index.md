@@ -48,6 +48,14 @@ A: Due to system hardware restrictions, the sensors supported by default are as 
 A: Devices with a serial number starting with 082 support 4G and GPS, and devices starting with 081 do not support 4G and GPS; in addition, please note that when the dock is connected to the computer through the debugging port, 4G and GPS will be disconnected. Please use network adb to debug GPS&4G function.
 
 
+### **Q: Fail to record video layer**
+A: If you use SurfaceView to play video, you cannot record the video screen during screen recording/casting. If you want to record/cast the screen to capture the video layer, you must use TextureView to play the video.
+
+### **Q: Is the glass system 32-bit or 64-bit**
+A: Our system is 32-bit.
+
+### **Q: Can't find the BT device**
+A: In the Bluetooth function of our system settings, the device type is filtered when searching, and only Bluetooth headset devices are displayed. If you need to pair other Bluetooth devices, you can develop your own Bluetooth search and pairing function.
 
 ## 2. How to upgrade operating system of the glasses by OTA update
 
