@@ -105,4 +105,4 @@ mImuView.setAdapter(mAdapter);
 * You can register the rotation vector sensor type of SensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR), get the real-time orientation information in the onSensorChanged(SensorEvent event) callback, and judge the current head control status according to the difference of each callback content and do the corresponding processing .
 * Android official website address: https://developer.android.google.cn/reference/kotlin/android/hardware/SensorManager?hl=en
 * Data acquisition and conversion: https://github.com/RokidGlass/glass-ui/blob/master/demo/src/main/java/com/rokid/glass/ui/sample/handcontrol/sensors/Orientation.java
-* Use sample code: https://github.com/RokidGlass/glass-ui/blob/master/demo/src/main/java/com/rokid/glass/ui/sample/handcontrol/HandControlActivity.java
+* Use sample code: Refer to the HandControlActivity.java section of the GlassUI example

@@ -105,4 +105,4 @@ mImuView.setAdapter(mAdapter);
 * 可以注册SensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)的旋转矢量传感器类型，在onSensorChanged(SensorEvent event)回调中获取实时的方位信息，根据其每次回调内容的差值判断当前头控的状态做对应的处理。
 * Android官网地址：https://developer.android.google.cn/reference/kotlin/android/hardware/SensorManager?hl=en
 * 数据获取与转换：https://github.com/RokidGlass/glass-ui/blob/master/demo/src/main/java/com/rokid/glass/ui/sample/handcontrol/sensors/Orientation.java
-* 使用示例代码：https://github.com/RokidGlass/glass-ui/blob/master/demo/src/main/java/com/rokid/glass/ui/sample/handcontrol/HandControlActivity.java
+* 使用示例代码：参看GlassUI示例的HandControlActivity.java部分

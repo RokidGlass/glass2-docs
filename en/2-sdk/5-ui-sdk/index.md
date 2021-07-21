@@ -51,7 +51,7 @@ In the /app/build.gradle file of the project, add the following dependencies:
 ...
 dependencies {
     ...
-    implementation 'com.rokid.glass:ui:1.5.6'
+    implementation 'com.rokid.glass:ui:1.6.2'
 }
 ```
 

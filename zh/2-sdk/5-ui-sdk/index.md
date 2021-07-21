@@ -39,7 +39,7 @@ allprojects {
 ...
 dependencies {
     ...
-    implementation 'com.rokid.glass:ui:1.5.6'
+    implementation 'com.rokid.glass:ui:1.6.2'
 }
 ```
 
