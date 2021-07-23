@@ -11,6 +11,8 @@ Rokid Glass文档目录
 	   - [系统App提供的功能](1-system/sysapp.md)
 	   - [应用开机自启](1-system/AutoStart.md)
 	   - [替换默认桌面](1-system/ReplaceLauncher.md)
+    * Camera使用
+    	- [使用介绍](1-system/camera.md)
     * 按键交互
       - [触摸板键值说明](1-system/index.md)
     * 语音交互

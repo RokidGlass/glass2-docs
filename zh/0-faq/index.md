@@ -40,101 +40,8 @@ A：眼镜系统是32位，如有第三方native库的依赖，必须提供arm-v
 
 ### **Q7: 蓝牙搜索不到设备？**
 A: 我们系统设置里的蓝牙功能，搜索时进行了设备类型的过滤，仅显示蓝牙耳机设备。如有配对其他蓝牙设备的需求，可自行开发蓝牙搜索配对功能。
-## 二、Camera特性篇
 
-### **Q1: 【glass2】camera对焦篇：系统版本1.5.3之后采用中心对焦方式？**
-
-A：Camera固件采用中心对焦的方式，取中心九分之一做中心区域对焦。可以解决背景过大、前景过小的对焦不准问题。
-经过系统级测试，改善了对焦速度、对焦精度和识别类应用的识别速度。这个不需要应用修改，默认支持。
-
-### Q2: 【glass2】camera曝光篇：系统版本1.5.3之后支持多种曝光模式选择
-A：目前支持全局曝光，下三角曝光和中心曝光三种方式，可以满足不同场景的需求。
-
-  •  全局曝光：相机应用关注整体观感，可以采用全局曝光  
- 
-  •  下三角曝光：在部分逆光场景下，减少天空对曝光的影响可以采用下三角曝光
-  
-  •  中心曝光：二维码识别场景，中心有较亮的屏幕场景，使用中心曝光为宜。 应用接口如下：
-
-```
-方案一：Camera API1
-	int aeCompMode; //0 全局曝光，1 下三角曝光，2 中心区域曝光
-	Camera.Parameters parameters = mCamera.getParameters();
-	parameters.setExposureCompensation(aeCompMode);
-	mCamera.setParameters(parameters);
-
-方案二：Camera API2
-	int aeCompMode; //0 全局曝光，1 下三角曝光，2 中心区域曝光
-	mPreviewBuilder.set(CaptureRequest.CONTROL_AE_EXPOSURE_COMPENSATION, aeCompMode);
-```
-
-
-
-
-### Q3: 【glass2】camera放大篇：系统版本1.5.3之后支持缩放模式
-A：camera支持在1080和720P输出分辨率时候，可以支持多级放大模式。
-
-• 放大模式：可以支持电子放大功能，可以增强图像的细节，对小物体和小图案的识别功能，有较大改善空间。
-应用接口如下：
-
-```
-## Camera API1
-
-Camera.Parameters parameters = mCamera.getParameters();
-
-boolean isZoom = parameters.isZoomSupported();
-int mMaxZoom = parameters.getMaxZoom();
-
-if (isZoom && zoomLevel <= mMaxZoom) {
-  parameters.setZoom(zoomLevel);
-  mCamera.setParameters(parameters);
-}
- 
- 
- 
-## Camera API2
-Rect rect = mCameraCharacteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE);
-float maxZoom = mCameraCharacteristics.get(CameraCharacteristics.SCALER_AVAILABLE_MAX_DIGITAL_ZOOM);
-int zoomLevel = maxZoom;
-float ratio = 1f / zoomLevel;
-int croppedWidth = rect.width() - Math.round((float) rect.width() * ratio);
-int croppedHeight = rect.height() - Math.round((float) rect.height() * ratio);
-
-Rect mZoom = new Rect(croppedWidth / 2, croppedHeight / 2,
-    rect.width() - croppedWidth / 2, rect.height() - croppedHeight / 2);
-mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION,mZoom);
-  
-```
-
-
-
-
-### Q4: 【glass2】camera对焦篇：系统支持自动对焦/定焦模式
-A：camera默认定焦模式，可配置开启自动对焦使用。
-
-• 自动对焦：默认定焦用于固定场景使用，自动定焦模式可动态调节清晰度。
-应用接口如下：
-
-```
-## Camera API1
-
-Camera.Parameters parameters = mCamera.getParameters();
-
-// "auto" "fixed";
-parameters.setFocusMode("auto");
-mCamera.setParameters(parameters);
- 
-## Camera API2
-
-mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_AUTO);
-//或者
-mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
-  
-```
-
-
-
-## 三、眼镜系统版本OTA升级方法:
+## 二、眼镜系统版本OTA升级方法:
 
 ### Step 1: 信息查询
 设置-->本机信息-->版本号、SN号，若版本号较低，则需要手动OTA升级	 
@@ -156,7 +63,7 @@ mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTRO
 升级成功，重启后生效。 	 原来额外安装在眼镜端的应用，如物体识别、绘本识别不受影响。	 
 <img width="280" src="images/image005.png">
 
-## 四、Windows连接眼镜
+## 三、Windows连接眼镜
 
 ### 概述
 
