@@ -109,6 +109,29 @@ mPreviewRequestBuilder.set(CaptureRequest.SCALER_CROP_REGION,mZoom);
 
 
 
+### Q4: 【glass2】camera对焦篇：系统支持自动对焦/定焦模式
+A：camera默认定焦模式，可配置开启自动对焦使用。
+
+• 自动对焦：默认定焦用于固定场景使用，自动定焦模式可动态调节清晰度。
+应用接口如下：
+
+```
+## Camera API1
+
+Camera.Parameters parameters = mCamera.getParameters();
+
+// "auto" "fixed";
+parameters.setFocusMode("auto");
+mCamera.setParameters(parameters);
+ 
+## Camera API2
+
+mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_AUTO);
+//或者
+mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+  
+```
+
 
 
 ## 三、眼镜系统版本OTA升级方法:
