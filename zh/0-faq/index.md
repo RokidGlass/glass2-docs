@@ -14,31 +14,17 @@ A: 系统硬件mediacodec编码有size的限制，要求输入流的width必须�
 A: 请参考语音SDK使用说明[关闭全部语音指令说明](../2-sdk/3-voice-sdk/InstructSdk/InstructSdk.md### 2.7 关闭全部语音指令)
 
 
-### **Q3: 应用获取眼镜传感器获取问题**
-A: 由于系统硬件限制，默认支持 sensor list 如下，其中并不支持获取 raw data.
 
-| sensor type       |  status    |
-| ----------------------------------- | ---- |
-| android.sensor.accelerometer | Fail |
-| android.sensor.gyroscope            | Fail |
-| android.sensor.magnetic_field       | Fail |
-| android.sensor.game\_rotation\_vector | OK |
-| android.sensor.rotation_vector      | OK |
-| android.sensor.light                | OK |
-| android.sensor.proximity            | OK |
-
-	考虑到某些应用场景需要获取 raw data，我们提供刷机工具更新眼镜固件，以满足使用场景。更新后可以支持获取 raw data，但此时没有四元数数据。刷机工具可咨询工程师获取。
-
-### **Q4: 4G网络不通，无法获取GPS？**
+### **Q3: 4G网络不通，无法获取GPS？**
 A: 序列号为082开头的设备，支持4G和GPS，081开头的设备，不支持4G和GPS；另外需注意，在主机通过调试口连接电脑时，4G和GPS将会断开，需要调试GSP或者4G功能时，需使用网络adb。
 
-### **Q5: 录屏时录不到播放视频的画面？**
+### **Q4: 录屏时录不到播放视频的画面？**
 A: 如果使用SurfaceView播放视频，则录屏/投屏时是无法录到视频画面的，想要录屏/投屏捕捉到播放视频的画面，必须使用TextureView播放视频。
 
-### **Q6: 眼镜系统是32位还是64位？**
+### **Q5: 眼镜系统是32位还是64位？**
 A：眼镜系统是32位，如有第三方native库的依赖，必须提供arm-v7a的库。
 
-### **Q7: 蓝牙搜索不到设备？**
+### **Q6: 蓝牙搜索不到设备？**
 A: 我们系统设置里的蓝牙功能，搜索时进行了设备类型的过滤，仅显示蓝牙耳机设备。如有配对其他蓝牙设备的需求，可自行开发蓝牙搜索配对功能。
 
 ## 二、眼镜系统版本OTA升级方法:

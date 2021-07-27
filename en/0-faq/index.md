@@ -27,22 +27,6 @@ A: Currently, an extended camera exposure mode is provided. With the automatic e
 ```
 
 
-### **Q: A question regarding an app obtaining data from sensors of the glasses**
-
-A: Due to system hardware restrictions, the sensors supported by default are as follows. Note that obtaining raw data is not supported.
-
-| sensor type       |  status    |
-| ----------------------------------- | ---- |
-    | android.sensor.accelerometer | Fail |
-    | android.sensor.gyroscope            | Fail |
-    | android.sensor.magnetic_field       | Fail |
-    | android.sensor.game_rotation_vector | OK |
-    | android.sensor.rotation_vector      | OK |
-    | android.sensor.light                | OK |
-    | android.sensor.proximity            | OK |
-
-	Considering the fact that you need to obtain raw data in some application scenarios, we provide a flash tool to update firmware of the glasses to meet this requirement. You will be able to obtain raw data after the update, but there will not be quaternion data available. To obtain the flash tool, please consult our technical support engineers.
-
 
 ### **Q: Fail to use GPS&4G**
 A: Devices with a serial number starting with 082 support 4G and GPS, and devices starting with 081 do not support 4G and GPS; in addition, please note that when the dock is connected to the computer through the debugging port, 4G and GPS will be disconnected. Please use network adb to debug GPS&4G function.
