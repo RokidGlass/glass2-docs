@@ -3,7 +3,8 @@
 
 Rokid Glass文档目录
 ---------
-* [Rokid系统方案](README.md)
+* [Rokid文档重大升级](README.md)
+* [Rokid系统方案](first.md)
     * [使用引导](howtouse.md)
     * [OS 设计规范](5-design/index.md)
     * [软件开发文档引导](README.md)
