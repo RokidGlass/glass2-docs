@@ -1,0 +1,17 @@
+Index: en/SUMMARY.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Summary\n---------\n\nRokid Glass document directory\n---------\n* [Rokid System Solution](README.md)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- en/SUMMARY.md	(revision f549958faf05f1ae7f87f80beb5a9eabc7213e79)
++++ en/SUMMARY.md	(date 1637926515189)
+@@ -3,4 +3,5 @@
+ 
+ Rokid Glass document directory
+ ---------
+-* [Rokid System Solution](README.md)
+\ No newline at end of file
++* [Rokid System Solution](README.md)
++
