@@ -34,8 +34,8 @@ Example demo for using the plugin:
 
 - Pronunciation
   
-  1. Avoid the instruction word including reduplication words or two or more words with the same pronunciation, such as xiaolubeibei and babababa;
-  2. For the instruction words in the same scenario, the relation of inclusion should be prohibited, such as Record Video and Start Record Video.
+  1. Avoid instruction words involving reduplication, where two or more syllables have the same pronunciation. For example, "poo-poo", "pee-pee", and "milky milky cocoa puffs" should all be avoided.
+  2. Avoid instruction words that include other instruction words. For example, do not use both "Record Video" and "Start Record Video" as instruction words.
 
 - Number of words
   
